@@ -45,12 +45,9 @@ jQuery.getJSON("http://github.com/api/v2/json/repos/show/rodcast?callback=?", fu
 	if (data !== null && data.repositories.length) {
 		var
 			name, description, url,
-			repository = [],
 			rows = [];
 
-		$.each(data.repositories, function(i, obj) {
-			repository = obj[i];
-
+		$.each(data.repositories, function(i, repository) {
 			name = repository.name;
 			description = repository.description;
 			url = repository.url;
