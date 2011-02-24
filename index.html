@@ -18,7 +18,7 @@
 <link href="/css/rodcast-min.css" rel="stylesheet" type="text/css" />
 <link rel="canonical" href="http://www.rodrigocastilho.com/" />
 </head>
-<body style="background:none">
+<body>
 
 <div id="container">
 	<div id="main">
@@ -26,8 +26,43 @@
 			<h1 class="logo"><span>Rodrigo Castilho (Front End Engineer) |</span> RODCAST</h1>
 			<h1 class="description">Find me on <a href="http://github.com/rodcast" title="Github" rel="external">Github</a>, <a href="http://twitter.com/rodcast" title="Twitter" rel="external">Twitter</a> and <a href="http://linkedin.com/in/rodcast" title="LinkedIn" rel="external">LinkedIn</a> or contact me directly by <a href="http://www.rodrigocastilho.com/" title="Rodrigo Castilho">rodrigocastilho.com</a></h1>
 		</div>
+		<div id="content">
+			<div id="github-badge">
+				<h2 id="github-title"><span class="title">My projects on Github (<a href="http://github.com/rodcast" target="blank" rel="external">rodcast</a>)</span></h2>
+				<div class="body">
+					<div class="repos">
+						<ul id="repo_listing"></ul>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script>
+jQuery.getJSON("http://github.com/api/v2/json/repos/show/rodcast", function(data) {
+	if (data !== null && data.length) {
+		var
+			name, description, url,
+			repository = [],
+			rows = [];
+
+		$.each(data.repositories, function(i, obj) {
+			repository = obj[i];
+
+			name = repository.name;
+			description = repository.description;
+			url = repository.url;
+
+			rows.push('<li><strong><a title="',  name, '" href="',  url, '" target="_blank" rel=external">', name, '</a></strong>');
+			rows.push('<div class="description">', description, '</div></li>');
+		});
+
+		$("#repo_listing").empty().append(rows.join(""));
+	}
+});
+</script>
 
 </body>
 </html>
