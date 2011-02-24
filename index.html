@@ -44,25 +44,45 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
 <script>
     (function($) {
+        /**
+        * Return a new string with the string/number padded left using [ch] of [num] length
+        * @author Benjamin "balupton" Lupton {@link http://www.balupton.com}
+        * @copyright (c) 2009-2010 Benjamin Arthur Lupton {@link http://www.balupton.com}
+        * @license GNU Affero General Public License version 3 {@link http://www.gnu.org/licenses/agpl-3.0.html}
+        */
+        Number.prototype.padLeft = String.prototype.padLeft = String.prototype.padLeft || function(ch, num) {
+            var val = String(this);
+            var re = new RegExp('.{' + num + '}$');
+            var pad = '';
+            if (!ch && ch !== 0) ch = ' ';
+            do {
+                pad += ch;
+            } while (pad.length < num);
+            return re.exec(pad + val)[0];
+        };
+
         $.getJSON("http://github.com/api/v2/json/repos/show/rodcast?callback=?", function(data) {
             if (data !== null && data.repositories.length) {
                 var 
-			name, description, url,
+			name, description, url, pushed_at, date, datetime,
 			rows = [];
 
                 $.each(data.repositories, function(i, repository) {
 			name = repository.name;
 			description = repository.description;
 			url = repository.url;
-			
-			rows.push('<li><strong><a title="' + name + '" href="' + url + '" target="_blank" rel="external">' + name + '</a></strong>' +
+			pushed_at = repository.pushed_at;
+			date = new Date(pushed_at);
+			datetime = [date.getFullYear(), (date.getMonth() + 1).padLeft(0, 2), date.getDate()].join("-");
+
+			rows.push('<time datetime="' + datetime + '" pubdate="pubdate">' + pushed_at + '</time><li><strong><a title="' + name + '" href="' + url + '" target="_blank" rel="external">' + name + '</a></strong>' +
 				'<div class="description">' + description + '</div></li>');
                 });
 
-                $("#repo_listing").empty().append(rows.reverse().join(""));
+                $("#repo_listing").empty().append(rows.sort().reverse().join(""));
             }
         });
-    })(jQuery);
+    }(jQuery));
 </script>
 
 </body>
