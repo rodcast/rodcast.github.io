@@ -43,24 +43,26 @@
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
 <script>
-$.getJSON("http://github.com/api/v2/json/repos/show/rodcast?callback=?", function(data) {
-	if (data !== null && data.repositories.length) {
-		var
+    (function($) {
+        $.getJSON("http://github.com/api/v2/json/repos/show/rodcast?callback=?", function(data) {
+            if (data !== null && data.repositories.length) {
+                var 
 			name, description, url,
 			rows = [];
 
-		$.each(data.repositories, function(i, repository) {
+                $.each(data.repositories, function(i, repository) {
 			name = repository.name;
 			description = repository.description;
 			url = repository.url;
+			
+			rows.push('<li><strong><a title="' + name + '" href="' + url + '" target="_blank" rel="external">' + name + '</a></strong>' +
+				'<div class="description">' + description + '</div></li>');
+                });
 
-			rows.push('<li><strong><a title="' +  name + '" href="' +  url + '" target="_blank" rel="external">' + name + '</a></strong>' +
-			'<div class="description">' + description + '</div></li>');
-		});
-
-		$("#repo_listing").empty().append(rows.reverse().join(""));
-	}
-});
+                $("#repo_listing").empty().append(rows.reverse().join(""));
+            }
+        });
+    })(jQuery);
 </script>
 
 </body>
