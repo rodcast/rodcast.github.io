@@ -24,7 +24,7 @@
 	<div id="main">
 		<div id="header">
 			<h1 class="logo"><span>Rodrigo Castilho (Front End Engineer) |</span> RODCAST</h1>
-			<h1 class="description">Find me on <a href="http://github.com/rodcast" title="Github" rel="external" class="external">Github</a>, <a href="http://twitter.com/rodcast" title="Twitter" rel="external">Twitter</a> and <a href="http://linkedin.com/in/rodcast" title="LinkedIn" rel="external">LinkedIn</a> or contact me directly by <a href="http://www.rodrigocastilho.com/" title="Rodrigo Castilho">rodrigocastilho.com</a></h1>
+			<h1 class="description">Find me on <a href="http://github.com/rodcast" title="Github" rel="external">Github</a>, <a href="http://twitter.com/rodcast" title="Twitter" rel="external">Twitter</a> and <a href="http://linkedin.com/in/rodcast" title="LinkedIn" rel="external">LinkedIn</a> or contact me directly by <a href="http://www.rodrigocastilho.com/" title="Rodrigo Castilho">rodrigocastilho.com</a></h1>
 		</div>
 		<div id="content">
 			<div id="github-badge">
@@ -52,11 +52,11 @@ jQuery.getJSON("http://github.com/api/v2/json/repos/show/rodcast?callback=?", fu
 			description = repository.description;
 			url = repository.url;
 
-			rows.push('<li><strong><a title="',  name, '" href="',  url, '" target="_blank" rel="external" class="external">', name, '</a></strong>');
+			rows.push('<li><strong><a title="',  name, '" href="',  url, '" target="_blank" rel="external">', name, '</a></strong>');
 			rows.push('<div class="description">', description, '</div></li>');
 		});
 
-		$("#repo_listing").empty().append(rows.join(""));
+		$("#repo_listing").empty().append(rows.reverse().join(""));
 	}
 });
 </script>
