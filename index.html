@@ -84,7 +84,7 @@
 			url = repository.url;
 			pushed_at = repository.pushed_at;
 			date = new Date(pushed_at);
-			datetime = [date.getFullYear(), (date.getMonth() + 1).padLeft(0, 2), date.getDate()].join("-");
+			datetime = [date.getFullYear(), (date.getMonth() + 1).padLeft(0, 2), date.getDate().padLeft(0, 2)].join("-");
 
 			rows.push('<li><time datetime="' + datetime + '" pubdate="pubdate">' + pushed_at + '</time>' +
 				  '<strong><a title="' + name + '" href="' + url + '" target="_blank" rel="external">' + name + '</a></strong>' +
