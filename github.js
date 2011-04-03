@@ -9,18 +9,19 @@
     * @license GNU Affero General Public License version 3 {@link http://www.gnu.org/licenses/agpl-3.0.html}
     */
     Number.prototype.padLeft = String.prototype.padLeft = String.prototype.padLeft || function(ch, num) {
-            var val = String(this);
-            var re = new RegExp('.{' + num + '}$');
-            var pad = '';
-            
-            if (!ch && ch !== 0) {
-                    ch = ' ';
-            }
-            
-            do {
-                    pad += ch;
-            } while (pad.length < num);
-            return re.exec(pad + val)[0];
+        var 
+            val = String(this),
+            re = new RegExp('.{' + num + '}$'),
+            pad = '';
+
+        if (!ch && ch !== 0) {
+            ch = ' ';
+        }
+
+        do {
+            pad += ch;
+        } while (pad.length < num);
+        return re.exec(pad + val)[0];
     };
 
     /**
@@ -30,24 +31,24 @@
     $.getJSON("http://github.com/api/v2/json/repos/show/rodcast?callback=?", function(data) {
         if (data !== null && data.repositories.length) {
             var 
-                    fork, name, description, url, pushed_at, date, datetime,
-                    rows = [];
+                fork, name, description, url, pushed_at, date, datetime,
+                rows = [];
 
             $.each(data.repositories, function(i, repository) {
-                    fork = repository.fork;
-                    
-                    if (!fork) {
-                        name = repository.name;
-                        description = repository.description;
-                        url = repository.url;
-                        pushed_at = repository.pushed_at;
-                        date = new Date(pushed_at);
-                        datetime = [date.getFullYear(), (date.getMonth() + 1).padLeft(0, 2), date.getDate().padLeft(0, 2)].join("-");
+                fork = repository.fork;
 
-                        rows.push('<li><time datetime="' + datetime + '" pubdate="pubdate">' + pushed_at + '</time>' +
+                if (!fork) {
+                    name = repository.name;
+                    description = repository.description;
+                    url = repository.url;
+                    pushed_at = repository.pushed_at;
+                    date = new Date(pushed_at);
+                    datetime = [date.getFullYear(), (date.getMonth() + 1).padLeft(0, 2), date.getDate().padLeft(0, 2)].join("-");
+
+                    rows.push('<li><time datetime="' + datetime + '" pubdate="pubdate">' + pushed_at + '</time>' +
                                   '<strong><a title="' + name + '" href="' + url + '" target="_blank" rel="external">' + name + '</a></strong>' +
                                   '<div class="description">' + description + '</div></li>');
-                    }
+                }
             });
 
             $("#repo_listing").empty().append(rows.sort().reverse().join(""));
