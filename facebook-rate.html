@@ -10,7 +10,7 @@
 </head>
 <body>
 
-  <a href="/" id="go">GO</a>
+  <a href="#" id="go">GO</a>
   <div id="fb-root"></div>
   
   <script src="https://connect.facebook.net/en_US/all.js"></script>
@@ -69,6 +69,8 @@
 		function setEvents() {
 			$("#go").on('click', function(){ 
 				authFacebookAccount();
+				
+				return false;
 			 });
 		}
 		
