@@ -51,6 +51,7 @@
 			FB.api('/' + id + '/photos', function(photos) {
 				$.each(photos.data, function(i, photo) {
 					$.each(photo.images, function(i, images) {
+						console.log(photo.images);
 						photosList.push('<a href="' + images.source + '" class="photo"><img src=' + images.source + '></a>');
 					});
 				});
@@ -65,7 +66,7 @@
 		}
 
 		function showPhotos() {
-			$('#photos').append(photosList.join(""));		
+			$('#photos').empty().append(photosList.join(""));		
 		}
 
 		function setEventAlbums() {
