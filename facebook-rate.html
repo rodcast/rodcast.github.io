@@ -43,6 +43,7 @@
 				});
 
 				showAlbums();
+				setEventAlbums();
 			});
 		}
 
@@ -55,6 +56,7 @@
 				});
 
 				showPhotos();
+				setEventPhotos();
 			});
 		}
 
@@ -66,31 +68,33 @@
 			$('#photos').append(photosList.join(""));		
 		}
 
-		$('.album').on('click', function(event) {
-			debugger;
-			getPhotos($(this).data('album'));
-
-			event.preventDefault();
-		});
-
-		$('.photo').on('click', function(event) {
-			var imgURL = this.href;
-
-			FB.ui({
-				method: 'feed',
-				message: 'What do you think about my picture?',
-				picture: imgURL
-			}, function(response) {
-				if (!response) {
-					alert('Error!');
-				} else {
-					console.log(response);
-				}
+		function setEventAlbums() {
+			$('.album').on('click', function(event) {
+				getPhotos($(this).data('album'));
+	
+				event.preventDefault();
 			});
+		}
 
-			event.preventDefault();
-		});
-
+		function setEventPhotos() {
+			$('.photo').bind('click', function(event) {
+				var imgURL = this.href;
+	
+				FB.ui({
+					method: 'feed',
+					message: 'What do you think about my picture?',
+					picture: imgURL
+				}, function(response) {
+					if (!response) {
+						alert('Error!');
+					} else {
+						console.log(response);
+					}
+				});
+	
+				event.preventDefault();
+			});
+		}
 
 		authFacebookAccount();
     });
