@@ -10,39 +10,71 @@
 </head>
 <body>
 
-	<div id="fb-root"></div>
-	<script>
-		(function() {
-			var fbInitialized = false;
-			
-			window.fbAsyncInit = function() {
-			  fbInitialized = true;
-				
-			  FB.init({
-				status     : true, // check login status
-				cookie     : true, // enable cookies to allow the server to access the session
-				xfbml      : true  // parse XFBML
-			  });
-			};
+  <a href="/" id="go">GO</a>
+  <div id="fb-root"></div>
+  
+  <script src="https://connect.facebook.net/en_US/all.js"></script>
+  <script src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
+  <script>
+    $(function(){
+		FB.init({
+		  appId: '420083701382995',
+		  status: true,
+		  cookie: true,
+		  xfbml: true,
+		  oauth: true
+		});
 
-			window.onFbInit = function() {
-			  if (fbInitialized) {
-				FB.api('/me', function(response) {
-				  alert('Your name is ' + response.name);
-				});
-			  }
-			};
-		})();
-	  
-	  // Load the SDK Asynchronously
-	  (function(d){
-		 var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-		 if (d.getElementById(id)) {return;}
-		 js = d.createElement('script'); js.id = id; js.async = true;
-		 js.src = "//connect.facebook.net/en_US/all.js";
-		 ref.parentNode.insertBefore(js, ref);
-	   }(document));
-	</script>
+		function authFacebookAccount() {
+		  FB.getLoginStatus(function(response) {
+			if (response.status === 'connected') {         
+			  getMyGender();
+			} else if (response.status === 'not_authorized') {
+			  FB.login(function(response) {
+				getMyGender();
+			  });
+			} else {
+			  FB.login(function(response) {
+				consol.log('FB.login');
+			  });
+			}
+		  });
+		}
+	
+		function getMyGender() {
+		  FB.api('/me', function (response) {
+			getFriendsList(response.gender);
+		  });
+		}
+	
+		function getFriendsList(mygender) {
+		  FB.api('/me/friends', function (response) {
+			for (var i = 0, L = response.data.length; i < L; i++) {
+			  showAnotherGenFriends(mygender, response.data[i]);
+			}
+		  });
+		}
+	
+		function showAnotherGenFriends(mygender, fInfo){
+		  var fid = fInfo.id;
+		  var fpicUrl = 'https://graph.facebook.com/'+fid+'/picture?type=large';
+		  FB.api(fid, function (response) {
+			if (response.gender != mygender) {
+			  var img = $('<img src="' + fpicUrl + '"><br>');
+			  $('#friend_section').append(img);
+			}
+		  });
+		}
+		
+		function setEvents() {
+			$("#go").on('click', function(){ 
+				authFacebookAccount();
+			 });
+		}
+		
+		setEvents();
+    });
+  </script>
 
 </body>
 </html>
