@@ -10,7 +10,9 @@
 </head>
 <body>
 
-  <a href="#" id="go">GO</a>
+  <a href="#" id="go">GO</a
+  
+  <div id="friend_section"></div>
   <div id="fb-root"></div>
   
   <script src="https://connect.facebook.net/en_US/all.js"></script>
@@ -27,49 +29,23 @@
 
 		function authFacebookAccount() {
 			FB.login(function(response) {
-			  getMyGender();
+			  getMyPicture();
 			});
 		}
 	
-		function getMyGender() {
-		  FB.api('/me', function (response) {
-			console.log(response);
-			getFriendsList(response.gender);
-		  });
-		  
-		  FB.api('/me/picture', function (response) {
-			console.log(response);
+		function getMyPicture() {
+		  FB.api('/me/picture', function(response) {
+			getPictureList(response);
 		  });
 		}
 	
-		function getFriendsList(mygender) {
-		  FB.api('/me/friends', function (response) {
-			for (var i = 0, L = response.data.length; i < L; i++) {
-			  showAnotherGenFriends(mygender, response.data[i]);
-			}
-		  });
+		function getPictureList(mypicure){
+			var img = $('<img src="' + mypicure.url + '"><br>');
+			$('#friend_section').append(img);
 		}
-	
-		function showAnotherGenFriends(mygender, fInfo){
-		  var fid = fInfo.id;
-		  var fpicUrl = 'https://graph.facebook.com/'+fid+'/picture?type=large';
-		  FB.api(fid, function (response) {
-			if (response.gender != mygender) {
-			  var img = $('<img src="' + fpicUrl + '"><br>');
-			  $('#friend_section').append(img);
-			}
-		  });
-		}
+
+		authFacebookAccount();
 		
-		function setEvents() {
-			$("#go").on('click', function(){ 
-				authFacebookAccount();
-				
-				return false;
-			 });
-		}
-		
-		setEvents();
     });
   </script>
 
