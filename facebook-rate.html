@@ -51,8 +51,9 @@
 			FB.api('/' + id + '/photos', function(photos) {
 				$.each(photos.data, function(i, photo) {
 					$.each(photo.images, function(i, images) {
-						console.log(photo.images);
-						photosList.push('<a href="' + images.source + '" class="photo"><img src=' + images.source + '></a>');
+						if (~images.source.indexOf('320x320')) {
+							photosList.push('<a href="' + images.source + '" class="photo"><img src=' + images.source + '></a>');
+						}
 					});
 				});
 
@@ -83,7 +84,7 @@
 	
 				FB.ui({
 					method: 'feed',
-					message: 'What do you think about my picture?',
+					message: 'What do you think about the picture?',
 					picture: imgURL
 				}, function(response) {
 					if (!response) {
