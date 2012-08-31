@@ -34,17 +34,23 @@
 		}
 	
 		function getMyPhotos() {
-			FB.api('/me/photos', function(response) {
-				$.each(response.data, function(i, photos) {
-					$.each(photos.images, function(i, photo) {
-						photosList.push('<img src="' + photo.source + '" alt="" />');
+			FB.api('/me/albums', function(response) {
+				$.each(response.data, function(i, albums) {
+					photosList.push('<h1>' + albums.name + '</h1>');
+
+					FB.api('/' + albums.id + '/photos', function(photos) {
+						$.each(photos.data, function(i, photo) {
+							$.each(photo.images, function(i, images) {
+								photosList.push('<img src=' + images.source + '>');
+							});
+						});
 					});
 				});
 				
 				showPhotos();
 			});
 		}
-	
+
 		function showPhotos() {
 			$('#friend_section').append(photosList.join(""));		
 		}
