@@ -42,7 +42,7 @@
 					albumsList.push('<li><a href="/" data-album="' + albums.id + '">' + albums.name + '</a></li>');
 				});
 				
-				albums.append(albumsList.join(""));
+				showAlbums();
 			});
 		}
 
@@ -54,7 +54,7 @@
 					});
 				});
 				
-				photo.append(photosList.join(""));
+				showPhotos();
 			});
 		}
 
