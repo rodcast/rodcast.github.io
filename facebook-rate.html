@@ -39,7 +39,7 @@
 		function getMyAlbums() {
 			FB.api('/me/albums', function(response) {
 				$.each(response.data, function(i, albums) {
-					albumsList.push('<li><a href="/" data-album="' + albums.id + '">' + albums.name + '</a></li>');
+					albumsList.push('<li><a href="/" class="album" data-album="' + albums.id + '">' + albums.name + '</a></li>');
 				});
 
 				showAlbums();
@@ -50,7 +50,7 @@
 			FB.api('/' + id + '/photos', function(photos) {
 				$.each(photos.data, function(i, photo) {
 					$.each(photo.images, function(i, images) {
-						photosList.push('<a href="' + images.source + '" data-post="true"><img src=' + images.source + '></a>');
+						photosList.push('<a href="' + images.source + '" class="photo"><img src=' + images.source + '></a>');
 					});
 				});
 
@@ -66,16 +66,13 @@
 			$('#photos').append(photosList.join(""));		
 		}
 
-		$('a[data-album]').on('click', function(event) {
-			debugger;
-			event.preventDefault();
-
+		$('.album').on('click', function(event) {
 			getPhotos($(this).data('album'));
+
+			event.preventDefault();
 		});
 
-		$('a[data-post]').on('click', function(event) {
-			event.preventDefault();
-
+		$('.photo').on('click', function(event) {
 			var imgURL = this.href;
 
 			FB.ui({
@@ -90,7 +87,7 @@
 				}
 			});
 
-			return false;
+			event.preventDefault();
 		});
 
 		authFacebookAccount();
