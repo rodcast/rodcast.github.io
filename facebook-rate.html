@@ -41,6 +41,8 @@
 				$.each(response.data, function(i, albums) {
 					albumsList.push('<li><a href="/" data-album="' + albums.id + '">' + albums.name + '</a></li>');
 				});
+				
+				albumsList.join("");
 			});
 		}
 
@@ -48,9 +50,11 @@
 			FB.api('/' + id + '/photos', function(photos) {
 				$.each(photos.data, function(i, photo) {
 					$.each(photo.images, function(i, images) {
-						photosList.push('<img src=' + images.source + '>');
+						photosList.push('<a href="' + images.source + '" data-post="true"><img src=' + images.source + '></a>');
 					});
 				});
+				
+				photosList.join("");
 			});
 		}
 		
@@ -65,6 +69,23 @@
 		$('a[data-album]').on('click', function() {
 			getAlbums($(this).data('album'));
 
+			return false;
+		});
+		
+		$('a[data-post]').on('click', function() {
+			var imgURL = this.href;
+
+			FB.api('/album_id/photos', 'post', {
+				message: '123',
+				url: imgURL,
+			}, function(response){
+				if (!response || response.error) {
+					alert('Error!');
+				} else {
+					alert('Post ID: ' + response.id);
+				}
+			});
+			
 			return false;
 		});
 
