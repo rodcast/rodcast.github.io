@@ -17,6 +17,8 @@
   <script src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
   <script>
     $(function(){
+		var photos = [];
+
 		FB.init({
 		  appId: '420083701382995',
 		  status: true,
@@ -27,21 +29,22 @@
 
 		function authFacebookAccount() {
 			FB.login(function(response) {
-			  getMyPicture();
+			  getMyPhotos();
 			});
 		}
 	
-		function getMyPicture() {
-		  FB.api('/me/picture', function(response) {
-			console.log(response);
-			getPictureList(response);
-		  });
+		function getMyPhotos() {
+			FB.api('/me/photos', function(response) {
+				$.each(response.data, function(i, photos) {
+					$.each(photos.images, function(i, photo) {
+						photos.push('<img src="' + photo.source + '" alt="" />');
+					});
+				});
+			});
 		}
 	
-		function getPictureList(mypicure) {
-			console.log(mypicure.url);
-			var img = $('<img src="' + mypicure.url + '"><br>');
-			$('#friend_section').append(img);
+		function showPhotos() {
+			$('#friend_section').append(photos.join(""));		
 		}
 
 		authFacebookAccount();
