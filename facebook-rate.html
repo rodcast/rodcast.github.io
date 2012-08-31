@@ -10,8 +10,6 @@
 </head>
 <body>
 
-  <a href="#" id="go">GO</a
-  
   <div id="friend_section"></div>
   <div id="fb-root"></div>
   
@@ -35,17 +33,18 @@
 	
 		function getMyPicture() {
 		  FB.api('/me/picture', function(response) {
+			console.log(response);
 			getPictureList(response);
 		  });
 		}
 	
-		function getPictureList(mypicure){
+		function getPictureList(mypicure) {
+			console.log(mypicure.url);
 			var img = $('<img src="' + mypicure.url + '"><br>');
 			$('#friend_section').append(img);
 		}
 
 		authFacebookAccount();
-		
     });
   </script>
 
