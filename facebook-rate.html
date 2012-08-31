@@ -39,7 +39,7 @@
 		function getMyAlbums() {
 			FB.api('/me/albums', function(response) {
 				$.each(response.data, function(i, albums) {
-					albumsList.push('<li><a href="/" class="album" data-album="' + albums.id + '">' + albums.name + '</a></li>');
+					albumsList.push('<li><a href="#" class="album" data-album="' + albums.id + '">' + albums.name + '</a></li>');
 				});
 
 				showAlbums();
@@ -67,6 +67,7 @@
 		}
 
 		$('.album').on('click', function(event) {
+			debugger;
 			getPhotos($(this).data('album'));
 
 			event.preventDefault();
