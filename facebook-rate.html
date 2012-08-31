@@ -63,11 +63,15 @@
 		}
 
 		function showAlbums() {
-			$('#albums').append(albumsList.join(""));		
+			$('#albums').append(albumsList.join(""));
+			
+			albumsList = [];
 		}
 
 		function showPhotos() {
-			$('#photos').html('').append(photosList.join(""));		
+			$('#photos').html('').append(photosList.join(""));
+			
+			photosList = [];
 		}
 
 		function setEventAlbums() {
