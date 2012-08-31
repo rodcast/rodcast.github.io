@@ -67,6 +67,8 @@
 		}
 
 		$('a[data-album]').on('click', function(event) {
+			
+			debugger;
 			event.preventDefault();
 
 			getPhotos($(this).data('album'));
