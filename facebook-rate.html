@@ -67,7 +67,7 @@
 		}
 
 		function showPhotos() {
-			$('#photos').empty().append(photosList.join(""));		
+			$('#photos').html('').append(photosList.join(""));		
 		}
 
 		function setEventAlbums() {
@@ -85,7 +85,7 @@
 				FB.ui({
 					method: 'feed',
 					message: 'What do you think about the picture?',
-					picture: imgURL
+					picture: 'https://dl.dropbox.com/s/9845s1avkpk7qbk/du5.jpg'
 				}, function(response) {
 					if (!response) {
 						alert('Error!');
