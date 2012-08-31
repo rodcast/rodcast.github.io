@@ -57,7 +57,7 @@
 				photosList.join("");
 			});
 		}
-		
+
 		function showAlbums() {
 			$('#albums').append(albumsList.join(""));		
 		}
@@ -71,7 +71,7 @@
 
 			return false;
 		});
-		
+
 		$('a[data-post]').on('click', function() {
 			var imgURL = this.href;
 
@@ -85,7 +85,7 @@
 					alert('Post ID: ' + response.id);
 				}
 			});
-			
+
 			return false;
 		});
 
