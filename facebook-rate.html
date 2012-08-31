@@ -10,14 +10,17 @@
 </head>
 <body>
 
-  <div id="friend_section"></div>
+  <ul id="albums"></ul>
+  <div id="photos"></div>
+  
   <div id="fb-root"></div>
   
   <script src="https://connect.facebook.net/en_US/all.js"></script>
   <script src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
   <script>
     $(function(){
-		var photosList = [];
+		var albumsList = [],
+			photosList = [];
 
 		FB.init({
 		  appId: '420083701382995',
@@ -29,31 +32,41 @@
 
 		function authFacebookAccount() {
 			FB.login(function(response) {
-			  getMyPhotos();
+			  getMyAlbums();
 			});
 		}
-	
-		function getMyPhotos() {
+
+		function getMyAlbums() {
 			FB.api('/me/albums', function(response) {
 				$.each(response.data, function(i, albums) {
-					photosList.push('<h1>' + albums.name + '</h1>');
+					albumsList.push('<li><a href="/" data-album="' + albums.id + '">' + albums.name + '</a></li>');
+				});
+			});
+		}
 
-					FB.api('/' + albums.id + '/photos', function(photos) {
-						$.each(photos.data, function(i, photo) {
-							$.each(photo.images, function(i, images) {
-								photosList.push('<img src=' + images.source + '>');
-							});
-						});
+		function getPhotos(id) {
+			FB.api('/' + id + '/photos', function(photos) {
+				$.each(photos.data, function(i, photo) {
+					$.each(photo.images, function(i, images) {
+						photosList.push('<img src=' + images.source + '>');
 					});
 				});
-				
-				showPhotos();
 			});
+		}
+		
+		function showAlbums() {
+			$('#albums').append(albumsList.join(""));		
 		}
 
 		function showPhotos() {
-			$('#friend_section').append(photosList.join(""));		
+			$('#photos').append(photosList.join(""));		
 		}
+		
+		$('a[data-album]').on('click', function() {
+			getAlbums($(this).data('album'));
+
+			return false;
+		});
 
 		authFacebookAccount();
     });
