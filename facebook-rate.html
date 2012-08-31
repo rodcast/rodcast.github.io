@@ -67,7 +67,7 @@
 		}
 		
 		$('a[data-album]').on('click', function() {
-			getAlbums($(this).data('album'));
+			getPhotos($(this).data('album'));
 
 			return false;
 		});
@@ -75,14 +75,15 @@
 		$('a[data-post]').on('click', function() {
 			var imgURL = this.href;
 
-			FB.api('/album_id/photos', 'post', {
-				message: '123',
-				url: imgURL,
-			}, function(response){
-				if (!response || response.error) {
+			FB.ui({
+				method: 'feed',
+				message: 'What do you think about my picture?',
+				picture: imgURL
+			}, function(response) {
+				if (!response) {
 					alert('Error!');
 				} else {
-					alert('Post ID: ' + response.id);
+					console.log(response);
 				}
 			});
 
