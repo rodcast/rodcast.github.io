@@ -17,7 +17,7 @@
   <script src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
   <script>
     $(function(){
-		var photos = [];
+		var photosList = [];
 
 		FB.init({
 		  appId: '420083701382995',
@@ -37,14 +37,14 @@
 			FB.api('/me/photos', function(response) {
 				$.each(response.data, function(i, photos) {
 					$.each(photos.images, function(i, photo) {
-						photos.push('<img src="' + photo.source + '" alt="" />');
+						photosList.push('<img src="' + photo.source + '" alt="" />');
 					});
 				});
 			});
 		}
 	
 		function showPhotos() {
-			$('#friend_section').append(photos.join(""));		
+			$('#friend_section').append(photosList.join(""));		
 		}
 
 		authFacebookAccount();
