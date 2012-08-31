@@ -41,7 +41,7 @@
 				$.each(response.data, function(i, albums) {
 					albumsList.push('<li><a href="/" data-album="' + albums.id + '">' + albums.name + '</a></li>');
 				});
-				
+
 				showAlbums();
 			});
 		}
@@ -53,7 +53,7 @@
 						photosList.push('<a href="' + images.source + '" data-post="true"><img src=' + images.source + '></a>');
 					});
 				});
-				
+
 				showPhotos();
 			});
 		}
@@ -65,14 +65,16 @@
 		function showPhotos() {
 			$('#photos').append(photosList.join(""));		
 		}
-		
-		$('a[data-album]').on('click', function() {
-			getPhotos($(this).data('album'));
 
-			return false;
+		$('a[data-album]').on('click', function(event) {
+			event.preventDefault();
+
+			getPhotos($(this).data('album'));
 		});
 
-		$('a[data-post]').on('click', function() {
+		$('a[data-post]').on('click', function(event) {
+			event.preventDefault();
+
 			var imgURL = this.href;
 
 			FB.ui({
