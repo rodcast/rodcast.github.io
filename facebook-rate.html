@@ -26,19 +26,9 @@
 		});
 
 		function authFacebookAccount() {
-		  FB.getLoginStatus(function(response) {
-			if (response.status === 'connected') {         
-			  getMyGender();
-			} else if (response.status === 'not_authorized') {
 			  FB.login(function(response) {
-				getMyGender();
+				console.log('FB.login');
 			  });
-			} else {
-			  FB.login(function(response) {
-				consol.log('FB.login');
-			  });
-			}
-		  });
 		}
 	
 		function getMyGender() {
