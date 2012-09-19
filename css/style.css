@@ -47,6 +47,7 @@ a:active {
 }
 
 #albums {
+    padding: 0;
     overflow: hidden;
 }
 
