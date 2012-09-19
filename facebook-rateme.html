@@ -13,10 +13,15 @@
 </head>
 <body>
 
+<section>
   <nav>
 	<ul id="albums"></ul>
   </nav>
-  <div id="photos"></div>
+  
+  <article>
+	<div id="photos"></div>
+  </article>
+</section>
   
   <div id="fb-root"></div>
   
@@ -39,11 +44,11 @@
 		  debugger;
 			FB.login(function(response) {
 			  if (response.authResponse) {
-				getMyAlbums();
+				getLikes();
 			  } else {
 				alert('User cancelled login!');
 			  }
-			}, {scope: 'email,user_photos'});
+			}, {scope: 'email,user_likes,friends_likes'});
 		}
 
 		function getMyAlbums() {
@@ -58,11 +63,11 @@
 		}
 
 		function getPhotos(id) {
-			FB.api('/' + id + '/photos', function(photos) {
-				$.each(photos.data, function(i, photo) {
+			FB.api('/' + id + '/photos', function(response) {
+				$.each(response.data, function(i, photo) {
 					$.each(photo.images, function(i, images) {
 						if (~images.source.indexOf('320x320')) {
-							photosList.push('<a href="' + images.source + '" class="photo"><img src=' + images.source + '></a>');
+							photosList.push('<a href="' + images.source + '" data-likes="' + photo.likes + '" class="photo"><img src=' + images.source + '></a>');
 						}
 					});
 				});
@@ -94,12 +99,9 @@
 
 		function setEventPhotos() {
 			$('.photo').bind('click', function(event) {
-				var imgURL = this.href;
-	
 				FB.ui({
-					method: 'send',
-					name: 'You say what you think about me provided that it\'s COOL.',
-					link: imgURL
+				  method: 'apprequests',
+				  message: 'I did ' + $(this).data('likes') + ' likes in that picutre and you? See and be happy!'
 				}, function(response) {
 					if (!response) {
 						alert('Error!');
