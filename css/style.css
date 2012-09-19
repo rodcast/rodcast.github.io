@@ -98,7 +98,7 @@ a:active {
     top: auto;
     bottom: -40px;
     width: 100%;
-    padding: 5em 0;
+    padding: 1em 0;
     -moz-transition: bottom 250ms;
     -ms-transition: bottom 250ms;
     -o-transition: bottom 250ms;
