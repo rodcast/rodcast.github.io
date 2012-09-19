@@ -9,10 +9,13 @@
 	<meta name="viewport" content="width=device-width">
 	  
 	<link href="css/normalize.css" rel="stylesheet" type="text/css" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
-  <ul id="albums"></ul>
+  <nav>
+	<ul id="albums"></ul>
+  </nav>
   <div id="photos"></div>
   
   <div id="fb-root"></div>
@@ -34,8 +37,13 @@
 
 		function authFacebookAccount() {
 			FB.login(function(response) {
-			  getMyAlbums();
-			});
+			  console.log(response);
+			  if (response.authResponse) {
+				getMyAlbums();
+			  } else {
+				alert('User cancelled login!');
+			  }
+			}, {scope: 'email,user_photos'});
 		}
 
 		function getMyAlbums() {
