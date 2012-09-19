@@ -43,42 +43,44 @@
 		});
 
 		function authFacebookAccount() {
-			FB.login(function(response) {
-			  if (response.authResponse) {
-				getMyAlbums();
-			  } else {
-				alert('User cancelled login!');
-			  }
-			}, {scope: 'email,user_photos,user_likes,friends_likes'});
+		  FB.login(function(response) {
+			if (response.authResponse) {
+			  getMyAlbums();
+			} else {
+			  alert('User cancelled login!');
+			}
+		  }, {scope: 'email,user_photos,user_likes'});
 		}
 
 		function getMyAlbums() {
-			FB.api('/me/albums', function(response) {
-				$.each(response.data, function(i, albums) {
-					if (albums.count) {
-					  albumsList.push('<li><a href="#" class="album" data-album="' + albums.id + '">' + albums.name + ' (' + albums.count + ')</a></li>');
-					}
-				});
+		  FB.api('/me/albums', function(response) {
+			  $.each(response.data, function(i, albums) {
+				  if (albums.count) {
+					albumsList.push('<li><a href="#" class="album" data-album="' + albums.id + '">' + albums.name + '</a> (' + albums.count + ')</li>');
+				  }
+			  });
 
-				showAlbums();
-				setEventAlbums();
-			});
+			  showAlbums();
+			  setEventAlbums();
+		  });
 		}
 
 		function getPhotos(id) {
-			FB.api('/' + id + '/photos', function(response) {
-				$.each(response.data, function(i, photo) {
-					$.each(photo.images, function(i, images) {
-						if (~images.source.indexOf('320x320')) {
-							count_likes = (photo.likes ? photo.likes.data.length : 0);
-							photosList.push('<li data-count="' + likes + '"><a href="' + images.source + '" class="photo"><span class="likes">' + count_likes + '</span><img src=' + images.source + ' class="image"></a></li>');
-						}
-					});
-				});
-
-				showPhotos();
-				setEventPhotos();
-			});
+		  var count_likes = 0;
+		
+		  FB.api('/' + id + '/photos', function(response) {
+			  $.each(response.data, function(i, photo) {
+				  $.each(photo.images, function(i, images) {
+					  if (~images.source.indexOf('320x320')) {
+						  count_likes = (photo.likes ? photo.likes.data.length : 0);
+						  photosList.push('<li data-likes="' + count_likes + '"><a href="' + images.source + '" class="photo"><span class="likes">' + count_likes + '</span><img src=' + images.source + ' class="image"></a></li>');
+					  }
+				  });
+			  });
+  
+			  showPhotos();
+			  setEventPhotos();
+		  });
 		}
 
 		function showAlbums() {
