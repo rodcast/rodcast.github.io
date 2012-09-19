@@ -89,15 +89,13 @@
 				var imgURL = this.href;
 	
 				FB.ui({
-					method: 'feed',
-					caption: 'What do you think about this picture?',
-					description: 'You say what you think about me provided that it\'s COOL because otherwise I get upset.',
-					picture: 'https://dl.dropbox.com/s/9845s1avkpk7qbk/du5.jpg'
+					method: 'send',
+					name: 'You say what you think about me provided that it\'s COOL.',
 				}, function(response) {
 					if (!response) {
 						alert('Error!');
 					} else {
-						console.log(response);
+						alert(response);
 					}
 				});
 	
