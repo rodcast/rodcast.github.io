@@ -1,3 +1,9 @@
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 html {
     height: 100%;
     font-size: 100%;
@@ -64,13 +70,19 @@ a:active {
     margin: 0 .5em .5em 0;
     display: inline-block;
     vertical-align: top;
+    overflow: hidden;
 }
 
 #photos .photo {
     display: block;
 }
 
-#photos .likes {
+#photos .photo:hover .name {
+    bottom: 0;
+}
+
+#photos .likes,
+#photos .name {
     position: absolute;
     top: 0;
     right: 0;
@@ -80,6 +92,23 @@ a:active {
     background-color: rgba(0,0,0,.5);
     text-align: center;
     z-index: 1;
+}
+
+#photos .name {
+    position: absolute;
+    bottom: -40px;
+    width: 100%;
+    padding: 0 .5em;
+    color: #fff;
+    font-size: 0.75em;
+    background-color: rgba(0,0,0,.5);
+    text-align: center;
+    z-index: 1;
+    -moz-transition: bottom 250ms;
+    -ms-transition: bottom 250ms;
+    -o-transition: bottom 250ms;
+    -webkit-transition: bottom 250ms;
+    transition: bottom 250ms;
 }
 
 #photos .image {

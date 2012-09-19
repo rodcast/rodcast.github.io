@@ -79,7 +79,7 @@
 				$.each(photo.images, function(i, images) {
 					if (~images.source.indexOf('320x320')) {
 						count_likes = (photo.likes ? photo.likes.data.length : 0);
-						photosList.push('<li data-likes="' + count_likes + '"><a href="' + images.source + '" class="photo"><span class="likes">' + count_likes + '</span><img src=' + images.source + ' class="image"></a></li>');
+						photosList.push('<li data-likes="' + count_likes + '"><a href="' + images.source + '" class="photo"><span class="likes">' + count_likes + '</span><span class="name">' + photo.name + '</span><img src=' + images.source + ' alt="' + photo.name + '" class="image"></a></li>');
 					}
 				});
 			});
@@ -114,7 +114,7 @@
 			  FB.ui({
 				method: 'apprequests',
 				title: 'I\'m better than you.',
-				message: 'I have ' + $(this).parent().data('likes') + ' likes in that picture and you? See and be happy!'
+				message: 'I have ' + $(this).parent().data('likes') + ' like(s) in that picture and you? See and be happy!'
 			  });
   
 			  event.preventDefault();
