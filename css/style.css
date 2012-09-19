@@ -38,7 +38,11 @@ a:active {
     color: #fff;
 }
 
-section {
+#container {
+    position: relative;
+    display: block;
+    width: 90%;
+    margin: 0 auto;
     text-align: left;
 }
 
