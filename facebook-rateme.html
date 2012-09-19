@@ -35,7 +35,7 @@
 	
 	  var albumsList = [],
 		  photosList = [];
-  
+
 	  FB.init({
 		appId: '420083701382995',
 		status: true,
@@ -43,33 +43,37 @@
 		xfbml: true,
 		oauth: true
 	  });
-  
+
 	  function authFacebookAccount() {
-		FB.login(function(response) {
-		  if (response.authResponse) {
-			getMyAlbums();
-		  } else {
-			alert('User cancelled login!');
-		  }
-		}, {scope: 'email,user_photos,user_likes'});
+	  FB.login(function(response) {
+		if (response.authResponse) {
+		  getMyAlbums();
+		} else {
+		  alert('User cancelled login!');
+		}
+	  }, {scope: 'email,user_photos,user_likes'});
 	  }
-  
+
 	  function getMyAlbums() {
+		var count_photos = 0;
+		
 		FB.api('/me/albums', function(response) {
 			$.each(response.data, function(i, albums) {
-				if (albums.count) {
-				  albumsList.push('<li><a href="#" class="album" data-album="' + albums.id + '">' + albums.name + '</a> (' + albums.count + ')</li>');
+				count_photos = albums.count || 0;
+
+				if (count_photos) {
+				  albumsList.push('<li data-count="' + count_photos + '"><a href="#" class="album" data-album="' + albums.id + '">' + albums.name + '</a> (' + count_photos + ')</li>');
 				}
 			});
-  
+
 			showAlbums();
 			setEventAlbums();
 		});
 	  }
-  
+
 	  function getPhotos(id) {
 		var count_likes = 0;
-	  
+
 		FB.api('/' + id + '/photos', function(response) {
 			$.each(response.data, function(i, photo) {
 				$.each(photo.images, function(i, images) {
@@ -79,28 +83,28 @@
 					}
 				});
 			});
-  
+
 			showPhotos();
 			setEventPhotos();
 		});
 	  }
-  
+
 	  function showAlbums() {
-		  $('#albums').html('').append(albumsList.join(""));
-		  
+		  $('#albums').html('').append(albumsList.sort().reverse().join(""));
+
 		  albumsList = [];
 	  }
-  
+
 	  function showPhotos() {
 		  $('#photos').html('').append(photosList.sort().reverse().join(""));
 		  
 		  photosList = [];
 	  }
-  
+
 	  function setEventAlbums() {
 		  $('.album').on('click', function(event) {
 			  getPhotos($(this).data('album'));
-  
+
 			  event.preventDefault();
 		  });
 	  }
@@ -111,14 +115,12 @@
 				method: 'apprequests',
 				title: 'I\'m better than you.',
 				message: 'I have ' + $(this).parent().data('likes') + ' likes in that picture and you? See and be happy!'
-			  }, function(response) {
-				alert(response);
 			  });
   
 			  event.preventDefault();
 		  });
 	  }
-  
+
 	  authFacebookAccount();
     })(jQuery, undefined);
   </script>

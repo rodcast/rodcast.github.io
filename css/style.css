@@ -56,8 +56,7 @@ a:active {
 
 #albums li {
     clear: both;
-    display: block;
-    margin-bottom: .5em;
+    margin-bottom: 1em;
 }
 
 #photos li {
