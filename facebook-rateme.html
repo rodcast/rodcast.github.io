@@ -66,7 +66,7 @@
 				$.each(response.data, function(i, photo) {
 					$.each(photo.images, function(i, images) {
 						if (~images.source.indexOf('320x320')) {
-							photosList.push('<a href="' + images.source + '" data-likes="' + photo.likes + '" class="photo"><img src=' + images.source + '></a>');
+							photosList.push('<a href="' + images.source + '" data-likes="' + (photo.likes.data.length || 0) + '" class="photo"><img src=' + images.source + '></a>');
 						}
 					});
 				});
@@ -100,6 +100,7 @@
 			$('.photo').bind('click', function(event) {
 				FB.ui({
 				  method: 'apprequests',
+				  title: 'RODCAST Rating. I\'m better than you.',
 				  message: 'I did ' + $(this).data('likes') + ' likes in that picutre and you? See and be happy!'
 				}, function(response) {
 					if (!response) {
