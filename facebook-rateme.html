@@ -80,9 +80,7 @@
 				$.each(photo.images, function(i, images) {
 					if (~images.source.indexOf('320x320')) {
 						count_likes = (photo.likes ? photo.likes.data.length : 0);
-						if (photo.name) {
-						  photo_name = '<span class="name">' + photo.name + '</span>';
-						}
+						photo_name = (photo.name ? '<span class="name">' + photo.name + '</span>' : '');
 						photosList.push('<li data-likes="' + count_likes + '"><a href="' + images.source + '" class="photo"><span class="likes">' + count_likes + '</span>' + photo_name + '<img src=' + images.source + ' alt="' + photo.name + '" class="image"></a></li>');
 					}
 				});
