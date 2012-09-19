@@ -21,7 +21,7 @@
 	
 	<article>
 	  <h2>Photos</h2>
-	  <div id="photos">There's photo.</div>
+	  <ul id="photos">There's photo.</ul>
 	</article>
   </section>
   
@@ -55,7 +55,9 @@
 		function getMyAlbums() {
 			FB.api('/me/albums', function(response) {
 				$.each(response.data, function(i, albums) {
-					albumsList.push('<li><a href="#" class="album" data-album="' + albums.id + '">' + albums.name + '</a></li>');
+					if (albums.count) {
+					  albumsList.push('<li><a href="#" class="album" data-album="' + albums.id + '">' + albums.name + ' (' + albums.count + ')</a></li>');
+					}
 				});
 
 				showAlbums();
@@ -68,7 +70,8 @@
 				$.each(response.data, function(i, photo) {
 					$.each(photo.images, function(i, images) {
 						if (~images.source.indexOf('320x320')) {
-							photosList.push('<a href="' + images.source + '" data-likes="' + (photo.likes ? photo.likes.data.length : 0) + '" class="photo"><img src=' + images.source + '></a>');
+							count_likes = (photo.likes ? photo.likes.data.length : 0);
+							photosList.push('<li data-count="' + likes + '"><a href="' + images.source + '" class="photo"><span class="likes">' + count_likes + '</span><img src=' + images.source + ' class="image"></a></li>');
 						}
 					});
 				});
@@ -103,7 +106,7 @@
 				FB.ui({
 				  method: 'apprequests',
 				  title: 'I\'m better than you.',
-				  message: 'I have ' + $(this).data('likes') + ' likes in that picture and you? See and be happy!'
+				  message: 'I have ' + $(this).parent().data('likes') + ' likes in that picture and you? See and be happy!'
 				}, function(response) {
 				  alert(response);
 				});

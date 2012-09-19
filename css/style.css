@@ -62,13 +62,25 @@ a:active {
     clear: both;
 }
 
-#photos a {
+#photos .photo {
+    position: relative;
     margin: 0 .5em .5em 0;
     display: inline-block;
     vertical-align: top;
 }
 
-#photos img {
+#photos .likes {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: .25em;
+    color: #fff;
+    font-size: 0.687em;
+    background-color: rgba(0,0,0,.5);
+    z-index: 1;
+}
+
+#photos .image {
     display: block;
     margin-right: 1px;
 }
