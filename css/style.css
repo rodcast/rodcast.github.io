@@ -30,11 +30,20 @@ a {
     color: #fff;
 }
 
-nav ul {
-    overflow: hidden
+#albums {
+    overflow: hidden;
 }
 
-nav li {
+#albums li {
     clear: both;
     display: block;
+}
+
+#photos {
+    clear: both;
+}
+
+#photos img {
+    display: block;
+    margin-right: 1px;
 }
