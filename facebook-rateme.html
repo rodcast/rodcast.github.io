@@ -41,14 +41,13 @@
 		});
 
 		function authFacebookAccount() {
-		  debugger;
 			FB.login(function(response) {
 			  if (response.authResponse) {
-				getLikes();
+				getMyAlbums();
 			  } else {
 				alert('User cancelled login!');
 			  }
-			}, {scope: 'email,user_likes,friends_likes'});
+			}, {scope: 'email,user_photos,user_likes,friends_likes'});
 		}
 
 		function getMyAlbums() {
