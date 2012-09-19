@@ -36,8 +36,8 @@
 		});
 
 		function authFacebookAccount() {
+		  debugger;
 			FB.login(function(response) {
-			  console.log(response);
 			  if (response.authResponse) {
 				getMyAlbums();
 			  } else {
@@ -73,7 +73,7 @@
 		}
 
 		function showAlbums() {
-			$('#albums').append(albumsList.join(""));
+			$('#albums').html('').append(albumsList.join(""));
 			
 			albumsList = [];
 		}
