@@ -90,7 +90,7 @@
 		}
 
 		function showPhotos() {
-			$('#photos').html('').append(photosList.join(""));
+			$('#photos').html('').append(photosList.sort().reverse().join(""));
 			
 			photosList = [];
 		}

@@ -47,7 +47,9 @@ a:active {
     text-align: left;
 }
 
-#albums {
+#albums,
+#photos {
+    clear: both;
     padding: 0;
     overflow: hidden;
 }
@@ -58,29 +60,29 @@ a:active {
     margin-bottom: .5em;
 }
 
-#photos {
-    clear: both;
-}
-
-#photos .photo {
+#photos li {
     position: relative;
     margin: 0 .5em .5em 0;
     display: inline-block;
     vertical-align: top;
 }
 
+#photos .photo {
+    display: block;
+}
+
 #photos .likes {
     position: absolute;
     top: 0;
     right: 0;
-    padding: .25em;
+    padding: .25em 1em;
     color: #fff;
-    font-size: 0.687em;
+    font-size: 0.75em;
     background-color: rgba(0,0,0,.5);
+    text-align: center;
     z-index: 1;
 }
 
 #photos .image {
     display: block;
-    margin-right: 1px;
 }
