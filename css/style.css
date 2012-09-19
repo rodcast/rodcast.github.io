@@ -17,6 +17,7 @@ body {
 }
 
 a {
+    outline: none;
     color: #666;
 }
 
@@ -62,7 +63,7 @@ a:active {
 }
 
 #photos a {
-    margin-right: .5em;
+    margin: 0 .5em .5em 0;
     display: inline-block;
     vertical-align: top;
 }

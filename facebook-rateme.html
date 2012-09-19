@@ -102,8 +102,8 @@
 			$('.photo').bind('click', function(event) {
 				FB.ui({
 				  method: 'apprequests',
-				  title: 'RODCAST Rating. I\'m better than you.',
-				  message: 'I did ' + $(this).data('likes') + ' likes in that picture and you? See and be happy!'
+				  title: 'I\'m better than you.',
+				  message: 'I have ' + $(this).data('likes') + ' likes in that picture and you? See and be happy!'
 				}, function(response) {
 				  alert(response);
 				});
