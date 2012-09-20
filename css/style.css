@@ -90,6 +90,7 @@ a:active {
     color: #fff;
     font-size: 0.75em;
     background-color: rgba(0,0,0,.5);
+    text-shadow: 1px 1px 0 rgba(0,0,0,.5);
     text-align: center;
     z-index: 1;
 }
@@ -99,11 +100,12 @@ a:active {
     bottom: -40px;
     width: 100%;
     padding: 1em 0;
-    -moz-transition: bottom 250ms;
-    -ms-transition: bottom 250ms;
-    -o-transition: bottom 250ms;
-    -webkit-transition: bottom 250ms;
-    transition: bottom 250ms;
+    line-height: 1.25em;
+    -moz-transition: bottom 400ms;
+    -ms-transition: bottom 400ms;
+    -o-transition: bottom 400ms;
+    -webkit-transition: bottom 400ms;
+    transition: bottom 400ms;
 }
 
 #photos .image {

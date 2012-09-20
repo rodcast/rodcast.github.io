@@ -81,7 +81,7 @@
 					if (~images.source.indexOf('320x320')) {
 						count_likes = (photo.likes ? photo.likes.data.length : 0);
 						photo_name = (photo.name ? '<span class="name">' + photo.name + '</span>' : '');
-						photosList.push('<li data-likes="' + count_likes + '"><a href="' + images.source + '" class="photo"><span class="likes">' + count_likes + '</span>' + photo_name + '<img src=' + images.source + ' alt="' + photo.name + '" class="image"></a></li>');
+						photosList.push('<li data-likes="' + count_likes + '"><a href="' + images.source + '" class="photo"><span class="likes">' + count_likes + '</span>' + photo_name + '<img src=' + images.source + ' class="image"></a></li>');
 					}
 				});
 			});
