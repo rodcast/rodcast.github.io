@@ -59,18 +59,14 @@
 	});
   }
 
-  function compare(a, b) {
-	  return b - a;
-  }
-
   function showAlbums() {
-	  $('#albums').html('').append(albumsList.sort(compare).join(""));
+	  $('#albums').html('').append(albumsList.sort().reverse().join(""));
 
 	  albumsList = [];
   }
 
   function showPhotos() {
-	  $('#photos').html('').append(photosList.sort(compare).join(""));
+	  $('#photos').html('').append(photosList.sort().reverse().join(""));
 	  
 	  photosList = [];
   }
