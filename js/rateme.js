@@ -59,14 +59,18 @@
 	});
   }
 
+  function compare(a, b) {
+	  return b - a;
+  }
+
   function showAlbums() {
-	  $('#albums').html('').append(albumsList.sort().reverse().join(""));
+	  $('#albums').html('').append(albumsList.sort(compare).reverse().join(""));
 
 	  albumsList = [];
   }
 
   function showPhotos() {
-	  $('#photos').html('').append(photosList.sort().reverse().join(""));
+	  $('#photos').html('').append(photosList.sort(compare).reverse().join(""));
 	  
 	  photosList = [];
   }
