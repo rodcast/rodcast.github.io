@@ -64,13 +64,13 @@
   }
 
   function showAlbums() {
-	  $('#albums').html('').append(albumsList.sort(compare).reverse().join(""));
+	  $('#albums').html('').append(albumsList.sort(compare).join(""));
 
 	  albumsList = [];
   }
 
   function showPhotos() {
-	  $('#photos').html('').append(photosList.sort(compare).reverse().join(""));
+	  $('#photos').html('').append(photosList.sort(compare).join(""));
 	  
 	  photosList = [];
   }
