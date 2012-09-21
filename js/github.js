@@ -28,15 +28,15 @@
 
     /**
     * The API has been updated to return the values with the same key names as the regular Repository API
-    * More information and documentation: http://develop.github.com/p/repo.html
+    * More information and documentation: http://develop.github.com/
     */
-    $.getJSON("https://api.github.com/users/rodcast/repos?sort=updated&callback=?", function(data) {
-        if (data !== null && data.repositories.length) {
+    $.getJSON("https://api.github.com/users/rodcast/repos?sort=updated&callback=?", function(response) {
+        if (response && response.data && response.data.length) {
             var 
                 fork, name, description, url, pushed_at, date, datetime,
                 rows = [];
 
-            $.each(data.repositories, function(i, repository) {
+            $.each(response.data, function(i, repository) {
                 fork = repository.fork;
 
                 if (!fork) {
