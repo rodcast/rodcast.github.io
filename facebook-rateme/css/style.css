@@ -86,7 +86,7 @@ a:active {
     right: 0;
     padding: .25em 1em;
     color: #fff;
-    font-size: 0.75em;
+    font-size: 0.8125em;
     background-color: rgba(0,0,0,.5);
     text-shadow: 1px 1px 0 rgba(0,0,0,.5);
     text-align: center;
@@ -95,7 +95,7 @@ a:active {
 
 #photos .name {
     top: auto;
-    bottom: -40px;
+    bottom: -75px;
     width: 100%;
     padding: 1em 0;
     line-height: 1.25em;
