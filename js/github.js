@@ -1,4 +1,6 @@
-(function($) {
+;(function($) {
+    "use strict";
+    
     /**
     * Return a new string with the string/number padded left using [ch] of [num] length
     * @version 1.0.0
@@ -28,7 +30,7 @@
     * The API has been updated to return the values with the same key names as the regular Repository API
     * More information and documentation: http://develop.github.com/p/repo.html
     */
-    $.getJSON("http://github.com/api/v2/json/repos/show/rodcast?callback=?", function(data) {
+    $.getJSON("https://api.github.com/users/rodcast/repos?sort=updated&callback=?", function(data) {
         if (data !== null && data.repositories.length) {
             var 
                 fork, name, description, url, pushed_at, date, datetime,
@@ -51,7 +53,7 @@
                 }
             });
 
-            $("#repo_listing").empty().append(rows.sort().reverse().join(""));
+            $("#repo_listing").empty().append(rows.join(""));
         }
     });
-}(jQuery));
+}(jQuery, undefined));
