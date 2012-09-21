@@ -1,4 +1,4 @@
-;(function($) {
+(function($) {
     "use strict";
     
     /**
@@ -42,7 +42,7 @@
                 if (!fork) {
                     name = repository.name;
                     description = repository.description;
-                    url = repository.url;
+                    url = repository.html_url;
                     pushed_at = repository.pushed_at;
                     date = new Date(pushed_at);
                     datetime = [date.getFullYear(), (date.getMonth() + 1).padLeft(0, 2), date.getDate().padLeft(0, 2)].join("-");
