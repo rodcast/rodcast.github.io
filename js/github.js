@@ -46,13 +46,13 @@
           date = new Date(pushed_at);
           datetime = [date.getFullYear(), (date.getMonth() + 1).padLeft(0, 2), date.getDate().padLeft(0, 2)].join("-");
 
-          rows.push('<li><time datetime="' + datetime + '" pubdate="pubdate">' + pushed_at + '</time>' +
-                    '<strong><a title="' + name + '" href="' + url + '" target="_blank" rel="external">' + name + '</a></strong>' +
-                    '<div class="description">' + description + '</div></li>');
+          rows.push('<li class="repos-item"><time class="repos-time" datetime="' + datetime + '" pubdate="pubdate">' + pushed_at + '</time>' +
+                    '<span class="repos-title"><a title="' + name + '" href="' + url + '" class="repos-url" rel="external">' + name + '</a></span>' +
+                    '<span class="repos-description">' + description + '</span></li>');
         }
       });
 
-      $("#repo-listing").empty().append(rows.join(""));
+      $(".repos-list").empty().append(rows.join(""));
     }
   });
 }(jQuery, undefined));

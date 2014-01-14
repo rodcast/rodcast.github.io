@@ -1,34 +1,35 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Rodrigo Castilho (rodcast): Senior Front End Engineer, JavaScript Engineer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700" rel="stylesheet" type="text/css">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
 
-<header>
-  <h1>Hey ya!<br> Meu nome é <span>Anderson Leite</span><br> e este é meu blog. </h1>
-  
-  <p>Trabalho em uma agência digital chamada <a href="http://www.rga.com" target="blank"><span>R/GA</span></a>.<br>
-  Sou desenvolvedor web e gosto de coisas como Ruby,  Rails, Frontend, Android e Design.</p>
-  
-</header> 
+  <div class="container">
 
-<ul id="nav">
-{% for post in site.posts limit:6 %}
-  <li class="featured">
-    <a href="{{ post.url }}">
-      <i class="icn-{{ post.image }}"></i>  
-      <p>{{ post.title }}</p>
-      <aside>{{ post.date | date: "%d %B %Y" }}</aside>
-    </a>
-  </li>
-{% endfor %}
-</ul>
+    <header role="banner">
+      <span class="logo">RODCAST</span>
+    </header>
+    
+    <article role="main">
+      <header class="repos-head">My repositories (public) hosted on Github</header>
+      <ol class="repos-list">
+        <li class="repos-loading">Loading...</li>
+      </ol>
+    </article>
 
-<ul>
-{% for post in site.posts offset:6 %}
-  <li>
-    <a href="{{ post.url }}">
-      <p>{{ post.title }}</p>
-      <aside>{{ post.date | date: "%d %B %Y" }}</aside>
-    </a>
-  </li>
-{% endfor %}
-</ul>
+    <footer class="footer" role="contentinfo">
+      &copy; 2014 RODCAST
+    </footer>
+
+  </div>
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/github.js"></script>
+
+  </body>
+</html>
