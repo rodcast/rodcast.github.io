@@ -18,7 +18,7 @@ html {
 body {
   direction: ltr;
   font: 400 16px "Open Sans", Arial, sans-serif;
-  color: #333;
+  color: dimgray;
   background-color: white;
   border-top: 5px solid black;
   text-rendering: optimizeLegibility;
@@ -36,6 +36,14 @@ a:focus {
   -moz-tap-highlight-color: rgba(0,0,0,0);
   tap-highlight-color: rgba(0,0,0,0);
 }
+::selection {
+  background: black;
+  color: white;
+}
+::-moz-selection {
+  background: black;
+  color: white;
+}
 
 .container {
   margin: 2em;
@@ -52,7 +60,7 @@ a:focus {
   padding-bottom: .5em;
   font-size: 150%;
   font-weight: 600;
-  border-bottom: 1px dotted #666;
+  border-bottom: 1px dotted darkgray;
 }
 
 .repos-list {

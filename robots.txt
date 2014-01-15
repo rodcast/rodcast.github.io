@@ -1,0 +1,18 @@
+User-agent: *
+Disallow: /mulher/
+Disallow: /rodcast/
+Disallow: /csstablegallery/
+Disallow: /stylemaster/
+Disallow: /*.asp$
+Disallow: /*.cfm$
+Disallow: /*.php$
+Disallow: /*?*
+Allow: /index.cfm
+
+User-agent: Googlebot-Image
+Disallow:
+
+User-agent: Mediapartners-Google
+Disallow:
+
+sitemap: http://www.rodcast.com.br/sitemap.xml 
