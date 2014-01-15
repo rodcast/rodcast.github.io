@@ -25,11 +25,12 @@ body {
 }
 a {
   color: black;
+  background: lightyellow;
   text-decoration: underline;
 }
 a:hover,
 a:focus {
-  text-decoration: none;
+  background: whitesmoke;
 }
 *:active {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
