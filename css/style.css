@@ -25,12 +25,7 @@ body {
 }
 a {
   color: black;
-  background: lightyellow;
-  text-decoration: underline;
-}
-a:hover,
-a:focus {
-  background: whitesmoke;
+  text-decoration: none;
 }
 *:active {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -51,13 +46,52 @@ a:focus {
 }
 
 .logo {
-  font-weight: 700;
-  font-size: 300%;
+  float: left;
+  margin-right: 2em;
+  font-weight: 600;
+  font-size: 200%;
   color: black;
 }
 
+.header {
+  display: block;
+  overflow: hidden;
+}
+
+.profile {
+  float: left;
+  width: 30%;
+}
+
+.profile-photo {
+  display: block;
+  margin: 0 auto 2em;
+  border-radius: 50%;
+  width: 125px;
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  filter: grayscale(100%)
+}
+
+.profile-name {
+  display: block;
+  margin-bottom: .5em;
+  font-weight: 600;
+}
+
+.profile-description {
+  display: block;
+  font-size: 90%;
+  line-height: 1.6em;
+}
+
+.repos {
+  float: right;
+  width: 60%;
+}
+
 .repos-head {
-  margin: 1em 0;
+  margin-bottom: 1em;
   padding-bottom: .5em;
   font-size: 150%;
   font-weight: 600;
@@ -92,14 +126,24 @@ a:focus {
 }
 
 .repos-url {
+  color: black;
+  background: lightyellow;
+  text-decoration: underline;
+}
+
+.repos-url:hover,
+.repos-url:focus {
+  background: whitesmoke;
 }
 
 .repos-description {
   display: block;
   font-size: 90%;
+  line-height: 1.6em;
 }
 
 .footer {
+  clear: both;
   margin-top: 1em;
   font-size: 90%;
 }

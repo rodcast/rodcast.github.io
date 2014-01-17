@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Rodrigo Castilho (rodcast): Senior Front End Engineer, JavaScript Engineer</title>
+    <title>Rodrigo Castilho (RODCAST): Senior Front End Engineer, JavaScript Engineer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="description" content="Rodrigo Castilho aka RODCAST, Front End Engineer, JavaScript Engineer and SEO Specialist working daily with HTML5, CSS3, JavaScript, Performance, Optimizing, Acessibility and SEO.">
@@ -12,18 +12,37 @@
     <meta name="robots" content="noarchive">
     <meta name="revisit-after" content="7 days">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" type="text/css">
-    <link href="/css/style.min.css" rel="stylesheet" type="text/css">
-    <link rel="publisher" href="https://plus.google.com/+RodrigoCastilhoRODCAST/"/>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="https://plus.google.com/+RodrigoCastilhoRODCAST" rel="publisher">
   </head>
   <body>
 
   <div class="container">
 
-    <header role="banner">
+    <header class="header" role="banner">
       <span class="logo">RODCAST</span>
+      <nav class="navigation" role="navigation">
+        <ul class="navigation-items">
+          <li><a href="/about">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
     </header>
+
+    <!-- http://www.williambrownstreet.net/blog/ -->
+    <aside class="profile" itemscope itemtype="http://microformats.org/profile/hcard" role="complementary">
+      <img src="http://1.gravatar.com/avatar/ec59e935e84fae770612af3baecd1843" alt="Picture of Rodrigo Castilho (RODCAST)" class="profile-photo" itemprop="photo">
+      <span class="profile-name" itemprop="fn">Rodrigo Castilho <span itemprop="nickname">(RODCAST)</span></span>
+      <span class="profile-description">Senior Front End Engineer at @RGA, Ex-Yahoo! in a serious relationship with HTML5, CSS3, JavaScript, SEO, WAI-ARIA, etc... Bodybuilding is my lifestyle.</span>
+      <ul class="profile-social">
+        <li class="social-github"><a href="https://github.com/rodcast"></a></li>
+        <li class="social-gplus"><a href="https://plus.google.com/+RodrigoCastilhoRODCAST"></a></li>
+        <li class="social-twitter"><a href="https://twitter.com/rodcast"></a></li>
+      </ul>
+    </aside>
     
-    <article role="main">
+    <article class="repos" role="main">
       <header class="repos-head">My repositories (public) hosted on Github</header>
       <ol class="repos-list">
         <li class="repos-loading">Loading...</li>
@@ -37,7 +56,7 @@
   </div>
 
   <script src="/js/jquery.min.js"></script>
-  <script src="/js/github.min.js"></script>
+  <script async src="/js/github.min.js"></script>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

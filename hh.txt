@@ -1,0 +1,500 @@
+   43  svn status
+   44  svn diff tesla-resources/nikestore/src/main/resources/assets/sass/nike/exp/launch/mobile/LaunchCalendar.scss
+   45  subl EDF-svn-message.txt 
+   46  svn commit -F EDF-svn-message.txt tesla-resources/nikestore/src/main/resources/assets/sass/nike/exp/launch/mobile/LaunchCalendar.scss
+   47  svn log -v -r 196728
+   48  svn status
+   49  svn log -l 3 tesla-resources/nikestore/src/main/resources/assets/scripts/nike/exp/launch/LaunchHelpers.js
+   50  svn diff -r 194717:196704 tesla-resources/nikestore/src/main/resources/assets/scripts/nike/exp/launch/LaunchHelpers.js
+   51  svn log -r 194717
+   52  cd Projects/onenike/january2014/tesla/
+   53  mvn jetty:run -Pdev,nikestore
+   54  svn statsu
+   55  svn statius
+   56  svn status
+   57  svn log -l 3 tesla-resources/nikestore/src/main/resources/assets/scripts/nike/exp/launch/mobile/LaunchCalendar.js
+   58  svn up
+   59  mvn jetty:run -Pdev,nikestore
+   60  cd Projects/onenike/january2014/tesla/
+   61  svn up
+   62  mvn clean install -Pdev,src,no-tests
+   63  cd Projects/onenike/january2014/tesla/
+   64  sudo apachectl -f /Users/rodrigoc/Projects/onenike/january2014/httpd/conf/httpd.conf -k restart
+   65  mvn jetty:run -Pdev,nikestore
+   66  svn up
+   67  mvn clean install -Pdev
+   68  sudo apachectl -f /Users/rodrigoc/Projects/onenike/january2014/httpd/conf/httpd.conf -k restart
+   69  mvn jetty:run -Pdev,nikestore
+   70  svn up
+   71  mvn jetty:run -Pdev,nikestore
+   72  svn up
+   73  clear
+   74  svn up
+   75  svn up
+   76  svn up
+   77  subl EDF-svn-message.txt 
+   78  svn up
+   79  svn status
+   80  svn diff tesla-resources/nikestore/src/main/resources/assets/jstemplates/nike/exp/launch/mobile/templates/MobileLaunchCalendar.handlebars tesla-resources/nikestore/src/main/resources/assets/sass/nike/exp/launch/mobile/LaunchCalendar.scss > EDF-23260.diff
+   81  rm tesla-resources/nikestore/src/main/resources/assets/jstemplates/nike/exp/launch/mobile/templates/MobileLaunchCalendar.handlebars
+   82  svn diff tesla-resources/nikestore/src/main/resources/assets/jstemplates/nike/exp/launch/mobile/templates/MobileLaunchCalendar.handlebars tesla-resources/nikestore/src/main/resources/assets/sass/nike/exp/launch/mobile/LaunchCalendar.scss > EDF-23260.diff
+   83  svn up
+   84  mvn jetty:run -Pdev,nikestore
+   85  svn diff tesla-resources/nikestore/src/main/resources/assets/jstemplates/nike/exp/launch/mobile/templates/MobileLaunchCalendar.handlebars tesla-resources/nikestore/src/main/resources/assets/sass/nike/exp/launch/mobile/LaunchCalendar.scss > EDF-23260.diff
+   86  svn commit -F EDF-svn-message.txt tesla-resources/nikestore/src/main/resources/assets/jstemplates/nike/exp/launch/mobile/templates/MobileLaunchCalendar.handlebars tesla-resources/nikestore/src/main/resources/assets/sass/nike/exp/launch/mobile/LaunchCalendar.scss
+   87  svn log -v -r 196958
+   88  mvn clean generate-resources -Pdev,wroMinify
+   89  mvn clean install -Pwatcher
+   90  subl EDF-svn-message.txt 
+   91  cd Projects/onenike/january2014/tesla/
+   92  svn up
+   93  sudo apachectl -f /Users/rodrigoc/Projects/onenike/january2014/httpd/conf/httpd.conf -k restart
+   94  mvn clean install -Pdev,src,no-tests
+   95  mvn clean install -Pdev,src,no-tests
+   96  mvn jetty:run -Pdev,nikestore
+   97  mvn jetty:run -Pdev,nikestore
+   98  sudo apachectl -f /Users/rodrigoc/Projects/onenike/january2014/httpd/conf/httpd.conf -k restart
+   99  mvn jetty:run -Pdev,nikestore
+  100  mvn clean install -Pdev
+  101  svn status
+  102  svn diff tesla-resources/nikestore/src/main/resources/assets/sass/nike/exp/mylocker/EmailProducts.scss tesla-resources/nikestore/src/main/resources/assets/scripts/nike/exp/mylocker/EmailProducts.js tesla-resources/nikestore/src/main/resources/templates/nikestore/html/macros/mylocker_macros.ftl > EDF-23152.diff
+  103  svn commit -F EDF-svn-message.txt tesla-resources/nikestore/src/main/resources/assets/sass/nike/exp/mylocker/EmailProducts.scss tesla-resources/nikestore/src/main/resources/assets/scripts/nike/exp/mylocker/EmailProducts.js
+  104  svn log -v -r 197041
+  105  svn commit -F EDF-svn-message.txt tesla-resources/nikestore/src/main/resources/templates/nikestore/html/macros/mylocker_macros.ftl
+  106  svn log -v -r 197042
+  107  svn status
+  108  rm tesla-resources/nikestore/src/main/resources/assets/sass/nike/exp/mylocker/EmailFriend.scss
+  109  svn diff tesla-resources/nikestore/src/main/resources/assets/scripts/nike/exp/launch/LaunchCalendar.js
+  110  rm tesla-resources/nikestore/src/main/resources/assets/scripts/nike/exp/launch/LaunchCalendar.js
+  111  svn diff tesla-src/tesla-nikestore/src/dev/resources/com/nike/ClusterConfiguration.properties
+  112  rm tesla-src/tesla-nikestore/src/dev/resources/com/nike/ClusterConfiguration.properties
+  113  svn up
+  114  svn status
+  115  subl EDF-svn-message.txt 
+  116  svn commit -F EDF-svn-message.txt tesla-resources/nikestore/src/main/resources/assets/jstemplates/nike/exp/global/templates/LoginForm.handlebars
+  117  svn log -v -r 197125
+  118  svn status
+  119  svn status
+  120  svn up
+  121  svn status
+  122  rm tesla-resources/nikestore/src/main/resources/assets/scripts/nike/page/util/TrackingUtil.js
+  123  svn up
+  124  cd ..
+  125  cd httpd/
+  126  svn up
+  127  subl /etc/hosts
+  128  subl /etc/hosts.ac
+  129  node mockServers.js 
+  130  sudo subl /etc/hosts
+  131  cd ../httpd/
+  132  ls
+  133  svn up
+  134  exit
+  135  node TeslaMockData.js 
+  136  node TeslaMockData.js  ps -aux | grep
+  137  node TeslaMockData.js  -aux | grep
+  138  node TeslaMockData.js
+  139  clear
+  140  node TeslaMockData.js
+  141  node TeslaMockData.js 
+  142  cd Projects/onenike/january2014/tesla/
+  143  svn up
+  144  mvn clean install -Pdev
+  145  sudo apachectl -f /Users/rodrigoc/Projects/onenike/january2014/httpd/conf/httpd.conf -k restart
+  146  mvn jetty:run -Pdev,nikestore
+  147  mvn jetty:run -Pdev,nikestore
+  148  sudo apachectl -f /Users/rodrigoc/Projects/onenike/january2014/httpd/conf/httpd.conf -k restart
+  149  svn up
+  150  mvn clean install -Pdev,src,no-tests
+  151  subl EDF-svn-message.txt 
+  152  svn status
+  153  svn up tesla-resources/nikestore/src/main/resources/templates/nikestore/html/macros/oneNike_login_macros.ftl
+  154  svn diff tesla-resources/nikestore/src/main/resources/templates/nikestore/html/macros/oneNike_login_macros.ftl
+  155  svn commit -F EDF-svn-message.txt tesla-resources/nikestore/src/main/resources/templates/nikestore/html/macros/oneNike_login_macros.ftl
+  156  svn log -v -r 197143
+  157  svn up
+  158  mvn clean install -Pdev,src,no-tests
+  159  mvn clean install -Pdev
+  160  sudo apachectl -f /Users/rodrigoc/Projects/onenike/january2014/httpd/conf/httpd.conf -k restart
+  161  mvn jetty:run -Pdev,nikestore
+  162  sudo apachectl -f /Users/rodrigoc/Projects/onenike/january2014/httpd/conf/httpd.conf -k restart
+  163  mvn jetty:run -Pdev,nikestore
+  164  mvn jetty:run -Pdev,nikestore
+  165  svn status
+  166  svn diff tesla-src/tesla-nikestore/src/dev/resources/com/nike/ClusterConfiguration.properties
+  167  svn up
+  168  mvn clean generate-resources -Pdev,wroMinify
+  169  cd Projects/onenike/january2014/tesla/
+  170  mvn jetty:run -Pdev,nikestore
+  171  mvn jetty:run -Pdev,nikestore
+  172  mvn jetty:run -Pdev,nikestore
+  173  clear
+  174  node TeslaMockData.js 
+  175  mvn clean generate-resources -Pdev,wroMinify
+  176  mvn clean generate-resources -Pdev,wroMinify
+  177  mvn clean generate-resources -Pdev,wroMinify
+  178  svn up
+  179  svn status
+  180  subl EDF-svn-message.txt 
+  181  svn status
+  182  svn diff tesla-resources/nikestore/src/main/resources/assets/jstemplates/nike/exp/global/templates/LoginForm.handlebars tesla-resources/nikestore/src/main/resources/assets/jstemplates/nike/exp/global/templates/RegisterForm.handlebars
+  183  svn commit -F EDF-svn-message.txt tesla-resources/nikestore/src/main/resources/assets/jstemplates/nike/exp/global/templates/LoginForm.handlebars tesla-resources/nikestore/src/main/resources/assets/jstemplates/nike/exp/global/templates/RegisterForm.handlebars
+  184  svn log -v -r 197325
+  185  cd Projects/onenike/january2014/tesla/
+  186  svn up
+  187  mvn clean install -Pdev
+  188  subl EDF-svn-message.txt 
+  189  svn diff tesla-resources/nikestore/src/main/resources/templates/nikestore/html/macros/oneNike_register_macros.ftl
+  190  cd Projects/onenike/january2014/tesla/
+  191  svn up
+  192  svn status
+  193  svn commit -F EDF-svn-message.txt tesla-resources/nikestore/src/main/resources/templates/nikestore/html/macros/oneNike_register_macros.ftl
+  194  svn log -v -r 197383
+  195  svn status
+  196  rm tesla-resources/nikestore/src/main/resources/assets/scripts/nike/Event.js
+  197  rm tesla-resources/nikestore/src/main/resources/assets/scripts/nike/id/Event.js
+  198  rm tesla-resources/nikestore/src/main/resources/assets/scripts/nike/page/NikestoreAll.js
+  199  rm tesla-static/tesla/analytics/config/nikestore_html.xml
+  200  svn up
+  201  cd Projects/onenike/january2014/tesla/
+  202  svn up
+  203  mvn clean install -Pdev
+  204  mvn clean
+  205  mvn clean install -Pdev
+  206  mvn clean
+  207  mvn clean install -Pdev
+  208  mvn jetty:run -Pdev,nikestore
+  209  sudo apachectl -f /Users/rodrigoc/Projects/onenike/january2014/httpd/conf/httpd.conf -k start
+  210  svn status
+  211  rm tesla-resources/nikestore/src/main/resources/assets/scripts/nike/page/util/TrackingUtil.js
+  212  svn up
+  213  svn status
+  214  rm tesla-resources/nikestore/src/main/resources/assets/sass/nike/gadget/OneNikeFooter.scss
+  215  svn up
+  216  subl EDF-svn-message.txt 
+  217  mvn clean install -Pwatcher
+  218  mvn clean install -Pwatcher
+  219  subl /Users/rodrigoc/Projects/onenike/february2014/httpd/conf/httpd.conf
+  220  subl /Users/rodrigoc/Projects/onenike/february2014/httpd/conf/extra/httpd-vhosts.conf
+  221  subl /Users/rodrigoc/Projects/onenike/february2014/httpd/conf/extra/eu-config.inc
+  222  subl /Users/rodrigoc/Projects/onenike/february2014/httpd/web-pci/etc/vhost.d/emea-error-docs.inc
+  223  sudo subl /Users/rodrigoc/Projects/onenike/february2014/httpd/web-pci/etc/vhost.d/emea-error-docs.inc
+  224  sudo apachectl -f /Users/rodrigoc/Projects/onenike/january2014/httpd/conf/httpd.conf -k stop
+  225  cd ../../january2014/tesla/
+  226  svn status
+  227  svn diff tesla-src/tesla-core/src/dev/resources/config/common/tesla-http-client-config.xml
+  228  svn diff tesla-src/tesla-nikestore/src/dev/resources/com/nike/ClusterConfiguration.properties
+  229  subl tesla-src/tesla-nikestore/src/dev/resources/com/nike/ClusterConfiguration.properties
+  230  cd ../../january2014/tesla/
+  231  svn status
+  232  cd ../
+  233  cd httpd/
+  234  svn up
+  235  cd ../
+  236  ls
+  237  cd httpd/
+  238  ls
+  239  cd web-nonpci/
+  240  svn info
+  241  svn info
+  242  cd Projects/onenike/january2014/tesla/
+  243  sudo apachectl -f /Users/rodrigoc/Projects/onenike/january2014/httpd/conf/httpd.conf -k start
+  244  sudo apachectl -f /Users/rodrigoc/Projects/onenike/january2014/httpd/conf/httpd.conf -k restart
+  245  cd ../httpd/
+  246  svn up
+  247  cd .
+  248  cd ..
+  249  cd tesla/
+  250  mvn jetty:run -Pdev,nikestore
+  251  sudo apachectl -f /Users/rodrigoc/Projects/onenike/january2014/httpd/conf/httpd.conf -k restart
+  252  mvn jetty:run -Pdev,nikestore
+  253  mvn clean install -Pdev
+  254  svn status
+  255  mvn jetty:run -Pdev,nikestore
+  256  svn status
+  257  svn add tesla-resources/nikestore/src/main/resources/assets/sass/nike/gadget/mobile/OneNikeFooter.scss
+  258  svn commit -F EDF-svn-message.txt tesla-resources/nikestore/src/main/resources/assets/sass/nike/gadget/mobile/OneNikeFooter.scss
+  259  svn log -v -r 198104
+  260  cd ../../
+  261  mkdir february2014
+  262  cd february2014
+  263  cd ../../tesla-setup-docs/trunk/mac/
+  264  python install.py --apache-only --project /Users/rodrigoc/Projects/onenike/february2014/ --pci-branch http://svn.dcit.nike.com/dcit/web/web-pci/branches/release-branches/ccb5114 --branch http://svn.dcit.nike.com/dcit/tesla/tesla/branches/february2014/
+  265  python install.py --apache-only --project /Users/rodrigoc/Projects/onenike/february2014/ --pci-branch http://svn.dcit.nike.com/dcit/web/web-pci/branches/release-branches/ccb5114 --branch http://svn.dcit.nike.com/dcit/tesla/tesla/branches/february2014/
+  266  cd ../../../onenike/february2014/httpd/
+  267  svn up
+  268  cd ..
+  269  svn co http://svn.dcit.nike.com/dcit/tesla/tesla/branches/february2014/ tesla
+  270  cd tesla/
+  271  mvn clean install -Pdev
+  272  sudo apachectl -f /Users/rodrigoc/Projects/onenike/february2014/httpd/conf/httpd.conf -k restart
+  273  sudo apachectl -f /Users/rodrigoc/Projects/onenike/february2014/httpd/conf/httpd.conf -k start
+  274  sudo apachectl -f /Users/rodrigoc/Projects/onenike/february2014/httpd/conf/httpd.conf -k restart
+  275  mvn jetty:run -Pdev,nikestore
+  276  sudo apachectl -f /Users/rodrigoc/Projects/onenike/february2014/httpd/conf/httpd.conf -k start
+  277  sudo apachectl -f /Users/rodrigoc/Projects/onenike/february2014/httpd/conf/httpd.conf -k restart
+  278  mvn jetty:run -Pdev,nikestore
+  279  ls
+  280  subl tesla-src/tesla-core/src/dev/resources/config/common/tesla-http-client-config.xml
+  281  subl tesla-src/tesla-nikestore/src/dev/resources/com/nike/ClusterConfiguration.properties
+  282  mvn jetty:run -Pdev,nikestore
+  283  svn info
+  284  svn up
+  285  svn status
+  286  cd ../
+  287  ls
+  288  cd httpd/
+  289  ls
+  290  svn co http://svn.dcit.nike.com/dcit/web/web-nonpci/branches/release-branches/ccb5114-jan2014 web-nonpci
+  291  svn info
+  292  svn up
+  293  cd ../tesla/
+  294  sudo apachectl -f /Users/rodrigoc/Projects/onenike/february2014/httpd/conf/httpd.conf -k restart
+  295  mvn jetty:run -Pdev,nikestore
+  296  svn info
+  297  cd ..
+  298  ls
+  299  cd httpd/
+  300  ls
+  301  sudo apachectl -f /Users/rodrigoc/Projects/onenike/january2014/httpd/conf/httpd.conf -k stop
+  302  sudo apachectl -f /Users/rodrigoc/Projects/onenike/january2014/httpd/conf/httpd.conf -k stop
+  303  sudo apachectl -f /Users/rodrigoc/Projects/onenike/february2014/httpd/conf/httpd.conf -k stop
+  304  sudo apachectl -f /Users/rodrigoc/Projects/onenike/february2014/httpd/conf/httpd.conf -k start
+  305  sudo apachectl -f /Users/rodrigoc/Projects/onenike/february2014/httpd/conf/httpd.conf -k restart
+  306  svn up
+  307  cd ../../../tesla-setup-docs/
+  308  ls
+  309  cd trunk/mac/
+  310  ls
+  311  python install.py --project /Users/rodrigoc/Projects/onenike/february2014/ --pci-branch http://svn.dcit.nike.com/dcit/web/web-pci/branches/release-branches/ccb5114 --branch http://svn.dcit.nike.com/dcit/tesla/tesla/branches/february2014/
+  312  subl /Users/rodrigoc/Projects/onenike/february2014/httpd/web-pci/etc/vhost.d/emea-error-docs.inc
+  313  cd ../../../onenike/january2014/httpd/
+  314  cd web-pci/
+  315  svn info
+  316  cd ../../../january2014/httpd/web-pci/etc/vhost.d/
+  317  svn info
+  318  cd ../../../../../february2014/httpd/web-pci/etc/
+  319  svn co http://svn.dcit.nike.com/dcit/web/web-pci/branches/release-branches/ccb5114/etc/vhost.d vhost.d
+  320  cd ../../../../january2014/httpd/web-nonpci/
+  321  svn info
+  322  cd ../../../february2014/httpd/
+  323  svn co http://svn.dcit.nike.com/dcit/web/web-nonpci/branches/release-branches/ccb5114-jan2014 web-nonpci
+  324  svn up
+  325  cd web-pci/
+  326  svn up
+  327  cd ../
+  328  cd ../tesla/
+  329  clear
+  330  ls
+  331  mvn clean install -Pdev
+  332  sudo apachectl -f /Users/rodrigoc/Projects/onenike/february2014/httpd/conf/httpd.conf -k start
+  333  sudo apachectl -f /Users/rodrigoc/Projects/onenike/february2014/httpd/conf/httpd.conf -k restart
+  334  mvn jetty:run -Pdev,nikestore
+  335  svn status
+  336  cd ../../january2014/tesla/
+  337  svn status
+  338  subl tesla-src/tesla-nikestore/src/dev/resources/com/nike/ClusterConfiguration.properties
+  339  cd Projects/onenike/february2014/tesla/
+  340  svn up
+  341  sudo apachectl -f /Users/rodrigoc/Projects/onenike/february2014/httpd/conf/httpd.conf -k start
+  342  sudo apachectl -f /Users/rodrigoc/Projects/onenike/february2014/httpd/conf/httpd.conf -k restart
+  343  mvn clean install -Pdev
+  344  svn up
+  345  mvn clean install -Pdev
+  346  mvn jetty:run -Pdev,nikestore
+  347  subl tesla-src/tesla-nikestore/src/dev/resources/com/nike/ClusterConfiguration.properties
+  348  svn info
+  349  svn up
+  350  mvn jetty:run -Pdev,nikestore
+  351  sudo apachectl -f /Users/rodrigoc/Projects/onenike/february2014/httpd/conf/httpd.conf -k stop
+  352  sudo apachectl -f /Users/rodrigoc/Projects/onenike/january2014/httpd/conf/httpd.conf -k start
+  353  cd Projects/onenike/february2014/httpd/
+  354  svn info
+  355  cd conf/
+  356  svn info
+  357  cd ../web-onenike/
+  358  svn info
+  359  svn switch http://svn.dcit.nike.com/dcit/web/web-onenike/branches/release-branches/ccb5114
+  360  cd ../../
+  361  cd Projects/onenike/february2014/
+  362  python install.py --apache-only --project /Users/rodrigoc/Projects/onenike/february2014/ --pci-branch http://svn.dcit.nike.com/dcit/web/web-pci/branches/release-branches/ccb5114/ --branch http://svn.dcit.nike.com/dcit/tesla/tesla/branches/february2014/
+  363  cd ../../tesla-setup-docs/trunk/mac/
+  364  python install.py --apache-only --project /Users/rodrigoc/Projects/onenike/february2014/ --pci-branch http://svn.dcit.nike.com/dcit/web/web-pci/branches/release-branches/ccb5114/ --branch http://svn.dcit.nike.com/dcit/tesla/tesla/branches/february2014/
+  365  svn info
+  366  svn status
+  367  subl EDF-svn-message.txt 
+  368  cd Projects/onenike/february2014/httpd/
+  369  svn up
+  370  cd ../tesla/
+  371  svn up
+  372  sudo apachectl -f /Users/rodrigoc/Projects/onenike/january2014/httpd/conf/httpd.conf -k stop
+  373  sudo apachectl -f /Users/rodrigoc/Projects/onenike/february2014/httpd/conf/httpd.conf -k stop
+  374  sudo apachectl -f /Users/rodrigoc/Projects/onenike/february2014/httpd/conf/httpd.conf -k start
+  375  sudo apachectl -f /Users/rodrigoc/Projects/onenike/february2014/httpd/conf/httpd.conf -k restart
+  376  mvn jetty:run -Pdev,nikestore
+  377  mvn clean
+  378  mvn clean install -Pdev
+  379  mvn clean install -Pdev
+  380  mvn jetty:run -Pdev,nikestore
+  381  svn up
+  382  svn up
+  383  mvn clean install -Pdev
+  384  mvn clean install -Pdev
+  385  svn status
+  386  svn diff tesla-resources/nikestore/src/main/resources/assets/scripts/nike/exp/launch/LaunchCalendar.js tesla-static/tesla/analytics/config/nikestore_html.xml > EDF-22902.dfif
+  387  subl EDF-svn-message.txt 
+  388  svn commit -F EDF-svn-message.txt tesla-resources/nikestore/src/main/resources/assets/scripts/nike/exp/launch/LaunchCalendar.js tesla-static/tesla/analytics/config/nikestore_html.xml
+  389  svn info
+  390  svn up
+  391  svn status
+  392  svn diff tesla-resources/nikestore/src/main/resources/assets/scripts/nike/exp/profile/Login.js
+  393  svn diff tesla-resources/nikestore/src/main/resources/assets/scripts/nike/exp/profile/Login.js > EDF-23019.diff
+  394  svn up tesla-resources/nikestore/src/main/resources/assets/scripts/nike/exp/profile/Login.js 
+  395  subl EDF-svn-message.txt 
+  396  svn up
+  397  mvn clean install -Pdev
+  398  svn commit -F EDF-svn-message.txt tesla-resources/nikestore/src/main/resources/assets/scripts/nike/exp/profile/Login.js
+  399  sudo apachectl -f /Users/rodrigoc/Projects/onenike/february2014/httpd/conf/httpd.conf -k stop
+  400  cd Projects/onenike/january2014/tesla/
+  401  svn up
+  402  mvn clean install -Pdev
+  403  sudo apachectl -f /Users/rodrigoc/Projects/onenike/january2014/httpd/conf/httpd.conf -k stop
+  404  sudo apachectl -f /Users/rodrigoc/Projects/onenike/january2014/httpd/conf/httpd.conf -k start
+  405  mvn jetty:run -Pdev,nikestore
+  406  mvn clean install -Pdev,src,no-tests
+  407  sudo apachectl -f /Users/rodrigoc/Projects/onenike/january2014/httpd/conf/httpd.conf -k restart
+  408  mvn jetty:run -Pdev,nikestore
+  409  ls
+  410  subo npm install uglify-js
+  411  sudo npm install uglify-js
+  412  uglifyjs --self -c -m -o js/github.js 
+  413  uglify-js --self -c -m -o js/github.js 
+  414  uglifyjs --output js/github.min.js js/github.js 
+  415  sudo npm install uglify-js
+  416  npm install uglify-js
+  417  uglifyjs
+  418  uglifyjs2 --output js/github.min.js js/github.js 
+  419  export PATH=$PATH:/usr/local/share/npm/bin/
+  420  uglifyjs2 --output js/github.min.js js/github.js 
+  421  uglifyjs
+  422  subl .bash_profile
+  423  subl ~/.bash_profile
+  424  uglifyjs
+  425  uglifyjs
+  426  sudo subl ~/.bash_profile
+  427  uglifyjs
+  428  sudo npm install uglify-js
+  429  uglifyjs
+  430  uglifyjs2
+  431  npm install uglify-js -g
+  432  sudo npm install uglify-js -g
+  433  clear
+  434  sudo npm install uglify-js -g
+  435  uglifyjs
+  436  git checkout --orphan gh-pages
+  437  git status
+  438  git add .
+  439  git rm -rf .
+  440  rm '.gitignore'
+  441  ls
+  442  git rm -rf .
+  443  ls
+  444  git add .
+  445  git commit -a -m "Structure initial"
+  446  git push origin gh-pages
+  447  rm CNAME 
+  448  git commit -a -m "Structure initial"
+  449  git push origin gh-pages
+  450  git status
+  451  clear
+  452  git status
+  453  git checkout master
+  454  git status
+  455  rm CNAME 
+  456  git commit -a -m "Structure initial"
+  457  git push origin master
+  458  git commit -a -m "Structure initial"
+  459  git push origin master
+  460  git push origin gh-pages
+  461  git add .
+  462  git commit -a -m "Structure initial"
+  463  git push origin master
+  464  git add .
+  465  git pull
+  466  git status
+  467  rm js/github.min.js
+  468  git commit -a -m "Structure initial"
+  469  git push origin master
+  470  git add .
+  471  git commit -a -m "Structure initial"
+  472  git push origin gh-pages
+  473  cd ../onenike/january2014/tesla/
+  474  svn up
+  475  cd ../../february2014/tesla/
+  476  svn up
+  477  ls
+  478  subl ~/.gitignore_global
+  479  git status
+  480  git add .
+  481  git commit -a -m "Structure initial"
+  482  dig www.rodcast.com.br +nostats +nocomments +nocmd
+  483  dig sneakyghostfilms.github.io +nostats +nocomments +nocmd
+  484  dig www.sneakyghost.com +nostats +nocomments +nocmd
+  485  cd Projects/rodcast.github.io/
+  486  ls
+  487  git up
+  488  git pull
+  489  git status
+  490  cd ..
+  491  ls
+  492  cd rodcast.github.io/
+  493  clear
+  494  node server.js 
+  495  cd ../rodcast.github.io/
+  496  git pull
+  497  subl CNAME
+  498  git add .
+  499  git commit -a -m "Structure initial"
+  500  git push origin master
+  501  cd ../rodcast.github.io/
+  502  yuicompressor --type css css/style.css css/style.min.css
+  503  yuicompressor --help
+  504  yuicompressor --help
+  505  yuicompressor css/style.min.css css/style.css
+  506  yuicompressor css/style.css css/style.min.css
+  507  java -jar yuicompressor.jar -o '.css$:-min.css' *.css
+  508  clear
+  509  yuicompressor 
+  510  yuicompressor -v
+  511  yuicompressor -V
+  512  java -jar yuicompressor-2.4.8.jar css/style.css 
+  513  yuicompressor css/style.css 
+  514  yuicompressor css/style.css css/style.min.css
+  515  yuicompressor --help
+  516  yuicompressor -o css/style.css css/style.min.css
+  517  yuicompressor -o css/style.min.css 
+  518  yuicompressor -o css/style.min.css
+  519  java -jar yuicompressor.jar -o '.css$:-min.css' *.css
+  520  yuicompressor -o '.css$:-min.css' *.css
+  521  yuicompressor -o '.css$:-min.css' css/*.css
+  522  yuicompressor -o '.css$:.min.css' css/*.css
+  523  git add .
+  524  git commit -a -m "Structure initial"
+  525  git push origin master
+  526  yuicompressor -o '.js$:.min.css' js/*.js
+  527  git add .
+  528  git commit -a -m "Structure initial"
+  529  git push origin master
+  530  git commit -a -m "Structure initial"
+  531  git push origin master
+  532  rm js/github.min.css 
+  533  git commit -a -m "Structure initial"
+  534  git push origin master
+  535  git add .
+  536  git commit -a -m "Structure initial"
+  537  git push origin master
+  538  ls
+  539  node ser
+  540  clear
+  541  git status
+  542  history > hh.txt
