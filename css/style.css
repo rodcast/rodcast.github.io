@@ -45,49 +45,87 @@ a {
   margin: 2em;
 }
 
-.logo {
-  float: left;
-  margin-right: 2em;
-  font-weight: 600;
-  font-size: 200%;
-  color: black;
+.header {
+  overflow: hidden;
 }
 
-.header {
-  display: block;
+.logo {
+  font-weight: 600;
+  font-size: 310%;
+  color: black;
+  text-align: center;
+}
+
+.main {
+  width: 100%;
+  margin: 2em 0;
+  min-width: 500px;
   overflow: hidden;
 }
 
 .profile {
   float: left;
   width: 30%;
+  min-width: 180px;
 }
 
 .profile-photo {
   display: block;
-  margin: 0 auto 2em;
+  margin: 0 auto 1em;
   border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
   width: 125px;
+  border: 5px solid lightgray;
   -webkit-filter: grayscale(100%);
   -moz-filter: grayscale(100%);
   filter: grayscale(100%)
 }
 
 .profile-name {
-  display: block;
   margin-bottom: .5em;
+  font-size: 100%;
   font-weight: 600;
 }
 
 .profile-description {
-  display: block;
-  font-size: 90%;
+  margin-bottom: 1em;
+  font-size: 88%;
+  font-weight: 400;
   line-height: 1.6em;
+}
+
+.profile-social {
+  margin: 0 auto;
+  width: 160px;
+  list-style: none;
+  text-align: center;
+}
+
+.profile-social-icon {
+  float: left;
+  margin-right: .5em;
+}
+
+.profile-social-icon > a {
+  display: block;
+  width: 30px;
+  height: 30px;
+  font-size: 125%;
+  background-color: lightgray;
+  border-radius: 50%;
+}
+
+.profile-social-icon > a:hover,
+.profile-social-icon > a:focus {
+  background-color: black;
+  color: white;
 }
 
 .repos {
   float: right;
   width: 60%;
+  min-width: 300px;
 }
 
 .repos-head {
@@ -121,7 +159,6 @@ a {
 
 .repos-title {
   display: block;
-  font-size: 100%;
   font-weight: 600;
 }
 
@@ -138,12 +175,12 @@ a {
 
 .repos-description {
   display: block;
-  font-size: 90%;
+  font-size: 88%;
   line-height: 1.6em;
 }
 
 .footer {
   clear: both;
-  margin-top: 1em;
-  font-size: 90%;
+  font-size: 88%;
+  text-align: center;
 }
