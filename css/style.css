@@ -50,16 +50,16 @@ a {
 }
 
 .logo {
+  display: block;
   font-weight: 600;
   font-size: 310%;
   color: black;
-  text-align: center;
 }
 
 .main {
   width: 100%;
   margin: 2em 0;
-  min-width: 500px;
+  min-width: 480px;
   overflow: hidden;
 }
 
@@ -79,7 +79,10 @@ a {
   border: 5px solid lightgray;
   -webkit-filter: grayscale(100%);
   -moz-filter: grayscale(100%);
-  filter: grayscale(100%)
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray; /* IE 6-9 */
 }
 
 .profile-name {
@@ -114,6 +117,11 @@ a {
   font-size: 125%;
   background-color: lightgray;
   border-radius: 50%;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .profile-social-icon > a:hover,
@@ -166,6 +174,11 @@ a {
   color: black;
   background: lightyellow;
   text-decoration: underline;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .repos-url:hover,
@@ -183,4 +196,24 @@ a {
   clear: both;
   font-size: 88%;
   text-align: center;
+}
+
+@media only screen and (max-width: 767px) {
+  .logo {
+    text-align: center;
+  }
+
+  .repos {
+    margin-top: 2em;
+  }
+
+  .main,
+  .profile,
+  .repos {
+    float: none;
+    clear: both;
+    width: 100%;
+    min-width: 100%;
+    overflow: hidden;
+  }
 }
