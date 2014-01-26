@@ -33,16 +33,17 @@ a {
   tap-highlight-color: rgba(0,0,0,0);
 }
 ::selection {
-  background: black;
   color: white;
+  background: black;
 }
 ::-moz-selection {
-  background: black;
   color: white;
+  background: black;
 }
 
 .container {
   margin: 2em;
+  overflow: hidden;
 }
 
 .header {
@@ -54,6 +55,7 @@ a {
   font-weight: 600;
   font-size: 310%;
   color: black;
+  line-height: 100%;
 }
 
 .main {
@@ -126,8 +128,8 @@ a {
 
 .profile-social-icon > a:hover,
 .profile-social-icon > a:focus {
-  background-color: black;
   color: white;
+  background-color: black;
 }
 
 .repos {
@@ -194,6 +196,7 @@ a {
 
 .footer {
   clear: both;
+  margin-bottom: 2em;
   font-size: 88%;
   text-align: center;
 }
