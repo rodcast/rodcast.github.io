@@ -33,12 +33,12 @@ a {
   tap-highlight-color: rgba(0,0,0,0);
 }
 ::selection {
-  background: black;
   color: white;
+  background: black;
 }
 ::-moz-selection {
-  background: black;
   color: white;
+  background: black;
 }
 
 .container {
@@ -53,6 +53,7 @@ a {
   display: block;
   font-weight: 600;
   font-size: 310%;
+  line-height: 100%;
   color: black;
 }
 
@@ -126,8 +127,8 @@ a {
 
 .profile-social-icon > a:hover,
 .profile-social-icon > a:focus {
-  background-color: black;
   color: white;
+  background-color: black;
 }
 
 .repos {
