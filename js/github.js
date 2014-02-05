@@ -42,6 +42,8 @@ var RODCAST = RODCAST || {};
     });
   
     $(function () {
+      $(window).scrollTop(0);
+
       $.RODCAST.initialize();
     });
 })(jQuery, undefined);
