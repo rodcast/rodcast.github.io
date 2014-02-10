@@ -50,12 +50,34 @@ a {
 }
 
 .logo {
-  display: block;
+  display: inline-block;
   font-weight: 600;
   font-size: 310%;
   line-height: 100%;
   color: black;
 }
+
+.logo:hover {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+
+  -webkit-transform: rotateX(360deg);
+  -moz-transform: rotateX(360deg);
+  -ms-transform: rotateX(360deg);
+  -o-transform: rotateX(360deg);
+  transform: rotateX(360deg);
+
+  -webkit-animation: fadeInOutBackground 0.4s ease-in-out;
+  -moz-animation: fadeInOutBackground 0.4s ease-in-out;
+  animation: fadeInOutBackground 0.4s ease-in-out;
+
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+ }
 
 .main {
   width: 100%;
@@ -73,17 +95,19 @@ a {
 .profile-photo {
   display: block;
   margin: 0 auto 1em;
-  border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
+  border-radius: 50%;
   width: 125px;
   border: 5px solid lightgray;
+
   -webkit-filter: grayscale(100%);
   -moz-filter: grayscale(100%);
   -ms-filter: grayscale(100%);
   -o-filter: grayscale(100%);
   filter: grayscale(100%);
-  filter: gray; /* IE 6-9 */
+  filter: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxmaWx0ZXIgaWQ9ImRlc2F0dXJhdGUiPjxmZUNvbG9yTWF0cml4IHR5cGU9InNhdHVyYXRlIiB2YWx1ZXM9IjAiLz48L2ZpbHRlcj48L3N2Zz4%3D#desaturate);
+  filter: gray;
 }
 
 .profile-name {
@@ -117,7 +141,10 @@ a {
   height: 30px;
   font-size: 125%;
   background-color: lightgray;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
   border-radius: 50%;
+
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
@@ -129,6 +156,13 @@ a {
 .profile-social-icon > a:focus {
   color: white;
   background-color: black;
+
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+
 }
 
 .repos {
@@ -201,6 +235,7 @@ a {
 
 @media only screen and (max-width: 767px) {
   .logo {
+    display: block;
     text-align: center;
   }
 
@@ -216,5 +251,54 @@ a {
     width: 100%;
     min-width: 100%;
     overflow: hidden;
+  }
+}
+
+@-webkit-keyframes fadeInOutBackground {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    color: white;
+    background-color: black;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+@-moz-keyframes fadeInOutBackground {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    color: white;
+    background-color: black;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+@-o-keyframes fadeInOutBackground {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    color: white;
+    background-color: black;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+@keyframes fadeInOutBackground {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    color: white;
+    background-color: black;
+  }
+  100% {
+    background-color: transparent;
   }
 }
