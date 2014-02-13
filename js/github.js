@@ -2,9 +2,11 @@ var RODCAST = RODCAST || {};
 
   /*!
   * The API has been updated to return the values with the same key names as the regular Repository API
-  * More information and documentation: http://develop.github.com/
+  * More information and documentation: http://developer.github.com/
   */
-  RODCAST.getGithubRepository = (function() {
+  RODCAST.getGithubRepository = (function($, window, document) {
+    'use strict';
+
     $.RODCAST = $.RODCAST || {};
 
     $.extend($.RODCAST, {
@@ -42,8 +44,10 @@ var RODCAST = RODCAST || {};
     });
   
     $(function () {
-      $(window).scrollTop(0);
-
       $.RODCAST.initialize();
+
+      setTimeout(function () {
+        window.scrollTo(0, 1);
+      }, 100);
     });
-})(jQuery, undefined);
+})(jQuery, window, document, undefined);
