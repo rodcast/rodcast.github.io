@@ -20,16 +20,16 @@
 */
  
  [class^="icon-"]:before, [class*=" icon-"]:before {
+  display: inline-block;
+  width: 1em;
+  margin-right: .2em;
   font-family: "fontello";
   font-style: normal;
   font-weight: normal;
-  speak: none;
- 
-  display: inline-block;
-  text-decoration: inherit;
-  width: 1em;
-  margin-right: .2em;
   text-align: center;
+  text-decoration: inherit;
+  speak: none;
+
   /* opacity: .8; */
  
   /* For safety - reset parent styles, that can break glyph codes*/
