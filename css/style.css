@@ -246,50 +246,38 @@ a {
 }
 
 @-webkit-keyframes fadeInOutBackground {
-  0% {
+  0%, 100% {
     background-color: transparent;
   }
   50% {
     color: white;
     background-color: black;
-  }
-  100% {
-    background-color: transparent;
   }
 }
 @-moz-keyframes fadeInOutBackground {
-  0% {
+  0%, 100% {
     background-color: transparent;
   }
   50% {
     color: white;
     background-color: black;
-  }
-  100% {
-    background-color: transparent;
   }
 }
 @-o-keyframes fadeInOutBackground {
-  0% {
+  0%, 100% {
     background-color: transparent;
   }
   50% {
     color: white;
     background-color: black;
-  }
-  100% {
-    background-color: transparent;
   }
 }
 @keyframes fadeInOutBackground {
-  0% {
+  0%, 100% {
     background-color: transparent;
   }
   50% {
     color: white;
     background-color: black;
-  }
-  100% {
-    background-color: transparent;
   }
 }
