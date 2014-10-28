@@ -127,33 +127,35 @@ a {
 .profile-social-icon {
   float: left;
   margin-right: .5em;
-}
 
-.profile-social-icon > a {
-  display: block;
-  width: 30px;
-  height: 30px;
-  font-size: 125%;
-  background-color: lightgray;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  -ms-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-}
+  > a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    font-size: 125%;
+    background-color: lightgray;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
 
-.profile-social-icon > a:hover,
-.profile-social-icon > a:focus {
-  color: white;
-  background-color: black;
-  -webkit-transform: rotate(360deg);
-  -moz-transform: rotate(360deg);
-  -ms-transform: rotate(360deg);
-  -o-transform: rotate(360deg);
-  transform: rotate(360deg);
+    &:hover,
+    &:focus {
+      color: white;
+      background-color: black;
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+
+  }
+
 }
 
 .repos {
@@ -205,11 +207,12 @@ a {
   -ms-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-}
 
-.repos-url:hover,
-.repos-url:focus {
-  background: whitesmoke;
+  &:hover,
+  &:focus {
+    background: whitesmoke;
+  }
+
 }
 
 .repos-description {
