@@ -111,15 +111,17 @@ a {
 }
 
 .profile-social {
-  width: 160px;
   margin: 0 auto;
+  font-size: 0;
   text-align: center;
   list-style: none;
+  vertical-align: top;
 }
 
-.profile-social-icon {
-  float: left;
+.profile-social-item {
+  display: inline-block;
   margin-right: .5em;
+  @include rem(font-size, 18px);
 
   > a {
     display: block;
@@ -159,12 +161,6 @@ a {
 }
 
 .repos-list {
-  margin-left: 1.4em;
-}
-
-.repos-loading {
-  margin-left: -1.4em;
-  list-style: none;
 }
 
 .repos-item {

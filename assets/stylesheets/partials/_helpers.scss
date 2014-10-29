@@ -14,7 +14,7 @@
    Properties with REM with PX fallback
    ========================================================================== */
 
-@mixin rem($property, $values, $base: $base-size-desktop) {
+@mixin rem($property, $values, $base: $base-font-size) {
   $px: ();
   $rem: ();
 
