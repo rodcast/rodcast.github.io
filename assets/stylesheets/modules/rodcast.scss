@@ -2,11 +2,13 @@
   padding: 0;
   margin: 0;
 }
+
 *, *:before, *:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+
 /* Force scrollbar in non-IE and Remove iOS text size adjust without disabling user zoom */
 html {
   height: 100%;
@@ -15,27 +17,32 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
+
 /* Improve default text rendering,handling of kerning pairs and ligatures */
-/*Options fonts: Source Sans Pro, Open Sans, Droid, Raleway, Lato, Montserrat */
+/* Options fonts: Source Sans Pro, Open Sans, Droid, Raleway, Lato, Montserrat */
 body {
-  font: 400 16px "Open Sans", Arial, sans-serif;
+  font-size: $base-font-size;
+  font-family: $base-font-family;
   color: dimgray;
   text-rendering: optimizeLegibility;
   background-color: white;
   border-top: 5px solid black;
   direction: ltr;
 }
+
 a {
-  color: black;
+  color: $base-color;
   text-decoration: none;
 }
+
 ::selection {
   color: white;
-  background: black;
+  background: $base-color;
 }
+
 ::-moz-selection {
   color: white;
-  background: black;
+  background: $base-color;
 }
 
 .container {
@@ -52,27 +59,21 @@ a {
   font-size: 310%;
   font-weight: 600;
   line-height: 100%;
-  color: black;
-}
+  color: $base-color;
 
-.logo:hover {
-  -webkit-transform: rotateX(360deg);
-  -moz-transform: rotateX(360deg);
-  -ms-transform: rotateX(360deg);
-  -o-transform: rotateX(360deg);
-  transform: rotateX(360deg);
-  -webkit-animation: fadeInOutBackground 0.4s ease-in-out;
-  -moz-animation: fadeInOutBackground 0.4s ease-in-out;
-  animation: fadeInOutBackground 0.4s ease-in-out;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  -ms-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -ms-backface-visibility: hidden;
- }
+  &:hover {
+    @include transform(rotateX(320deg));
+    
+    @include animation(fadeInOutBackground 0.4s ease-in-out);
+    
+    @include transition(all 0.2s ease-in-out);
+    
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+   }
+
+}
 
 .main {
   width: 100%;
@@ -92,16 +93,10 @@ a {
   width: 125px;
   margin: 0 auto 1em;
   border: 5px solid lightgray;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  -webkit-filter: grayscale(100%);
-  -moz-filter: grayscale(100%);
-  -ms-filter: grayscale(100%);
-  -o-filter: grayscale(100%);
-  filter: grayscale(100%);
-  filter: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxmaWx0ZXIgaWQ9ImRlc2F0dXJhdGUiPjxmZUNvbG9yTWF0cml4IHR5cGU9InNhdHVyYXRlIiB2YWx1ZXM9IjAiLz48L2ZpbHRlcj48L3N2Zz4%3D#desaturate);
-  filter: gray;
+  
+  @include border-radius(50%);
+  
+  @include filter(grayscale(100%));
 }
 
 .profile-name {
@@ -134,24 +129,17 @@ a {
     height: 30px;
     font-size: 125%;
     background-color: lightgray;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-    -webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -ms-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
+    
+    @include border-radius(50%);
+    
+    @include transition(all 0.2s ease-in-out);
 
     &:hover,
     &:focus {
       color: white;
       background-color: black;
-      -webkit-transform: rotate(360deg);
-      -moz-transform: rotate(360deg);
-      -ms-transform: rotate(360deg);
-      -o-transform: rotate(360deg);
-      transform: rotate(360deg);
+      
+      @include transform(rotate(360deg));
     }
 
   }
@@ -202,11 +190,8 @@ a {
   color: black;
   text-decoration: underline;
   background: lightyellow;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  -ms-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+  
+  @include transition(all 0.2s ease-in-out);
 
   &:hover,
   &:focus {
@@ -248,34 +233,7 @@ a {
   }
 }
 
-@-webkit-keyframes fadeInOutBackground {
-  0%, 100% {
-    background-color: transparent;
-  }
-  50% {
-    color: white;
-    background-color: black;
-  }
-}
-@-moz-keyframes fadeInOutBackground {
-  0%, 100% {
-    background-color: transparent;
-  }
-  50% {
-    color: white;
-    background-color: black;
-  }
-}
-@-o-keyframes fadeInOutBackground {
-  0%, 100% {
-    background-color: transparent;
-  }
-  50% {
-    color: white;
-    background-color: black;
-  }
-}
-@keyframes fadeInOutBackground {
+@include keyframes(fadeInOutBackground) {
   0%, 100% {
     background-color: transparent;
   }
