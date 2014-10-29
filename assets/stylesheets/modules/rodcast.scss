@@ -62,16 +62,14 @@ a {
   color: $base-color;
 
   &:hover {
-    @include transform(rotateX(320deg));
-    
+    @include transform(rotateX(360deg));
+
     @include animation(fadeInOutBackground 0.4s ease-in-out);
-    
+
     @include transition(all 0.2s ease-in-out);
-    
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-   }
+
+    @include backface-visibility(hidden);
+  }
 
 }
 
@@ -237,6 +235,7 @@ a {
   0%, 100% {
     background-color: transparent;
   }
+  
   50% {
     color: white;
     background-color: black;
