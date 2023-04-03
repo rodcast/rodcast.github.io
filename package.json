@@ -2,9 +2,11 @@
   "name": "rodcast.github.io",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://rodcast.github.io/rodcast.github.io",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export && npx gh-pages -d out",
+    "build": "next build",
+    "deploy": "npm run build && gh-pages -d out",
     "start": "next start",
     "lint": "next lint"
   },
