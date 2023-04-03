@@ -1,1 +1,0 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[927],{8927:function(_){_.exports={style:{fontFamily:"'__Open_Sans_c8a2b8', '__Open_Sans_Fallback_c8a2b8'",fontStyle:"normal"},className:"__className_c8a2b8"}}}]);
