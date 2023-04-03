@@ -1,0 +1,4 @@
+.content {
+  grid-area: article;
+  position: relative;
+}

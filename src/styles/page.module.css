@@ -1,0 +1,14 @@
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1em;
+}
+
+.main {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 320px auto;
+  grid-template-areas: "sidebar article";
+  margin: 1em 0;
+  overflow: hidden;
+}
