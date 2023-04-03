@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[884],{1884:function(_){_.exports={style:{fontFamily:"'__fontello_3988f9', '__fontello_Fallback_3988f9'"},className:"__className_3988f9",variable:"__variable_3988f9"}}}]);
