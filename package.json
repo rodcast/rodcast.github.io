@@ -8,8 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "predeploy": "next build",
-    "deploy": "gh-pages -d docs"
+    "predeploy": "nnpm run build",
+    "deploy": "gh-pages -d out"
   },
   "dependencies": {
     "@types/node": "18.15.11",

@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  distDir: "docs",
+  target: "serverless",
+  exportTrailingSlash: true,
   experimental: {
     appDir: true,
   },
