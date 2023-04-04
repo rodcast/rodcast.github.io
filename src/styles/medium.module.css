@@ -3,7 +3,6 @@
 }
 
 .title {
-  display: block;
   margin-bottom: 0.5em;
   padding-bottom: 0.5em;
   font-size: 150%;
@@ -25,13 +24,20 @@
 
 .subtitle {
   display: block;
-  font-size: 110%;
+  font-size: 112.5%;
   font-weight: 600;
+}
+
+.description {
+  display: block;
+  font-size: 100%;
+  line-height: 150%;
 }
 
 .time {
   display: block;
   margin-bottom: 0.5em;
+  font-size: 100%;
   color: var(--contrast-color);
 }
 
@@ -47,7 +53,3 @@
   background: var(--primary-color);
 }
 
-.description {
-  display: block;
-  line-height: 1.6em;
-}
