@@ -11,15 +11,15 @@ const fontello = localFont({
 export default function Sidebar() {
   return (
     <aside className={styles.content} role="complementary">
-      <Image src="/rodcast_avatar.jpg"
+      <Image src="/rodrigo-castilho-rodcast_photo.jpg"
         width={125}
         height={125}
         alt="Rodrigo Castilho (RODCAST)"
         className={styles.photo}
         itemProp="image"
         sizes="
-            (max-width: 768px) 100px,
-            (max-width: 1200px) 100px,
+            (max-width: 768px) 95px,
+            (max-width: 1200px) 105px,
             33vw
           "
         quality={100}

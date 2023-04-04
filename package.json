@@ -7,7 +7,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d out"
   },
   "dependencies": {
     "@types/node": "18.15.11",
@@ -19,5 +21,8 @@
     "react-dom": "18.2.0",
     "sharp": "^0.32.0",
     "swr": "^2.1.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }

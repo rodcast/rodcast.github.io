@@ -4,9 +4,9 @@ import Medium from './Medium';
 
 export default function Article() {
   return (
-    <div className={styles.content}>
+    <main className={styles.content}>
       <GitHub />
       <Medium />
-    </div>
+    </main>
   );
 }
