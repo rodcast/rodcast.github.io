@@ -8,4 +8,4 @@ Disallow:
 User-agent: Mediapartners-Google
 Disallow:
 
-sitemap: http://www.rodcast.com.br/sitemap.xml 
+sitemap: http://www.rodrigocastilho.com/sitemap.xml

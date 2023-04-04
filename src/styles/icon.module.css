@@ -1,0 +1,35 @@
+.github:before,
+.linkedin:before,
+.twitter:before,
+.medium:before {
+  font-family: var(--font-fontello);
+  font-style: normal;
+  font-weight: normal;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 2em;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.github:before {
+  content: "\f09b";
+}
+
+.linkedin:before {
+  content: "\f30c";
+}
+
+.twitter:before {
+  content: "\f099";
+}
+
+.medium:before {
+  content: "\f23a";
+}

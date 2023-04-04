@@ -1,0 +1,58 @@
+.content {
+  grid-area: sidebar;
+  position: relative;
+}
+
+.photo {
+  display: block;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1em;
+  border: 5px solid var(--tertiary-color);
+  border-radius: 50%;
+}
+
+.name {
+  margin-bottom: 0.5em;
+  font-size: 100%;
+  font-weight: 600;
+}
+
+.description {
+  margin-bottom: 1em;
+  font-size: 90%;
+  font-weight: 400;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.item {
+  margin-right: 0.5em;
+}
+
+.list > .item:last-child {
+  margin-right: 0;
+}
+
+.url {
+  display: inline-block;
+  transition: all 0.2s ease-in-out;
+  background-color: var(--tertiary-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.url:hover,
+.url:focus {
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  transform: rotate(360deg);
+}

@@ -1,0 +1,30 @@
+.content {
+  overflow: hidden;
+}
+
+.logo {
+  display: inline-block;
+  font-size: 310%;
+  font-weight: 600;
+  line-height: 100%;
+  color: var(--secondary-color);
+}
+
+.logo:hover {
+  transform: rotateX(360deg);
+  animation: fadeInOutBackground 0.4s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  backface-visibility: hidden;
+}
+
+@keyframes fadeInOutBackground {
+  0%,
+  100% {
+    background-color: transparent;
+  }
+
+  50% {
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+  }
+}

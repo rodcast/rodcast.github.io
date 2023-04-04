@@ -1,0 +1,28 @@
+{
+  "name": "rodcast.github.io",
+  "version": "0.2.0",
+  "private": true,
+  "homepage": "https://rodcast.github.io/rodcast.github.io",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d out"
+  },
+  "dependencies": {
+    "@types/node": "18.15.11",
+    "@types/react": "18.0.31",
+    "@types/react-dom": "18.0.11",
+    "eslint-config-next": "13.2.4",
+    "next": "13.2.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sharp": "^0.32.0",
+    "swr": "^2.1.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
+  }
+}
