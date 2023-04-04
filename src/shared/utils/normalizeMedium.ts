@@ -1,7 +1,7 @@
 import { IMediumApi, IMedium } from '@/interfaces/index';
 
 export const normalizeMedium = (data: IMediumApi): Array<IMedium> => {
-  return data.map((article: IMedium) => {
+  return data?.map((article: IMedium) => {
     const { guid, title, link, pubDate, content } = article;
 
     const html = new DOMParser().parseFromString(content, "text/html");

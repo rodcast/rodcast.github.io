@@ -2,3 +2,51 @@
   grid-area: article;
   position: relative;
 }
+
+.content {
+  margin-bottom: 4em;
+}
+
+.title {
+  margin-bottom: 0.5em;
+  padding-bottom: 0.5em;
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  border-bottom: 1px dotted var(--secondary-color);
+}
+
+.list {
+  font-size: var(--text-sm);
+}
+
+.item {
+  margin-bottom: 2em;
+}
+
+.item:last-child {
+  margin-bottom: 0;
+}
+
+.subtitle {
+  display: block;
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+.description {
+  display: block;
+  font-size: var(--text-base);
+  line-height: 150%;
+}
+
+.url {
+  color: var(--secondary-color);
+  text-decoration: underline;
+  background: var(--highlight-color);
+  transition: all 0.2s ease-in-out;
+}
+
+.url:hover,
+.url:focus {
+  background: var(--primary-color);
+}

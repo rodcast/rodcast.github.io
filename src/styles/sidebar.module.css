@@ -14,13 +14,13 @@
 
 .name {
   margin-bottom: 0.5em;
-  font-size: 112.5%;
+  font-size: var(--text-lg);
   font-weight: 600;
 }
 
 .description {
   margin-bottom: 1em;
-  font-size: 87.5%;
+  font-size: var(--text-sm);
   font-weight: 400;
 }
 
@@ -28,8 +28,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
-  text-align: center;
 }
 
 .item {

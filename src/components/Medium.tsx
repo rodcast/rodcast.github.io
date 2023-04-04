@@ -1,11 +1,12 @@
 "use client";
 import { Fragment } from 'react';
 import useSWR from 'swr';
-import styles from '@/styles/medium.module.css';
 import { MEDIUM_API } from '@/constants/paths';
 import { IMedium, IMediumApi } from '@/interfaces/index';
 import { normalizeMedium } from '@/utils/index';
 import Skeleton from './Skeleton';
+import styles from '@/styles/article.module.css';
+import stylesMedium from '@/styles/github.module.css';
 
 export async function getStaticProps() {
   const response = await fetch(MEDIUM_API);
@@ -31,9 +32,16 @@ function SkeletonMedium() {
 
 export default function Medium({ data }: IMediumApi) {
   const { data: dataSWR, error, isLoading } = useSWR(MEDIUM_API,
-    (...args) => fetch(...args).then((res) => res.json()), { fallbackData: data });
+    (...args) => fetch(...args).then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        throw new Error('There is an error in Medium API.');
+      }
+    }
+    ), { fallbackData: data });
 
-  if (dataSWR == null) {
+  if (isLoading) {
     return <SkeletonMedium />;
   }
 
@@ -43,30 +51,35 @@ export default function Medium({ data }: IMediumApi) {
     <article className={styles.content}>
       <header className={styles.title}>My articles on Medium</header>
 
-      {isLoading && (<h2>Loading...</h2>)}
-      {error && (<h2>Error!</h2>)}
+      {error && (
+        <span className={styles.description}>
+          There is an error in Medium API.
+        </span>
+      )}
 
-      <ol className={styles.list}>
-        {response.map((article: IMedium) => {
-          const { guid, title, link, pubDate, content } = article;
+      {Array.isArray(response) && (
+        <ol className={styles.list}>
+          {response.map((article: IMedium) => {
+            const { guid, title, link, pubDate, content } = article;
 
-          const dateTime = new Intl.DateTimeFormat("en-US", {
-            dateStyle: "long",
-          }).format(new Date(pubDate));
+            const dateTime = new Intl.DateTimeFormat("en-US", {
+              dateStyle: "long",
+            }).format(new Date(pubDate));
 
-          return (
-            <Fragment key={guid}>
-              <li className={styles.item}>
-                <span className={styles.subtitle}>
-                  <a href={link} title={title} className={styles.url} rel="external">{title}</a>
-                </span>
-                <time className={styles.time} dateTime={dateTime}>{dateTime}</time>
-                <span className={styles.description}>{content}</span>
-              </li>
-            </Fragment>
-          );
-        })}
-      </ol>
+            return (
+              <Fragment key={guid}>
+                <li className={styles.item}>
+                  <span className={styles.subtitle}>
+                    <a href={link} title={title} className={styles.url} rel="external">{title}</a>
+                  </span>
+                  <time className={stylesMedium.time} dateTime={dateTime}>{dateTime}</time>
+                  <span className={styles.description}>{content}</span>
+                </li>
+              </Fragment>
+            );
+          })}
+        </ol>
+      )}
     </article>
   );
 }

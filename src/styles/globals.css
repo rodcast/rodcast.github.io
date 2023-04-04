@@ -1,10 +1,15 @@
 :root {
   --primary-color: #fff;
-  --secondary-color: #000;
-  --tertiary-color: #f7f7f7;
-  --contrast-color: #818181;
-  --highlight-color: lightyellow;
+  --secondary-color: #1c1c1c;
+  --tertiary-color: #eef0f2;
+  --contrast-color: #aaa;
+  --highlight-color: #ffffe0;
   --max-width: 1100px;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
 }
 
 ::selection {
@@ -26,7 +31,7 @@ body {
 }
 
 body {
-  color: rgb(var(--tertiary-color));
+  color: var(--secondary-color);
   text-rendering: optimizeLegibility;
   background-color: var(--primary-color);
   border-top: 5px solid var(--secondary-color);
