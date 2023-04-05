@@ -24,6 +24,7 @@ const metadata = {
   twitter: {
     title: 'Rodrigo Castilho (RODCAST)',
     description: 'Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.',
+    image: '/rodrigo-castilho-rodcast_card.jpg',
     creator: '@rodcast',
   },
   robots: {
@@ -68,6 +69,7 @@ class MyDocument extends Document {
           ))}
           <meta name="twitter:title" content={metadata.twitter.title} />
           <meta name="twitter:description" content={metadata.twitter.description} />
+          <meta name="twitter:image" content={metadata.twitter.image} />
           <meta name="twitter:creator" content={metadata.twitter.creator} />
           <meta name="robots" content={`${metadata.robots.index ? 'index' : 'noindex'}, ${metadata.robots.follow ? 'follow' : 'nofollow'}, ${metadata.robots.nocache ? 'nocache' : ''}, ${metadata.robots.noarchive ? 'noarchive' : ''}`} />
           {metadata.robots.googleBot && (
