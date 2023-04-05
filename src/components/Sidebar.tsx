@@ -32,22 +32,22 @@ export default function Sidebar() {
       <ul className={styles.list}>
         <li className={styles.item}>
           <a href="https://github.com/rodcast" rel="me" title="Follow me on GitHub" className={styles.url}>
-            <i className={`${fontello.variable} ${icon.github}`}></i>
+            <i className={`${fontello.variable} ${icon.github}`} />
           </a>
         </li>
         <li className={styles.item}>
           <a href="https://twitter.com/rodcast" rel="me" title="Follow me on Twitter" className={styles.url}>
-            <i className={`${fontello.variable} ${icon.twitter}`}></i>
+            <i className={`${fontello.variable} ${icon.twitter}`} />
           </a>
         </li>
         <li className={styles.item}>
           <a href="https://linkedin.com/in/rodcast" rel="me" title="Follow me on Linkedin" className={styles.url}>
-            <i className={`${fontello.variable} ${icon.linkedin}`}></i>
+            <i className={`${fontello.variable} ${icon.linkedin}`} />
           </a>
         </li>
         <li className={styles.item}>
           <a href="https://medium.com/@rodcast" rel="me" title="Follow me on Medium" className={styles.url}>
-            <i className={`${fontello.variable} ${icon.medium}`}></i>
+            <i className={`${fontello.variable} ${icon.medium}`} />
           </a>
         </li>
       </ul>

@@ -14,6 +14,8 @@ export const normalizeGitHub = (data: IGitHubApi): Array<IGitHub> => {
         is_private,
         fork
       };
+    } else {
+      return null;
     }
-  });
+  }).filter(Boolean);
 };
