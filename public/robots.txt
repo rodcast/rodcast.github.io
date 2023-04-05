@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /csstablegallery/
+Disallow: /stylemaster/
+
+User-agent: Googlebot-Image
+Disallow:
+
+User-agent: Mediapartners-Google
+Disallow:
+
+sitemap: http://www.rodrigocastilho.com/sitemap.xml
