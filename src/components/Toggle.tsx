@@ -40,7 +40,7 @@ export default function Toggle() {
   return (
     <label className={styles.switch}>
       <input type="checkbox" checked={checked} onChange={toggleTheme} />
-      <span className={styles.slider}></span>
+      <span className={styles.slider} />
       <i className={`${fontello.variable} ${icon.sun} ${styles.icon__sun}`} />
       <i className={`${fontello.variable} ${icon.moon} ${styles.icon__moon}`} />
     </label>
