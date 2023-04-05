@@ -1,14 +1,15 @@
 import Head from 'next/head';
 import { Open_Sans } from 'next/font/google';
+import { IMyApp } from '@/interfaces/index';
 import '@/styles/globals.css';
 
-const title: string = 'Rodrigo Castilho (RODCAST)';
+const title = 'Rodrigo Castilho (RODCAST)';
 
 const openSans = Open_Sans({
   subsets: ['latin'],
 });
 
-function MyApp({ Component, pageProps }: any) {
+function MyApp({ Component, pageProps }: IMyApp) {
   return (
     <>
       <Head>

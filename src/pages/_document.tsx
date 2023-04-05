@@ -79,6 +79,7 @@ class MyDocument extends Document {
               <meta name="googlebot" content={`max-snippet=${metadata.robots.googleBot['max-snippet']}`} />
             </>
           )}
+          <link rel="icon" href="/favicon.ico" />
         </Head>
         <body>
           <Main />

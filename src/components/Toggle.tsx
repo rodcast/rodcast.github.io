@@ -8,8 +8,6 @@ const fontello = localFont({
   variable: '--font-fontello'
 });
 
-interface ToggleEvent extends ChangeEvent<HTMLInputElement> { }
-
 export default function Toggle() {
   const [checked, setChecked] = useState<boolean>(false);
 
@@ -25,7 +23,7 @@ export default function Toggle() {
     }
   }, []);
 
-  const toggleTheme = useCallback((event: ToggleEvent): void => {
+  const toggleTheme = useCallback((event: ChangeEvent<HTMLInputElement>): void => {
     if (event.target.checked) {
       localStorage.setItem('data-theme', 'dark');
     } else {
@@ -34,7 +32,6 @@ export default function Toggle() {
 
     checkTheme();
   }, [checkTheme]);
-
 
   useEffect(() => {
     checkTheme();
