@@ -1,7 +1,9 @@
 .github:before,
 .linkedin:before,
 .twitter:before,
-.medium:before {
+.medium:before,
+.sun:before,
+.moon:before {
   font-family: var(--font-fontello);
   font-style: normal;
   font-weight: normal;
@@ -18,6 +20,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.sun:before,
+.moon:before {
+  height: 24px;
+  width: 24px;
+  line-height: 24px;
+  font-size: 1.4rem;
+}
+
 .github:before {
   content: "\f09b";
 }
@@ -32,4 +42,14 @@
 
 .medium:before {
   content: "\f23a";
+}
+
+.sun:before {
+  color: var(--primary-color);
+  content: '\e801';
+}
+
+.moon:before {
+  color: var(--secondary-color);
+  content: '\e800';
 }

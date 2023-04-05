@@ -1,5 +1,12 @@
 import { ChangeEvent, useState, useEffect, useCallback } from 'react';
+import localFont from 'next/font/local';
+import icon from '@/styles/icon.module.css';
 import styles from '@/styles/toggle.module.css';
+
+const fontello = localFont({
+  src: '../fonts/fontello.woff2',
+  variable: '--font-fontello'
+});
 
 interface ToggleEvent extends ChangeEvent<HTMLInputElement> { }
 
@@ -37,6 +44,8 @@ export default function Toggle() {
     <label className={styles.switch}>
       <input type="checkbox" checked={checked} onChange={toggleTheme} />
       <span className={styles.slider}></span>
+      <i className={`${fontello.variable} ${icon.sun} ${styles.icon__sun}`}></i>
+      <i className={`${fontello.variable} ${icon.moon} ${styles.icon__moon}`}></i>
     </label>
   );
 }

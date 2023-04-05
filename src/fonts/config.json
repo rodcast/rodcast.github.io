@@ -29,6 +29,18 @@
       "css": "medium",
       "code": 62010,
       "src": "fontawesome"
+    },
+    {
+      "uid": "c2152732d525871cf35345955854f711",
+      "css": "moon",
+      "code": 59392,
+      "src": "iconic"
+    },
+    {
+      "uid": "48050e07077b01021f7fbdbbec8f7de7",
+      "css": "sun",
+      "code": 59393,
+      "src": "iconic"
     }
   ]
 }
