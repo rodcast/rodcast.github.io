@@ -7,6 +7,7 @@
   font-size: 400%;
   font-weight: 600;
   line-height: 100%;
+  letter-spacing: -0.2rem;
   color: var(--secondary-color);
 }
 
@@ -26,5 +27,11 @@
   50% {
     color: var(--primary-color);
     background-color: var(--secondary-color);
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .logo {
+    font-size: 360%;
   }
 }
