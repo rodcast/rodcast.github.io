@@ -45,7 +45,6 @@ export default function GitHub({ data }: IGitHubApi) {
   };
 
   const response: Array<IGitHub> = normalizeGitHub(dataSWR);
-  console.log(response);
 
   return (
     <article className={styles.content}>

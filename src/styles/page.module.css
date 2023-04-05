@@ -6,9 +6,19 @@
 
 .main {
   display: grid;
-  grid-gap: 10px;
-  grid-template-columns: 320px auto;
+  grid-gap: 2em;
+  grid-template-columns: 280px auto;
   grid-template-areas: "sidebar article";
   margin: 1em 0;
   overflow: hidden;
+}
+
+@media only screen and (max-width: 1024px) {
+  .main {
+    grid-gap: 4em;
+    grid-template-columns: auto;
+    grid-template-areas:
+      "sidebar"
+      "article";
+  }
 }

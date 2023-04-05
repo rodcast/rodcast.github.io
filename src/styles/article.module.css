@@ -1,10 +1,11 @@
 .content {
   grid-area: article;
   position: relative;
+  margin-bottom: 4em;
 }
 
-.content {
-  margin-bottom: 4em;
+.content:last-child {
+  margin-bottom: 0;
 }
 
 .title {
