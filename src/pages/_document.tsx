@@ -45,7 +45,7 @@ const metadata = {
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en" dir="ltr" itemScope itemType="http://schema.org/Person">
+      <Html lang="en" dir="ltr" itemScope itemType="http://schema.org/Person" data-theme="light">
         <Head>
           <meta charSet="utf-8" />
           <meta name="generator" content={metadata.generator} />

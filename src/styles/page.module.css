@@ -1,7 +1,8 @@
 .container {
-  max-width: var(--max-width);
+  position: relative;
   margin: 0 auto;
   padding: 1em;
+  max-width: var(--max-width);
 }
 
 .main {
@@ -10,7 +11,6 @@
   grid-template-columns: 280px auto;
   grid-template-areas: "sidebar article";
   margin: 1em 0;
-  overflow: hidden;
 }
 
 @media only screen and (max-width: 1024px) {

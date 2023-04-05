@@ -1,0 +1,47 @@
+.switch {
+  position: absolute;
+  top: 38px;
+  right: 0;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  z-index: 1;
+}
+
+.switch input[type="checkbox"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--contrast-color);
+  border-radius: 34px;
+  transition: background-color 0.2s;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+input[type="checkbox"]:checked + .slider {
+  background-color: var(--secondary-color);
+}
+
+input[type="checkbox"]:checked + .slider::before {
+  transform: translateX(26px);
+}
