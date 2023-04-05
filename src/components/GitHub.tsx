@@ -5,6 +5,7 @@ import { GITHUB_API } from '@/constants/paths';
 import { IGitHubApi, IGitHub } from '@/interfaces/index';
 import { normalizeGitHub } from '@/utils/index';
 import Skeleton from './Skeleton';
+import { fetchData } from '@/utils/fetch';
 import styles from '@/styles/article.module.css';
 import stylesGithub from '@/styles/github.module.css';
 
@@ -32,14 +33,12 @@ function SkeletonGitHub() {
 
 export default function GitHub({ data }: IGitHubApi) {
   const { data: dataSWR, error, isLoading } = useSWR(GITHUB_API,
-    (...args) => fetch(...args).then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        throw new Error('There is an error in GitHub API.');
-      }
-    }
-    ), { fallbackData: data });
+    (api) => fetchData(api, 'There is an error in Github API.'),
+    {
+      revalidateOnFocus: false,
+      shouldRetryOnError: false,
+      fallbackData: data
+    });
 
   if (isLoading) {
     return <SkeletonGitHub />;

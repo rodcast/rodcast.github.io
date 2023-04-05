@@ -5,6 +5,7 @@ import { MEDIUM_API } from '@/constants/paths';
 import { IMedium, IMediumApi } from '@/interfaces/index';
 import { normalizeMedium } from '@/utils/index';
 import Skeleton from './Skeleton';
+import { fetchData } from '@/utils/fetch';
 import styles from '@/styles/article.module.css';
 import stylesMedium from '@/styles/github.module.css';
 
@@ -32,14 +33,12 @@ function SkeletonMedium() {
 
 export default function Medium({ data }: IMediumApi) {
   const { data: dataSWR, error, isLoading } = useSWR(MEDIUM_API,
-    (...args) => fetch(...args).then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        throw new Error('There is an error in Medium API.');
-      }
-    }
-    ), { fallbackData: data });
+    (api) => fetchData(api, 'There is an error in Medium API.'),
+    {
+      revalidateOnFocus: false,
+      shouldRetryOnError: false,
+      fallbackData: data
+    });
 
   if (isLoading) {
     return <SkeletonMedium />;

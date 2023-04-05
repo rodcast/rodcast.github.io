@@ -15,10 +15,6 @@
   border-bottom: 1px dotted var(--secondary-color);
 }
 
-.list {
-  font-size: var(--text-sm);
-}
-
 .item {
   margin-bottom: 2em;
 }
@@ -29,13 +25,13 @@
 
 .subtitle {
   display: block;
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   font-weight: 600;
 }
 
 .description {
   display: block;
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
   line-height: 150%;
 }
 
