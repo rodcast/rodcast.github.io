@@ -7,7 +7,7 @@ import { normalizeMedium } from '@/utils/index';
 import Skeleton from './Skeleton';
 import { fetchData } from '@/utils/fetch';
 import styles from '@/styles/article.module.css';
-import stylesMedium from '@/styles/github.module.css';
+import stylesMedium from '@/styles/medium.module.css';
 
 export async function getStaticProps() {
   const response = await fetch(MEDIUM_API);
