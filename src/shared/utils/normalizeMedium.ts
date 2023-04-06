@@ -5,7 +5,7 @@ export const normalizeMedium = (data: IMediumApi): Array<IMedium> => {
     const { guid, title, link, pubDate, content } = article;
 
     const html = new DOMParser().parseFromString(content, "text/html");
-    const textContent = html.querySelector('p')?.textContent;
+    const textContent = html.querySelector('h4')?.textContent;
 
     return {
       guid,
