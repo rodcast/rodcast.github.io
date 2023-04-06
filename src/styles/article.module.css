@@ -1,33 +1,33 @@
 .content {
   grid-area: article;
   position: relative;
-  margin-bottom: 4em;
+  margin-bottom: var(--space-x-4);
 }
 
 .content:last-child {
-  margin-bottom: 0;
+  margin-bottom: var(--space-x-0);
 }
 
 .title {
-  margin-bottom: 0.5em;
-  padding-bottom: 0.5em;
+  margin-bottom: var(--space-x-0_5);
+  padding-bottom: var(--space-x-0_5);
   font-size: var(--text-2xl);
-  font-weight: 600;
+  font-weight: var(--font-semibold);
   border-bottom: 1px dotted var(--secondary-color);
 }
 
 .item {
-  margin-bottom: 2em;
+  margin-bottom: var(--space-x-2);
 }
 
 .item:last-child {
-  margin-bottom: 0;
+  margin-bottom: var(--space-x-0);
 }
 
 .subtitle {
   display: block;
   font-size: var(--text-base);
-  font-weight: 600;
+  font-weight: var(--font-semibold);
 }
 
 .description {
@@ -39,11 +39,12 @@
 .url {
   color: var(--secondary-color);
   text-decoration: underline;
-  background: var(--highlight-color);
-  transition: all 0.2s ease-in-out;
+  background-color: var(--highlight-color);
+  transition: all 0.4s;
 }
 
 .url:hover,
 .url:focus {
-  background: var(--primary-color);
+  background-color: var(--primary-color);
+  text-decoration: none;
 }

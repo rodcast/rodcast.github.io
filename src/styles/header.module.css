@@ -5,7 +5,7 @@
 .logo {
   display: inline-block;
   font-size: 400%;
-  font-weight: 600;
+  font-weight: var(--font-semibold);
   line-height: 100%;
   letter-spacing: -0.2rem;
   color: var(--secondary-color);
@@ -14,7 +14,7 @@
 .logo:hover {
   transform: rotateX(360deg);
   animation: fadeInOutBackground 0.4s ease-in-out;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s;
   backface-visibility: hidden;
 }
 

@@ -7,19 +7,19 @@
   display: block;
   width: 150px;
   height: 150px;
-  margin: 0 auto 1em;
+  margin: 0 auto var(--space-x-1);
   border: 5px solid var(--tertiary-color);
   border-radius: 50%;
 }
 
 .name {
-  margin-bottom: 0.5em;
+  margin-bottom: var(--space-x-0_5);
   font-size: var(--text-lg);
-  font-weight: 600;
+  font-weight: var(--font-semibold);
 }
 
 .description {
-  margin-bottom: 1em;
+  margin-bottom: var(--space-x-2);
   font-size: var(--text-sm);
   font-weight: 400;
 }
@@ -31,16 +31,17 @@
 }
 
 .item {
-  margin-right: 0.5em;
+  margin-right: var(--space-x-0_5);
 }
 
 .list > .item:last-child {
-  margin-right: 0;
+  margin-right: var(--space-x-0);
 }
 
 .url {
   display: inline-block;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s;
+  color: var(--secondary-color);
   background-color: var(--tertiary-color);
   border-radius: 50%;
   width: 40px;

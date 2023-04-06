@@ -38,7 +38,7 @@ export default function Toggle() {
   }, [checkTheme]);
 
   return (
-    <label className={styles.switch}>
+    <label className={styles.switch} title="Toggle between Light and Dark mode">
       <input type="checkbox" checked={checked} onChange={toggleTheme} />
       <span className={styles.slider} />
       <i className={`${fontello.variable} ${icon.sun} ${styles.icon__sun}`} />

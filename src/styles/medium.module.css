@@ -1,6 +1,6 @@
 .time {
   display: block;
-  margin-bottom: 0.5em;
-  font-size: var(--text-base);
+  margin-bottom: var(--space-x-0_5);
+  font-size: var(--text-sm);
   color: var(--contrast-color);
 }

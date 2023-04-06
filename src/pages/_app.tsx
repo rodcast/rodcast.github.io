@@ -7,6 +7,7 @@ import '@/styles/globals.css';
 const title = 'Rodrigo Castilho (RODCAST)';
 
 const openSans = Open_Sans({
+  weight: ['400', '600'],
   subsets: ['latin'],
 });
 

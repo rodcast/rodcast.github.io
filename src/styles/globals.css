@@ -5,12 +5,19 @@
   --tertiary-color: #eef0f2;
   --contrast-color: #aaa;
   --highlight-color: #ffffe0;
-  --max-width: 1100px;
+  --max-width: 1024px;
   --text-sm: 0.875rem;
   --text-base: 1rem;
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
   --text-2xl: 1.5rem;
+  --font-normal: 400;
+  --font-semibold: 600;
+  --space-x-0: 0;
+  --space-x-0_5: 0.5rem;
+  --space-x-1: 1rem;
+  --space-x-2: 2rem;
+  --space-x-4: 4rem;
 }
 
 html[data-theme="dark"] {
@@ -28,8 +35,8 @@ html[data-theme="dark"] {
 
 * {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+  padding: var(--space-x-0);
+  margin: var(--space-x-0);
 }
 
 html,

@@ -26,7 +26,7 @@
   transition: background-color 0.2s;
 }
 
-.slider::before {
+.slider:before {
   position: absolute;
   content: "";
   height: 26px;
@@ -43,7 +43,7 @@ input[type="checkbox"]:checked + .slider {
   background-color: var(--secondary-color);
 }
 
-input[type="checkbox"]:checked + .slider::before {
+input[type="checkbox"]:checked + .slider:before {
   transform: translateX(34px);
 }
 

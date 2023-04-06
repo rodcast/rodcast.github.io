@@ -1,21 +1,21 @@
 .container {
   position: relative;
   margin: 0 auto;
-  padding: 1em;
+  padding: var(--space-x-2);
   max-width: var(--max-width);
 }
 
 .main {
   display: grid;
-  grid-gap: 2em;
+  grid-gap: var(--space-x-2);
   grid-template-columns: 280px auto;
   grid-template-areas: "sidebar article";
-  margin: 1em 0;
+  margin: var(--space-x-2) var(--space-x-0) 0;
 }
 
 @media only screen and (max-width: 1024px) {
   .main {
-    grid-gap: 4em;
+    grid-gap: var(--space-x-4);
     grid-template-columns: auto;
     grid-template-areas:
       "sidebar"
