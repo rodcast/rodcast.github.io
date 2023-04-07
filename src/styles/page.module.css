@@ -14,6 +14,10 @@
 }
 
 @media only screen and (max-width: 1024px) {
+  .container {
+    padding: var(--space-x-1);
+  }
+
   .main {
     grid-gap: var(--space-x-4);
     grid-template-columns: auto;
