@@ -1,6 +1,6 @@
 .switch {
   position: absolute;
-  top: 46px;
+  top: 50px;
   right: var(--space-x-2);
   z-index: 0;
   display: inline-block;
@@ -64,7 +64,7 @@ input[type="checkbox"]:checked + .slider:before {
 
 @media only screen and (max-width: 1024px) {
   .switch {
-    top: 28px;
+    top: 32px;
     right: var(--space-x-1);
   }
 }
