@@ -33,7 +33,7 @@ function SkeletonGitHub() {
 
 export default function GitHub({ data }: IGitHubApi) {
   const { data: dataSWR, error, isLoading } = useSWR(GITHUB_API,
-    (api) => fetchData(api, 'There is an error in Github API.'),
+    (api) => fetchData(api),
     {
       revalidateOnFocus: false,
       shouldRetryOnError: false,

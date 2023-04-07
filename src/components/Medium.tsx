@@ -33,7 +33,7 @@ function SkeletonMedium() {
 
 export default function Medium({ data }: IMediumApi) {
   const { data: dataSWR, error, isLoading } = useSWR(MEDIUM_API,
-    (api) => fetchData(api, 'There is an error in Medium API.'),
+    (api) => fetchData(api),
     {
       revalidateOnFocus: false,
       shouldRetryOnError: false,
@@ -44,7 +44,7 @@ export default function Medium({ data }: IMediumApi) {
     return <SkeletonMedium />;
   }
 
-  const response: Array<IMedium> = normalizeMedium(dataSWR.items);
+  const response: Array<IMedium> = normalizeMedium(dataSWR?.items);
 
   return (
     <article className={styles.content}>
