@@ -1,10 +1,10 @@
 .animation {
+  position: relative;
   display: inline-block;
   width: 100%;
   height: var(--space-x-2);
-  position: relative;
-  overflow: hidden;
   background-color: #e3e3e3;
+  overflow: hidden;
 }
 
 .animation:after {
@@ -13,10 +13,10 @@
   right: 0;
   bottom: 0;
   left: 0;
-  transform: translateX(-100%);
   background-image: linear-gradient(90deg, #ffffff00 0, #ffffff33 20%, #ffffff99 60%, #ffffff00);
   animation: pulse 2s infinite;
   content: '';
+  transform: translateX(-100%);
 }
 
 @keyframes pulse {

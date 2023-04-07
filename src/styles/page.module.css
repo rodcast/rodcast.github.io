@@ -1,8 +1,8 @@
 .container {
   position: relative;
+  max-width: var(--max-width);
   margin: 0 auto;
   padding: var(--space-x-2);
-  max-width: var(--max-width);
 }
 
 .main {

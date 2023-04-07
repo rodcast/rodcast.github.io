@@ -4,18 +4,18 @@
 
 .logo {
   display: inline-block;
+  color: var(--secondary-color);
   font-size: 400%;
   font-weight: var(--font-semibold);
-  line-height: 100%;
   letter-spacing: -0.2rem;
-  color: var(--secondary-color);
+  line-height: 100%;
 }
 
 .logo:hover {
-  transform: rotateX(360deg);
   animation: fadeInOutBackground 0.4s ease-in-out;
-  transition: all 0.2s;
   backface-visibility: hidden;
+  transform: rotateX(360deg);
+  transition: all 0.2s;
 }
 
 @keyframes fadeInOutBackground {

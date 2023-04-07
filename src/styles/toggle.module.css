@@ -2,10 +2,10 @@
   position: absolute;
   top: 46px;
   right: 1rem;
+  z-index: 0;
   display: inline-block;
   width: 68px;
   height: 34px;
-  z-index: 0;
 }
 
 .switch input[type="checkbox"] {
@@ -16,27 +16,27 @@
 
 .slider {
   position: absolute;
-  cursor: pointer;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
+  left: 0;
   background-color: var(--contrast-color);
   border-radius: 34px;
+  cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .slider:before {
   position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
   bottom: 4px;
+  left: 4px;
+  z-index: 1;
+  width: 26px;
+  height: 26px;
   background-color: var(--primary-color);
   border-radius: 50%;
+  content: "";
   transition: transform 0.2s;
-  z-index: 1;
 }
 
 input[type="checkbox"]:checked + .slider {

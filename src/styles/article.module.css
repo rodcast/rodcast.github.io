@@ -11,9 +11,9 @@
 .title {
   margin-bottom: var(--space-x-0_5);
   padding-bottom: var(--space-x-0_5);
+  border-bottom: 1px dotted var(--secondary-color);
   font-size: var(--text-2xl);
   font-weight: var(--font-semibold);
-  border-bottom: 1px dotted var(--secondary-color);
 }
 
 .item {
