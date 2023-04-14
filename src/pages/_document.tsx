@@ -45,7 +45,7 @@ const metadata = {
 
 class MyDocument extends Document {
   render() {
-    console.log(1);
+    console.log(2);
     return (
       <Html lang="en" dir="ltr" itemScope itemType="http://schema.org/Person" data-theme="light">
         <Head>
