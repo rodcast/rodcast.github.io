@@ -20,6 +20,7 @@ const metadata = {
     url: 'https://rodrigocastilho.com/',
   },
   twitter: {
+    card: 'summary',
     title: 'Rodrigo Castilho (RODCAST)',
     description: 'Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.',
     image: '/rodrigo-castilho-rodcast_card.jpg',
@@ -63,6 +64,7 @@ class MyDocument extends Document {
           <meta property="og:image" content={metadata.openGraph.image} />
           <meta property="og:url" content={metadata.openGraph.url} />
 
+          <meta name="twitter:card" content={metadata.twitter.card} />
           <meta name="twitter:title" content={metadata.twitter.title} />
           <meta name="twitter:description" content={metadata.twitter.description} />
           <meta name="twitter:image" content={metadata.twitter.image} />
