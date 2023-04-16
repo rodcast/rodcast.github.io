@@ -48,6 +48,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en" dir="ltr" itemScope itemType="http://schema.org/Person" data-theme="light">
         <Head>
+          <meta name="theme-color" content="#1c1c1c" />
           <meta name="title" content={metadata.title} />
           <meta name="description" content={metadata.description} />
           <meta name="keywords" content={metadata.keywords.join(', ')} />
