@@ -3,5 +3,7 @@
   "short_name": "Rodrigo Castilho (RODCAST)",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#fff"
+  "background_color": "#fff",
+  "theme_color": "#1c1c1c",
+  "description": "Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym."
 }
