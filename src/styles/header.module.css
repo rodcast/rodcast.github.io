@@ -18,6 +18,10 @@
   transition: all 0.2s;
 }
 
+.logo > span {
+  display: none;
+}
+
 @keyframes fadeInOutBackground {
   0%,
   100% {
