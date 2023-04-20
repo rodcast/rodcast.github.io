@@ -4,8 +4,8 @@ import useSWR from 'swr';
 import { MEDIUM_API } from '@/constants/paths';
 import { IMedium, IMediumApi } from '@/interfaces/index';
 import { normalizeMedium } from '@/utils/index';
-import Skeleton from './Skeleton';
 import { fetchData } from '@/utils/fetch';
+import MediumSkeleton from './MediumSkeleton';
 import styles from '@/styles/article.module.css';
 import stylesMedium from '@/styles/medium.module.css';
 
@@ -20,20 +20,9 @@ export async function getStaticProps() {
   };
 }
 
-function SkeletonMedium() {
-  return (
-    <article className={styles.content}>
-      <header className={styles.title}>My articles on Medium</header>
-      <Skeleton width="100%" height="50px" marginBottom="var(--space-x-2)" />
-      <Skeleton width="100%" height="50px" marginBottom="var(--space-x-2)" />
-      <Skeleton width="100%" height="50px" marginBottom="var(--space-x-2)" />
-    </article>
-  );
-}
-
 export default function Medium({ data }: IMediumApi) {
   const { data: dataSWR, error, isLoading } = useSWR(MEDIUM_API,
-    (api) => fetchData(api),
+    (api: string) => fetchData(api),
     {
       revalidateOnFocus: false,
       shouldRetryOnError: false,
@@ -41,7 +30,7 @@ export default function Medium({ data }: IMediumApi) {
     });
 
   if (isLoading) {
-    return <SkeletonMedium />;
+    return <MediumSkeleton />;
   }
 
   const response: Array<IMedium> = normalizeMedium(dataSWR?.items);

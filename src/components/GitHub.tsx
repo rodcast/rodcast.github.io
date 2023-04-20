@@ -4,8 +4,8 @@ import useSWR from 'swr';
 import { GITHUB_API } from '@/constants/paths';
 import { IGitHubApi, IGitHub } from '@/interfaces/index';
 import { normalizeGitHub } from '@/utils/index';
-import Skeleton from './Skeleton';
 import { fetchData } from '@/utils/fetch';
+import GitHubSkeleton from './GitHubSkeleton';
 import styles from '@/styles/article.module.css';
 import stylesGithub from '@/styles/github.module.css';
 
@@ -20,20 +20,9 @@ export async function getStaticProps() {
   };
 }
 
-function SkeletonGitHub() {
-  return (
-    <article className={styles.content}>
-      <header className={styles.title}>My repositories on GitHub</header>
-      <Skeleton width="100%" height="50px" marginBottom="var(--space-x-2)" />
-      <Skeleton width="100%" height="50px" marginBottom="var(--space-x-2)" />
-      <Skeleton width="100%" height="50px" marginBottom="var(--space-x-2)" />
-    </article>
-  );
-}
-
 export default function GitHub({ data }: IGitHubApi) {
   const { data: dataSWR, error, isLoading } = useSWR(GITHUB_API,
-    (api) => fetchData(api),
+    (api: string) => fetchData(api),
     {
       revalidateOnFocus: false,
       shouldRetryOnError: false,
@@ -41,7 +30,7 @@ export default function GitHub({ data }: IGitHubApi) {
     });
 
   if (isLoading) {
-    return <SkeletonGitHub />;
+    return <GitHubSkeleton />;
   };
 
   const response: Array<IGitHub> = normalizeGitHub(dataSWR);
