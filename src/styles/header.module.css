@@ -4,11 +4,13 @@
 
 .logo {
   display: inline-block;
-  color: var(--secondary-color);
+  color: transparent;
   font-size: 400%;
   font-weight: var(--font-semibold);
   letter-spacing: -0.2rem;
   line-height: 100%;
+  background-image: linear-gradient(to right, var(--secondary-color), var(--contrast-color));
+  -webkit-background-clip: text;
 }
 
 .logo:hover {
@@ -30,7 +32,7 @@
 
   50% {
     color: var(--primary-color);
-    background-color: var(--secondary-color);
+    background: var(--secondary-color);
   }
 }
 
