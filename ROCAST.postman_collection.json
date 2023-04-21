@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "6a8c9fc8-4a3b-4dcd-b316-da578ee08f0f",
+		"name": "ROCAST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "122759"
+	},
+	"item": [
+		{
+			"name": "Github - Repos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.github.com/users/rodcast/repos?sort=updated",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"users",
+						"rodcast",
+						"repos"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "updated"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Medium - Feed",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://medium.com/feed/@rodcast",
+					"protocol": "https",
+					"host": [
+						"medium",
+						"com"
+					],
+					"path": [
+						"feed",
+						"@rodcast"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Medium - rss2json",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2F%40rodcast",
+					"protocol": "https",
+					"host": [
+						"api",
+						"rss2json",
+						"com"
+					],
+					"path": [
+						"v1",
+						"api.json"
+					],
+					"query": [
+						{
+							"key": "rss_url",
+							"value": "https%3A%2F%2Fmedium.com%2Ffeed%2F%40rodcast"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
