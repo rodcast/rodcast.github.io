@@ -84,7 +84,7 @@ class MyDocument extends Document {
           )}
           <link rel="icon" href="/favicon.ico" />
           <link rel="manifest" href="/manifest.json" />
-          <link rel="canonical" href="http://rodrigocastilho.com/" />
+          <link rel="canonical" href="//rodrigocastilho.com/" />
         </Head>
         <body>
           <Main />
