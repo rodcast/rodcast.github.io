@@ -64,7 +64,7 @@ input[type="checkbox"]:checked + .slider:before {
 
 @media (max-width: 768px) {
   .switch {
-    top: 32px;
+    top: 28px;
     right: var(--space-x-1);
   }
 }

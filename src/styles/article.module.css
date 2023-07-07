@@ -38,13 +38,11 @@
 
 .url {
   color: var(--secondary-color);
-  text-decoration: underline;
-  background-color: var(--highlight-color);
+  box-shadow: 0 1px var(--secondary-color);
   transition: all 0.4s;
 }
 
 .url:hover,
 .url:focus {
-  background-color: var(--primary-color);
-  text-decoration: none;
+  box-shadow: none;
 }
