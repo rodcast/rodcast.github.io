@@ -11,13 +11,13 @@
   line-height: 100%;
   background-image: linear-gradient(to right, var(--secondary-color), var(--contrast-color));
   -webkit-background-clip: text;
+  transition: var(--transition-200);
 }
 
 .logo:hover {
   animation: fadeInOutBackground 0.4s ease-in-out;
   backface-visibility: hidden;
   transform: rotateX(360deg);
-  transition: all 0.2s;
 }
 
 .logo > span {

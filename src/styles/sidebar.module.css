@@ -10,18 +10,21 @@
   margin: 0 auto var(--space-x-1);
   border: 5px solid var(--tertiary-color);
   border-radius: 50%;
+  transition: var(--transition-200);
 }
 
 .name {
   margin-bottom: var(--space-x-0_5);
   font-size: var(--text-lg);
   font-weight: var(--font-semibold);
+  transition: var(--transition-200);
 }
 
 .description {
   margin-bottom: var(--space-x-2);
   font-size: var(--text-sm);
   font-weight: 400;
+  transition: var(--transition-200);
 }
 
 .list {
@@ -46,7 +49,7 @@
   background-color: var(--tertiary-color);
   border-radius: 50%;
   line-height: 40px;
-  transition: all 0.2s;
+  transition: var(--transition-200);
 }
 
 .url:hover,

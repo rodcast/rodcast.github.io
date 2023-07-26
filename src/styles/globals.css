@@ -17,6 +17,7 @@
   --space-x-1: 1rem;
   --space-x-2: 2rem;
   --space-x-4: 4rem;
+  --transition-200: all 0.2s;
 }
 
 html[data-theme="dark"] {

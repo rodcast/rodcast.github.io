@@ -3,4 +3,5 @@
   margin-bottom: var(--space-x-0_5);
   color: var(--contrast-color);
   font-size: var(--text-sm);
+  transition: var(--transition-200);
 }
