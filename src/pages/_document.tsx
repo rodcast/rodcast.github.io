@@ -4,7 +4,7 @@ const metadata = {
   title: 'Rodrigo Castilho (RODCAST)',
   description: 'Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.',
   keywords: ['Next.js', 'React', 'JavaScript', 'TypeScript', 'CSS', 'HTML', 'GitHub', 'Medium'],
-  authors: [{ name: 'Rodrigo Castilho', url: 'http://rodrigocastilho.com' }],
+  authors: [{ name: 'Rodrigo Castilho', url: 'https://www.rodrigocastilho.com/' }],
   creator: 'Rodrigo Castilho',
   publisher: 'Rodrigo Castilho',
   formatDetection: {
@@ -16,14 +16,14 @@ const metadata = {
     type: 'profile',
     title: 'Rodrigo Castilho (RODCAST)',
     description: 'Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.',
-    image: 'http://rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg',
-    url: 'http://rodrigocastilho.com/',
+    image: 'https://www.rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg',
+    url: 'https://www.rodrigocastilho.com/',
   },
   twitter: {
     card: 'summary',
     title: 'Rodrigo Castilho (RODCAST)',
     description: 'Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.',
-    image: 'http://rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg',
+    image: 'https://www.rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg',
     site: '@rodcast',
     creator: '@rodcast',
   },
@@ -84,7 +84,7 @@ class MyDocument extends Document {
           )}
           <link rel="icon" href="/favicon.ico" />
           <link rel="manifest" href="/manifest.json" />
-          <link rel="canonical" href="//rodrigocastilho.com/" />
+          <link rel="canonical" href="https://www.rodrigocastilho.com/" />
         </Head>
         <body>
           <Main />
