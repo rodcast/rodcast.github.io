@@ -5,10 +5,12 @@ import MediumSkeleton from './MediumSkeleton';
 
 const GitHub = dynamic(() => import('./GitHub'), {
   loading: () => <GitHubSkeleton />,
+  ssr: false,
 });
 
 const Medium = dynamic(() => import('./Medium'), {
   loading: () => <MediumSkeleton />,
+  ssr: false,
 });
 
 export default function Article() {
