@@ -10,9 +10,7 @@ import Toggle from '@/components/Toggle';
 
 import Sidebar from '@/components/Sidebar';
 
-const Article = dynamic(() => import('@/components/Article'), {
-  ssr: false
-});
+const Article = dynamic(() => import('@/components/Article'));
 
 Page.getInitialProps = async () => {
   const dataGitHub = await fetchData(GITHUB_API);
