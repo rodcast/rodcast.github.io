@@ -1,25 +1,43 @@
 import dynamic from 'next/dynamic';
-import Toggle from '@/components/Toggle';
-import Article from '@/components/Article';
+import { fetchData } from '@/utils/fetch';
+import { GITHUB_API, MEDIUM_API } from '@/constants/paths';
+
 import styles from '@/styles/page.module.css';
 
-const Header = dynamic(() => import('@/components/Header'), {
-  ssr: false,
-});
+const Header = dynamic(() => import('@/components/Header'));
 
-const Sidebar = dynamic(() => import('@/components/Sidebar'), {
-  ssr: false,
-});
+const Toggle = dynamic(() => import('@/components/Toggle'));
 
-export default function Home() {
+const Sidebar = dynamic(() => import('@/components/Sidebar'));
+
+const Article = dynamic(() => import('@/components/Article'));
+
+export default function Home({ dataGitHub, dataMedium }) {
   return (
     <div className={styles.container}>
       <Header />
       <Toggle />
+
       <div className={styles.main}>
         <Sidebar />
-        <Article />
+
+        <Article
+          dataGitHub={dataGitHub}
+          dataMedium={dataMedium}
+        />
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  const dataGitHub = await fetchData(GITHUB_API);
+  const dataMedium = await fetchData(MEDIUM_API);
+
+  return {
+    props: {
+      dataGitHub,
+      dataMedium,
+    },
+  };
 }

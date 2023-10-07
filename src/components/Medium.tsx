@@ -1,45 +1,17 @@
-"use client";
 import { Fragment } from 'react';
-import useSWR from 'swr';
-import { MEDIUM_API } from '@/constants/paths';
-import { IMedium, IMediumApi } from '@/interfaces/index';
+import { IMedium } from '@/interfaces/index';
 import { normalizeMedium } from '@/utils/index';
-import { fetchData } from '@/utils/fetch';
-import MediumSkeleton from './MediumSkeleton';
 import styles from '@/styles/article.module.css';
 import stylesMedium from '@/styles/medium.module.css';
 
-export async function getStaticProps() {
-  const response = await fetch(MEDIUM_API);
-  const data = await response.json();
-
-  return {
-    props: {
-      data,
-    },
-  };
-}
-
-export default function Medium({ data }: IMediumApi) {
-  const { data: dataSWR, error, isLoading } = useSWR(MEDIUM_API,
-    (api: string) => fetchData(api),
-    {
-      revalidateOnFocus: false,
-      shouldRetryOnError: false,
-      fallbackData: data
-    });
-
-  if (isLoading) {
-    return <MediumSkeleton />;
-  }
-
-  const response: Array<IMedium> = normalizeMedium(dataSWR?.items);
+export default function Medium({ data }: any) {
+  const response: Array<IMedium> = normalizeMedium(data.items);
 
   return (
     <article className={styles.content}>
       <header className={styles.title}>My articles on Medium</header>
 
-      {error && (
+      {!Array.isArray(response) && (
         <span className={styles.description}>
           There is an error in Medium API.
         </span>

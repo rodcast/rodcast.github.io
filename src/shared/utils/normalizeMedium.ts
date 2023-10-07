@@ -4,15 +4,15 @@ export const normalizeMedium = (data: IMediumApi): Array<IMedium> => {
   return data?.map((article: IMedium) => {
     const { guid, title, link, pubDate, content } = article;
 
-    const html = new DOMParser().parseFromString(content, "text/html");
-    const textContent = html.querySelector('h4')?.textContent;
+    const h4Tag = content?.match(/<h4>(.*?)<\/h4>/) ?? [];
+    const descriptionContent = h4Tag[1] ?? '';
 
     return {
       guid,
       title,
       link,
       pubDate,
-      content: textContent
+      content: descriptionContent
     };
-  });
+  }).filter(Boolean);
 };

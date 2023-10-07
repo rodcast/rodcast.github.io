@@ -5,19 +5,17 @@ import MediumSkeleton from './MediumSkeleton';
 
 const GitHub = dynamic(() => import('./GitHub'), {
   loading: () => <GitHubSkeleton />,
-  ssr: false,
 });
 
 const Medium = dynamic(() => import('./Medium'), {
   loading: () => <MediumSkeleton />,
-  ssr: false,
 });
 
-export default function Article() {
+export default function Article({ dataGitHub, dataMedium }) {
   return (
     <main className={styles.content}>
-      <GitHub />
-      <Medium />
+      <GitHub data={dataGitHub} />
+      <Medium data={dataMedium} />
     </main>
   );
 }

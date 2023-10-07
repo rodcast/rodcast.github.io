@@ -1,45 +1,17 @@
-"use client";
 import { Fragment } from 'react';
-import useSWR from 'swr';
-import { GITHUB_API } from '@/constants/paths';
-import { IGitHubApi, IGitHub } from '@/interfaces/index';
+import { IGitHub } from '@/interfaces/index';
 import { normalizeGitHub } from '@/utils/index';
-import { fetchData } from '@/utils/fetch';
-import GitHubSkeleton from './GitHubSkeleton';
 import styles from '@/styles/article.module.css';
 import stylesGithub from '@/styles/github.module.css';
 
-export async function getStaticProps() {
-  const response = await fetch(GITHUB_API);
-  const data = await response.json();
-
-  return {
-    props: {
-      data,
-    },
-  };
-}
-
-export default function GitHub({ data }: IGitHubApi) {
-  const { data: dataSWR, error, isLoading } = useSWR(GITHUB_API,
-    (api: string) => fetchData(api),
-    {
-      revalidateOnFocus: false,
-      shouldRetryOnError: false,
-      fallbackData: data
-    });
-
-  if (isLoading) {
-    return <GitHubSkeleton />;
-  };
-
-  const response: Array<IGitHub> = normalizeGitHub(dataSWR);
+export default function GitHub({ data }: any) {
+  const response: Array<IGitHub> = normalizeGitHub(data);
 
   return (
     <article className={styles.content}>
       <header className={styles.title}>My repositories on GitHub</header>
 
-      {error && (
+      {!Array.isArray(response) && (
         <span className={styles.description}>
           There is an error in GitHub API.
         </span>
@@ -56,7 +28,7 @@ export default function GitHub({ data }: IGitHubApi) {
             }).format(new Date(updated_at));
 
             return (
-              <Fragment key={id}>
+              <Fragment key={String(id)}>
                 <li className={styles.item}>
                   <time className={stylesGithub.time} dateTime={dateTime}>{dateTime}</time>
                   <span className={styles.subtitle}>

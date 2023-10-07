@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Script from 'next/script';
+import type { AppProps } from 'next/app';
 import { Inter } from 'next/font/google';
-import { IMyApp } from '@/interfaces/index';
 import '@/styles/globals.css';
 
 const title = 'Rodrigo Castilho (RODCAST)';
@@ -11,7 +11,7 @@ const inter = Inter({
   subsets: ['latin'],
 });
 
-function MyApp({ Component, pageProps }: IMyApp) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
