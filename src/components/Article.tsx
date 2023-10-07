@@ -15,6 +15,7 @@ export default function Article({ dataGitHub, dataMedium }) {
   return (
     <main className={styles.content}>
       <GitHub data={dataGitHub} />
+      <Medium data={dataMedium} />
     </main>
   );
 }
