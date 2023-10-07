@@ -32,7 +32,7 @@ export default function Medium({ data }: any) {
                   <span className={styles.subtitle}>
                     <a href={link} title={title} className={styles.url} rel="external">{title}</a>
                   </span>
-                  <time className={stylesMedium.time} dateTime={dateTime}>{dateTime}</time>
+                  <time className={stylesMedium.time}>{dateTime}</time>
                   <span className={styles.description}>{content}</span>
                 </li>
               </Fragment>

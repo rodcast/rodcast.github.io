@@ -30,7 +30,7 @@ export default function GitHub({ data }: any) {
             return (
               <Fragment key={String(id)}>
                 <li className={styles.item}>
-                  <time className={stylesGithub.time} dateTime={dateTime}>{dateTime}</time>
+                  <time className={stylesGithub.time}>{dateTime}</time>
                   <span className={styles.subtitle}>
                     <a href={html_url} title={name} className={styles.url} rel="external">{name}</a>
                   </span>

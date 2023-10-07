@@ -1,4 +1,4 @@
-import { NextPageContext } from 'next';
+import dynamic from 'next/dynamic';
 import { fetchData } from '@/utils/fetch';
 import { GITHUB_API, MEDIUM_API } from '@/constants/paths';
 
@@ -10,9 +10,11 @@ import Toggle from '@/components/Toggle';
 
 import Sidebar from '@/components/Sidebar';
 
-import Article from '@/components/Article';
+const Article = dynamic(() => import('@/components/Article'), {
+  ssr: false
+});
 
-Page.getInitialProps = async (ctx: NextPageContext) => {
+Page.getInitialProps = async () => {
   const dataGitHub = await fetchData(GITHUB_API);
   const dataMedium = await fetchData(MEDIUM_API);
 
