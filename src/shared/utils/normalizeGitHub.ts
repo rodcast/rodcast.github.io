@@ -2,7 +2,7 @@ import { IGitHubApi, IGitHub } from '@/interfaces/index';
 
 export const normalizeGitHub = (data: IGitHubApi): Array<IGitHub> => {
   return data?.map((repo: IGitHub) => {
-    const { node_id, name, html_url, description, updated_at, private: is_private, fork } = repo;
+    const { node_id, name, html_url, description, private: is_private, fork } = repo;
 
     if (!is_private && !fork) {
       return {
