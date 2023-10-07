@@ -14,7 +14,7 @@ const Medium = dynamic(() => import('./Medium'), {
 export default function Article({ dataGitHub, dataMedium }) {
   return (
     <main className={styles.content}>
-      <Medium data={dataMedium} />
+      <GitHub data={dataGitHub} />
     </main>
   );
 }
