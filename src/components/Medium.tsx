@@ -5,7 +5,7 @@ import styles from '@/styles/article.module.css';
 import stylesMedium from '@/styles/medium.module.css';
 
 export default function Medium({ data }: any) {
-  const response: Array<IMedium> = normalizeMedium(data.items);
+  const response: Array<IMedium> = normalizeMedium(data?.items);
 
   return (
     <article className={styles.content}>

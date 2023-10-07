@@ -1,3 +1,4 @@
+import { NextPageContext } from 'next';
 import dynamic from 'next/dynamic';
 import { fetchData } from '@/utils/fetch';
 import { GITHUB_API, MEDIUM_API } from '@/constants/paths';
@@ -12,7 +13,17 @@ const Sidebar = dynamic(() => import('@/components/Sidebar'));
 
 const Article = dynamic(() => import('@/components/Article'));
 
-export default function Home({ dataGitHub, dataMedium }) {
+Page.getInitialProps = async (ctx: NextPageContext) => {
+  const dataGitHub = await fetchData(GITHUB_API);
+  const dataMedium = await fetchData(MEDIUM_API);
+
+  return {
+    dataGitHub,
+    dataMedium,
+  };
+};
+
+export default function Page({ dataGitHub, dataMedium }) {
   return (
     <div className={styles.container}>
       <Header />
@@ -28,16 +39,4 @@ export default function Home({ dataGitHub, dataMedium }) {
       </div>
     </div>
   );
-}
-
-export async function getServerSideProps() {
-  const dataGitHub = await fetchData(GITHUB_API);
-  const dataMedium = await fetchData(MEDIUM_API);
-
-  return {
-    props: {
-      dataGitHub,
-      dataMedium,
-    },
-  };
 }
