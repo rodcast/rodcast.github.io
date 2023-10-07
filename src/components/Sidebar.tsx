@@ -23,7 +23,7 @@ export default function Sidebar() {
             33vw
           "
         quality={100}
-        priority
+        loading="lazy"
       />
       <h1 className={styles.name} itemProp="name">Rodrigo Castilho <span itemProp="alternateName">(RODCAST)</span></h1>
       <h2 className={styles.description} itemProp="description">
