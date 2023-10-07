@@ -1,15 +1,9 @@
 import dynamic from 'next/dynamic';
 import styles from '@/styles/article.module.css';
-import GitHubSkeleton from './GitHubSkeleton';
-import MediumSkeleton from './MediumSkeleton';
 
-const GitHub = dynamic(() => import('./GitHub'), {
-  loading: () => <GitHubSkeleton />,
-});
+const GitHub = dynamic(() => import('./GitHub'));
 
-const Medium = dynamic(() => import('./Medium'), {
-  loading: () => <MediumSkeleton />,
-});
+const Medium = dynamic(() => import('./Medium'));
 
 export default function Article({ dataGitHub, dataMedium }) {
   return (
