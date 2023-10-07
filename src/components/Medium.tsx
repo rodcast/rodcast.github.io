@@ -2,7 +2,6 @@ import { Fragment } from 'react';
 import { IMedium } from '@/interfaces/index';
 import { normalizeMedium } from '@/utils/index';
 import styles from '@/styles/article.module.css';
-import stylesMedium from '@/styles/medium.module.css';
 
 export default function Medium({ data }: any) {
   const response: Array<IMedium> = normalizeMedium(data?.items);
@@ -32,7 +31,7 @@ export default function Medium({ data }: any) {
                   <span className={styles.subtitle}>
                     <a href={link} title={title} className={styles.url} rel="external">{title}</a>
                   </span>
-                  <time className={stylesMedium.time}>{dateTime}</time>
+                  <time className={styles.time}>{dateTime}</time>
                   <span className={styles.description}>{content}</span>
                 </li>
               </Fragment>
