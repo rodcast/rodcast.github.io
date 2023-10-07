@@ -1,5 +1,5 @@
 export interface IGitHub {
-  id: number;
+  node_id: number;
   name: string;
   html_url: string;
   description: string;

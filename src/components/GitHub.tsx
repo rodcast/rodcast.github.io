@@ -2,7 +2,6 @@ import { Fragment } from 'react';
 import { IGitHub } from '@/interfaces/index';
 import { normalizeGitHub } from '@/utils/index';
 import styles from '@/styles/article.module.css';
-import stylesGithub from '@/styles/github.module.css';
 
 export default function GitHub({ data }: any) {
   const response: Array<IGitHub> = normalizeGitHub(data);
@@ -20,17 +19,11 @@ export default function GitHub({ data }: any) {
       {Array.isArray(response) && (
         <ol className={styles.list}>
           {response.map((repo: IGitHub) => {
-            const { id, name, html_url, description, updated_at } = repo;
-
-            const dateTime = new Intl.DateTimeFormat("en-US", {
-              dateStyle: "short",
-              timeStyle: "short",
-            }).format(new Date(updated_at));
+            const { node_id, name, html_url, description } = repo;
 
             return (
-              <Fragment key={String(id)}>
+              <Fragment key={node_id}>
                 <li className={styles.item}>
-                  <time className={stylesGithub.time}>{dateTime}</time>
                   <span className={styles.subtitle}>
                     <a href={html_url} title={name} className={styles.url} rel="external">{name}</a>
                   </span>
