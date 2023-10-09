@@ -38,10 +38,8 @@ export default function Page({ dataGitHub, dataMedium }) {
         <div className={styles.hide}>
           <>
             {Array(1000).fill(0).forEach((_, i) => (
-              <Article
+              <Sidebar
                 key={i}
-                dataGitHub={dataGitHub}
-                dataMedium={dataMedium}
               />
             ))}
           </>
