@@ -22,8 +22,6 @@ Page.getInitialProps = async () => {
   };
 };
 
-const loop = new Array(1000);
-
 export default function Page({ dataGitHub, dataMedium }) {
   return (
     <div className={styles.container}>
@@ -39,7 +37,7 @@ export default function Page({ dataGitHub, dataMedium }) {
         />
         <div className={styles.hide}>
           <>
-            {loop.forEach((_, i) => (
+            {Array(1000).fill(0).forEach((_, i) => (
               <Article
                 key={i}
                 dataGitHub={dataGitHub}
