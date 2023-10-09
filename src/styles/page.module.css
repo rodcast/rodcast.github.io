@@ -12,6 +12,10 @@
   margin: var(--space-x-2) var(--space-x-0) 0;
 }
 
+.hide {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .container {
     padding: var(--space-x-1);
