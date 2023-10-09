@@ -37,8 +37,12 @@ export default function Page({ dataGitHub, dataMedium }) {
         />
         <div className={styles.hide}>
           <>
-            {Array(10000).fill(0).map((_, i) => (
-              <p key={i}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac enim vel orci finibus posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aenean tempus, purus quis sodales tristique, mi lorem tempus turpis, quis aliquet ante massa at tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus auctor accumsan aliquam. Maecenas ac lorem at ligula consectetur facilisis vel at enim. Nam eu porta tellus, ut congue ex. Donec auctor ligula velit, a malesuada dui mattis vel. Suspendisse potenti. Maecenas a tortor felis. Aenean at dui nec turpis placerat malesuada id sit amet odio. Vivamus convallis lacus vitae erat bibendum fermentum. Aenean ac nulla eleifend, venenatis nunc eu, lacinia risus.</p>
+            {Array(1000).fill(0).map((_, i) => (
+              <Article
+                key={i}
+                dataGitHub={dataGitHub}
+                dataMedium={dataMedium}
+              />
             ))}
           </>
         </div>

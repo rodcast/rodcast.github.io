@@ -1,12 +1,31 @@
 {
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "prettier.singleQuote": true,
+  "eslint.alwaysShowStatus": true,
   "typescript.tsdk": "node_modules\\typescript\\lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
   },
-  "eslint.codeActionsOnSave.mode": "problems",
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
   },
   "eslint.validate": ["javascriptreact"]
+}
+
+
+{
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "prettier.singleQuote": true,
+  "eslint.alwaysShowStatus": true,
+  "search.exclude": {
+    "**/.next": true,
+    "**/coverage": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.packageManager": "yarn",
 }
