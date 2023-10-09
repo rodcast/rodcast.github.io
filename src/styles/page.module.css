@@ -14,7 +14,7 @@
 
 .hide {
   display: none;
-  content-visibility: auto;
+  content-visibility: hidden;
 }
 
 @media (max-width: 768px) {
