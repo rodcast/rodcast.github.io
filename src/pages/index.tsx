@@ -35,17 +35,6 @@ export default function Page({ dataGitHub, dataMedium }) {
           dataGitHub={dataGitHub}
           dataMedium={dataMedium}
         />
-        <div className={styles.hide}>
-          <>
-            {Array(1000).fill(0).map((_, i) => (
-              <Article
-                key={i}
-                dataGitHub={dataGitHub}
-                dataMedium={dataMedium}
-              />
-            ))}
-          </>
-        </div>
       </div>
     </div>
   );

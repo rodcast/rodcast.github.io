@@ -25,7 +25,7 @@ export default function GitHub({ data }: any) {
               <Fragment key={node_id}>
                 <li className={styles.item}>
                   <span className={styles.subtitle}>
-                    <a href={html_url} title={name} className={styles.url} rel="external">{name}</a>
+                      <a href={html_url} title={name} className={styles.url} rel="external">{name}</a>
                   </span>
                   <span className={styles.description}>{description}</span>
                 </li>
