@@ -27,8 +27,7 @@ export default function Sidebar() {
       />
       <h1 className={styles.name} itemProp="name">Rodrigo Castilho <span itemProp="alternateName">(RODCAST)</span></h1>
       <h2 className={styles.description} itemProp="description">
-        Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.<br/>
-        <a href="/blank.pdf">test 1</a> | <a href="https://hs.gympass.com/hubfs/WLW24/WLW_Report_EN-US_1011B.pdf">test 2</a>
+        Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.
       </h2>
       <ul className={styles.list}>
         <li className={styles.item}>
