@@ -4,8 +4,10 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-      time: "08:00"
+      time: "06:00"
       timezone: "America/Sao_Paulo"
+    target-branch: "master"
+    open-pull-requests-limit: 10
     update-types:
       - "minor"
       - "patch"
