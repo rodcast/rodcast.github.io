@@ -5,7 +5,6 @@ updates:
     schedule:
       interval: "daily"
       time: "13:00"
-    target-branch: "master"
     open-pull-requests-limit: 10
     update-types:
       - "minor"
