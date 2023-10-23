@@ -4,8 +4,7 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-      time: "06:00"
-      timezone: "America/Sao_Paulo"
+      time: "13:00"
     target-branch: "master"
     open-pull-requests-limit: 10
     update-types:
@@ -14,4 +13,3 @@ updates:
       - "major"
     labels:
       - "dependencies"
-      
