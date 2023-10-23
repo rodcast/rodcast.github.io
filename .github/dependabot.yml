@@ -4,12 +4,8 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-      time: "05:00"
+      time: "17:00"
       timezone: "America/Sao_Paulo"
     open-pull-requests-limit: 10
-    update-types:
-      - "minor"
-      - "patch"
-      - "major"
     labels:
       - "dependencies"
