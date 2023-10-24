@@ -5,8 +5,9 @@ updates:
     schedule:
       interval: "weekly"
       day: "tuesday"
-      time: "06:30"
+      time: "07:00"
       timezone: "America/Sao_Paulo"
     open-pull-requests-limit: 10
     labels:
+      - "npm"
       - "dependencies"
