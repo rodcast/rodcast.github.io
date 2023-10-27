@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { GoogleTagManager } from "@next/third-parties/google";
+import Script from "next/script";
 import type { AppProps } from "next/app";
 import { Inter } from "next/font/google";
 import "@/styles/globals.css";
@@ -17,7 +17,14 @@ function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>{title}</title>
       </Head>
-      <GoogleTagManager gtmId="G-XDP0PEFNH1" />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XDP0PEFNH1');
+        `}
+      </Script>
       <main className={inter.className}>
         <Component {...pageProps} />
       </main>
