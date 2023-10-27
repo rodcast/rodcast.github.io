@@ -7,6 +7,19 @@ updates:
       time: "01:01"
       timezone: "America/Sao_Paulo"
     open-pull-requests-limit: 10
+    pull-request-branch-name:
+      separator: "-"
     labels:
       - "npm"
+      - "dependencies"
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "saturday"
+      time: "01:02"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 10
+    labels:
+      - "github-actions"
       - "dependencies"
