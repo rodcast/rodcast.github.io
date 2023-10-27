@@ -8,7 +8,6 @@ updates:
       timezone: "America/Sao_Paulo"
     open-pull-requests-limit: 10
     pull-request-branch-name:
-      separator: "-"
     labels:
       - "npm"
       - "dependencies"
