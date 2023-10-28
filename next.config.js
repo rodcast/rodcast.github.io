@@ -2,10 +2,9 @@
  * @type {import('next').NextConfig}
  **/
 const nextConfig = {
-  output: "export",
+  distDir: "out",
   poweredByHeader: false,
   reactStrictMode: true,
-  images: { unoptimized: false },
   experimental: {
     largePageDataBytes: 128 * 100000,
   },
