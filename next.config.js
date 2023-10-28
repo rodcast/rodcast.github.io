@@ -2,7 +2,6 @@
  * @type {import('next').NextConfig}
  **/
 const nextConfig = {
-  distDir: "out",
   poweredByHeader: false,
   reactStrictMode: true,
   experimental: {
