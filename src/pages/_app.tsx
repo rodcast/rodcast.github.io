@@ -36,7 +36,7 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
       <Script
         id="google-tag-manager"
-        strategy="afterInteractive"
+        strategy="worker"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
       />
       <main className={inter.className}>
