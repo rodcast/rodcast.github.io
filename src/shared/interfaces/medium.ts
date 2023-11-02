@@ -9,32 +9,32 @@ export interface IMedium {
 export interface IMediumApi {
   [x: string]: any;
   data?: {
-    status: string
-    feed: Feed
-    items: Item[]
-  }
+    status: string;
+    feed: Feed;
+    items: Item[];
+  };
 }
 
 interface Feed {
-  url: string
-  title: string
-  link: string
-  author: string
-  description: string
-  image: string
+  url: string;
+  title: string;
+  link: string;
+  author: string;
+  description: string;
+  image: string;
 }
 
 interface Item {
-  title: string
-  pubDate: string
-  link: string
-  guid: string
-  author: string
-  thumbnail: string
-  description: string
-  content: string
-  enclosure: Enclosure
-  categories: string[]
+  title: string;
+  pubDate: string;
+  link: string;
+  guid: string;
+  author: string;
+  thumbnail: string;
+  description: string;
+  content: string;
+  enclosure: Enclosure;
+  categories: string[];
 }
 
-interface Enclosure { }
+interface Enclosure {}

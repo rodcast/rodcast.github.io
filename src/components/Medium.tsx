@@ -1,7 +1,7 @@
-import { Fragment } from 'react';
-import { IMedium } from '@/interfaces/index';
-import { normalizeMedium } from '@/utils/index';
-import styles from '@/styles/article.module.css';
+import { Fragment } from "react";
+import { IMedium } from "@/interfaces/index";
+import { normalizeMedium } from "@/utils/index";
+import styles from "@/styles/article.module.css";
 
 export default function Medium({ data }: any) {
   const response: Array<IMedium> = normalizeMedium(data?.items);
@@ -29,7 +29,14 @@ export default function Medium({ data }: any) {
               <Fragment key={guid}>
                 <li className={styles.item}>
                   <span className={styles.subtitle}>
-                    <a href={link} title={title} className={styles.url} rel="external">{title}</a>
+                    <a
+                      href={link}
+                      title={title}
+                      className={styles.url}
+                      rel="external"
+                    >
+                      {title}
+                    </a>
                   </span>
                   <time className={styles.time}>{dateTime}</time>
                   <span className={styles.description}>{content}</span>

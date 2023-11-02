@@ -1,7 +1,7 @@
-import { Fragment } from 'react';
-import { IGitHub } from '@/interfaces/index';
-import { normalizeGitHub } from '@/utils/index';
-import styles from '@/styles/article.module.css';
+import { Fragment } from "react";
+import { IGitHub } from "@/interfaces/index";
+import { normalizeGitHub } from "@/utils/index";
+import styles from "@/styles/article.module.css";
 
 export default function GitHub({ data }: any) {
   const response: Array<IGitHub> = normalizeGitHub(data);
@@ -25,7 +25,14 @@ export default function GitHub({ data }: any) {
               <Fragment key={node_id}>
                 <li className={styles.item}>
                   <span className={styles.subtitle}>
-                      <a href={html_url} title={name} className={styles.url} rel="external">{name}</a>
+                    <a
+                      href={html_url}
+                      title={name}
+                      className={styles.url}
+                      rel="external"
+                    >
+                      {name}
+                    </a>
                   </span>
                   <span className={styles.description}>{description}</span>
                 </li>
