@@ -9,7 +9,10 @@ const nextConfig = {
     unoptimized: true,
   },
   experimental: {
-    largePageDataBytes: 128 * 100000,
+    nextScriptWorkers: true,
+    webpackBuildWorker: true,
+    largePageDataBytes: 128 * 10000,
+    optimizePackageImports: ["@next/third-parties"],
   },
 };
 
