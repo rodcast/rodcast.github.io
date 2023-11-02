@@ -12,7 +12,7 @@ const nextConfig = {
     nextScriptWorkers: true,
     webpackBuildWorker: true,
     largePageDataBytes: 128 * 10000,
-    optimizePackageImports: ["@next/third-parties"],
+    optimizePackageImports: ["@builder.io/partytown", "@next/third-parties"],
   },
 };
 
