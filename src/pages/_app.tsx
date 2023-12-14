@@ -1,15 +1,9 @@
 import Head from "next/head";
 import Script from "next/script";
 import type { AppProps } from "next/app";
-import { Inter } from "next/font/google";
 import "@/styles/globals.css";
 
 const title = "Rodrigo Castilho (RODCAST)";
-
-const inter = Inter({
-  weight: ["400", "600"],
-  subsets: ["latin"],
-});
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -39,7 +33,7 @@ function App({ Component, pageProps }: AppProps) {
         strategy="worker"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
       />
-      <main className={inter.className}>
+      <main>
         <Component {...pageProps} />
       </main>
     </>
