@@ -14,10 +14,10 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
-"@builder.io/partytown@^0.9.1":
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/@builder.io/partytown/-/partytown-0.9.1.tgz#cebd76458d52438eb0873715edb1af7373b3188e"
-  integrity sha512-9Bo4eZBoc7FlY38atqaXvuEMjuwU6ege/ZN+lh5G7/dC0LtdZCQJQ6CndrUtYGeia+7JoQyWXBpjcx1jFty0VA==
+"@builder.io/partytown@^0.9.2":
+  version "0.9.2"
+  resolved "https://registry.yarnpkg.com/@builder.io/partytown/-/partytown-0.9.2.tgz#d2508f50753ed42cbf5d416a130ffd23713a5268"
+  integrity sha512-aoXFGyjquwlreLeKDdliXTXWIsnIKpM3moKo7hI++N8yHbH9idSoa/GpvsFxwcPO+FnA+IrhFs0LZGGjRZiQew==
 
 "@emnapi/runtime@^0.45.0":
   version "0.45.0"
