@@ -14,7 +14,7 @@
     "@builder.io/partytown": "^0.10.2",
     "@next/third-parties": "^14.2.11",
     "@types/node": "^22.5.5",
-    "@types/react": "^18.3.6",
+    "@types/react": "^18.3.7",
     "@types/react-dom": "^18.3.0",
     "eslint-config-next": "^14.2.11",
     "next": "^14.2.11",
