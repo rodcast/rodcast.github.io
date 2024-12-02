@@ -23,7 +23,7 @@
     "sharp": "^0.33.5"
   },
   "devDependencies": {
-    "eslint": "^9.15.0",
+    "eslint": "^9.16.0",
     "husky": "^9.1.7",
     "typescript": "^5.7.2"
   },
