@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@builder.io/partytown": "^0.10.3",
-    "@next/third-parties": "^15.2.5",
+    "@next/third-parties": "^15.3.0",
     "@types/node": "^22.14.0",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.2",
