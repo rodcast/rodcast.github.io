@@ -321,10 +321,10 @@
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-15.4.6.tgz#64e004ded598c9b47ba3da85522f893b5ca11ac9"
   integrity sha512-T4ufqnZ4u88ZheczkBTtOF+eKaM14V8kbjud/XrAakoM5DKQWjW09vD6B9fsdsWS2T7D5EY31hRHdta7QKWOng==
 
-"@next/third-parties@^15.4.6":
-  version "15.4.6"
-  resolved "https://registry.yarnpkg.com/@next/third-parties/-/third-parties-15.4.6.tgz#a08002036865cccc1332b1be7d24e32822e2d9d5"
-  integrity sha512-1BVymp3iVCMKvfIAlU1yptJuVnwiiyOs852WqPmj8bHPK7dcJN7vGEvH2uIKy9yBOi2UXZevlRT5njPDLZDHYg==
+"@next/third-parties@^15.5.2":
+  version "15.5.2"
+  resolved "https://registry.yarnpkg.com/@next/third-parties/-/third-parties-15.5.2.tgz#0fa9b96f5aa71386275ef45b4dc06870de22926c"
+  integrity sha512-WkAP39cP5FMqrIq6CjnsTGO7A49Acliqmu1TytWMCOoCv57MN25a0+htKE5VRwm9vzAwSXKHSNnRso6nKLrKKg==
   dependencies:
     third-party-capital "1.0.20"
 
@@ -2095,10 +2095,10 @@ queue-microtask@^1.2.2:
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
-react-dom@^19.1.0:
-  version "19.1.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-19.1.0.tgz#133558deca37fa1d682708df8904b25186793623"
-  integrity sha512-Xs1hdnE+DyKgeHJeJznQmYMIBG3TKIHJJT95Q58nHLSrElKlGQqDTR2HQ9fx5CN/Gk6Vh/kupBTDLU11/nDk/g==
+react-dom@^19.1.1:
+  version "19.1.1"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-19.1.1.tgz#2daa9ff7f3ae384aeb30e76d5ee38c046dc89893"
+  integrity sha512-Dlq/5LAZgF0Gaz6yiqZCf6VCcZs1ghAJyrsu84Q/GT0gV+mCxbfmKNoGRKBYMJ8IEdGPqu49YWXD02GCknEDkw==
   dependencies:
     scheduler "^0.26.0"
 
