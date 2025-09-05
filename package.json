@@ -13,7 +13,7 @@
   "dependencies": {
     "@builder.io/partytown": "^0.10.3",
     "@next/third-parties": "^15.4.6",
-    "@types/node": "^24.2.0",
+    "@types/node": "^24.3.1",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.6",
     "eslint-config-next": "^15.4.6",
