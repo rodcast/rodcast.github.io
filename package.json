@@ -12,18 +12,19 @@
   },
   "dependencies": {
     "@builder.io/partytown": "^0.10.3",
-    "@next/third-parties": "^15.4.6",
+    "@next/third-parties": "^15.5.2",
     "@types/node": "^24.3.1",
-    "@types/react": "^19.1.9",
-    "@types/react-dom": "^19.1.6",
-    "eslint-config-next": "^15.4.6",
-    "next": "^15.4.6",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.7",
+    "eslint-config-next": "^15.5.2",
+    "@types/node": "^24.2.0",
+    "next": "^15.5.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "sharp": "^0.34.3"
   },
   "devDependencies": {
-    "eslint": "^9.32.0",
+    "eslint": "^9.35.0",
     "husky": "^9.1.7",
     "typescript": "^5.8.3"
   },
