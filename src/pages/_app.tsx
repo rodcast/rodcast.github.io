@@ -1,9 +1,10 @@
-import Head from "next/head";
-import Script from "next/script";
-import type { AppProps } from "next/app";
-import "@/styles/globals.css";
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import Script from 'next/script';
 
-const title = "Rodrigo Castilho (RODCAST)";
+import '@/styles/globals.css';
+
+const title = 'Rodrigo Castilho (RODCAST)';
 
 function App({ Component, pageProps }: AppProps) {
   return (

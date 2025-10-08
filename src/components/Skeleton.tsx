@@ -1,8 +1,8 @@
-import { FC } from "react";
-import { ISkeleton } from "@/interfaces/index";
-import styles from "@/styles/skeleton.module.css";
+import { ISkeleton } from '@/interfaces/index';
+import styles from '@/styles/skeleton.module.css';
+import { FC } from 'react';
 
-const Skeleton: FC<ISkeleton> = ({ width, height, marginBottom = "0" }) => {
+const Skeleton: FC<ISkeleton> = ({ width, height, marginBottom = '0' }) => {
   const style = {
     width,
     height,

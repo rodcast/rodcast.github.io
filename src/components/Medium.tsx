@@ -1,28 +1,36 @@
-import { Fragment } from "react";
-import { IMedium } from "@/interfaces/index";
-import { normalizeMedium } from "@/utils/index";
-import styles from "@/styles/article.module.css";
+import { IMedium } from '@/interfaces/index';
+import styles from '@/styles/article.module.css';
+import { normalizeMedium } from '@/utils/index';
+import { Fragment } from 'react';
 
-export default function Medium({ data }: any) {
-  const response: Array<IMedium> = normalizeMedium(data?.items);
+interface MediumProps {
+  data?: any;
+}
+
+export default function Medium({ data }: MediumProps) {
+  const articles: IMedium[] = normalizeMedium(data?.items);
+
+  const isError = !data;
+  const isEmpty = articles.length === 0;
+
+  let message: string | null = null;
+  if (isError) {
+    message = 'There is an error in Medium API.';
+  } else if (isEmpty) {
+    message = 'No articles available at the moment.';
+  }
 
   return (
     <article className={styles.content}>
       <header className={styles.title}>My articles on Medium</header>
 
-      {!Array.isArray(response) && (
-        <span className={styles.description}>
-          There is an error in Medium API.
-        </span>
-      )}
+      {message && <span className={styles.description}>{message}</span>}
 
-      {Array.isArray(response) && (
+      {Array.isArray(articles) && (
         <ol className={styles.list}>
-          {response.map((article: IMedium) => {
-            const { guid, title, link, pubDate, content } = article;
-
-            const dateTime = new Intl.DateTimeFormat("en-US", {
-              dateStyle: "long",
+          {articles.map(({ guid, title, link, pubDate, content }) => {
+            const dateTime = new Intl.DateTimeFormat('en-US', {
+              dateStyle: 'long',
             }).format(new Date(pubDate));
 
             return (

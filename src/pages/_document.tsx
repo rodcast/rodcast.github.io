@@ -1,45 +1,45 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 const metadata = {
-  title: "Rodrigo Castilho (RODCAST)",
+  title: 'Rodrigo Castilho (RODCAST)',
   description:
-    "Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.",
+    'Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.',
   keywords: [
-    "Next.js",
-    "React",
-    "JavaScript",
-    "TypeScript",
-    "CSS",
-    "HTML",
-    "GitHub",
-    "Medium",
+    'Next.js',
+    'React',
+    'JavaScript',
+    'TypeScript',
+    'CSS',
+    'HTML',
+    'GitHub',
+    'Medium',
   ],
   authors: [
-    { name: "Rodrigo Castilho", url: "https://www.rodrigocastilho.com/" },
+    { name: 'Rodrigo Castilho', url: 'https://www.rodrigocastilho.com/' },
   ],
-  creator: "Rodrigo Castilho",
-  publisher: "Rodrigo Castilho",
+  creator: 'Rodrigo Castilho',
+  publisher: 'Rodrigo Castilho',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    type: "profile",
-    title: "Rodrigo Castilho (RODCAST)",
+    type: 'profile',
+    title: 'Rodrigo Castilho (RODCAST)',
     description:
-      "Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.",
-    image: "https://www.rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg",
-    url: "https://www.rodrigocastilho.com/",
+      'Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.',
+    image: 'https://www.rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg',
+    url: 'https://www.rodrigocastilho.com/',
   },
   twitter: {
-    card: "summary",
-    title: "Rodrigo Castilho (RODCAST)",
+    card: 'summary',
+    title: 'Rodrigo Castilho (RODCAST)',
     description:
-      "Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.",
-    image: "https://www.rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg",
-    site: "@rodcast",
-    creator: "@rodcast",
+      'Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.',
+    image: 'https://www.rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg',
+    site: '@rodcast',
+    creator: '@rodcast',
   },
   robots: {
     index: true,
@@ -50,9 +50,9 @@ const metadata = {
       index: true,
       follow: true,
       noimageindex: false,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
   },
 };
@@ -68,10 +68,35 @@ class MyDocument extends Document {
         data-theme="light"
       >
         <Head>
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="theme-color" content="#1c1c1c" />
+          <meta
+            name="theme-color"
+            content="#ffffff"
+            media="(prefers-color-scheme: light)"
+          />
+          <meta
+            name="theme-color"
+            content="#1c1c1c"
+            media="(prefers-color-scheme: dark)"
+          />
+
+          {/* SEO Meta Tags */}
           <meta name="title" content={metadata.title} />
           <meta name="description" content={metadata.description} />
-          <meta name="keywords" content={metadata.keywords.join(", ")} />
+          <meta name="keywords" content={metadata.keywords.join(', ')} />
+          <meta name="language" content="en" />
+          <meta name="revisit-after" content="7 days" />
+          <meta name="rating" content="General" />
+          <meta name="distribution" content="global" />
+          <meta name="HandheldFriendly" content="true" />
+          <meta name="MobileOptimized" content="320" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+          />
           {metadata.authors.map((author) => (
             <meta key={author.name} name="author" content={author.name} />
           ))}
@@ -80,10 +105,10 @@ class MyDocument extends Document {
           <meta
             name="format-detection"
             content={`email=${
-              metadata.formatDetection.email ? "on" : "off"
+              metadata.formatDetection.email ? 'on' : 'off'
             }, address=${
-              metadata.formatDetection.address ? "on" : "off"
-            }, telephone=${metadata.formatDetection.telephone ? "on" : "off"}`}
+              metadata.formatDetection.address ? 'on' : 'off'
+            }, telephone=${metadata.formatDetection.telephone ? 'on' : 'off'}`}
           />
 
           <meta property="og:type" content={metadata.openGraph.type} />
@@ -107,10 +132,10 @@ class MyDocument extends Document {
 
           <meta
             name="robots"
-            content={`${metadata.robots.index ? "index" : "noindex"}, ${
-              metadata.robots.follow ? "follow" : "nofollow"
-            }, ${metadata.robots.nocache ? "nocache" : ""}, ${
-              metadata.robots.noarchive ? "noarchive" : ""
+            content={`${metadata.robots.index ? 'index' : 'noindex'}, ${
+              metadata.robots.follow ? 'follow' : 'nofollow'
+            }, ${metadata.robots.nocache ? 'nocache' : ''}, ${
+              metadata.robots.noarchive ? 'noarchive' : ''
             }`}
           />
           {metadata.robots.googleBot && (
@@ -118,32 +143,160 @@ class MyDocument extends Document {
               <meta
                 name="googlebot"
                 content={`${
-                  metadata.robots.googleBot.index ? "index" : "noindex"
-                }, ${metadata.robots.googleBot.follow ? "follow" : "nofollow"}`}
+                  metadata.robots.googleBot.index ? 'index' : 'noindex'
+                }, ${metadata.robots.googleBot.follow ? 'follow' : 'nofollow'}`}
               />
               <meta
                 name="googlebot"
                 content={`noimageindex=${
-                  metadata.robots.googleBot.noimageindex ? "on" : "off"
+                  metadata.robots.googleBot.noimageindex ? 'on' : 'off'
                 }`}
               />
               <meta
                 name="googlebot"
-                content={`max-video-preview=${metadata.robots.googleBot["max-video-preview"]}`}
+                content={`max-video-preview=${metadata.robots.googleBot['max-video-preview']}`}
               />
               <meta
                 name="googlebot"
-                content={`max-image-preview=${metadata.robots.googleBot["max-image-preview"]}`}
+                content={`max-image-preview=${metadata.robots.googleBot['max-image-preview']}`}
               />
               <meta
                 name="googlebot"
-                content={`max-snippet=${metadata.robots.googleBot["max-snippet"]}`}
+                content={`max-snippet=${metadata.robots.googleBot['max-snippet']}`}
               />
             </>
           )}
+
+          {/* Favicons and PWA */}
           <link rel="icon" href="/favicon.ico" />
           <link rel="manifest" href="/manifest.json" />
           <link rel="canonical" href="https://www.rodrigocastilho.com/" />
+
+          {/* DNS Prefetch & Preconnect for Performance */}
+          <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+          <link rel="dns-prefetch" href="//www.google-analytics.com" />
+          <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+          <link
+            rel="preconnect"
+            href="https://fonts.googleapis.com"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="anonymous"
+          />
+
+          {/* Resource Hints */}
+          <link
+            rel="preload"
+            href="/rodrigo-castilho-rodcast_photo.jpg"
+            as="image"
+          />
+          <link rel="prefetch" href="/rodrigo-castilho-rodcast_card.jpg" />
+
+          {/* Additional SEO Links */}
+          <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+          <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="Rodrigo Castilho RSS Feed"
+            href="/feed.xml"
+          />
+
+          {/* JSON-LD Structured Data */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@graph': [
+                  {
+                    '@type': 'Person',
+                    '@id': 'https://www.rodrigocastilho.com/#person',
+                    name: 'Rodrigo Castilho',
+                    alternateName: 'RODCAST',
+                    description: metadata.description,
+                    url: 'https://www.rodrigocastilho.com/',
+                    image: {
+                      '@type': 'ImageObject',
+                      '@id': 'https://www.rodrigocastilho.com/#image',
+                      url: 'https://www.rodrigocastilho.com/rodrigo-castilho-rodcast_photo.jpg',
+                      contentUrl:
+                        'https://www.rodrigocastilho.com/rodrigo-castilho-rodcast_photo.jpg',
+                      width: 400,
+                      height: 400,
+                      caption:
+                        'Rodrigo Castilho (RODCAST) - Staff Frontend Engineer',
+                    },
+                    jobTitle: 'Staff Frontend Engineer',
+                    worksFor: {
+                      '@type': 'Organization',
+                      name: 'Yahoo',
+                    },
+                    knowsAbout: [
+                      'JavaScript',
+                      'TypeScript',
+                      'React',
+                      'Next.js',
+                      'Frontend Development',
+                      'Web Development',
+                      'CSS',
+                      'HTML',
+                    ],
+                    sameAs: [
+                      'https://twitter.com/rodcast',
+                      'https://github.com/rodcast',
+                      'https://medium.com/@rodcast',
+                      'https://www.linkedin.com/in/rodrigocastilho',
+                    ],
+                  },
+                  {
+                    '@type': 'WebSite',
+                    '@id': 'https://www.rodrigocastilho.com/#website',
+                    url: 'https://www.rodrigocastilho.com/',
+                    name: 'Rodrigo Castilho (RODCAST)',
+                    description: metadata.description,
+                    publisher: {
+                      '@id': 'https://www.rodrigocastilho.com/#person',
+                    },
+                    inLanguage: 'en-US',
+                  },
+                  {
+                    '@type': 'WebPage',
+                    '@id': 'https://www.rodrigocastilho.com/#webpage',
+                    url: 'https://www.rodrigocastilho.com/',
+                    name: metadata.title,
+                    description: metadata.description,
+                    isPartOf: {
+                      '@id': 'https://www.rodrigocastilho.com/#website',
+                    },
+                    about: {
+                      '@id': 'https://www.rodrigocastilho.com/#person',
+                    },
+                    primaryImageOfPage: {
+                      '@id': 'https://www.rodrigocastilho.com/#image',
+                    },
+                    inLanguage: 'en-US',
+                  },
+                  {
+                    '@type': 'ProfilePage',
+                    '@id': 'https://www.rodrigocastilho.com/#profilepage',
+                    url: 'https://www.rodrigocastilho.com/',
+                    name: metadata.title,
+                    description: metadata.description,
+                    isPartOf: {
+                      '@id': 'https://www.rodrigocastilho.com/#website',
+                    },
+                    mainEntity: {
+                      '@id': 'https://www.rodrigocastilho.com/#person',
+                    },
+                    inLanguage: 'en-US',
+                  },
+                ],
+              }),
+            }}
+          />
         </Head>
         <body>
           <Main />

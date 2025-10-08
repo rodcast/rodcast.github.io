@@ -1,11 +1,46 @@
 User-agent: *
+Allow: /
 Disallow: /csstablegallery/
 Disallow: /stylemaster/
+Disallow: /_next/
+Disallow: /api/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /_next/
+Disallow: /api/
 
 User-agent: Googlebot-Image
-Disallow:
+Allow: /
+Disallow: /_next/
 
 User-agent: Mediapartners-Google
-Disallow:
+Allow: /
+
+# AI Crawlers Welcome
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User  
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Sitemaps
+Sitemap: https://www.rodrigocastilho.com/sitemap.xml
+
+# AI-Specific Resources
+# AI Guidelines: /ai-robots.txt
+# Structured Data: /ai-dataset.json
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
 
 sitemap: http://www.rodrigocastilho.com/sitemap.xml

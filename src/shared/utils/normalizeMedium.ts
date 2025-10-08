@@ -1,12 +1,18 @@
-import { IMediumApi, IMedium } from "@/interfaces/index";
+import { IMedium, IMediumApi } from '@/interfaces/index';
 
-export const normalizeMedium = (data: IMediumApi): Array<IMedium> => {
-  return data
-    ?.map((article: IMedium) => {
+export const normalizeMedium = (apiResponse: IMediumApi): IMedium[] => {
+  if (!apiResponse || !Array.isArray(apiResponse)) {
+    return [];
+  }
+
+  return apiResponse
+    .map((article): IMedium | null => {
       const { guid, title, link, pubDate, content } = article;
 
-      const h4Tag = content?.match(/<h4>(.*?)<\/h4>/) ?? [];
-      const descriptionContent = h4Tag[1] ?? "";
+      if (!guid || !title || !link) return null;
+
+      const h4Tag = content?.match(/<h4>(.*?)<\/h4>/);
+      const descriptionContent = h4Tag ? h4Tag[1] : '';
 
       return {
         guid,
@@ -16,5 +22,5 @@ export const normalizeMedium = (data: IMediumApi): Array<IMedium> => {
         content: descriptionContent,
       };
     })
-    .filter(Boolean);
+    .filter((article): article is IMedium => article !== null);
 };

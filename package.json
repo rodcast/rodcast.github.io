@@ -2,35 +2,41 @@
   "name": "rodcast.github.io",
   "version": "0.2.1",
   "private": true,
+  "type": "module",
   "homepage": "https://rodcast.github.io/rodcast.github.io",
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "prepare": "husky install"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepare": "husky"
   },
   "dependencies": {
     "@builder.io/partytown": "^0.10.3",
     "@next/third-parties": "^15.5.4",
-    "@types/node": "^24.3.1",
+    "@types/node": "^24.7.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.1.9",
-    "eslint-config-next": "^15.5.4",
-    "@types/node": "^24.7.0",
     "next": "^15.5.4",
     "react": "^19.2.0",
-    "react-dom": "^19.1.1",
+    "react-dom": "^19.2.0",
     "sharp": "^0.34.4"
   },
   "devDependencies": {
+    "@eslint/js": "^9.37.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.0",
+    "@typescript-eslint/parser": "^8.46.0",
+    "autoprefixer": "^10.4.21",
+    "cssnano": "^7.1.1",
     "eslint": "^9.37.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^6.1.1",
     "husky": "^9.1.7",
+    "postcss": "^8.5.6",
+    "prettier": "^3.3.3",
     "typescript": "^5.8.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm run build"
-    }
   }
 }
