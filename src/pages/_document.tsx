@@ -92,7 +92,7 @@ class MyDocument extends Document {
           <meta name="distribution" content="global" />
           <meta name="HandheldFriendly" content="true" />
           <meta name="MobileOptimized" content="320" />
-          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="mobile-web-app-capable" content="yes" />
           <meta
             name="apple-mobile-web-app-status-bar-style"
             content="black-translucent"
