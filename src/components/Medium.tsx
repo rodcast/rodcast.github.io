@@ -1,7 +1,7 @@
-import { Fragment } from "react";
-import { IMedium } from "@/interfaces/index";
-import { normalizeMedium } from "@/utils/index";
-import styles from "@/styles/article.module.css";
+import { IMedium } from '@/interfaces/index';
+import styles from '@/styles/article.module.css';
+import { normalizeMedium } from '@/utils/index';
+import { Fragment } from 'react';
 
 interface MediumProps {
   data?: any;
@@ -15,26 +15,22 @@ export default function Medium({ data }: MediumProps) {
 
   let message: string | null = null;
   if (isError) {
-    message = "There is an error in Medium API.";
+    message = 'There is an error in Medium API.';
   } else if (isEmpty) {
-    message = "No articles available at the moment.";
+    message = 'No articles available at the moment.';
   }
 
   return (
     <article className={styles.content}>
       <header className={styles.title}>My articles on Medium</header>
 
-      {message && (
-        <span className={styles.description}>
-          {message}
-        </span>
-      )}
+      {message && <span className={styles.description}>{message}</span>}
 
       {Array.isArray(articles) && (
         <ol className={styles.list}>
           {articles.map(({ guid, title, link, pubDate, content }) => {
-            const dateTime = new Intl.DateTimeFormat("en-US", {
-              dateStyle: "long",
+            const dateTime = new Intl.DateTimeFormat('en-US', {
+              dateStyle: 'long',
             }).format(new Date(pubDate));
 
             return (

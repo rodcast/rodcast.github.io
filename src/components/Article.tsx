@@ -1,7 +1,7 @@
-import styles from "@/styles/article.module.css";
+import styles from '@/styles/article.module.css';
 
-import GitHub from "./GitHub";
-import Medium from "./Medium";
+import GitHub from './GitHub';
+import Medium from './Medium';
 
 export default function Article({ dataGitHub, dataMedium }) {
   return (

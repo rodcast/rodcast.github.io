@@ -1,4 +1,4 @@
-import { IMediumApi, IMedium } from "@/interfaces/index";
+import { IMedium, IMediumApi } from '@/interfaces/index';
 
 export const normalizeMedium = (apiResponse: IMediumApi): IMedium[] => {
   if (!apiResponse || !Array.isArray(apiResponse)) {
@@ -12,7 +12,7 @@ export const normalizeMedium = (apiResponse: IMediumApi): IMedium[] => {
       if (!guid || !title || !link) return null;
 
       const h4Tag = content?.match(/<h4>(.*?)<\/h4>/);
-      const descriptionContent = h4Tag ? h4Tag[1] : "";
+      const descriptionContent = h4Tag ? h4Tag[1] : '';
 
       return {
         guid,

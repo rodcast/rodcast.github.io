@@ -1,14 +1,14 @@
-import dynamic from "next/dynamic";
-import { fetchData } from "@/utils/fetch";
-import { GITHUB_API, MEDIUM_API } from "@/constants/paths";
+import { GITHUB_API, MEDIUM_API } from '@/constants/paths';
+import { fetchData } from '@/utils/fetch';
+import dynamic from 'next/dynamic';
 
-import styles from "@/styles/page.module.css";
+import styles from '@/styles/page.module.css';
 
-import Header from "@/components/Header";
-import Toggle from "@/components/Toggle";
-import Sidebar from "@/components/Sidebar";
+import Header from '@/components/Header';
+import Sidebar from '@/components/Sidebar';
+import Toggle from '@/components/Toggle';
 
-const Article = dynamic(() => import("@/components/Article"));
+const Article = dynamic(() => import('@/components/Article'));
 
 export async function getStaticProps() {
   let dataGitHub = [];
@@ -19,7 +19,7 @@ export async function getStaticProps() {
       fetchData(GITHUB_API),
       fetchData(MEDIUM_API),
     ]);
-  } catch (error) {
+  } catch {
     return {
       props: { dataGitHub: [], dataMedium: [] },
     };

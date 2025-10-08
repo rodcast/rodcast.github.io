@@ -1,4 +1,4 @@
-import { IGitHubApi, IGitHub } from "@/interfaces/index";
+import { IGitHub, IGitHubApi } from '@/interfaces/index';
 
 export const normalizeGitHub = (apiResponse: IGitHubApi): IGitHub[] => {
   if (!apiResponse || !Array.isArray(apiResponse)) {

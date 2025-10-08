@@ -1,7 +1,7 @@
-import { Fragment } from "react";
-import { IGitHub } from "@/interfaces/index";
-import { normalizeGitHub } from "@/utils/index";
-import styles from "@/styles/article.module.css";
+import { IGitHub } from '@/interfaces/index';
+import styles from '@/styles/article.module.css';
+import { normalizeGitHub } from '@/utils/index';
+import { Fragment } from 'react';
 
 interface GitHubProps {
   data?: any;
@@ -15,20 +15,16 @@ export default function GitHub({ data }: GitHubProps) {
 
   let message: string | null = null;
   if (isError) {
-    message = "There is an error in GitHub API.";
+    message = 'There is an error in GitHub API.';
   } else if (isEmpty) {
-    message = "No repositories available at the moment.";
+    message = 'No repositories available at the moment.';
   }
 
   return (
     <article className={styles.content}>
       <header className={styles.title}>My repositories on GitHub</header>
 
-      {message && (
-        <span className={styles.description}>
-          {message}
-        </span>
-      )}
+      {message && <span className={styles.description}>{message}</span>}
 
       {Array.isArray(repos) && (
         <ol className={styles.list}>

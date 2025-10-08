@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  output: "export",
+  output: 'export',
   outputFileTracingRoot: __dirname,
   poweredByHeader: false,
   reactStrictMode: true,
@@ -14,10 +14,7 @@ const nextConfig = {
   experimental: {
     webpackBuildWorker: true,
     largePageDataBytes: 256 * 1024,
-    optimizePackageImports: [
-      "@builder.io/partytown",
-      "@next/third-parties",
-    ],
+    optimizePackageImports: ['@builder.io/partytown', '@next/third-parties'],
   },
 };
 

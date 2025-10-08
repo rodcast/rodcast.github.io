@@ -1,24 +1,24 @@
-import { ChangeEvent, useState, useEffect, useCallback } from "react";
-import localFont from "next/font/local";
-import icon from "@/styles/icon.module.css";
-import styles from "@/styles/toggle.module.css";
+import icon from '@/styles/icon.module.css';
+import styles from '@/styles/toggle.module.css';
+import localFont from 'next/font/local';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 
 const fontello = localFont({
-  src: "../fonts/fontello.woff2",
-  variable: "--font-fontello",
+  src: '../fonts/fontello.woff2',
+  variable: '--font-fontello',
 });
 
 export default function Toggle() {
   const [checked, setChecked] = useState<boolean>(false);
 
   const checkTheme = useCallback((): void => {
-    const theme = localStorage.getItem("data-theme");
+    const theme = localStorage.getItem('data-theme');
 
-    if (theme === "dark") {
-      document.documentElement.setAttribute("data-theme", "dark");
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
       setChecked(true);
-    } else if (theme === "light") {
-      document.documentElement.setAttribute("data-theme", "light");
+    } else if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
       setChecked(false);
     }
   }, []);
@@ -26,9 +26,9 @@ export default function Toggle() {
   const toggleTheme = useCallback(
     (event: ChangeEvent<HTMLInputElement>): void => {
       if (event.target.checked) {
-        localStorage.setItem("data-theme", "dark");
+        localStorage.setItem('data-theme', 'dark');
       } else {
-        localStorage.setItem("data-theme", "light");
+        localStorage.setItem('data-theme', 'light');
       }
 
       checkTheme();

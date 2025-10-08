@@ -1,5 +1,5 @@
-import Skeleton from "./Skeleton";
-import styles from "@/styles/article.module.css";
+import styles from '@/styles/article.module.css';
+import Skeleton from './Skeleton';
 
 export default function MediumSkeleton() {
   return (

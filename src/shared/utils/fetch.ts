@@ -1,18 +1,14 @@
 export const fetchData = async (url: string) => {
-  try {
-    const controller = new AbortController();
-    const signal = controller.signal;
+  const controller = new AbortController();
+  const signal = controller.signal;
 
-    setTimeout(() => controller.abort(), 5000);
+  setTimeout(() => controller.abort(), 5000);
 
-    const response = await fetch(url, { signal });
+  const response = await fetch(url, { signal });
 
-    if (response.ok) {
-      return response.json();
-    } else {
-      throw new Error(response.statusText);
-    }
-  } catch (error) {
-    throw error;
+  if (response.ok) {
+    return response.json();
+  } else {
+    throw new Error(response.statusText);
   }
 };

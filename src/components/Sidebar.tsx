@@ -1,11 +1,11 @@
-import Image from "next/image";
-import localFont from "next/font/local";
-import styles from "@/styles/sidebar.module.css";
-import icon from "@/styles/icon.module.css";
+import icon from '@/styles/icon.module.css';
+import styles from '@/styles/sidebar.module.css';
+import localFont from 'next/font/local';
+import Image from 'next/image';
 
 const fontello = localFont({
-  src: "../fonts/fontello.woff2",
-  variable: "--font-fontello",
+  src: '../fonts/fontello.woff2',
+  variable: '--font-fontello',
 });
 
 export default function Sidebar() {
