@@ -1,6 +1,7 @@
 import js from '@eslint/js';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
+import nextPlugin from '@next/eslint-plugin-next';
 import prettierConfig from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
 import reactPlugin from 'eslint-plugin-react';
@@ -89,6 +90,7 @@ export default [
       '@typescript-eslint': tsPlugin,
       react: reactPlugin,
       'react-hooks': reactHooksPlugin,
+      '@next/next': nextPlugin,
       prettier: prettierPlugin,
     },
     rules: {
@@ -104,8 +106,11 @@ export default [
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
 
-      // Next.js specific rules (manual implementation)
-      'no-html-link-for-pages': 'off',
+      // Next.js specific rules
+      '@next/next/no-html-link-for-pages': 'error',
+      '@next/next/no-img-element': 'error',
+      '@next/next/no-unwanted-polyfillio': 'error',
+      '@next/next/no-page-custom-font': 'error',
 
       // Prettier integration
       'prettier/prettier': [

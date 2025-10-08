@@ -1,6 +1,11 @@
-/** @type {import('next').NextConfig} */
+import { NextConfig } from 'next';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const nextConfig = {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const nextConfig: NextConfig = {
   output: 'export',
   outputFileTracingRoot: __dirname,
   poweredByHeader: false,
@@ -18,4 +23,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
