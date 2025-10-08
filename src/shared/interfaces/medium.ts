@@ -37,4 +37,4 @@ interface Item {
   categories: string[];
 }
 
-interface Enclosure {}
+interface Enclosure { }

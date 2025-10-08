@@ -1,8 +1,12 @@
 import { IGitHubApi, IGitHub } from "@/interfaces/index";
 
-export const normalizeGitHub = (data: IGitHubApi): Array<IGitHub> => {
-  return data
-    ?.map((repo: IGitHub) => {
+export const normalizeGitHub = (apiResponse: IGitHubApi): IGitHub[] => {
+  if (!apiResponse || !Array.isArray(apiResponse)) {
+    return [];
+  }
+
+  return apiResponse
+    .map((repo): IGitHub | null => {
       const {
         node_id,
         name,
@@ -10,20 +14,20 @@ export const normalizeGitHub = (data: IGitHubApi): Array<IGitHub> => {
         description,
         private: is_private,
         fork,
+        updated_at,
       } = repo;
 
-      if (!is_private && !fork) {
-        return {
-          node_id,
-          name,
-          html_url,
-          description,
-          is_private,
-          fork,
-        };
-      } else {
-        return null;
-      }
+      if (is_private || fork) return null;
+
+      return {
+        node_id,
+        name,
+        html_url,
+        description,
+        is_private,
+        fork,
+        updated_at: new Date(updated_at),
+      };
     })
-    .filter(Boolean);
+    .filter((repo): repo is IGitHub => repo !== null);
 };
