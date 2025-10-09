@@ -15,6 +15,7 @@ interface SocialLinkProps {
   platform: string;
 }
 
+/** Social link item */
 function SocialLink({ href, title, ariaLabel, iconClass, platform }: SocialLinkProps) {
   return (
     <li className={styles.item}>
@@ -32,6 +33,7 @@ function SocialLink({ href, title, ariaLabel, iconClass, platform }: SocialLinkP
   );
 }
 
+/** Social links list */
 export default function SocialLinks() {
   const socialLinks = [
     {

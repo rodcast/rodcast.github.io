@@ -1,6 +1,7 @@
 import styles from '@/styles/article.module.css';
 import Skeleton from './Skeleton';
 
+/** Medium loading skeleton */
 export default function MediumSkeleton() {
   return (
     <article className={styles.content}>

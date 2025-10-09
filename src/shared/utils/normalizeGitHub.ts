@@ -1,5 +1,6 @@
 import { IGitHub, IGitHubApi } from '@/interfaces/index';
 
+/** Normalize GitHub API data */
 export const normalizeGitHub = (repos?: IGitHubApi): IGitHub[] => {
   if (!repos || !Array.isArray(repos)) {
     return [];

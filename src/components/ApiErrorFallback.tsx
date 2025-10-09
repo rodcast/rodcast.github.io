@@ -7,12 +7,7 @@ interface ApiErrorFallbackProps {
   onRetry?: () => void;
 }
 
-/**
- * Error fallback component for API-related failures
- * @param title - The title to display in the error message
- * @param message - Optional custom error message
- * @param onRetry - Optional retry callback function
- */
+/** API error fallback */
 export default function ApiErrorFallback({ 
   title, 
   message = "There was an error loading this content. Please try again later.",

@@ -1,5 +1,6 @@
 import { IMedium, Item } from '@/interfaces/index';
 
+/** Normalize Medium API data */
 export const normalizeMedium = (items?: Item[]): IMedium[] => {
   if (!items || !Array.isArray(items)) {
     return [];
