@@ -10,7 +10,7 @@
 
 .link {
   color: var(--secondary-color);
-  text-decoration: none;
+  text-decoration: underline;
   margin: 0 var(--space-x-2);
   font-size: var(--text-sm);
   transition: color 0.2s ease;
