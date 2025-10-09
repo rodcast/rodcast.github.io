@@ -585,10 +585,10 @@
   dependencies:
     undici-types "~7.14.0"
 
-"@types/react-dom@^19.1.9":
-  version "19.1.9"
-  resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-19.1.9.tgz"
-  integrity sha512-qXRuZaOsAdXKFyOhRBg6Lqqc0yay13vN7KrIg4L7N4aaHN68ma9OK3NE1BoDFgFOTfM7zg+3/8+2n8rLUH3OKQ==
+"@types/react-dom@^19.2.1":
+  version "19.2.1"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-19.2.1.tgz#2a16d84466e5cbaab97809f3e6f3bded6b5dbac7"
+  integrity sha512-/EEvYBdT3BflCWvTMO7YkYBHVE9Ci6XdqZciZANQgKpaiDRGOLIlRo91jbTNRQjgPFWVaRxcYc0luVNFitz57A==
 
 "@types/react@^19.2.2":
   version "19.2.2"
