@@ -7,6 +7,10 @@ interface MediumProps {
   data?: IMediumApi;
 }
 
+/**
+ * Component that displays Medium articles from API
+ * @param data - Medium API response containing article information
+ */
 export default function Medium({ data }: MediumProps) {
   const articles: IMedium[] = normalizeMedium(data?.items);
 

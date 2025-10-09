@@ -6,7 +6,7 @@ export default function MediumSkeleton() {
     <article className={styles.content}>
       <header className={styles.title}>My articles on Medium</header>
       {Array.from({ length: 3 }).map((_, index) => (
-        <Skeleton key={index} width="100%" height="50px" marginBottom="var(--space-x-2)" />
+        <Skeleton key={`medium-skeleton-${index}`} width="100%" height="50px" marginBottom="var(--space-x-2)" />
       ))}
     </article>
   );

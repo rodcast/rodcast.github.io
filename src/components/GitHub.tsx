@@ -7,6 +7,10 @@ interface GitHubProps {
   data?: IGitHubApi;
 }
 
+/**
+ * Component that displays GitHub repositories from API data
+ * @param data - GitHub API response containing repository information
+ */
 export default function GitHub({ data }: GitHubProps) {
   const repos: IGitHub[] = normalizeGitHub(data);
 

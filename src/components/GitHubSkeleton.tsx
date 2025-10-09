@@ -6,7 +6,7 @@ export default function GitHubSkeleton() {
     <article className={styles.content}>
       <header className={styles.title}>My repositories on GitHub</header>
       {Array.from({ length: 3 }).map((_, index) => (
-        <Skeleton key={index} width="100%" height="50px" marginBottom="var(--space-x-2)" />
+        <Skeleton key={`github-skeleton-${index}`} width="100%" height="50px" marginBottom="var(--space-x-2)" />
       ))}
     </article>
   );

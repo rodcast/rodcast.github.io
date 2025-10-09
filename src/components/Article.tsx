@@ -16,6 +16,12 @@ interface ArticleProps {
   isLoading?: boolean;
 }
 
+/**
+ * Main article component that displays GitHub repositories and Medium articles
+ * @param dataGitHub - GitHub API response data
+ * @param dataMedium - Medium API response data  
+ * @param isLoading - Loading state indicator
+ */
 export default function Article({ dataGitHub, dataMedium, isLoading = false }: ArticleProps) {
   return (
     <main className={styles.content}>

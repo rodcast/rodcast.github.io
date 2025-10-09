@@ -1,8 +1,15 @@
+/**
+ * Fetches data from a URL
+ * @param url - The URL to fetch data from
+ * @param options - Optional fetch request options
+ * @returns Promise that resolves to the parsed JSON response
+ * @throws Error when request fails, times out, or response is not ok
+ */
 export const fetchData = async (url: string, options?: RequestInit) => {
   const controller = new AbortController();
   const signal = controller.signal;
 
-  setTimeout(() => controller.abort(), 10000);
+  setTimeout(() => controller.abort(), 2000);
 
   const defaultOptions: RequestInit = {
     signal,
