@@ -15,21 +15,25 @@ interface State {
 
 /** Error boundary */
 class ErrorBoundary extends Component<Props, State> {
+  /** Initialize error boundary */
   constructor(props: Props) {
     super(props);
     this.state = { hasError: false };
   }
 
+  /** Update state when error occurs */
   static getDerivedStateFromError(error: Error): State {
     return { hasError: true, error };
   }
 
+  /** Handle caught errors */
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     // eslint-disable-next-line no-console
     console.error('ErrorBoundary caught an error:', error, errorInfo);
     this.props.onError?.(error, errorInfo);
   }
 
+  /** Render error UI or children */
   render() {
     if (this.state.hasError) {
       if (this.props.fallback) {
