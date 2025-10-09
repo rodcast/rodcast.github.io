@@ -15,7 +15,7 @@ const metadata = {
     'Medium',
   ],
   authors: [
-    { name: 'Rodrigo Castilho', url: 'https://www.rodrigocastilho.com/' },
+    { name: 'Rodrigo Castilho', url: 'https://rodrigocastilho.com/' },
   ],
   creator: 'Rodrigo Castilho',
   publisher: 'Rodrigo Castilho',
@@ -29,15 +29,15 @@ const metadata = {
     title: 'Rodrigo Castilho (RODCAST)',
     description:
       'Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.',
-    image: 'https://www.rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg',
-    url: 'https://www.rodrigocastilho.com/',
+    image: 'https://rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg',
+    url: 'https://rodrigocastilho.com/',
   },
   twitter: {
     card: 'summary',
     title: 'Rodrigo Castilho (RODCAST)',
     description:
       'Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.',
-    image: 'https://www.rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg',
+    image: 'https://rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg',
     site: '@rodcast',
     creator: '@rodcast',
   },
@@ -69,7 +69,6 @@ class MyDocument extends Document {
       >
         <Head>
           <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="theme-color" content="#1c1c1c" />
           <meta
             name="theme-color"
@@ -170,7 +169,7 @@ class MyDocument extends Document {
           {/* Favicons and PWA */}
           <link rel="icon" href="/favicon.ico" />
           <link rel="manifest" href="/manifest.json" />
-          <link rel="canonical" href="https://www.rodrigocastilho.com/" />
+          <link rel="canonical" href="https://rodrigocastilho.com/" />
 
           {/* DNS Prefetch & Preconnect for Performance */}
           <link rel="dns-prefetch" href="//fonts.googleapis.com" />

@@ -10,7 +10,7 @@ const fontello = localFont({
 
 export default function Sidebar() {
   return (
-    <aside className={styles.content} role="complementary">
+    <aside className={styles.content} role="complementary" id="about">
       <Image
         src="/rodrigo-castilho-rodcast_photo.jpg"
         width={125}
@@ -26,13 +26,13 @@ export default function Sidebar() {
         quality={100}
         loading="lazy"
       />
-      <h1 className={styles.name} itemProp="name">
+      <h2 className={styles.name} itemProp="name">
         Rodrigo Castilho <span itemProp="alternateName">(RODCAST)</span>
-      </h1>
-      <h2 className={styles.description} itemProp="description">
+      </h2>
+      <h3 className={styles.description} itemProp="description">
         Staff Frontend Engineer and ex-@Yahoo in a serious relationship with
         programming languages and the gym.
-      </h2>
+      </h3>
       <ul className={styles.list}>
         <li className={styles.item}>
           <a
