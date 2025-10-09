@@ -13,3 +13,7 @@ name = "javascript"
 
   [analyzers.meta]
   plugins = ["react"]
+  skip_doc_coverage = ["module", "class", "function"]
+
+[[transformers]]
+name = "javascript"
