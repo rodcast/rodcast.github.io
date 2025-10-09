@@ -5,3 +5,17 @@ name = "javascript"
 
   [analyzers.meta]
   plugins = ["react"]
+  
+  skip_doc_coverage = ["module", "class", "function"]
+  
+  [analyzers.exclude_patterns]
+  - "node_modules/**"
+  - ".next/**"
+  - "out/**"
+  - "build/**"
+  - "dist/**"
+  - "*.min.js"
+  - "*.d.ts"
+  - "next-env.d.ts"
+  - "tsconfig.tsbuildinfo"
+  
