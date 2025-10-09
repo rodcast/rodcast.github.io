@@ -17,6 +17,7 @@ function App({ Component, pageProps }: AppProps) {
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
         <script
+          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];

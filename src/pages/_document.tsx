@@ -17,6 +17,7 @@ interface RobotsMetaProps {
   };
 }
 
+/** Renders robots meta tags */
 function RobotsMeta({ robots }: RobotsMetaProps) {
   return (
     <>
@@ -135,6 +136,11 @@ interface OpenGraphMetaProps {
   };
 }
 
+/**
+ * Renders Open Graph and Twitter Card meta tags for social media sharing
+ * @param openGraph - Open Graph configuration object
+ * @param twitter - Twitter Card configuration object
+ */
 function OpenGraphMeta({ openGraph, twitter }: OpenGraphMetaProps) {
   return (
     <>
@@ -340,6 +346,7 @@ class MyDocument extends Document {
           {/* JSON-LD Structured Data */}
           <script
             type="application/ld+json"
+            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
               __html: JSON.stringify(structuredData),
             }}
