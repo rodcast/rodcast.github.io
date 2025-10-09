@@ -2,6 +2,7 @@ import styles from '@/styles/sidebar.module.css';
 import Image from 'next/image';
 import SocialLinks from './SocialLinks';
 
+/** Profile sidebar */
 export default function Sidebar() {
   return (
     <aside className={styles.content} role="complementary" id="about">

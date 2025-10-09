@@ -8,6 +8,7 @@ const fontello = localFont({
   variable: '--font-fontello',
 });
 
+/** Theme toggle */
 export default function Toggle() {
   const [checked, setChecked] = useState<boolean>(false);
 

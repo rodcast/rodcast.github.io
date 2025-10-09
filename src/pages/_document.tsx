@@ -57,6 +57,7 @@ const metadata = {
   },
 };
 
+/** Custom document */
 class MyDocument extends Document {
   render() {
     return (

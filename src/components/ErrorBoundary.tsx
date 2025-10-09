@@ -13,6 +13,7 @@ interface State {
   error?: Error;
 }
 
+/** Error boundary */
 class ErrorBoundary extends Component<Props, State> {
   constructor(props: Props) {
     super(props);

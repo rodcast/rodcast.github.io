@@ -1,6 +1,7 @@
 import styles from '@/styles/article.module.css';
 import Skeleton from './Skeleton';
 
+/** GitHub loading skeleton */
 export default function GitHubSkeleton() {
   return (
     <article className={styles.content}>
