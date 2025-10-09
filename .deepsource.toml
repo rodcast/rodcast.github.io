@@ -5,22 +5,11 @@ exclude_patterns = [
   ".next/**", 
   "out/**",
   "build/**",
-  "dist/**",
-  "*.min.js",
-  "*.d.ts",
-  "next-env.d.ts",
-  "tsconfig.tsbuildinfo"
+  "dist/**"
 ]
 
 [[analyzers]]
 name = "javascript"
-enabled = true
 
   [analyzers.meta]
   plugins = ["react"]
-  environment = ["nodejs", "browser"]
-  ignore_rules = ["JS-D1001"]
-
-[[analyzers]]
-name = "coverage"
-enabled = false
