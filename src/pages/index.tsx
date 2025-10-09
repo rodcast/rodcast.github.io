@@ -40,11 +40,7 @@ interface PageProps {
   dataMedium: IMediumApi;
 }
 
-/**
- * Main page component that renders the portfolio layout with GitHub repos and Medium articles
- * @param dataGitHub - GitHub repositories data fetched at build time
- * @param dataMedium - Medium articles data fetched at build time
- */
+/** Main page */
 export default function Page({ dataGitHub, dataMedium }: PageProps) {
   return (
     <div className={styles.container}>
