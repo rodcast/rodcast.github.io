@@ -1,10 +1,10 @@
-import { IGitHub } from '@/interfaces/index';
+import { IGitHub, IGitHubApi } from '@/interfaces/index';
 import styles from '@/styles/article.module.css';
 import { normalizeGitHub } from '@/utils/index';
 import { Fragment } from 'react';
 
 interface GitHubProps {
-  data?: any;
+  data?: IGitHubApi;
 }
 
 export default function GitHub({ data }: GitHubProps) {

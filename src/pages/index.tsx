@@ -1,4 +1,6 @@
 import { GITHUB_API, MEDIUM_API } from '@/constants/paths';
+import { IGitHubApi } from '@/interfaces/github';
+import { IMediumApi } from '@/interfaces/medium';
 import { fetchData } from '@/utils/fetch';
 import dynamic from 'next/dynamic';
 
@@ -19,7 +21,9 @@ export async function getStaticProps() {
       fetchData(GITHUB_API),
       fetchData(MEDIUM_API),
     ]);
-  } catch {
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Error fetching data at build time:', error);
     return {
       props: { dataGitHub: [], dataMedium: [] },
     };
@@ -31,8 +35,8 @@ export async function getStaticProps() {
 }
 
 interface PageProps {
-  dataGitHub: any[];
-  dataMedium: any[];
+  dataGitHub: IGitHubApi;
+  dataMedium: IMediumApi;
 }
 
 export default function Page({ dataGitHub, dataMedium }: PageProps) {

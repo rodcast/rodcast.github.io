@@ -15,7 +15,7 @@ export default function Sidebar() {
         src="/rodrigo-castilho-rodcast_photo.jpg"
         width={125}
         height={125}
-        alt="Rodrigo Castilho (RODCAST)"
+        alt="Professional headshot of Rodrigo Castilho, Staff Frontend Engineer"
         className={styles.photo}
         itemProp="image"
         sizes="
@@ -40,8 +40,10 @@ export default function Sidebar() {
             rel="me"
             title="Follow me on GitHub"
             className={styles.url}
+            aria-label="Visit Rodrigo Castilho's GitHub profile"
           >
-            <i className={`${fontello.variable} ${icon.github}`} />
+            <i className={`${fontello.variable} ${icon.github}`} aria-hidden="true" />
+            <span className="sr-only">GitHub</span>
           </a>
         </li>
         <li className={styles.item}>
@@ -50,18 +52,22 @@ export default function Sidebar() {
             rel="me"
             title="Follow me on Twitter"
             className={styles.url}
+            aria-label="Visit Rodrigo Castilho's Twitter profile"
           >
-            <i className={`${fontello.variable} ${icon.twitter}`} />
+            <i className={`${fontello.variable} ${icon.twitter}`} aria-hidden="true" />
+            <span className="sr-only">Twitter</span>
           </a>
         </li>
         <li className={styles.item}>
           <a
             href="https://linkedin.com/in/rodcast"
             rel="me"
-            title="Follow me on Linkedin"
+            title="Follow me on LinkedIn"
             className={styles.url}
+            aria-label="Visit Rodrigo Castilho's LinkedIn profile"
           >
-            <i className={`${fontello.variable} ${icon.linkedin}`} />
+            <i className={`${fontello.variable} ${icon.linkedin}`} aria-hidden="true" />
+            <span className="sr-only">LinkedIn</span>
           </a>
         </li>
         <li className={styles.item}>
@@ -70,8 +76,10 @@ export default function Sidebar() {
             rel="me"
             title="Follow me on Medium"
             className={styles.url}
+            aria-label="Visit Rodrigo Castilho's Medium profile"
           >
-            <i className={`${fontello.variable} ${icon.medium}`} />
+            <i className={`${fontello.variable} ${icon.medium}`} aria-hidden="true" />
+            <span className="sr-only">Medium</span>
           </a>
         </li>
       </ul>

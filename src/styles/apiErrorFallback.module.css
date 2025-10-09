@@ -1,0 +1,37 @@
+.error_container {
+  padding: var(--space-x-2);
+  text-align: center;
+  color: var(--contrast-color);
+}
+
+.retry_button {
+  margin-top: var(--space-x-1);
+  padding: 8px 16px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: 1px solid var(--contrast-color);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: var(--text-sm);
+  font-family: inherit;
+  transition: var(--transition-200);
+}
+
+.retry_button:hover {
+  opacity: 0.8;
+  transform: translateY(-1px);
+}
+
+.retry_button:active {
+  transform: translateY(0);
+}
+
+.retry_button:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+.retry_button:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
