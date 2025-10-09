@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 
 import styles from '@/styles/page.module.css';
 
+import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
 import Toggle from '@/components/Toggle';
@@ -51,6 +52,8 @@ export default function Page({ dataGitHub, dataMedium }: PageProps) {
         <Sidebar />
         <Article dataGitHub={dataGitHub} dataMedium={dataMedium} />
       </div>
+      
+      <Footer />
     </div>
   );
 }

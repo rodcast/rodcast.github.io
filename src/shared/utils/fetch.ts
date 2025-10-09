@@ -3,7 +3,7 @@ export const fetchData = async (url: string, options?: RequestInit) => {
   const controller = new AbortController();
   const signal = controller.signal;
 
-  setTimeout(() => controller.abort(), 2000);
+  setTimeout(() => controller.abort(), 5000);
 
   const defaultOptions: RequestInit = {
     signal,

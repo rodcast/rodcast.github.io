@@ -55,6 +55,17 @@ export default function Medium({ data }: MediumProps) {
           })}
         </ol>
       )}
+      
+      <p className={styles.viewAll}>
+        <a 
+          href="https://medium.com/@rodcast" 
+          className={styles.viewAllLink}
+          rel="external"
+          title="Read all articles on Medium"
+        >
+          Read all articles →
+        </a>
+      </p>
     </article>
   );
 }

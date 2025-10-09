@@ -8,6 +8,13 @@ export default function Header() {
         <span>Rodrigo Castilho</span>
         RODCAST
       </h1>
+      <nav className={styles.nav} role="navigation" aria-label="Main navigation">
+        <ul className={styles.navList}>
+          <li><a href="#about" className={styles.navLink}>About</a></li>
+          <li><a href="#github-projects" className={styles.navLink}>Projects</a></li>
+          <li><a href="#medium-articles" className={styles.navLink}>Articles</a></li>
+        </ul>
+      </nav>
     </header>
   );
 }

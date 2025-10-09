@@ -1,0 +1,26 @@
+.content {
+  padding: var(--space-x-4) var(--space-x-2);
+  margin-top: var(--space-x-4);
+  text-align: center;
+}
+
+.links {
+  margin-bottom: var(--space-x-2);
+}
+
+.link {
+  color: var(--secondary-color);
+  text-decoration: none;
+  margin: 0 var(--space-x-2);
+  font-size: var(--text-sm);
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  text-decoration: none;
+}
+
+.copyright {
+  margin: 0;
+  font-size: var(--text-sm);
+}
