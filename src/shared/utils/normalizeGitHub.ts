@@ -1,11 +1,12 @@
 import { IGitHub, IGitHubApi } from '@/interfaces/index';
 
-export const normalizeGitHub = (apiResponse: IGitHubApi): IGitHub[] => {
-  if (!apiResponse || !Array.isArray(apiResponse)) {
+/** Normalize GitHub API data */
+export const normalizeGitHub = (repos?: IGitHubApi): IGitHub[] => {
+  if (!repos || !Array.isArray(repos)) {
     return [];
   }
 
-  return apiResponse
+  return repos
     .map((repo): IGitHub | null => {
       const {
         node_id,
@@ -23,7 +24,7 @@ export const normalizeGitHub = (apiResponse: IGitHubApi): IGitHub[] => {
         node_id,
         name,
         html_url,
-        description,
+        description: description || '',
         is_private,
         fork,
         updated_at: new Date(updated_at),

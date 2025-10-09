@@ -1,13 +1,8 @@
-import icon from '@/styles/icon.module.css';
 import styles from '@/styles/sidebar.module.css';
-import localFont from 'next/font/local';
 import Image from 'next/image';
+import SocialLinks from './SocialLinks';
 
-const fontello = localFont({
-  src: '../fonts/fontello.woff2',
-  variable: '--font-fontello',
-});
-
+/** Profile sidebar */
 export default function Sidebar() {
   return (
     <aside className={styles.content} role="complementary" id="about">
@@ -15,7 +10,7 @@ export default function Sidebar() {
         src="/rodrigo-castilho-rodcast_photo.jpg"
         width={125}
         height={125}
-        alt="Rodrigo Castilho (RODCAST)"
+        alt="Professional headshot of Rodrigo Castilho, Staff Frontend Engineer"
         className={styles.photo}
         itemProp="image"
         sizes="
@@ -33,48 +28,7 @@ export default function Sidebar() {
         Staff Frontend Engineer and ex-@Yahoo in a serious relationship with
         programming languages and the gym.
       </h3>
-      <ul className={styles.list}>
-        <li className={styles.item}>
-          <a
-            href="https://github.com/rodcast"
-            rel="me"
-            title="Follow me on GitHub"
-            className={styles.url}
-          >
-            <i className={`${fontello.variable} ${icon.github}`} />
-          </a>
-        </li>
-        <li className={styles.item}>
-          <a
-            href="https://twitter.com/rodcast"
-            rel="me"
-            title="Follow me on Twitter"
-            className={styles.url}
-          >
-            <i className={`${fontello.variable} ${icon.twitter}`} />
-          </a>
-        </li>
-        <li className={styles.item}>
-          <a
-            href="https://linkedin.com/in/rodcast"
-            rel="me"
-            title="Follow me on Linkedin"
-            className={styles.url}
-          >
-            <i className={`${fontello.variable} ${icon.linkedin}`} />
-          </a>
-        </li>
-        <li className={styles.item}>
-          <a
-            href="https://medium.com/@rodcast"
-            rel="me"
-            title="Follow me on Medium"
-            className={styles.url}
-          >
-            <i className={`${fontello.variable} ${icon.medium}`} />
-          </a>
-        </li>
-      </ul>
+      <SocialLinks />
     </aside>
   );
 }

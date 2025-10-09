@@ -1,11 +1,12 @@
-import { IMedium, IMediumApi } from '@/interfaces/index';
+import { IMedium, Item } from '@/interfaces/index';
 
-export const normalizeMedium = (apiResponse: IMediumApi): IMedium[] => {
-  if (!apiResponse || !Array.isArray(apiResponse)) {
+/** Normalize Medium API data */
+export const normalizeMedium = (items?: Item[]): IMedium[] => {
+  if (!items || !Array.isArray(items)) {
     return [];
   }
 
-  return apiResponse
+  return items
     .map((article): IMedium | null => {
       const { guid, title, link, pubDate, content } = article;
 
@@ -18,7 +19,7 @@ export const normalizeMedium = (apiResponse: IMediumApi): IMedium[] => {
         guid,
         title,
         link,
-        pubDate,
+        pubDate: new Date(pubDate).getTime(),
         content: descriptionContent,
       };
     })

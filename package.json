@@ -5,11 +5,11 @@
   "type": "module",
   "homepage": "https://rodcast.github.io/rodcast.github.io",
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint .",
-    "lint:fix": "ESLINT_USE_FLAT_CONFIG=false eslint . --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "prepare": "husky"
   },
   "dependencies": {
@@ -24,7 +24,9 @@
     "sharp": "^0.34.4"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.37.0",
+    "@next/eslint-plugin-next": "^15.5.4",
     "@typescript-eslint/eslint-plugin": "^8.46.0",
     "@typescript-eslint/parser": "^8.46.0",
     "autoprefixer": "^10.4.21",
@@ -34,7 +36,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^6.1.1",
+    "eslint-plugin-react-hooks": "^7.0.0",
     "husky": "^9.1.7",
     "postcss": "^8.5.6",
     "prettier": "^3.3.3",

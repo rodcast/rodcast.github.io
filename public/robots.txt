@@ -8,7 +8,6 @@ Disallow: /api/
 User-agent: Googlebot
 Allow: /
 Disallow: /_next/
-Disallow: /api/
 
 User-agent: Googlebot-Image
 Allow: /
@@ -35,10 +34,6 @@ Allow: /
 
 # Sitemaps
 Sitemap: https://www.rodrigocastilho.com/sitemap.xml
-
-# AI-Specific Resources
-# AI Guidelines: /ai-robots.txt
-# Structured Data: /ai-dataset.json
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1

@@ -1,5 +1,6 @@
 import styles from '@/styles/header.module.css';
 
+/** Site header */
 export default function Header() {
   return (
     <header className={styles.content} role="banner">

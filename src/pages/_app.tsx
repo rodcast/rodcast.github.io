@@ -6,6 +6,7 @@ import '@/styles/globals.css';
 
 const title = 'Rodrigo Castilho (RODCAST)';
 
+/** Main app component */
 function App({ Component, pageProps }: AppProps) {
   return (
     <>

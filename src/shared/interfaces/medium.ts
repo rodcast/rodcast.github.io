@@ -7,12 +7,10 @@ export interface IMedium {
 }
 
 export interface IMediumApi {
-  [x: string]: any;
-  data?: {
-    status: string;
-    feed: Feed;
-    items: Item[];
-  };
+  status?: string;
+  feed?: Feed;
+  items?: Item[];
+  [x: string]: unknown;
 }
 
 interface Feed {
@@ -24,7 +22,7 @@ interface Feed {
   image: string;
 }
 
-interface Item {
+export interface Item {
   title: string;
   pubDate: string;
   link: string;
@@ -33,8 +31,6 @@ interface Item {
   thumbnail: string;
   description: string;
   content: string;
-  enclosure: Enclosure;
+  enclosure: unknown;
   categories: string[];
 }
-
-interface Enclosure {}

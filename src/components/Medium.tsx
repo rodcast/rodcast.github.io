@@ -1,12 +1,13 @@
-import { IMedium } from '@/interfaces/index';
+import { IMedium, IMediumApi } from '@/interfaces/index';
 import styles from '@/styles/article.module.css';
 import { normalizeMedium } from '@/utils/index';
 import { Fragment } from 'react';
 
 interface MediumProps {
-  data?: any;
+  data?: IMediumApi;
 }
 
+/** Medium articles */
 export default function Medium({ data }: MediumProps) {
   const articles: IMedium[] = normalizeMedium(data?.items);
 
