@@ -19,8 +19,7 @@ enabled = true
   [analyzers.meta]
   plugins = ["react"]
   environment = ["nodejs", "browser"]
-  skip_doc_coverage = true
-  
-  [analyzers.ignore_rules]
-  # Ignore documentation requirements
-  - "JS-D1001"  # Documentation comments not found for functions and classes
+
+[[analyzers]]
+name = "coverage"
+enabled = false
