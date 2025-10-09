@@ -9,7 +9,7 @@ export default function Article({ dataGitHub, dataMedium }) {
       <section id="github-projects">
         <GitHub data={dataGitHub} />
       </section>
-      <section id="medium-articles">
+      <section id="medium-articles" className={styles.medium_articles}>
         <Medium data={dataMedium} />
       </section>
     </main>

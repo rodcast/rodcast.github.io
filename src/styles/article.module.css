@@ -8,6 +8,10 @@
   margin-bottom: var(--space-x-0);
 }
 
+.medium_articles {
+  margin-top: var(--space-x-4);
+}
+
 .title {
   margin-bottom: var(--space-x-0_5);
   padding-bottom: var(--space-x-0_5);
