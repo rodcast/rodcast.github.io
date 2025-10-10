@@ -48,6 +48,17 @@ export default function GitHub({ data }: GitHubProps) {
           ))}
         </ol>
       )}
+      
+      <p className={styles.viewAll}>
+        <a 
+          href="https://github.com/rodcast" 
+          className={styles.viewAllLink}
+          rel="external"
+          title="View all repositories on GitHub"
+        >
+          View all repositories →
+        </a>
+      </p>
     </article>
   );
 }

@@ -61,3 +61,20 @@
 .url:focus {
   box-shadow: none;
 }
+
+.viewAll {
+  margin-top: var(--space-x-2);
+  text-align: center;
+}
+
+.viewAllLink {
+  display: inline-block;
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.viewAllLink:hover {
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+}

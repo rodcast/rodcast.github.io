@@ -1,5 +1,66 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 
+interface RobotsMetaProps {
+  robots: {
+    index: boolean;
+    follow: boolean;
+    nocache: boolean;
+    noarchive: boolean;
+    googleBot?: {
+      index: boolean;
+      follow: boolean;
+      noimageindex: boolean;
+      'max-video-preview': number;
+      'max-image-preview': string;
+      'max-snippet': number;
+    };
+  };
+}
+
+/** Renders robots meta tags */
+function RobotsMeta({ robots }: RobotsMetaProps) {
+  return (
+    <>
+      <meta
+        name="robots"
+        content={`${robots.index ? 'index' : 'noindex'}, ${
+          robots.follow ? 'follow' : 'nofollow'
+        }, ${robots.nocache ? 'nocache' : ''}, ${
+          robots.noarchive ? 'noarchive' : ''
+        }`}
+      />
+      {robots.googleBot && (
+        <>
+          <meta
+            name="googlebot"
+            content={`${
+              robots.googleBot.index ? 'index' : 'noindex'
+            }, ${robots.googleBot.follow ? 'follow' : 'nofollow'}`}
+          />
+          <meta
+            name="googlebot"
+            content={`noimageindex=${
+              robots.googleBot.noimageindex ? 'on' : 'off'
+            }`}
+          />
+          <meta
+            name="googlebot"
+            content={`max-video-preview=${robots.googleBot['max-video-preview']}`}
+          />
+          <meta
+            name="googlebot"
+            content={`max-image-preview=${robots.googleBot['max-image-preview']}`}
+          />
+          <meta
+            name="googlebot"
+            content={`max-snippet=${robots.googleBot['max-snippet']}`}
+          />
+        </>
+      )}
+    </>
+  );
+}
+
 const metadata = {
   title: 'Rodrigo Castilho (RODCAST)',
   description:
@@ -57,6 +118,135 @@ const metadata = {
   },
 };
 
+interface OpenGraphMetaProps {
+  openGraph: {
+    type: string;
+    title: string;
+    description: string;
+    image: string;
+    url: string;
+  };
+  twitter: {
+    card: string;
+    title: string;
+    description: string;
+    image: string;
+    site: string;
+    creator: string;
+  };
+}
+
+/**
+ * Renders Open Graph and Twitter Card meta tags for social media sharing
+ * @param openGraph - Open Graph configuration object
+ * @param twitter - Twitter Card configuration object
+ */
+function OpenGraphMeta({ openGraph, twitter }: OpenGraphMetaProps) {
+  return (
+    <>
+      <meta property="og:type" content={openGraph.type} />
+      <meta property="og:title" content={openGraph.title} />
+      <meta property="og:description" content={openGraph.description} />
+      <meta property="og:image" content={openGraph.image} />
+      <meta property="og:url" content={openGraph.url} />
+
+      <meta name="twitter:card" content={twitter.card} />
+      <meta name="twitter:title" content={twitter.title} />
+      <meta name="twitter:description" content={twitter.description} />
+      <meta name="twitter:image" content={twitter.image} />
+      <meta name="twitter:site" content={twitter.site} />
+      <meta name="twitter:creator" content={twitter.creator} />
+    </>
+  );
+}
+
+// JSON-LD structured data for SEO
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': 'https://www.rodrigocastilho.com/#person',
+      name: 'Rodrigo Castilho',
+      alternateName: 'RODCAST',
+      description: metadata.description,
+      url: 'https://www.rodrigocastilho.com/',
+      image: {
+        '@type': 'ImageObject',
+        '@id': 'https://www.rodrigocastilho.com/#image',
+        url: 'https://www.rodrigocastilho.com/rodrigo-castilho-rodcast_photo.jpg',
+        contentUrl: 'https://www.rodrigocastilho.com/rodrigo-castilho-rodcast_photo.jpg',
+        width: 400,
+        height: 400,
+        caption: 'Rodrigo Castilho (RODCAST) - Staff Frontend Engineer',
+      },
+      jobTitle: 'Staff Frontend Engineer',
+      worksFor: {
+        '@type': 'Organization',
+        name: 'Yahoo',
+      },
+      knowsAbout: [
+        'JavaScript',
+        'TypeScript',
+        'React',
+        'Next.js',
+        'Frontend Development',
+        'Web Development',
+        'CSS',
+        'HTML',
+      ],
+      sameAs: [
+        'https://twitter.com/rodcast',
+        'https://github.com/rodcast',
+        'https://medium.com/@rodcast',
+        'https://www.linkedin.com/in/rodrigocastilho',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://www.rodrigocastilho.com/#website',
+      url: 'https://www.rodrigocastilho.com/',
+      name: 'Rodrigo Castilho (RODCAST)',
+      description: metadata.description,
+      publisher: {
+        '@id': 'https://www.rodrigocastilho.com/#person',
+      },
+      inLanguage: 'en-US',
+    },
+    {
+      '@type': 'WebPage',
+      '@id': 'https://www.rodrigocastilho.com/#webpage',
+      url: 'https://www.rodrigocastilho.com/',
+      name: metadata.title,
+      description: metadata.description,
+      isPartOf: {
+        '@id': 'https://www.rodrigocastilho.com/#website',
+      },
+      about: {
+        '@id': 'https://www.rodrigocastilho.com/#person',
+      },
+      primaryImageOfPage: {
+        '@id': 'https://www.rodrigocastilho.com/#image',
+      },
+      inLanguage: 'en-US',
+    },
+    {
+      '@type': 'ProfilePage',
+      '@id': 'https://www.rodrigocastilho.com/#profilepage',
+      url: 'https://www.rodrigocastilho.com/',
+      name: metadata.title,
+      description: metadata.description,
+      isPartOf: {
+        '@id': 'https://www.rodrigocastilho.com/#website',
+      },
+      mainEntity: {
+        '@id': 'https://www.rodrigocastilho.com/#person',
+      },
+      inLanguage: 'en-US',
+    },
+  ],
+};
+
 /** Custom document */
 class MyDocument extends Document {
   /** Render document structure */
@@ -112,61 +302,9 @@ class MyDocument extends Document {
             }, telephone=${metadata.formatDetection.telephone ? 'on' : 'off'}`}
           />
 
-          <meta property="og:type" content={metadata.openGraph.type} />
-          <meta property="og:title" content={metadata.openGraph.title} />
-          <meta
-            property="og:description"
-            content={metadata.openGraph.description}
-          />
-          <meta property="og:image" content={metadata.openGraph.image} />
-          <meta property="og:url" content={metadata.openGraph.url} />
+          <OpenGraphMeta openGraph={metadata.openGraph} twitter={metadata.twitter} />
 
-          <meta name="twitter:card" content={metadata.twitter.card} />
-          <meta name="twitter:title" content={metadata.twitter.title} />
-          <meta
-            name="twitter:description"
-            content={metadata.twitter.description}
-          />
-          <meta name="twitter:image" content={metadata.twitter.image} />
-          <meta name="twitter:site" content={metadata.twitter.site} />
-          <meta name="twitter:creator" content={metadata.twitter.creator} />
-
-          <meta
-            name="robots"
-            content={`${metadata.robots.index ? 'index' : 'noindex'}, ${
-              metadata.robots.follow ? 'follow' : 'nofollow'
-            }, ${metadata.robots.nocache ? 'nocache' : ''}, ${
-              metadata.robots.noarchive ? 'noarchive' : ''
-            }`}
-          />
-          {metadata.robots.googleBot && (
-            <>
-              <meta
-                name="googlebot"
-                content={`${
-                  metadata.robots.googleBot.index ? 'index' : 'noindex'
-                }, ${metadata.robots.googleBot.follow ? 'follow' : 'nofollow'}`}
-              />
-              <meta
-                name="googlebot"
-                content={`noimageindex=${
-                  metadata.robots.googleBot.noimageindex ? 'on' : 'off'
-                }`}
-              />
-              <meta
-                name="googlebot"
-                content={`max-video-preview=${metadata.robots.googleBot['max-video-preview']}`}
-              />
-              <meta
-                name="googlebot"
-                content={`max-image-preview=${metadata.robots.googleBot['max-image-preview']}`}
-              />
-              <meta
-                name="googlebot"
-                content={`max-snippet=${metadata.robots.googleBot['max-snippet']}`}
-              />
-            </>
-          )}
+          <RobotsMeta robots={metadata.robots} />
 
           {/* Favicons and PWA */}
           <link rel="icon" href="/favicon.ico" />
@@ -208,94 +346,9 @@ class MyDocument extends Document {
           {/* JSON-LD Structured Data */}
           <script
             type="application/ld+json"
+            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                '@context': 'https://schema.org',
-                '@graph': [
-                  {
-                    '@type': 'Person',
-                    '@id': 'https://www.rodrigocastilho.com/#person',
-                    name: 'Rodrigo Castilho',
-                    alternateName: 'RODCAST',
-                    description: metadata.description,
-                    url: 'https://www.rodrigocastilho.com/',
-                    image: {
-                      '@type': 'ImageObject',
-                      '@id': 'https://www.rodrigocastilho.com/#image',
-                      url: 'https://www.rodrigocastilho.com/rodrigo-castilho-rodcast_photo.jpg',
-                      contentUrl:
-                        'https://www.rodrigocastilho.com/rodrigo-castilho-rodcast_photo.jpg',
-                      width: 400,
-                      height: 400,
-                      caption:
-                        'Rodrigo Castilho (RODCAST) - Staff Frontend Engineer',
-                    },
-                    jobTitle: 'Staff Frontend Engineer',
-                    worksFor: {
-                      '@type': 'Organization',
-                      name: 'Yahoo',
-                    },
-                    knowsAbout: [
-                      'JavaScript',
-                      'TypeScript',
-                      'React',
-                      'Next.js',
-                      'Frontend Development',
-                      'Web Development',
-                      'CSS',
-                      'HTML',
-                    ],
-                    sameAs: [
-                      'https://twitter.com/rodcast',
-                      'https://github.com/rodcast',
-                      'https://medium.com/@rodcast',
-                      'https://www.linkedin.com/in/rodrigocastilho',
-                    ],
-                  },
-                  {
-                    '@type': 'WebSite',
-                    '@id': 'https://www.rodrigocastilho.com/#website',
-                    url: 'https://www.rodrigocastilho.com/',
-                    name: 'Rodrigo Castilho (RODCAST)',
-                    description: metadata.description,
-                    publisher: {
-                      '@id': 'https://www.rodrigocastilho.com/#person',
-                    },
-                    inLanguage: 'en-US',
-                  },
-                  {
-                    '@type': 'WebPage',
-                    '@id': 'https://www.rodrigocastilho.com/#webpage',
-                    url: 'https://www.rodrigocastilho.com/',
-                    name: metadata.title,
-                    description: metadata.description,
-                    isPartOf: {
-                      '@id': 'https://www.rodrigocastilho.com/#website',
-                    },
-                    about: {
-                      '@id': 'https://www.rodrigocastilho.com/#person',
-                    },
-                    primaryImageOfPage: {
-                      '@id': 'https://www.rodrigocastilho.com/#image',
-                    },
-                    inLanguage: 'en-US',
-                  },
-                  {
-                    '@type': 'ProfilePage',
-                    '@id': 'https://www.rodrigocastilho.com/#profilepage',
-                    url: 'https://www.rodrigocastilho.com/',
-                    name: metadata.title,
-                    description: metadata.description,
-                    isPartOf: {
-                      '@id': 'https://www.rodrigocastilho.com/#website',
-                    },
-                    mainEntity: {
-                      '@id': 'https://www.rodrigocastilho.com/#person',
-                    },
-                    inLanguage: 'en-US',
-                  },
-                ],
-              }),
+              __html: JSON.stringify(structuredData),
             }}
           />
         </Head>

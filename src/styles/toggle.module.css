@@ -23,7 +23,7 @@
   background-color: var(--contrast-color);
   border-radius: 34px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: var(--transition-200);
 }
 
 .slider:before {
@@ -36,7 +36,7 @@
   background-color: var(--primary-color);
   border-radius: 50%;
   content: "";
-  transition: transform 0.2s;
+  transition: var(--transition-200);
 }
 
 input[type="checkbox"]:checked + .slider {
