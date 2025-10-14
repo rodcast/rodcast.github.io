@@ -501,10 +501,10 @@
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-15.5.4.tgz#5b5baf1bcb0ecba70d1768a0c8be59dfdcb2f111"
   integrity sha512-1ur2tSHZj8Px/KMAthmuI9FMp/YFusMMGoRNJaRZMOlSkgvLjzosSdQI0cJAKogdHl3qXUQKL9MGaYvKwA7DXg==
 
-"@next/third-parties@^15.5.4":
-  version "15.5.4"
-  resolved "https://registry.npmjs.org/@next/third-parties/-/third-parties-15.5.4.tgz"
-  integrity sha512-l3T1M/EA32phPzZx+gkQAWOF3E5iAULL1nX4Ej0JZQOXaBwwJzb/rd2uefr5TAshJj/+HjjwmdFu7olXudvgVg==
+"@next/third-parties@^15.5.5":
+  version "15.5.5"
+  resolved "https://registry.yarnpkg.com/@next/third-parties/-/third-parties-15.5.5.tgz#f502b4db5a1c82df98e4c0f93afa5f1e441c00c9"
+  integrity sha512-cCEEzsdZc6kpfBahzeKtfFs9xNbYOMLm0cvar3BzG2IBynqD78G9wSMDi1wXVU1ABt2YzjBj/FbykvP2DXC8Mg==
   dependencies:
     third-party-capital "1.0.20"
 
