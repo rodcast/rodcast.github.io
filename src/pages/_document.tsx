@@ -183,7 +183,7 @@ const structuredData = {
       jobTitle: 'Staff Frontend Engineer',
       worksFor: {
         '@type': 'Organization',
-        name: 'Yahoo',
+        name: 'Wellhub',
       },
       knowsAbout: [
         'JavaScript',
