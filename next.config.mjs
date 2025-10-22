@@ -19,7 +19,6 @@ const nextConfig = {
   experimental: {
     webpackBuildWorker: true,
     largePageDataBytes: 256 * 1024,
-    optimizePackageImports: ['@builder.io/partytown', '@next/third-parties'],
   },
 };
 
