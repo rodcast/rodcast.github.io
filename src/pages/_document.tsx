@@ -23,25 +23,21 @@ function RobotsMeta({ robots }: RobotsMetaProps) {
     <>
       <meta
         name="robots"
-        content={`${robots.index ? 'index' : 'noindex'}, ${
-          robots.follow ? 'follow' : 'nofollow'
-        }, ${robots.nocache ? 'nocache' : ''}, ${
-          robots.noarchive ? 'noarchive' : ''
-        }`}
+        content={`${robots.index ? 'index' : 'noindex'}, ${robots.follow ? 'follow' : 'nofollow'
+          }, ${robots.nocache ? 'nocache' : ''}, ${robots.noarchive ? 'noarchive' : ''
+          }`}
       />
       {robots.googleBot && (
         <>
           <meta
             name="googlebot"
-            content={`${
-              robots.googleBot.index ? 'index' : 'noindex'
-            }, ${robots.googleBot.follow ? 'follow' : 'nofollow'}`}
+            content={`${robots.googleBot.index ? 'index' : 'noindex'
+              }, ${robots.googleBot.follow ? 'follow' : 'nofollow'}`}
           />
           <meta
             name="googlebot"
-            content={`noimageindex=${
-              robots.googleBot.noimageindex ? 'on' : 'off'
-            }`}
+            content={`noimageindex=${robots.googleBot.noimageindex ? 'on' : 'off'
+              }`}
           />
           <meta
             name="googlebot"
@@ -178,13 +174,20 @@ const structuredData = {
         contentUrl: 'https://www.rodrigocastilho.com/rodrigo-castilho-rodcast_photo.jpg',
         width: 400,
         height: 400,
-        caption: 'Rodrigo Castilho (RODCAST) - Staff Frontend Engineer',
+        caption: 'Rodrigo Castilho (RODCAST) - Staff Frontend Engineer'
       },
       jobTitle: 'Staff Frontend Engineer',
       worksFor: {
         '@type': 'Organization',
+        '@id': 'https://www.wellhub.com/#organization',
         name: 'Wellhub',
+        url: 'https://www.wellhub.com/'
       },
+      alumniOf: {
+        '@type': 'CollegeOrUniversity',
+        name: 'Unisanta: Universidade Santa Cecília'
+      },
+      knowsLanguage: ['English', 'Portuguese'],
       knowsAbout: [
         'JavaScript',
         'TypeScript',
@@ -193,14 +196,14 @@ const structuredData = {
         'Frontend Development',
         'Web Development',
         'CSS',
-        'HTML',
+        'HTML'
       ],
       sameAs: [
         'https://twitter.com/rodcast',
         'https://github.com/rodcast',
         'https://medium.com/@rodcast',
-        'https://www.linkedin.com/in/rodrigocastilho',
-      ],
+        'https://www.linkedin.com/in/rodrigocastilho'
+      ]
     },
     {
       '@type': 'WebSite',
@@ -208,10 +211,13 @@ const structuredData = {
       url: 'https://www.rodrigocastilho.com/',
       name: 'Rodrigo Castilho (RODCAST)',
       description: metadata.description,
-      publisher: {
-        '@id': 'https://www.rodrigocastilho.com/#person',
-      },
+      publisher: { '@id': 'https://www.rodrigocastilho.com/#person' },
       inLanguage: 'en-US',
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: 'https://www.rodrigocastilho.com/?s={search_term_string}',
+        'query-input': 'required name=search_term_string'
+      }
     },
     {
       '@type': 'WebPage',
@@ -219,16 +225,12 @@ const structuredData = {
       url: 'https://www.rodrigocastilho.com/',
       name: metadata.title,
       description: metadata.description,
-      isPartOf: {
-        '@id': 'https://www.rodrigocastilho.com/#website',
-      },
-      about: {
-        '@id': 'https://www.rodrigocastilho.com/#person',
-      },
-      primaryImageOfPage: {
-        '@id': 'https://www.rodrigocastilho.com/#image',
-      },
-      inLanguage: 'en-US',
+      isPartOf: { '@id': 'https://www.rodrigocastilho.com/#website' },
+      about: { '@id': 'https://www.rodrigocastilho.com/#person' },
+      primaryImageOfPage: { '@id': 'https://www.rodrigocastilho.com/#image' },
+      datePublished: '2023-01-01',
+      dateModified: '2025-10-23',
+      inLanguage: 'en-US'
     },
     {
       '@type': 'ProfilePage',
@@ -236,15 +238,11 @@ const structuredData = {
       url: 'https://www.rodrigocastilho.com/',
       name: metadata.title,
       description: metadata.description,
-      isPartOf: {
-        '@id': 'https://www.rodrigocastilho.com/#website',
-      },
-      mainEntity: {
-        '@id': 'https://www.rodrigocastilho.com/#person',
-      },
-      inLanguage: 'en-US',
-    },
-  ],
+      isPartOf: { '@id': 'https://www.rodrigocastilho.com/#website' },
+      mainEntity: { '@id': 'https://www.rodrigocastilho.com/#person' },
+      inLanguage: 'en-US'
+    }
+  ]
 };
 
 /** Custom document */
@@ -295,11 +293,9 @@ class MyDocument extends Document {
           <meta name="publisher" content={metadata.publisher} />
           <meta
             name="format-detection"
-            content={`email=${
-              metadata.formatDetection.email ? 'on' : 'off'
-            }, address=${
-              metadata.formatDetection.address ? 'on' : 'off'
-            }, telephone=${metadata.formatDetection.telephone ? 'on' : 'off'}`}
+            content={`email=${metadata.formatDetection.email ? 'on' : 'off'
+              }, address=${metadata.formatDetection.address ? 'on' : 'off'
+              }, telephone=${metadata.formatDetection.telephone ? 'on' : 'off'}`}
           />
 
           <OpenGraphMeta openGraph={metadata.openGraph} twitter={metadata.twitter} />
