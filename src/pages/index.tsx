@@ -52,7 +52,7 @@ export default function Page({ dataGitHub, dataMedium }: PageProps) {
         <Sidebar />
         <Article dataGitHub={dataGitHub} dataMedium={dataMedium} />
       </div>
-      
+
       <Footer />
     </div>
   );
