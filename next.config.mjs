@@ -8,9 +8,12 @@ const __dirname = path.dirname(__filename);
 const nextConfig = {
   output: 'export',
   outputFileTracingRoot: __dirname,
-  poweredByHeader: false,
   reactStrictMode: true,
+  compress: true,
   cleanDistDir: true,
+  poweredByHeader: false,
+  generateEtags: false,
+  productionBrowserSourceMaps: true,
   images: {
     unoptimized: true,
     qualities: [75, 100],
@@ -18,7 +21,8 @@ const nextConfig = {
   trailingSlash: true,
   experimental: {
     webpackBuildWorker: true,
-    largePageDataBytes: 256 * 1024,
+    serverSourceMaps: false,
+    inlineCss: true,
   },
 };
 
