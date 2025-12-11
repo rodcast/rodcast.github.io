@@ -1,3 +1,4 @@
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import Script from 'next/script';
@@ -38,6 +39,7 @@ function App({ Component, pageProps }: AppProps) {
       />
       <main>
         <Component {...pageProps} />
+        <SpeedInsights />
       </main>
     </>
   );

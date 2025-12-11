@@ -9,19 +9,17 @@ const nextConfig = {
   output: 'export',
   outputFileTracingRoot: __dirname,
   reactStrictMode: true,
+  trailingSlash: true,
   compress: true,
   cleanDistDir: true,
   poweredByHeader: false,
   generateEtags: false,
-  productionBrowserSourceMaps: true,
+  productionBrowserSourceMaps: false,
   images: {
     unoptimized: true,
-    qualities: [75, 100],
   },
-  trailingSlash: true,
   experimental: {
     webpackBuildWorker: true,
-    serverSourceMaps: false,
     inlineCss: true,
   },
 };
