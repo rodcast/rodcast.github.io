@@ -8,7 +8,7 @@
   },
   "homepage": "https://rodcast.github.io/rodcast.github.io",
   "scripts": {
-    "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 next dev --turbo",
+    "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
