@@ -463,14 +463,7 @@
   resolved "https://registry.yarnpkg.com/@next/env/-/env-16.1.3.tgz#ac64174844e6f20c5527dcd9a1898c7437c1b997"
   integrity sha512-BLP14oBOvZWXgfdJf9ao+VD8O30uE+x7PaV++QtACLX329WcRSJRO5YJ+Bcvu0Q+c/lei41TjSiFf6pXqnpbQA==
 
-"@next/eslint-plugin-next@16.1.3", "@next/eslint-plugin-next@^16.1.0":
-  version "16.1.3"
-  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-16.1.3.tgz#30ed96cfb5ecf20c3ffa99f9e9eeba15867584ba"
-  integrity sha512-MqBh3ltFAy0AZCRFVdjVjjeV7nEszJDaVIpDAnkQcn8U9ib6OEwkSnuK6xdYxMGPhV/Y4IlY6RbDipPOpLfBqQ==
-  dependencies:
-    fast-glob "3.3.1"
-
-"@next/eslint-plugin-next@^16.1.3":
+"@next/eslint-plugin-next@16.1.3", "@next/eslint-plugin-next@^16.1.3":
   version "16.1.3"
   resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-16.1.3.tgz#30ed96cfb5ecf20c3ffa99f9e9eeba15867584ba"
   integrity sha512-MqBh3ltFAy0AZCRFVdjVjjeV7nEszJDaVIpDAnkQcn8U9ib6OEwkSnuK6xdYxMGPhV/Y4IlY6RbDipPOpLfBqQ==
@@ -517,10 +510,10 @@
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-16.1.3.tgz#4ad1ea503dd903214e96a3fc49e637807022bcae"
   integrity sha512-1SZVfFT8zmMB+Oblrh5OKDvUo5mYQOkX2We6VGzpg7JUVZlqe4DYOFGKYZKTweSx1gbMixyO1jnFT4thU+nNHQ==
 
-"@next/third-parties@^16.1.3":
-  version "16.1.3"
-  resolved "https://registry.yarnpkg.com/@next/third-parties/-/third-parties-16.1.3.tgz#1829a55aa47068c047c5beaa76724361af6cb4e5"
-  integrity sha512-jfsjVs/w2MGSF/+2Miy9iLw5aPShzcfNEAhRQeMB7wCThdUXnA/f9UjXLlAQDqbRhQ0qKV2vuTyWaiFwRAp+kQ==
+"@next/third-parties@^16.1.5":
+  version "16.1.5"
+  resolved "https://registry.yarnpkg.com/@next/third-parties/-/third-parties-16.1.5.tgz#e9071098c84fbf032f981a94c17302215193b395"
+  integrity sha512-p8BKg+Y6ovrh2AE4su6MjaEDBYIuk5CkeA1Gtld5V7L3+3nBN2D2N4In2YfsHxFVRVa6fPZXyd2keqEoCpIcnw==
   dependencies:
     third-party-capital "1.0.20"
 
