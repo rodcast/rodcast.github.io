@@ -15,14 +15,15 @@ const Article = dynamic(() => import('@/components/Article'));
 
 /** Fetch data at build time */
 export async function getStaticProps() {
-  let dataGitHub = [];
-  let dataMedium = [];
-
   try {
-    [dataGitHub, dataMedium] = await Promise.all([
+    const [dataGitHub, dataMedium] = await Promise.all([
       fetchData(GITHUB_API),
       fetchData(MEDIUM_API),
     ]);
+
+    return {
+      props: { dataGitHub, dataMedium },
+    };
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Error fetching data at build time:', error);
@@ -30,10 +31,6 @@ export async function getStaticProps() {
       props: { dataGitHub: [], dataMedium: [] },
     };
   }
-
-  return {
-    props: { dataGitHub, dataMedium },
-  };
 }
 
 interface PageProps {
