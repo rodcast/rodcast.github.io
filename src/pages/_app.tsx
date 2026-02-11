@@ -1,7 +1,7 @@
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import Script from 'next/script';
 
 import '@/styles/globals.css';
 
@@ -13,30 +13,10 @@ function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>{title}</title>
-
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-
-        <script
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-
-              gtag('config', '${process.env.NEXT_PUBLIC_GA_TRACKING_ID}', {
-                page_path: window.location.pathname,
-              });
-            `,
-          }}
-        />
       </Head>
-      <Script
-        id="google-tag-manager"
-        strategy="worker"
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
-      />
+      {process.env.NEXT_PUBLIC_GA_TRACKING_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_TRACKING_ID} />
+      )}
       <main>
         <Component {...pageProps} />
         <SpeedInsights />

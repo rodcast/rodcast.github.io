@@ -17,6 +17,7 @@ const nextConfig = {
   productionBrowserSourceMaps: false,
   images: {
     unoptimized: true,
+    qualities: [100, 75],
   },
   experimental: {
     webpackBuildWorker: true,

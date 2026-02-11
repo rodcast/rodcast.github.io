@@ -8,7 +8,7 @@ export const fetchData = async (url: string, options?: RequestInit) => {
   const defaultOptions: RequestInit = {
     signal,
     headers: {
-      'Accept': 'application/json',
+      Accept: 'application/json',
       'User-Agent': 'rodcast.github.io/1.0',
     },
     cache: 'default',
@@ -26,10 +26,12 @@ export const fetchData = async (url: string, options?: RequestInit) => {
   } catch (error) {
     if (error instanceof Error) {
       if (error.name === 'AbortError') {
-        throw new Error(`Request timeout: ${url}`);
+        throw new Error(`Request timeout: ${url}`, { cause: error });
       }
       throw error;
     }
-    throw new Error('Unknown error occurred while fetching data');
+    throw new Error('Unknown error occurred while fetching data', {
+      cause: error,
+    });
   }
 };
