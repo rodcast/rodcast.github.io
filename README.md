@@ -1,7 +1,9 @@
-# Rodrigo Castilho (RODCAST) | GitHub Pages with Github API and Medium API using Next.js 15 + TypeScript + Vercel
+# Rodrigo Castilho (RODCAST)
+
+Personal website built with Next.js 16 and TypeScript, integrating GitHub API and Medium API to showcase projects and technical content.
+
+Deployed to GitHub Pages using an automated CI/CD pipeline powered by GitHub Actions, ensuring fast and reliable delivery.
 
 [![Deploy Next.js site to GitHub Pages](https://github.com/rodcast/rodcast.github.io/actions/workflows/nextjs.yml/badge.svg?branch=master)](https://github.com/rodcast/rodcast.github.io/actions/workflows/nextjs.yml)
 
-This is my personal website created using Next.js 15, TypeScript and deploy to a GitHub Pages site directly from a repository using GitHub Actions.
-
-[http://rodrigocastilho.com/](http://rodrigocastilho.com/)
+🌐 Live: http://rodrigocastilho.com/
