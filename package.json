@@ -43,7 +43,7 @@
     "husky": "^9.1.7",
     "postcss": "^8.5.10",
     "prettier": "^3.8.3",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.3"
   },
   "resolutions": {
     "@types/react": "19.2.8",
