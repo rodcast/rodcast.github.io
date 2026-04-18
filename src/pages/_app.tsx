@@ -26,16 +26,17 @@ function App({ Component, pageProps }: AppProps) {
           properties: {},
           additionalProperties: false,
         },
-        execute: async () => ({
-          name: 'Rodrigo Castilho (RODCAST)',
-          title: 'Staff Frontend Engineer',
-          website: 'https://www.rodrigocastilho.com/',
-          social: {
-            github: 'https://github.com/rodcast',
-            medium: 'https://medium.com/@rodcast',
-            linkedin: 'https://www.linkedin.com/in/rodrigocastilho',
-          },
-        }),
+        execute: () =>
+          Promise.resolve({
+            name: 'Rodrigo Castilho (RODCAST)',
+            title: 'Staff Frontend Engineer',
+            website: 'https://www.rodrigocastilho.com/',
+            social: {
+              github: 'https://github.com/rodcast',
+              medium: 'https://medium.com/@rodcast',
+              linkedin: 'https://www.linkedin.com/in/rodrigocastilho',
+            },
+          }),
       },
       {
         name: 'listLatestGitHubRepos',
