@@ -1,8 +1,8 @@
 {
-  "issuer": "https://www.rodrigocastilho.com",
-  "authorization_endpoint": "https://www.rodrigocastilho.com/oauth/authorize",
-  "token_endpoint": "https://www.rodrigocastilho.com/oauth/token",
-  "jwks_uri": "https://www.rodrigocastilho.com/.well-known/jwks.json",
+  "issuer": "https://rodrigocastilho.com",
+  "authorization_endpoint": "https://rodrigocastilho.com/oauth/authorize",
+  "token_endpoint": "https://rodrigocastilho.com/oauth/token",
+  "jwks_uri": "https://rodrigocastilho.com/.well-known/jwks.json",
   "grant_types_supported": [
     "authorization_code",
     "refresh_token",

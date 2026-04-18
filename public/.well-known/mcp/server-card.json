@@ -7,7 +7,7 @@
   "endpoints": {
     "webmcp": {
       "transport": "webmcp",
-      "url": "https://www.rodrigocastilho.com/"
+      "url": "https://rodrigocastilho.com/"
     }
   },
   "capabilities": {

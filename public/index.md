@@ -4,7 +4,7 @@ Staff Frontend Engineer and ex-Yahoo engineer.
 
 ## Profile
 
-- Website: <https://www.rodrigocastilho.com/>
+- Website: <https://rodrigocastilho.com/>
 - GitHub: <https://github.com/rodcast>
 - Medium: <https://medium.com/@rodcast>
 - LinkedIn: <https://www.linkedin.com/in/rodrigocastilho>

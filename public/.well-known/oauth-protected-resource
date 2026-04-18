@@ -1,7 +1,7 @@
 {
-  "resource": "https://www.rodrigocastilho.com/",
+  "resource": "https://rodrigocastilho.com/",
   "authorization_servers": [
-    "https://www.rodrigocastilho.com"
+    "https://rodrigocastilho.com"
   ],
   "scopes_supported": [
     "profile:read",
