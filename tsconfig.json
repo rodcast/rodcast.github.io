@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2020",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "noImplicitAny": false,
     "allowJs": true,
     "skipLibCheck": true,
@@ -25,24 +21,12 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@/styles/*": [
-        "./src/styles/*"
-      ],
-      "@/components/*": [
-        "./src/components/*"
-      ],
-      "@/constants/*": [
-        "./src/shared/constants/*"
-      ],
-      "@/interfaces/*": [
-        "./src/shared/interfaces/*"
-      ],
-      "@/utils/*": [
-        "./src/shared/utils/*"
-      ]
+      "@/*": ["./src/*"],
+      "@/constants/*": ["./src/shared/constants/*"],
+      "@/interfaces/*": ["./src/shared/interfaces/*"],
+      "@/types/*": ["./src/shared/types/*"],
+      "@/utils/*": ["./src/shared/utils/*"],
+      "@/components/*": ["./src/components/*"]
     }
   },
   "include": [
@@ -52,7 +36,5 @@
     ".next/types/**/*.ts",
     "docs/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

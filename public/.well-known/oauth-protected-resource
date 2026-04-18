@@ -1,0 +1,13 @@
+{
+  "resource": "https://www.rodrigocastilho.com/",
+  "authorization_servers": [
+    "https://www.rodrigocastilho.com"
+  ],
+  "scopes_supported": [
+    "profile:read",
+    "content:read"
+  ],
+  "bearer_methods_supported": [
+    "header"
+  ]
+}

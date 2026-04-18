@@ -20,7 +20,7 @@ Allow: /
 User-agent: GPTBot
 Allow: /
 
-User-agent: ChatGPT-User  
+User-agent: ChatGPT-User
 Allow: /
 
 User-agent: CCBot
@@ -37,5 +37,7 @@ Sitemap: https://www.rodrigocastilho.com/sitemap.xml
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1
+
+Content-Signal: ai-train=no, search=yes, ai-input=no
 
 sitemap: http://www.rodrigocastilho.com/sitemap.xml

@@ -1,0 +1,29 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://www.rodrigocastilho.com/",
+      "service-desc": [
+        {
+          "href": "https://www.rodrigocastilho.com/docs/api/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://www.rodrigocastilho.com/docs/api/",
+          "type": "text/html"
+        },
+        {
+          "href": "https://www.rodrigocastilho.com/docs/api.md",
+          "type": "text/markdown"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://www.rodrigocastilho.com/api/health",
+          "type": "application/json"
+        }
+      ]
+    }
+  ]
+}
