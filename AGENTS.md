@@ -16,17 +16,20 @@ Personal website for Rodrigo Castilho (RODCAST).
 
 ## Project Structure
 
-```
+```text
 src/
   pages/         # Next.js pages (Pages Router)
   components/    # UI components
   shared/
     constants/   # External API endpoint URLs
     interfaces/  # TypeScript contracts for API and UI data
+    types/       # Ambient type declarations
     utils/       # Fetch helper, data normalizers
   styles/        # CSS Modules + global CSS
-  types/         # Ambient type declarations
 public/          # Static assets served at the root
+  .well-known/   # API/OAuth/MCP/Agent discovery metadata
+  docs/api/      # Static API docs and OpenAPI contract
+  api/health     # Static health endpoint payload
 ```
 
 ### Key Files
@@ -36,10 +39,14 @@ public/          # Static assets served at the root
 | `src/pages/_app.tsx`                  | Global styles, Google Analytics, Vercel Speed Insights      |
 | `src/pages/_document.tsx`             | SEO metadata, Open Graph/Twitter tags, JSON-LD, PWA links   |
 | `src/pages/index.tsx`                 | Main page — fetches data at build time via `getStaticProps` |
+| `src/shared/types/webmcp.d.ts`        | Ambient WebMCP navigator and tool type declarations         |
 | `src/shared/constants/paths.ts`       | External API endpoint constants                             |
 | `src/shared/utils/fetch.ts`           | Typed fetch helper with timeout and error handling          |
 | `src/shared/utils/normalizeGitHub.ts` | Normalizes and filters GitHub API responses                 |
 | `src/shared/utils/normalizeMedium.ts` | Normalizes and filters Medium RSS feed responses            |
+| `public/.well-known/api-catalog`      | API catalog for client and agent service discovery          |
+| `public/.well-known/agent-skills/`    | Agent Skills index and capability docs                      |
+| `public/docs/api/openapi.json`        | Public OpenAPI contract for static metadata endpoints       |
 | `next.config.mjs`                     | Next.js config — must preserve static export settings       |
 
 ---
@@ -113,6 +120,12 @@ public/          # Static assets served at the root
 
 - All external API data must be normalized through the appropriate utility before being passed to components.
 - If an API contract changes, update both the interface in `src/shared/interfaces/` and its corresponding normalizer together.
+
+### Discovery Metadata
+
+- Keep `.well-known` discovery documents internally consistent (`api-catalog`, OAuth/OIDC metadata, MCP server card, and agent-skills index).
+- When updating any `public/.well-known/agent-skills/*.md` file, refresh the matching `sha256` entry in `public/.well-known/agent-skills/index.json`.
+- Preserve API discovery links exposed in both `src/pages/_document.tsx` and `public/_headers`.
 
 ### Error Handling
 

@@ -1,0 +1,25 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "RODCAST Public Site API",
+    "version": "1.0.0",
+    "description": "Public metadata exposed for agent and crawler discovery."
+  },
+  "servers": [
+    {
+      "url": "https://www.rodrigocastilho.com"
+    }
+  ],
+  "paths": {
+    "/api/health": {
+      "get": {
+        "summary": "Health probe",
+        "responses": {
+          "200": {
+            "description": "Service is reachable"
+          }
+        }
+      }
+    }
+  }
+}

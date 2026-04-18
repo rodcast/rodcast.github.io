@@ -1,0 +1,18 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schema/server-card.json",
+  "serverInfo": {
+    "name": "Rodcast Website Context Server",
+    "version": "1.0.0"
+  },
+  "endpoints": {
+    "webmcp": {
+      "transport": "webmcp",
+      "url": "https://www.rodrigocastilho.com/"
+    }
+  },
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false
+  }
+}
