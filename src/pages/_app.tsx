@@ -30,7 +30,7 @@ function App({ Component, pageProps }: AppProps) {
           Promise.resolve({
             name: 'Rodrigo Castilho (RODCAST)',
             title: 'Staff Frontend Engineer',
-            website: 'https://www.rodrigocastilho.com/',
+            website: 'https://rodrigocastilho.com/',
             social: {
               github: 'https://github.com/rodcast',
               medium: 'https://medium.com/@rodcast',

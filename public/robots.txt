@@ -33,11 +33,9 @@ User-agent: Claude-Web
 Allow: /
 
 # Sitemaps
-Sitemap: https://www.rodrigocastilho.com/sitemap.xml
+Sitemap: https://rodrigocastilho.com/sitemap.xml
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1
 
 Content-Signal: ai-train=no, search=yes, ai-input=no
-
-sitemap: http://www.rodrigocastilho.com/sitemap.xml

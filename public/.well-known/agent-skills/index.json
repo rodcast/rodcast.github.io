@@ -5,28 +5,28 @@
       "name": "api-discovery",
       "type": "discovery",
       "description": "Publishes API catalog and API documentation links for automated clients.",
-      "url": "https://www.rodrigocastilho.com/.well-known/agent-skills/api-discovery.md",
+      "url": "https://rodrigocastilho.com/.well-known/agent-skills/api-discovery.md",
       "sha256": "d5e7e9e1e88b0f83c730427cca45b9ecb61393c210556d45ed87092c39e76890"
     },
     {
       "name": "markdown-negotiation",
       "type": "representation",
       "description": "Publishes a markdown representation of the homepage for agents.",
-      "url": "https://www.rodrigocastilho.com/.well-known/agent-skills/markdown-negotiation.md",
+      "url": "https://rodrigocastilho.com/.well-known/agent-skills/markdown-negotiation.md",
       "sha256": "b2f11b785b74900adb1ef2c55780b80d7f5548110ccd23c8b6951d0ae4d3e3b7"
     },
     {
       "name": "auth-discovery",
       "type": "authentication",
       "description": "Publishes OAuth and OIDC metadata endpoints for token discovery.",
-      "url": "https://www.rodrigocastilho.com/.well-known/agent-skills/auth-discovery.md",
+      "url": "https://rodrigocastilho.com/.well-known/agent-skills/auth-discovery.md",
       "sha256": "7bc13bb2ec5e82f64a8642d37fa7ac87c48a997765f415e4f4954d36d9efb59a"
     },
     {
       "name": "webmcp-tools",
       "type": "tools",
       "description": "Exposes WebMCP tools for profile and content retrieval.",
-      "url": "https://www.rodrigocastilho.com/.well-known/agent-skills/webmcp-tools.md",
+      "url": "https://rodrigocastilho.com/.well-known/agent-skills/webmcp-tools.md",
       "sha256": "f9da294420d172c96b3e128ca15e28f794fdf63e7762bfa41b44dc1438268ce4"
     }
   ]

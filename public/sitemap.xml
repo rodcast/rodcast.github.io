@@ -8,17 +8,17 @@
                       http://www.google.com/schemas/sitemap-image/1.1
                       http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
   <url>
-    <loc>https://www.rodrigocastilho.com/</loc>
+    <loc>https://rodrigocastilho.com/</loc>
     <lastmod>2025-10-08</lastmod>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
     <image:image>
-      <image:loc>https://www.rodrigocastilho.com/rodrigo-castilho-rodcast_photo.jpg</image:loc>
+      <image:loc>https://rodrigocastilho.com/rodrigo-castilho-rodcast_photo.jpg</image:loc>
       <image:title>Rodrigo Castilho (RODCAST) - Staff Frontend Engineer</image:title>
       <image:caption>Professional photo of Rodrigo Castilho, Staff Frontend Engineer</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://www.rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg</image:loc>
+      <image:loc>https://rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg</image:loc>
       <image:title>Rodrigo Castilho Social Media Card</image:title>
       <image:caption>Social media card for Rodrigo Castilho's profile</image:caption>
     </image:image>

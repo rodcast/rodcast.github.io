@@ -6,7 +6,7 @@
   "engines": {
     "node": "22.x"
   },
-  "homepage": "https://rodcast.github.io/rodcast.github.io",
+  "homepage": "https://rodrigocastilho.com/",
   "scripts": {
     "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 next dev",
     "build": "next build",
