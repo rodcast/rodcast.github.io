@@ -84,6 +84,7 @@ public/          # Static assets served at the root
 
 | Command         | Purpose                                   |
 | --------------- | ----------------------------------------- |
+| `nvm use`       | Load Node version defined in `.nvmrc`     |
 | `yarn install`  | Install dependencies                      |
 | `yarn dev`      | Start local development server            |
 | `yarn build`    | Generate static production build (`out/`) |
@@ -91,6 +92,7 @@ public/          # Static assets served at the root
 | `yarn lint`     | Run ESLint                                |
 | `yarn lint:fix` | Run ESLint and auto-fix issues            |
 
+> Run `nvm use` before Yarn commands to ensure the exact Node version from `.nvmrc` is active.
 > **Node version:** 22.x (see `.nvmrc`). **Package manager:** Yarn.
 
 ---
