@@ -1,13 +1,8 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const isDev = process.env.NODE_ENV === 'development';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  outputFileTracingRoot: __dirname,
   reactStrictMode: true,
   trailingSlash: true,
   compress: true,
@@ -15,13 +10,20 @@ const nextConfig = {
   poweredByHeader: false,
   generateEtags: false,
   productionBrowserSourceMaps: false,
+  logging: {
+    fetches: {
+      fullUrl: isDev,
+      hmrRefreshes: isDev
+    },
+    browserToTerminal: isDev
+  },
   images: {
     unoptimized: true,
     qualities: [100, 75],
   },
   experimental: {
-    webpackBuildWorker: true,
     inlineCss: true,
+    turbopackFileSystemCacheForDev: true
   },
 };
 
