@@ -45,5 +45,7 @@
     "prettier": "^3.8.4",
     "typescript": "^6.0.3"
   },
-  "resolutions": {}
+  "resolutions": {
+    "postcss": "8.5.15"
+  }
 }
