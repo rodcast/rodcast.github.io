@@ -92,7 +92,7 @@ const metadata = {
     url: 'https://rodrigocastilho.com/',
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Rodrigo Castilho',
     description:
       'Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.',

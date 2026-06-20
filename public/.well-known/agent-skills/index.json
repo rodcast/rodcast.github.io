@@ -13,7 +13,7 @@
       "type": "representation",
       "description": "Publishes a markdown representation of the homepage for agents.",
       "url": "https://rodrigocastilho.com/.well-known/agent-skills/markdown-negotiation.md",
-      "sha256": "609c8470dfbee9123931cda41eda3e744c947d14f34560e53c079652b3d17ca5"
+      "sha256": "781023e1d165d50962423c27fa07be1be9eb2d2ae13c150a946f569f48b1f8c0"
     },
     {
       "name": "auth-discovery",

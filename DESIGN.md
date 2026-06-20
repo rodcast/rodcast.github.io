@@ -61,6 +61,8 @@ The site exposes a set of machine-readable discovery documents:
 
 These are static JSON/text files committed to `public/`. They require no server. When updating any `agent-skills/*.md`, regenerate the `sha256` in `agent-skills/index.json`.
 
+**Host limitation:** discovery here relies on static files and the `<link>` tags in `_document.tsx`. The HTTP-header layer (`Link`, `Vary`, `Cache-Control`, and `Accept: text/markdown` negotiation defined in `vercel.json` and `public/_headers`) is **not honored by GitHub Pages** — it applies only if the site is served from Vercel/Cloudflare Pages/Netlify. On GitHub Pages, fetch markdown directly at `/index.md`.
+
 ## Data Normalizers
 
 Raw API responses are never passed directly to components. Each external source has a dedicated normalizer:

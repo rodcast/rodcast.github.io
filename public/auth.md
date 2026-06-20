@@ -210,4 +210,4 @@ Two independent layers:
 
 ## Contact
 
-Integration questions: <mailto:security@rodrigocastilho.com>
+Integration questions: <mailto:rodcast@gmail.com>

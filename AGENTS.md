@@ -108,6 +108,14 @@ public/          # Static assets served at the root
 - **Deploy target:** GitHub Pages via `actions/deploy-pages`.
 - A `vercel.json` file exists but the canonical production deployment is GitHub Pages.
 
+> **Hosting caveat:** GitHub Pages serves static files only — it does **not**
+> apply `vercel.json` rewrites or the `public/_headers` rules (`Link`, `Vary`,
+> `Cache-Control`, content negotiation). Those files only take effect on a host
+> that honors them (Vercel, Cloudflare Pages, Netlify). On GitHub Pages the
+> agent/discovery surface is the static files under `public/` plus the `<link>`
+> tags in `src/pages/_document.tsx`; `Accept: text/markdown` negotiation is not
+> active, so fetch `/index.md` directly.
+
 ---
 
 ## Development Conventions
@@ -130,7 +138,7 @@ public/          # Static assets served at the root
 
 - Keep `.well-known` discovery documents internally consistent (`api-catalog`, `agent-card.json`, `mcp.json`, `mcp/server-card.json`, OAuth/OIDC metadata, and agent-skills index).
 - When updating any `public/.well-known/agent-skills/*.md` file, refresh the matching `sha256` entry in `public/.well-known/agent-skills/index.json`.
-- Preserve API discovery links exposed in both `src/pages/_document.tsx` and `public/_headers`.
+- Preserve API discovery links exposed in `src/pages/_document.tsx` (the discovery surface honored on GitHub Pages) and keep them consistent with the `Link` header in `public/_headers`/`vercel.json` (used only on non-Pages hosts).
 
 ### Error Handling
 
