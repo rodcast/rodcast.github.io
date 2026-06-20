@@ -51,7 +51,11 @@ Response shape (read the `agent_auth` block in full):
     "identity_endpoint": "https://rodrigocastilho.com/agent/identity/register",
     "register_uri": "https://rodrigocastilho.com/agent/identity/register",
     "claim_endpoint": "https://rodrigocastilho.com/agent/identity/claim",
-    "identity_types_supported": ["service_auth"],
+    "identity_types_supported": ["anonymous", "service_auth"],
+    "anonymous": {
+      "credential_types_supported": ["access_token"],
+      "claim_uri": "https://rodrigocastilho.com/agent/identity/claim"
+    },
     "service_auth": {
       "credential_types_supported": ["access_token"],
       "claim_uri": "https://rodrigocastilho.com/agent/identity/claim",
@@ -66,7 +70,9 @@ Response shape (read the `agent_auth` block in full):
 
 ## Step 2 — Pick a method
 
-This service accepts one registration method:
+This service accepts these registration methods:
+
+- **`anonymous`** — low-friction registration for read-only flows that returns an `access_token` for allowed scopes.
 
 - **`service_auth`** — you have the user's email. A claim ceremony is required before credentials are issued.
 
@@ -115,7 +121,7 @@ For `service_auth`, the `claim` block is already in the Step 3 response. Skip to
 Surface `verification_uri` and `user_code` in a single message. Suggested copy:
 
 > Open this link, sign in (or sign up), and enter this 6-digit code: **123456**
-> https://rodrigocastilho.com/login?return_to=...
+> [https://rodrigocastilho.com/login?return_to=...](https://rodrigocastilho.com/login?return_to=...)
 
 The user signs in to the service and types the `user_code` on the claim page.
 

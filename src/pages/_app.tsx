@@ -184,6 +184,19 @@ const buildWebMCPTools = (): WebMCPTool[] => [
   },
 ];
 
+/** Keeps only the canonical WebMCP registerTool properties for stricter runtimes. */
+const toRegisterToolPayload = ({
+  name,
+  description,
+  inputSchema,
+  execute,
+}: WebMCPTool): WebMCPTool => ({
+  name,
+  description,
+  inputSchema,
+  execute,
+});
+
 /** Main app component */
 function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -194,38 +207,66 @@ function App({ Component, pageProps }: AppProps) {
     const tools = buildWebMCPTools();
     const abortController = new AbortController();
 
-    /** Registers the WebMCP tools with the available model context APIs.
-     *
-     * Priority order (mutually exclusive to avoid duplicate-name errors):
-     *  1. navigator.modelContext.registerTool  — Chrome EPP / SKILL requirement
-     *  2. navigator.modelContext.provideContext — older pre-spec API
-     *  3. document.modelContext.registerTool   — W3C spec canonical location
-     */
+    /** Registers WebMCP tools with all available APIs; returns true when any path succeeds. */
     const registerTools = async () => {
       const signal = abortController.signal;
       const navCtx = navigator.modelContext;
       const docCtx = document.modelContext;
+      const canonicalTools = tools.map(toRegisterToolPayload);
+      let didRegister = false;
 
       if (navCtx?.registerTool) {
-        await Promise.all(
-          tools.map((tool) => navCtx.registerTool?.(tool, { signal }))
-        );
-        return;
+        for (const tool of canonicalTools) {
+          try {
+            await navCtx.registerTool(tool, { signal });
+            didRegister = true;
+          } catch {
+            // Some implementations reject individual tools; keep trying others.
+          }
+        }
       }
 
       if (navCtx?.provideContext) {
-        await navCtx.provideContext({ tools });
-        return;
+        try {
+          await navCtx.provideContext({ tools: canonicalTools });
+          didRegister = true;
+        } catch {
+          // Ignore unsupported provideContext implementations.
+        }
       }
 
       if (docCtx?.registerTool) {
-        await Promise.all(
-          tools.map((tool) => docCtx.registerTool?.(tool, { signal }))
-        );
+        for (const tool of canonicalTools) {
+          try {
+            await docCtx.registerTool(tool, { signal });
+            didRegister = true;
+          } catch {
+            // Ignore individual failures and continue with the remaining tools.
+          }
+        }
+      }
+
+      return didRegister;
+    };
+
+    const maxAttempts = 20;
+    let attempts = 0;
+
+    /** Tries tool registration repeatedly for a short window while APIs initialize. */
+    const tryRegister = async () => {
+      if (abortController.signal.aborted) {
+        return;
+      }
+
+      attempts += 1;
+      const success = await registerTools().catch(() => false);
+
+      if (!success && attempts < maxAttempts) {
+        window.setTimeout(tryRegister, 250);
       }
     };
 
-    registerTools().catch(() => undefined);
+    tryRegister().catch(() => undefined);
 
     return () => {
       abortController.abort();
