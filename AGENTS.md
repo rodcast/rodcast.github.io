@@ -93,7 +93,7 @@ public/          # Static assets served at the root
 | `yarn lint:fix` | Run ESLint and auto-fix issues            |
 
 > Run `nvm use` before Yarn commands to ensure the exact Node version from `.nvmrc` is active.
-> **Node version:** 22.x (see `.nvmrc`). **Package manager:** Yarn.
+> **Node version:** 24.x (see `.nvmrc`). **Package manager:** Yarn.
 
 ---
 

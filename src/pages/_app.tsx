@@ -1,6 +1,5 @@
-import { GoogleAnalytics } from '@next/third-parties/google';
-// import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { WebMCPTool } from '@/types/webmcp';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useEffect } from 'react';
@@ -9,9 +8,11 @@ import '@/styles/globals.css';
 
 const title = 'Rodrigo Castilho (RODCAST)';
 
+/** Extracts and normalises the trimmed text content of a DOM node. */
 const getText = (element: Node | null | undefined) =>
   element?.textContent?.trim().replace(/\s+/g, ' ') ?? '';
 
+/** Reads the profile summary and social links from the about section DOM. */
 const getProfileSummary = () => {
   const about = document.getElementById('about');
   const links = Array.from(about?.querySelectorAll('a[href]') ?? []).map(
@@ -29,6 +30,7 @@ const getProfileSummary = () => {
   };
 };
 
+/** Returns up to `limit` GitHub project entries from the rendered project list. */
 const listGitHubProjects = (limit: number) => {
   const items = Array.from(
     document.querySelectorAll('#github-projects ol li')
@@ -45,6 +47,7 @@ const listGitHubProjects = (limit: number) => {
   return items.slice(0, limit);
 };
 
+/** Returns up to `limit` Medium article entries from the rendered articles list. */
 const listMediumArticles = (limit: number) => {
   const items = Array.from(
     document.querySelectorAll('#medium-articles ol li')
@@ -64,6 +67,7 @@ const listMediumArticles = (limit: number) => {
   return items.slice(0, limit);
 };
 
+/** Builds the WebMCP tool definitions backed by the current DOM state. */
 const buildWebMCPTools = (): WebMCPTool[] => [
   {
     name: 'get-profile-summary',
@@ -78,7 +82,7 @@ const buildWebMCPTools = (): WebMCPTool[] => [
     annotations: {
       readOnlyHint: true,
     },
-    execute: async () => getProfileSummary(),
+    execute: () => Promise.resolve(getProfileSummary()),
   },
   {
     name: 'navigate-to-section',
@@ -97,25 +101,25 @@ const buildWebMCPTools = (): WebMCPTool[] => [
       required: ['section'],
       additionalProperties: false,
     },
-    execute: async (input) => {
+    execute: (input) => {
       const section = typeof input?.section === 'string' ? input.section : '';
       const target = document.getElementById(section);
 
       if (!target) {
-        return {
+        return Promise.resolve({
           ok: false,
           error: 'unknown_section',
-        };
+        });
       }
 
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       window.history.replaceState(null, '', `#${section}`);
 
-      return {
+      return Promise.resolve({
         ok: true,
         section,
         title: getText(target.querySelector('header, h1, h2, h3')) || section,
-      };
+      });
     },
   },
   {
@@ -139,13 +143,13 @@ const buildWebMCPTools = (): WebMCPTool[] => [
     annotations: {
       readOnlyHint: true,
     },
-    execute: async (input) => {
+    execute: (input) => {
       const limit =
         typeof input?.limit === 'number' && input.limit > 0
           ? Math.min(input.limit, 20)
           : 6;
 
-      return listGitHubProjects(limit);
+      return Promise.resolve(listGitHubProjects(limit));
     },
   },
   {
@@ -169,13 +173,13 @@ const buildWebMCPTools = (): WebMCPTool[] => [
     annotations: {
       readOnlyHint: true,
     },
-    execute: async (input) => {
+    execute: (input) => {
       const limit =
         typeof input?.limit === 'number' && input.limit > 0
           ? Math.min(input.limit, 10)
           : 5;
 
-      return listMediumArticles(limit);
+      return Promise.resolve(listMediumArticles(limit));
     },
   },
 ];
@@ -184,12 +188,13 @@ const buildWebMCPTools = (): WebMCPTool[] => [
 function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     if (typeof window === 'undefined') {
-      return;
+      return () => {};
     }
 
     const tools = buildWebMCPTools();
     const abortController = new AbortController();
 
+    /** Registers the WebMCP tools with the available model context APIs. */
     const registerTools = async () => {
       if (navigator.modelContext?.provideContext) {
         await navigator.modelContext.provideContext({ tools });
@@ -223,7 +228,6 @@ function App({ Component, pageProps }: AppProps) {
       )}
       <main>
         <Component {...pageProps} />
-        {/* <SpeedInsights /> */}
       </main>
     </>
   );
