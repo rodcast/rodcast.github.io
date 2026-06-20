@@ -4,7 +4,6 @@
   "version": "0.2.1",
   "description": "Static discovery metadata for the Rodrigo Castilho personal website. WebMCP browser tools expose public profile information plus rendered GitHub repositories and Medium articles.",
   "author": "Rodrigo Castilho",
-  "license": "MIT",
   "schemas": {
     "github": {
       "$schema": "https://json-schema.org/draft-07/schema#",
