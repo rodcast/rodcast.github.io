@@ -14,7 +14,7 @@ Architecture decisions and rationale for rodcast.github.io.
 
 **Rationale:** GitHub API and the `rss2json` Medium proxy do not require authentication or personalization. Fetching at build time means the deployed HTML already contains the data — no loading spinners for primary content, no client-side API keys, and no exposure of rate-limited endpoints to end users.
 
-A 5-second timeout in `fetchData` prevents build hangs. If both APIs fail, the page renders with empty arrays rather than crashing.
+A 5-second timeout in `fetchData` prevents build hangs. If either API call fails, the page renders with empty arrays rather than crashing.
 
 ## Component Structure
 
