@@ -1,6 +1,6 @@
 {
   "name": "Rodrigo Castilho Personal Website Agent",
-  "description": "A read-only agent that provides information about Rodrigo Castilho's profile, public GitHub repositories, and Medium articles via WebMCP browser tools.",
+  "description": "A read-only agent that provides information about Rodrigo Castilho profile, public GitHub repositories, and Medium articles via WebMCP browser tools.",
   "version": "1.0.0",
   "supportedInterfaces": [
     {
@@ -38,14 +38,14 @@
     {
       "id": "list-github-projects",
       "name": "List GitHub Projects",
-      "description": "List Rodrigo Castilho's public GitHub repositories currently rendered on the page, including name, description, and repository URL.",
+      "description": "List Rodrigo Castilho public GitHub repositories currently rendered on the page, including name, description, and repository URL.",
       "tags": ["github", "repositories", "projects", "open-source", "code"],
       "outputModes": ["application/json", "text/plain"]
     },
     {
       "id": "list-medium-articles",
       "name": "List Medium Articles",
-      "description": "List Rodrigo Castilho's latest Medium articles, including title, publication URL, and publication date.",
+      "description": "List Rodrigo Castilho latest Medium articles, including title, publication URL, and publication date.",
       "tags": ["medium", "articles", "writing", "blog", "content"],
       "outputModes": ["application/json", "text/plain"]
     }

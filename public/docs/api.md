@@ -1,4 +1,4 @@
-# RODCAST API Documentation
+# Rodrigo Castilho API Documentation
 
 This site exposes static metadata for discovery by automated clients.
 

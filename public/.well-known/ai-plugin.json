@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "name_for_human": "Rodrigo Castilho's Personal Site",
-  "name_for_model": "rodcast_public_site",
+  "name_for_human": "Rodrigo Castilho Personal Site",
+  "name_for_model": "rodrigo_castilho_public_site",
   "description_for_human": "Personal website for Rodrigo Castilho. Provides access to profile content, GitHub repositories, and Medium articles.",
-  "description_for_model": "This is the personal website of Rodrigo Castilho (rodcast). It exposes public profile metadata, GitHub repository index, and Medium article feed via static JSON and markdown endpoints.",
+  "description_for_model": "This is the personal website of Rodrigo Castilho. It exposes public profile metadata, GitHub repository index, and Medium article feed via static JSON and markdown endpoints.",
   "auth": {
     "type": "none"
   },

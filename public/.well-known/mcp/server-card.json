@@ -1,7 +1,7 @@
 {
   "$schema": "https://modelcontextprotocol.io/schema/server-card.json",
   "serverInfo": {
-    "name": "Rodcast Website Context Server",
+    "name": "Rodrigo Castilho Website Context Server",
     "version": "1.0.0"
   },
   "endpoints": {

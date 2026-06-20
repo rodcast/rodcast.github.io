@@ -1,8 +1,8 @@
 {
   "protocol_version": "2024-05-15",
-  "name": "rodcast-public-site",
+  "name": "rodrigo-castilho-public-site",
   "version": "0.2.1",
-  "description": "Static discovery metadata for the RODCAST personal website. WebMCP browser tools expose public profile information plus rendered GitHub repositories and Medium articles.",
+  "description": "Static discovery metadata for the Rodrigo Castilho personal website. WebMCP browser tools expose public profile information plus rendered GitHub repositories and Medium articles.",
   "author": "Rodrigo Castilho",
   "license": "MIT",
   "schemas": {
