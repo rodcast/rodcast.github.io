@@ -41,7 +41,6 @@
       "description": "List Rodrigo Castilho's public GitHub repositories currently rendered on the page, including name, description, and repository URL.",
       "tags": ["github", "repositories", "projects", "open-source", "code"],
       "outputModes": ["application/json", "text/plain"]
-    }
     },
     {
       "id": "list-medium-articles",
