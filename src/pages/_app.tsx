@@ -252,6 +252,7 @@ function App({ Component, pageProps }: AppProps) {
     const maxAttempts = 20;
     let attempts = 0;
 
+    /** Tries tool registration repeatedly for a short window while APIs initialize. */
     const tryRegister = async () => {
       if (abortController.signal.aborted) {
         return;
@@ -265,7 +266,7 @@ function App({ Component, pageProps }: AppProps) {
       }
     };
 
-    void tryRegister();
+    tryRegister().catch(() => undefined);
 
     return () => {
       abortController.abort();
