@@ -1,10 +1,10 @@
 ---
-title: Rodrigo Castilho (RODCAST)
+title: Rodrigo Castilho
 description: Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.
 image: https://rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg
 ---
 
-# Rodrigo Castilho (RODCAST)
+# Rodrigo Castilho
 
 Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.
 
@@ -57,7 +57,7 @@ Read all articles at [medium.com/@rodcast](https://medium.com/@rodcast).
       "@type": "WebSite",
       "@id": "https://rodrigocastilho.com/#website",
       "url": "https://rodrigocastilho.com/",
-      "name": "Rodrigo Castilho (RODCAST)",
+      "name": "Rodrigo Castilho",
       "description": "Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.",
       "inLanguage": "en-US"
     },
@@ -65,7 +65,7 @@ Read all articles at [medium.com/@rodcast](https://medium.com/@rodcast).
       "@type": "WebPage",
       "@id": "https://rodrigocastilho.com/#webpage",
       "url": "https://rodrigocastilho.com/",
-      "name": "Rodrigo Castilho (RODCAST)",
+      "name": "Rodrigo Castilho",
       "description": "Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.",
       "inLanguage": "en-US",
       "datePublished": "2023-01-01",

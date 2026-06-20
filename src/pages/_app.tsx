@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 import '@/styles/globals.css';
 
-const title = 'Rodrigo Castilho (RODCAST)';
+const title = 'Rodrigo Castilho';
 
 /** Returns the normalised text content of a DOM node, collapsing whitespace. */
 const getText = (element: Node | null | undefined) =>

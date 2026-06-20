@@ -62,7 +62,7 @@ function RobotsMeta({ robots }: RobotsMetaProps) {
 }
 
 const metadata = {
-  title: 'Rodrigo Castilho (RODCAST)',
+  title: 'Rodrigo Castilho',
   description:
     'Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.',
   keywords: [
@@ -85,7 +85,7 @@ const metadata = {
   },
   openGraph: {
     type: 'profile',
-    title: 'Rodrigo Castilho (RODCAST)',
+    title: 'Rodrigo Castilho',
     description:
       'Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.',
     image: 'https://rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg',
@@ -93,7 +93,7 @@ const metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Rodrigo Castilho (RODCAST)',
+    title: 'Rodrigo Castilho',
     description:
       'Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.',
     image: 'https://rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg',
@@ -177,7 +177,7 @@ const structuredData = {
           'https://rodrigocastilho.com/rodrigo-castilho-rodcast_photo.jpg',
         width: 400,
         height: 400,
-        caption: 'Rodrigo Castilho (RODCAST) - Staff Frontend Engineer',
+        caption: 'Rodrigo Castilho - Staff Frontend Engineer',
       },
       jobTitle: 'Staff Frontend Engineer',
       worksFor: {
@@ -212,7 +212,7 @@ const structuredData = {
       '@type': 'WebSite',
       '@id': 'https://rodrigocastilho.com/#website',
       url: 'https://rodrigocastilho.com/',
-      name: 'Rodrigo Castilho (RODCAST)',
+      name: 'Rodrigo Castilho',
       description: metadata.description,
       publisher: { '@id': 'https://rodrigocastilho.com/#person' },
       inLanguage: 'en-US',

@@ -6,7 +6,7 @@ This file describes the project for both human contributors and AI agents. Read 
 
 ## Project Overview
 
-Personal website for Rodrigo Castilho (RODCAST).
+Personal website for Rodrigo Castilho.
 
 - **Stack:** Next.js (Pages Router) + React + TypeScript.
 - **Purpose:** Display profile content alongside the owner's latest public GitHub repositories and Medium articles.
