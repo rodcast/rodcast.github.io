@@ -1,6 +1,6 @@
 # auth.md
 
-This service publishes agent registration discovery metadata for `https://rodrigocastilho.com/`.
+This service publishes agent registration discovery metadata for `https://rodrigocastilho.com`.
 
 - Resource server: `https://rodrigocastilho.com/`
 - Authorization server: `https://rodrigocastilho.com`
