@@ -22,17 +22,16 @@
       }
     },
     "medium": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "description": "Medium article metadata",
+      "$schema": "https://json-schema.org/draft-07/schema#",
+      "description": "Normalized Medium article metadata (IMedium)",
       "type": "object",
-      "required": ["id", "title", "link"],
+      "required": ["guid", "title", "link", "pubDate", "content"],
       "properties": {
-        "id": { "type": "string" },
+        "guid": { "type": "string" },
         "title": { "type": "string" },
         "link": { "type": "string" },
-        "description": { "type": "string" },
-        "pubDate": { "type": "string" },
-        "categories": { "type": "array", "items": { "type": "string" } }
+        "pubDate": { "type": "integer" },
+        "content": { "type": "string" }
       }
     }
   },
