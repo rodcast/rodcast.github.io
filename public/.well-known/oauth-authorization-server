@@ -18,8 +18,15 @@
     "claim_endpoint": "https://rodrigocastilho.com/agent/identity/claim",
     "events_endpoint": "https://rodrigocastilho.com/agent/event/notify",
     "identity_types_supported": [
+      "anonymous",
       "service_auth"
     ],
+    "anonymous": {
+      "credential_types_supported": [
+        "access_token"
+      ],
+      "claim_uri": "https://rodrigocastilho.com/agent/identity/claim"
+    },
     "service_auth": {
       "credential_types_supported": [
         "access_token"
