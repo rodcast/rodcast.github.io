@@ -29,9 +29,14 @@ export default function Medium({ data }: MediumProps) {
       {Array.isArray(articles) && (
         <ol className={styles.list}>
           {articles.map(({ guid, title, link, pubDate, content }) => {
-            const dateTime = new Intl.DateTimeFormat('en-US', {
-              dateStyle: 'long',
-            }).format(new Date(pubDate));
+            const publishedDate = new Date(pubDate);
+            const isValidPublishedDate = !Number.isNaN(publishedDate.getTime());
+
+            const dateLabel = isValidPublishedDate
+              ? new Intl.DateTimeFormat('en-US', {
+                  dateStyle: 'long',
+                }).format(publishedDate)
+              : 'Date unavailable';
 
             return (
               <Fragment key={guid}>
@@ -46,12 +51,16 @@ export default function Medium({ data }: MediumProps) {
                       {title}
                     </a>
                   </span>
-                  <time
-                    className={styles.time}
-                    dateTime={new Date(pubDate).toISOString()}
-                  >
-                    {dateTime}
-                  </time>
+                  {isValidPublishedDate ? (
+                    <time
+                      className={styles.time}
+                      dateTime={publishedDate.toISOString()}
+                    >
+                      {dateLabel}
+                    </time>
+                  ) : (
+                    <span className={styles.time}>{dateLabel}</span>
+                  )}
                   <span className={styles.description}>{content}</span>
                 </li>
               </Fragment>

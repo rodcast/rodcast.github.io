@@ -7,7 +7,7 @@
   },
   "item": [
     {
-      "name": "Github - Repos",
+      "name": "GitHub - Repos",
       "request": {
         "method": "GET",
         "header": [],
