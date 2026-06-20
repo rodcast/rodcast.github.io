@@ -32,9 +32,9 @@
       "id": "navigate-to-section",
       "name": "Navigate to Section",
       "description": "Scroll the page to a specific named section. Supported sections: about, github-projects, medium-articles.",
-      "tags": ["navigation", "ui", "scroll"],
       "inputModes": ["application/json", "text/plain"],
       "outputModes": ["application/json", "text/plain"]
+    },
     {
       "id": "list-github-projects",
       "name": "List GitHub Projects",
