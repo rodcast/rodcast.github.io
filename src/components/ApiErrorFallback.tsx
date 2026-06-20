@@ -8,10 +8,10 @@ interface ApiErrorFallbackProps {
 }
 
 /** API error fallback */
-export default function ApiErrorFallback({ 
-  title, 
-  message = "There was an error loading this content. Please try again later.",
-  onRetry 
+export default function ApiErrorFallback({
+  title,
+  message = 'There was an error loading this content. Please try again later.',
+  onRetry,
 }: ApiErrorFallbackProps) {
   return (
     <article className={articleStyles.content}>

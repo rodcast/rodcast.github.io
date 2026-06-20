@@ -1,19 +1,7 @@
-{{{
-
+{
   "extends": ["next/core-web-vitals"],
-
-  "ignorePatterns": ["node_modules/**", ".next/**", "out/**", "build/**"],  "extends": ["next/core-web-vitals"],  "extends": ["next/core-web-vitals"],
-
+  "ignorePatterns": ["node_modules/**", ".next/**", "out/**", "build/**"],
   "rules": {
-
-    "no-console": "warn"  "ignorePatterns": ["node_modules/**", ".next/**", "out/**", "build/**"],  "ignorePatterns": ["node_modules/**", ".next/**", "out/**", "build/**"],
-
+    "no-console": "warn"
   }
-
-}  "rules": {  "rules": {
-
-    "no-console": "warn"    "no-console": "warn"
-
-  }  }
-
-}}
+}

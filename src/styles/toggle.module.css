@@ -8,7 +8,7 @@
   height: 34px;
 }
 
-.switch input[type="checkbox"] {
+.switch input[type='checkbox'] {
   opacity: 0;
   width: 0;
   height: 0;
@@ -35,15 +35,15 @@
   height: 26px;
   background-color: var(--primary-color);
   border-radius: 50%;
-  content: "";
+  content: '';
   transition: var(--transition-200);
 }
 
-input[type="checkbox"]:checked + .slider {
+input[type='checkbox']:checked + .slider {
   background-color: var(--secondary-color);
 }
 
-input[type="checkbox"]:checked + .slider:before {
+input[type='checkbox']:checked + .slider:before {
   transform: translateX(34px);
 }
 

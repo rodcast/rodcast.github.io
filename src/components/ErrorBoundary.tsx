@@ -42,11 +42,10 @@ class ErrorBoundary extends Component<Props, State> {
 
       return (
         <div role="alert" className={styles.error_boundary}>
-          <h2 className={styles.error_title}>
-            Something went wrong
-          </h2>
+          <h2 className={styles.error_title}>Something went wrong</h2>
           <p className={styles.error_message}>
-            We&apos;re sorry, but there was an error loading this content. Please try refreshing the page.
+            We&apos;re sorry, but there was an error loading this content.
+            Please try refreshing the page.
           </p>
           {process.env.NODE_ENV === 'development' && this.state.error && (
             <details className={styles.error_details}>

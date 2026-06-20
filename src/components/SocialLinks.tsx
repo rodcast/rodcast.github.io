@@ -16,7 +16,13 @@ interface SocialLinkProps {
 }
 
 /** Social link item */
-function SocialLink({ href, title, ariaLabel, iconClass, platform }: SocialLinkProps) {
+function SocialLink({
+  href,
+  title,
+  ariaLabel,
+  iconClass,
+  platform,
+}: SocialLinkProps) {
   return (
     <li className={styles.item}>
       <a
@@ -37,32 +43,32 @@ function SocialLink({ href, title, ariaLabel, iconClass, platform }: SocialLinkP
 export default function SocialLinks() {
   const socialLinks = [
     {
-      href: "https://github.com/rodcast",
-      title: "Follow me on GitHub",
+      href: 'https://github.com/rodcast',
+      title: 'Follow me on GitHub',
       ariaLabel: "Visit Rodrigo Castilho's GitHub profile",
       iconClass: icon.github,
-      platform: "GitHub",
+      platform: 'GitHub',
     },
     {
-      href: "https://twitter.com/rodcast",
-      title: "Follow me on Twitter",
+      href: 'https://twitter.com/rodcast',
+      title: 'Follow me on Twitter',
       ariaLabel: "Visit Rodrigo Castilho's Twitter profile",
       iconClass: icon.twitter,
-      platform: "Twitter",
+      platform: 'Twitter',
     },
     {
-      href: "https://linkedin.com/in/rodcast",
-      title: "Follow me on LinkedIn",
+      href: 'https://www.linkedin.com/in/rodcast',
+      title: 'Follow me on LinkedIn',
       ariaLabel: "Visit Rodrigo Castilho's LinkedIn profile",
       iconClass: icon.linkedin,
-      platform: "LinkedIn",
+      platform: 'LinkedIn',
     },
     {
-      href: "https://medium.com/@rodcast",
-      title: "Follow me on Medium",
+      href: 'https://medium.com/@rodcast',
+      title: 'Follow me on Medium',
       ariaLabel: "Visit Rodrigo Castilho's Medium profile",
       iconClass: icon.medium,
-      platform: "Medium",
+      platform: 'Medium',
     },
   ];
 

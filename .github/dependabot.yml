@@ -1,23 +1,23 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "daily"
-      time: "01:01"
-      timezone: "America/Sao_Paulo"
+      interval: 'daily'
+      time: '01:01'
+      timezone: 'America/Sao_Paulo'
     open-pull-requests-limit: 10
     labels:
-      - "npm"
-      - "dependencies"
+      - 'npm'
+      - 'dependencies'
   - package-ecosystem: github-actions
-    directory: "/"
+    directory: '/'
     schedule:
-      interval: "weekly"
-      day: "saturday"
-      time: "01:02"
-      timezone: "America/Sao_Paulo"
+      interval: 'weekly'
+      day: 'saturday'
+      time: '01:02'
+      timezone: 'America/Sao_Paulo'
     open-pull-requests-limit: 10
     labels:
-      - "github-actions"
-      - "dependencies"
+      - 'github-actions'
+      - 'dependencies'

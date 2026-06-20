@@ -1,2 +1,5 @@
-npm run lint
+#!/usr/bin/env sh
+set -e
+
+yarn lint && yarn prettier --check .
 

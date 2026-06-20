@@ -20,7 +20,7 @@
   --border-radius: 0.375rem;
 }
 
-html[data-theme="dark"] {
+html[data-theme='dark'] {
   --primary-color: #1c1c1c;
   --secondary-color: #fff;
   --tertiary-color: #2b2b2b;

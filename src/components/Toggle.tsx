@@ -43,24 +43,25 @@ export default function Toggle() {
 
   return (
     <label className={styles.switch}>
-      <input 
-        type="checkbox" 
-        checked={checked} 
+      <input
+        type="checkbox"
+        checked={checked}
         onChange={toggleTheme}
         aria-label={`Switch to ${checked ? 'light' : 'dark'} mode`}
         aria-describedby="theme-description"
       />
       <span className={styles.slider} />
-      <i 
+      <i
         className={`${fontello.variable} ${icon.sun} ${styles.icon__sun}`}
         aria-hidden="true"
       />
-      <i 
+      <i
         className={`${fontello.variable} ${icon.moon} ${styles.icon__moon}`}
         aria-hidden="true"
       />
       <span id="theme-description" className="sr-only">
-        Toggle between light and dark theme. Currently in {checked ? 'dark' : 'light'} mode.
+        Toggle between light and dark theme. Currently in{' '}
+        {checked ? 'dark' : 'light'} mode.
       </span>
     </label>
   );
