@@ -1,15 +1,14 @@
-import { IMedium, IMediumApi } from '@/interfaces/index';
+import { IMedium } from '@/interfaces/index';
 import styles from '@/styles/article.module.css';
-import { normalizeMedium } from '@/utils/index';
 import { Fragment } from 'react';
 
 interface MediumProps {
-  data?: IMediumApi;
+  data?: IMedium[];
 }
 
 /** Medium articles */
 export default function Medium({ data }: MediumProps) {
-  const articles: IMedium[] = normalizeMedium(data?.items);
+  const articles: IMedium[] = data ?? [];
 
   const isError = !data;
   const isEmpty = articles.length === 0;
@@ -55,10 +54,10 @@ export default function Medium({ data }: MediumProps) {
           })}
         </ol>
       )}
-      
+
       <p className={styles.viewAll}>
-        <a 
-          href="https://medium.com/@rodcast" 
+        <a
+          href="https://medium.com/@rodcast"
           className={styles.viewAllLink}
           rel="external"
           title="Read all articles on Medium"

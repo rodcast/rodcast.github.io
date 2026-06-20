@@ -1,0 +1,10 @@
+# OAuth Token Endpoint
+
+Canonical token endpoint for auth.md discovery.
+
+- URI: `https://rodrigocastilho.com/oauth/token`
+- Supported grant types:
+  - `urn:ietf:params:oauth:grant-type:jwt-bearer`
+  - `urn:workos:agent-auth:grant-type:claim`
+
+This static host publishes the contract surface for discovery and documentation. Passive scanners must not attempt side-effecting token exchanges.

@@ -1,5 +1,7 @@
 {
   "resource": "https://rodrigocastilho.com/",
+  "resource_name": "RODCAST Public Site",
+  "resource_logo_uri": "https://rodrigocastilho.com/favicon.ico",
   "authorization_servers": [
     "https://rodrigocastilho.com"
   ],

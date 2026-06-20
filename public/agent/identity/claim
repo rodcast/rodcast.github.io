@@ -1,0 +1,12 @@
+# Agent Claim Endpoint
+
+Canonical claim URI for auth.md discovery.
+
+- URI: `https://rodrigocastilho.com/agent/identity/claim`
+- Applies to: `service_auth`
+
+The claim ceremony binds an agent registration to a signed-in user on a service-owned flow before scoped credentials are used.
+
+Passive discovery clients must not issue side-effecting requests here.
+
+Integration questions: <mailto:security@rodrigocastilho.com>

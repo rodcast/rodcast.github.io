@@ -3,7 +3,7 @@ export interface IGitHub {
   name: string;
   html_url: string;
   description: string;
-  updated_at: Date;
+  updated_at: string;
   is_private?: boolean;
   private?: boolean;
   fork?: boolean;

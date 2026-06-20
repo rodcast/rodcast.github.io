@@ -9,124 +9,208 @@ import '@/styles/globals.css';
 
 const title = 'Rodrigo Castilho (RODCAST)';
 
+const getText = (element: Node | null | undefined) =>
+  element?.textContent?.trim().replace(/\s+/g, ' ') ?? '';
+
+const getProfileSummary = () => {
+  const about = document.getElementById('about');
+  const links = Array.from(about?.querySelectorAll('a[href]') ?? []).map(
+    (anchor) => ({
+      label: getText(anchor),
+      url: anchor.getAttribute('href') ?? '',
+    })
+  );
+
+  return {
+    name: getText(about?.querySelector('h2')),
+    description: getText(about?.querySelector('h3')),
+    section: 'about',
+    links,
+  };
+};
+
+const listGitHubProjects = (limit: number) => {
+  const items = Array.from(
+    document.querySelectorAll('#github-projects ol li')
+  ).map((item) => {
+    const link = item.querySelector('a[href]');
+
+    return {
+      name: getText(link),
+      url: link?.getAttribute('href') ?? '',
+      description: getText(item.querySelector('span:last-child')),
+    };
+  });
+
+  return items.slice(0, limit);
+};
+
+const listMediumArticles = (limit: number) => {
+  const items = Array.from(
+    document.querySelectorAll('#medium-articles ol li')
+  ).map((item) => {
+    const link = item.querySelector('a[href]');
+    const time = item.querySelector('time');
+    const description = item.querySelector('span:last-child');
+
+    return {
+      title: getText(link),
+      url: link?.getAttribute('href') ?? '',
+      publishedAt: time?.getAttribute('datetime') ?? getText(time),
+      summary: getText(description),
+    };
+  });
+
+  return items.slice(0, limit);
+};
+
+const buildWebMCPTools = (): WebMCPTool[] => [
+  {
+    name: 'get-profile-summary',
+    title: 'Get profile summary',
+    description:
+      'Returns the visible profile summary and social links from the about section.',
+    inputSchema: {
+      type: 'object',
+      properties: {},
+      additionalProperties: false,
+    },
+    annotations: {
+      readOnlyHint: true,
+    },
+    execute: async () => getProfileSummary(),
+  },
+  {
+    name: 'navigate-to-section',
+    title: 'Navigate to section',
+    description:
+      'Scrolls the page to a known section: about, github-projects, or medium-articles.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        section: {
+          type: 'string',
+          enum: ['about', 'github-projects', 'medium-articles'],
+          description: 'The section id to navigate to.',
+        },
+      },
+      required: ['section'],
+      additionalProperties: false,
+    },
+    execute: async (input) => {
+      const section = typeof input?.section === 'string' ? input.section : '';
+      const target = document.getElementById(section);
+
+      if (!target) {
+        return {
+          ok: false,
+          error: 'unknown_section',
+        };
+      }
+
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.history.replaceState(null, '', `#${section}`);
+
+      return {
+        ok: true,
+        section,
+        title: getText(target.querySelector('header, h1, h2, h3')) || section,
+      };
+    },
+  },
+  {
+    name: 'list-github-projects',
+    title: 'List GitHub projects',
+    description:
+      'Returns the GitHub repositories currently rendered in the projects section.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        limit: {
+          type: 'number',
+          minimum: 1,
+          maximum: 20,
+          default: 6,
+          description: 'Maximum number of repositories to return.',
+        },
+      },
+      additionalProperties: false,
+    },
+    annotations: {
+      readOnlyHint: true,
+    },
+    execute: async (input) => {
+      const limit =
+        typeof input?.limit === 'number' && input.limit > 0
+          ? Math.min(input.limit, 20)
+          : 6;
+
+      return listGitHubProjects(limit);
+    },
+  },
+  {
+    name: 'list-medium-articles',
+    title: 'List Medium articles',
+    description:
+      'Returns the Medium articles currently rendered in the articles section.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        limit: {
+          type: 'number',
+          minimum: 1,
+          maximum: 10,
+          default: 5,
+          description: 'Maximum number of articles to return.',
+        },
+      },
+      additionalProperties: false,
+    },
+    annotations: {
+      readOnlyHint: true,
+    },
+    execute: async (input) => {
+      const limit =
+        typeof input?.limit === 'number' && input.limit > 0
+          ? Math.min(input.limit, 10)
+          : 5;
+
+      return listMediumArticles(limit);
+    },
+  },
+];
+
 /** Main app component */
 function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
-    if (typeof navigator === 'undefined' || !navigator.modelContext) {
+    if (typeof window === 'undefined') {
       return;
     }
 
-    const tools: WebMCPTool[] = [
-      {
-        name: 'getProfileSummary',
-        description:
-          'Returns the owner profile summary and canonical profile links.',
-        inputSchema: {
-          type: 'object',
-          properties: {},
-          additionalProperties: false,
-        },
-        execute: () =>
-          Promise.resolve({
-            name: 'Rodrigo Castilho (RODCAST)',
-            title: 'Staff Frontend Engineer',
-            website: 'https://rodrigocastilho.com/',
-            social: {
-              github: 'https://github.com/rodcast',
-              medium: 'https://medium.com/@rodcast',
-              linkedin: 'https://www.linkedin.com/in/rodrigocastilho',
-            },
-          }),
-      },
-      {
-        name: 'listLatestGitHubRepos',
-        description:
-          'Returns the latest public repositories for @rodcast from the homepage API source.',
-        inputSchema: {
-          type: 'object',
-          properties: {
-            limit: {
-              type: 'number',
-              minimum: 1,
-              maximum: 20,
-              default: 6,
-            },
-          },
-          additionalProperties: false,
-        },
-        execute: async (input) => {
-          const limit =
-            typeof input?.limit === 'number' && input.limit > 0
-              ? Math.min(input.limit, 20)
-              : 6;
-          const response = await fetch(
-            'https://api.github.com/users/rodcast/repos'
-          );
-          const repos = (await response.json()) as Array<{
-            name: string;
-            html_url: string;
-            description: string | null;
-            stargazers_count: number;
-            language: string | null;
-            updated_at: string;
-          }>;
+    const tools = buildWebMCPTools();
+    const abortController = new AbortController();
 
-          return repos.slice(0, limit).map((repo) => ({
-            name: repo.name,
-            url: repo.html_url,
-            description: repo.description,
-            stars: repo.stargazers_count,
-            language: repo.language,
-            updatedAt: repo.updated_at,
-          }));
-        },
-      },
-      {
-        name: 'listLatestArticles',
-        description: 'Returns latest Medium articles by @rodcast.',
-        inputSchema: {
-          type: 'object',
-          properties: {
-            limit: {
-              type: 'number',
-              minimum: 1,
-              maximum: 10,
-              default: 5,
-            },
-          },
-          additionalProperties: false,
-        },
-        execute: async (input) => {
-          const limit =
-            typeof input?.limit === 'number' && input.limit > 0
-              ? Math.min(input.limit, 10)
-              : 5;
-          const response = await fetch(
-            'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@rodcast'
-          );
-          const payload = (await response.json()) as {
-            items?: Array<{
-              title: string;
-              link: string;
-              pubDate: string;
-              thumbnail?: string;
-              categories?: string[];
-            }>;
-          };
-          const items = Array.isArray(payload.items) ? payload.items : [];
+    const registerTools = async () => {
+      if (navigator.modelContext?.provideContext) {
+        await navigator.modelContext.provideContext({ tools });
+      }
 
-          return items.slice(0, limit).map((item) => ({
-            title: item.title,
-            url: item.link,
-            publishedAt: item.pubDate,
-            thumbnail: item.thumbnail ?? null,
-            categories: item.categories ?? [],
-          }));
-        },
-      },
-    ];
+      if (document.modelContext?.registerTool) {
+        await Promise.all(
+          tools.map((tool) =>
+            document.modelContext?.registerTool?.(tool, {
+              signal: abortController.signal,
+            })
+          )
+        );
+      }
+    };
 
-    navigator.modelContext.provideContext({ tools }).catch(() => undefined);
+    registerTools().catch(() => undefined);
+
+    return () => {
+      abortController.abort();
+    };
   }, []);
 
   return (
