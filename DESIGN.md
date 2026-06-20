@@ -23,7 +23,7 @@ Page (index.tsx)
 ├── Header         — name, title
 ├── Toggle         — light/dark mode
 ├── Sidebar        — avatar, bio, social links
-├── Article        — tabbed GitHub repos + Medium articles
+├── Article        — GitHub repos + Medium articles
 │   ├── GitHub     — repo cards (with GitHubSkeleton fallback)
 │   └── Medium     — article cards (with MediumSkeleton fallback)
 └── Footer
