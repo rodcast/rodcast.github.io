@@ -128,7 +128,7 @@ public/          # Static assets served at the root
 
 ### Discovery Metadata
 
-- Keep `.well-known` discovery documents internally consistent (`api-catalog`, `agent-card`, MCP discovery and server card, OAuth/OIDC metadata, and agent-skills index).
+- Keep `.well-known` discovery documents internally consistent (`api-catalog`, `agent-card.json`, `mcp.json`, `mcp/server-card.json`, OAuth/OIDC metadata, and agent-skills index).
 - When updating any `public/.well-known/agent-skills/*.md` file, refresh the matching `sha256` entry in `public/.well-known/agent-skills/index.json`.
 - Preserve API discovery links exposed in both `src/pages/_document.tsx` and `public/_headers`.
 
