@@ -1,0 +1,8 @@
+# Agent Event Notification Endpoint
+
+Canonical registration-level revocation URI for auth.md discovery.
+
+- URI: `https://rodrigocastilho.com/agent/event/notify`
+- Event type: `https://schemas.workos.com/events/agent/auth/identity/assertion/revoked`
+
+This URI documents where provider-originated registration revocation events are expected for agent-auth integrations.

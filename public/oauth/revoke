@@ -1,0 +1,8 @@
+# OAuth Revocation Endpoint
+
+Canonical revocation endpoint for auth.md discovery.
+
+- URI: `https://rodrigocastilho.com/oauth/revoke`
+- Credential type: `access_token`
+
+This URI documents the credential revocation surface associated with the advertised authorization server metadata.

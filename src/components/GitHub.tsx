@@ -1,15 +1,14 @@
-import { IGitHub, IGitHubApi } from '@/interfaces/index';
+import { IGitHub } from '@/interfaces/index';
 import styles from '@/styles/article.module.css';
-import { normalizeGitHub } from '@/utils/index';
 import { Fragment } from 'react';
 
 interface GitHubProps {
-  data?: IGitHubApi;
+  data?: IGitHub[];
 }
 
 /** GitHub repositories */
 export default function GitHub({ data }: GitHubProps) {
-  const repos: IGitHub[] = normalizeGitHub(data);
+  const repos: IGitHub[] = data ?? [];
 
   const isError = !data;
   const isEmpty = repos?.length === 0;
@@ -48,10 +47,10 @@ export default function GitHub({ data }: GitHubProps) {
           ))}
         </ol>
       )}
-      
+
       <p className={styles.viewAll}>
-        <a 
-          href="https://github.com/rodcast" 
+        <a
+          href="https://github.com/rodcast"
           className={styles.viewAllLink}
           rel="external"
           title="View all repositories on GitHub"

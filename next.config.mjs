@@ -5,17 +5,15 @@ const nextConfig = {
   output: 'export',
   reactStrictMode: true,
   trailingSlash: true,
-  compress: true,
   cleanDistDir: true,
   poweredByHeader: false,
-  generateEtags: false,
   productionBrowserSourceMaps: false,
   logging: {
     fetches: {
       fullUrl: isDev,
-      hmrRefreshes: isDev
+      hmrRefreshes: isDev,
     },
-    browserToTerminal: isDev
+    browserToTerminal: isDev,
   },
   images: {
     unoptimized: true,
@@ -23,7 +21,6 @@ const nextConfig = {
   },
   experimental: {
     inlineCss: true,
-    turbopackFileSystemCacheForDev: true
   },
 };
 

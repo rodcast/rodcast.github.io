@@ -13,13 +13,9 @@ export default function Sidebar() {
         alt="Professional headshot of Rodrigo Castilho, Staff Frontend Engineer"
         className={styles.photo}
         itemProp="image"
-        sizes="
-            (max-width: 768px) 95px,
-            (max-width: 1200px) 105px,
-            33vw
-          "
+        sizes="(max-width: 768px) 95px, (max-width: 1200px) 105px, 125px"
         quality={100}
-        loading="lazy"
+        priority
       />
       <h2 className={styles.name} itemProp="name">
         Rodrigo Castilho <span itemProp="alternateName">(RODCAST)</span>

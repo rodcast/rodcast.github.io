@@ -1,5 +1,5 @@
-import { IGitHubApi } from '@/interfaces/github';
-import { IMediumApi } from '@/interfaces/medium';
+import { IGitHub } from '@/interfaces/github';
+import { IMedium } from '@/interfaces/medium';
 import styles from '@/styles/article.module.css';
 import { Suspense } from 'react';
 
@@ -11,17 +11,21 @@ import Medium from './Medium';
 import MediumSkeleton from './MediumSkeleton';
 
 interface ArticleProps {
-  dataGitHub: IGitHubApi;
-  dataMedium: IMediumApi;
+  dataGitHub: IGitHub[];
+  dataMedium: IMedium[];
   isLoading?: boolean;
 }
 
 /** Main article component */
-export default function Article({ dataGitHub, dataMedium, isLoading = false }: ArticleProps) {
+export default function Article({
+  dataGitHub,
+  dataMedium,
+  isLoading = false,
+}: ArticleProps) {
   return (
     <main className={styles.content}>
       <section id="github-projects">
-        <ErrorBoundary 
+        <ErrorBoundary
           fallback={<ApiErrorFallback title="My repositories on GitHub" />}
         >
           {isLoading ? (
@@ -34,7 +38,7 @@ export default function Article({ dataGitHub, dataMedium, isLoading = false }: A
         </ErrorBoundary>
       </section>
       <section id="medium-articles" className={styles.medium_articles}>
-        <ErrorBoundary 
+        <ErrorBoundary
           fallback={<ApiErrorFallback title="My articles on Medium" />}
         >
           {isLoading ? (

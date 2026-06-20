@@ -315,27 +315,11 @@ class MyDocument extends Document {
           <link rel="manifest" href="/manifest.json" />
           <link rel="canonical" href="https://rodrigocastilho.com/" />
 
-          {/* DNS Prefetch & Preconnect for Performance */}
-          <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+          {/* DNS Prefetch for Performance */}
           <link rel="dns-prefetch" href="//www.google-analytics.com" />
           <link rel="dns-prefetch" href="//www.googletagmanager.com" />
-          <link
-            rel="preconnect"
-            href="https://fonts.googleapis.com"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin="anonymous"
-          />
 
           {/* Resource Hints */}
-          <link
-            rel="preload"
-            href="/rodrigo-castilho-rodcast_photo.jpg"
-            as="image"
-          />
           <link rel="prefetch" href="/rodrigo-castilho-rodcast_card.jpg" />
 
           {/* Additional SEO Links */}

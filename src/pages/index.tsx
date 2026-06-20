@@ -1,7 +1,8 @@
 import { GITHUB_API, MEDIUM_API } from '@/constants/paths';
-import { IGitHubApi } from '@/interfaces/github';
-import { IMediumApi } from '@/interfaces/medium';
+import { IGitHub } from '@/interfaces/github';
+import { IMedium } from '@/interfaces/medium';
 import { fetchData } from '@/utils/fetch';
+import { normalizeGitHub, normalizeMedium } from '@/utils/index';
 import dynamic from 'next/dynamic';
 
 import styles from '@/styles/page.module.css';
@@ -22,7 +23,10 @@ export async function getStaticProps() {
     ]);
 
     return {
-      props: { dataGitHub, dataMedium },
+      props: {
+        dataGitHub: normalizeGitHub(dataGitHub),
+        dataMedium: normalizeMedium(dataMedium?.items),
+      },
     };
   } catch (error) {
     // eslint-disable-next-line no-console
@@ -34,8 +38,8 @@ export async function getStaticProps() {
 }
 
 interface PageProps {
-  dataGitHub: IGitHubApi;
-  dataMedium: IMediumApi;
+  dataGitHub: IGitHub[];
+  dataMedium: IMedium[];
 }
 
 /** Main page */

@@ -2,13 +2,22 @@
   "version": 2,
   "buildCommand": "yarn run build",
   "framework": "nextjs",
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        { "type": "header", "key": "accept", "value": ".*text/markdown.*" }
+      ],
+      "destination": "/index.md"
+    }
+  ],
   "headers": [
     {
       "source": "/",
       "headers": [
         {
           "key": "Link",
-          "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </docs/api/openapi.json>; rel=\"service-desc\"; type=\"application/openapi+json\", </docs/api/>; rel=\"service-doc\", </index.md>; rel=\"alternate\"; type=\"text/markdown\", </.well-known/agent-skills/index.json>; rel=\"describedby\", </.well-known/mcp/server-card.json>; rel=\"mcp-server-card\""
+          "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </docs/api/openapi.json>; rel=\"service-desc\"; type=\"application/openapi+json\", </docs/api/>; rel=\"service-doc\", </index.md>; rel=\"alternate\"; type=\"text/markdown\", </auth.md>; rel=\"alternate\"; type=\"text/markdown\", </.well-known/agent-skills/index.json>; rel=\"describedby\", </.well-known/agent-card.json>; rel=\"describedby\", </.well-known/mcp/server-card.json>; rel=\"mcp-server-card\""
         },
         {
           "key": "Vary",
@@ -53,11 +62,74 @@
       ]
     },
     {
+      "source": "/.well-known/http-message-signatures-directory",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/http-message-signatures-directory+json; charset=utf-8"
+        }
+      ]
+    },
+    {
       "source": "/.well-known/mcp/server-card.json",
       "headers": [
         {
           "key": "Content-Type",
           "value": "application/json; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/.well-known/agent-card.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/auth.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/agent/identity/claim",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/agent/event/notify",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/oauth/token",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/oauth/revoke",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
         }
       ]
     },

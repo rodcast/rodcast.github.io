@@ -27,7 +27,7 @@ export const normalizeGitHub = (repos?: IGitHubApi): IGitHub[] => {
         description: description || '',
         is_private,
         fork,
-        updated_at: new Date(updated_at),
+        updated_at,
       };
     })
     .filter((repo): repo is IGitHub => repo !== null);
