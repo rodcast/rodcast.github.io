@@ -28,26 +28,30 @@ src/
   styles/        # CSS Modules + global CSS
 public/          # Static assets served at the root
   .well-known/   # API/OAuth/MCP/Agent discovery metadata
+  agent/         # Static agent endpoint payloads
+  oauth/         # Static OAuth endpoint payloads
   docs/api/      # Static API docs and OpenAPI contract
   api/health     # Static health endpoint payload
 ```
 
 ### Key Files
 
-| File                                  | Role                                                        |
-| ------------------------------------- | ----------------------------------------------------------- |
-| `src/pages/_app.tsx`                  | Global styles, Google Analytics, Vercel Speed Insights      |
-| `src/pages/_document.tsx`             | SEO metadata, Open Graph/Twitter tags, JSON-LD, PWA links   |
-| `src/pages/index.tsx`                 | Main page — fetches data at build time via `getStaticProps` |
-| `src/shared/types/webmcp.d.ts`        | Ambient WebMCP navigator and tool type declarations         |
-| `src/shared/constants/paths.ts`       | External API endpoint constants                             |
-| `src/shared/utils/fetch.ts`           | Typed fetch helper with timeout and error handling          |
-| `src/shared/utils/normalizeGitHub.ts` | Normalizes and filters GitHub API responses                 |
-| `src/shared/utils/normalizeMedium.ts` | Normalizes and filters Medium RSS feed responses            |
-| `public/.well-known/api-catalog`      | API catalog for client and agent service discovery          |
-| `public/.well-known/agent-skills/`    | Agent Skills index and capability docs                      |
-| `public/docs/api/openapi.json`        | Public OpenAPI contract for static metadata endpoints       |
-| `next.config.mjs`                     | Next.js config — must preserve static export settings       |
+| File                                  | Role                                                           |
+| ------------------------------------- | -------------------------------------------------------------- |
+| `src/pages/_app.tsx`                  | Global styles, Google Analytics, Vercel Speed Insights         |
+| `src/pages/_document.tsx`             | SEO metadata, Open Graph/Twitter tags, JSON-LD, PWA links      |
+| `src/pages/index.tsx`                 | Main page — fetches data at build time via `getStaticProps`    |
+| `src/shared/types/webmcp.d.ts`        | Ambient WebMCP navigator and tool type declarations            |
+| `src/shared/constants/paths.ts`       | External API endpoint constants                                |
+| `src/shared/utils/fetch.ts`           | Typed fetch helper with timeout and error handling             |
+| `src/shared/utils/normalizeGitHub.ts` | Normalizes and filters GitHub API responses                    |
+| `src/shared/utils/normalizeMedium.ts` | Normalizes and filters Medium RSS feed responses               |
+| `public/.well-known/api-catalog`      | API catalog for client and agent service discovery             |
+| `public/.well-known/agent-skills/`    | Agent Skills index and capability docs                         |
+| `public/docs/api/openapi.json`        | Public OpenAPI contract for static metadata endpoints          |
+| `next.config.mjs`                     | Next.js config — must preserve static export settings          |
+| `CLAUDE.md`                           | Quick reference for Claude AI (commands, aliases, constraints) |
+| `DESIGN.md`                           | Architecture decisions and rationale                           |
 
 ---
 
