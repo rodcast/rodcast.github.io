@@ -184,8 +184,8 @@ Authorization: Bearer <access_token>
 
 | Code                       | Endpoint                | Action                                                      |
 | -------------------------- | ----------------------- | ----------------------------------------------------------- |
-| `service_auth_not_enabled` | `/agent/identity`       | Service doesn't accept this method.                         |
-| `invalid_request`          | `/agent/identity`       | Missing or malformed body. Fix the input.                   |
+| `service_auth_not_enabled` | `/agent/identity/register` | Service doesn't accept this method.                         |
+| `invalid_request`          | `/agent/identity/register` | Missing or malformed body. Fix the input.                   |
 | `invalid_claim_token`      | `/agent/identity/claim` | Token wrong or expired. Restart at Step 3.                  |
 | `claim_expired`            | `/agent/identity/claim` | Registration expired. Restart at Step 3.                    |
 | `invalid_grant`            | `/oauth/token`          | Assertion expired or revoked. Restart at Step 3.            |
