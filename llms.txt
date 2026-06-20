@@ -16,9 +16,9 @@
 ## Critical Build Constraints
 - Site must remain statically exportable.
 - Keep these required Next.js settings in `next.config.mjs`:
-	- `output: 'export'`
-	- `images.unoptimized: true`
-	- `trailingSlash: true`
+  - `output: 'export'`
+  - `images.unoptimized: true`
+  - `trailingSlash: true`
 - Do not add SSR-only/runtime server dependencies.
 
 ## Key URLs (Production)
