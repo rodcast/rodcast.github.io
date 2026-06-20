@@ -2,7 +2,7 @@
 
 Registration endpoint for auth.md agent onboarding at `https://rodrigocastilho.com`.
 
-- **URI:** `https://rodrigocastilho.com/agent/identity`
+- **URI:** `https://rodrigocastilho.com/agent/identity/register`
 - **Method:** `POST`
 - **Content-Type:** `application/json`
 - **Applies to:** `service_auth`
