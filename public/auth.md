@@ -175,9 +175,8 @@ Response (200):
 ## Step 6 — Use the access_token
 
 ```http
-GET /api/some-resource
+GET /api/health
 Authorization: Bearer <access_token>
-```
 
 **Refresh:** re-exchange the same `identity_assertion` at Step 5 when the access_token expires. When the assertion itself expires or `/oauth/token` returns `invalid_grant`, restart at Step 3. There is no OAuth `refresh_token`.
 
