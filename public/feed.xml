@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rodrigo Castilho (RODCAST)</title>
+    <title>Rodrigo Castilho</title>
     <description>Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.</description>
     <link>https://rodrigocastilho.com/</link>
     <atom:link href="https://rodrigocastilho.com/feed.xml" rel="self" type="application/rss+xml"/>

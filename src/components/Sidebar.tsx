@@ -18,7 +18,7 @@ export default function Sidebar() {
         priority
       />
       <h2 className={styles.name} itemProp="name">
-        Rodrigo Castilho <span itemProp="alternateName">(RODCAST)</span>
+        Rodrigo Castilho
       </h2>
       <h3 className={styles.description} itemProp="description">
         Staff Frontend Engineer and ex-@Yahoo in a serious relationship with

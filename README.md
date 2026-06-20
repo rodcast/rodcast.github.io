@@ -1,4 +1,4 @@
-# Rodrigo Castilho (RODCAST)
+# Rodrigo Castilho
 
 Personal website built with Next.js (Pages Router) and TypeScript.
 It renders profile content and fetches the latest public GitHub repositories and Medium articles at build time.
