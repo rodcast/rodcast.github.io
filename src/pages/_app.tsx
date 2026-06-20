@@ -8,9 +8,8 @@ import '@/styles/globals.css';
 
 const title = 'Rodrigo Castilho (RODCAST)';
 
-/** Extracts and normalises the trimmed text content of a DOM node. */
 const getText = (element: Node | null | undefined) =>
-  element?.textContent?.trim().replace(/\s+/g, ' ') ?? '';
+  (element?.textContent ?? '').trim().replace(/\s+/g, ' ');
 
 /** Reads the profile summary and social links from the about section DOM. */
 const getProfileSummary = () => {
