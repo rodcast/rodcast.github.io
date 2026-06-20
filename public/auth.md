@@ -1,4 +1,4 @@
-# auth.md
+# Agent Registration (auth.md)
 
 You are an agent. This service supports **agentic registration** at `https://rodrigocastilho.com`.
 

@@ -12,6 +12,6 @@ when it sends signed bot or agent requests per the
 
 ## Notes
 
-- Receiving sites can verify signed requests from this agent using the public
-  key published in the directory.
+- Receiving sites can verify signed requests from this agent using the public key
+  published in the directory.
 - The key ID (`kid`) is the base64url-encoded JWK thumbprint (RFC 7638).

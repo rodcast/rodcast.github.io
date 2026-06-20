@@ -6,7 +6,7 @@
       "type": "discovery",
       "description": "Publishes API catalog and API documentation links for automated clients.",
       "url": "https://rodrigocastilho.com/.well-known/agent-skills/api-discovery.md",
-      "sha256": "d5e7e9e1e88b0f83c730427cca45b9ecb61393c210556d45ed87092c39e76890"
+      "sha256": "f69354b269f8b096b8efca8eae0984e85b4cd7c3e589b5b7af69b39c0e68a9c7"
     },
     {
       "name": "markdown-negotiation",
@@ -20,21 +20,21 @@
       "type": "authentication",
       "description": "Publishes OAuth and OIDC metadata endpoints for token discovery.",
       "url": "https://rodrigocastilho.com/.well-known/agent-skills/auth-discovery.md",
-      "sha256": "7bc13bb2ec5e82f64a8642d37fa7ac87c48a997765f415e4f4954d36d9efb59a"
+      "sha256": "6fc225ed23d1c2cfe150263341122bfc6838ce836571d1538c3b3b51d315451e"
     },
     {
       "name": "webmcp-tools",
       "type": "tools",
       "description": "Exposes WebMCP tools for profile and content retrieval.",
       "url": "https://rodrigocastilho.com/.well-known/agent-skills/webmcp-tools.md",
-      "sha256": "f9da294420d172c96b3e128ca15e28f794fdf63e7762bfa41b44dc1438268ce4"
+      "sha256": "bbd14e6597016291385af6c5e22d4fcfc7f0fe9f6bb12928e3e5082360ee869d"
     },
     {
       "name": "web-bot-auth",
       "type": "identity",
       "description": "Publishes a Web Bot Auth key directory for signed agent request verification.",
       "url": "https://rodrigocastilho.com/.well-known/agent-skills/web-bot-auth.md",
-      "sha256": "cce1daee5cbdd43ae9c42e65c8aaea7647bc79cb2bce5c282281d8d87f55e31a"
+      "sha256": "f74c65d0a85d0b215f795393630d7eac954010d12eedc8da25956a6d98caf2f6"
     }
   ]
 }

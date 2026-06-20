@@ -69,7 +69,7 @@ Read all articles at [medium.com/@rodcast](https://medium.com/@rodcast).
       "description": "Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.",
       "inLanguage": "en-US",
       "datePublished": "2023-01-01",
-      "dateModified": "2025-10-23"
+      "dateModified": "2026-06-20"
     }
   ]
 }
