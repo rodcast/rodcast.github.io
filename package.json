@@ -7,6 +7,9 @@
     "node": "24.x"
   },
   "homepage": "https://rodrigocastilho.com/",
+  "resolutions": {
+    "postcss": "8.5.10"
+  },
   "scripts": {
     "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 next dev",
     "build": "next build",

@@ -13,8 +13,8 @@
   ],
   "agent_auth": {
     "skill": "https://rodrigocastilho.com/auth.md",
-    "register_uri": "https://rodrigocastilho.com/agent/identity/claim",
-    "claim_uri": "https://rodrigocastilho.com/agent/identity/claim",
+    "identity_endpoint": "https://rodrigocastilho.com/agent/identity",
+    "register_uri": "https://rodrigocastilho.com/agent/identity",
     "claim_endpoint": "https://rodrigocastilho.com/agent/identity/claim",
     "events_endpoint": "https://rodrigocastilho.com/agent/event/notify",
     "identity_types_supported": [
