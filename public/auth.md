@@ -177,22 +177,23 @@ Response (200):
 ```http
 GET /api/health
 Authorization: Bearer <access_token>
+```
 
 **Refresh:** re-exchange the same `identity_assertion` at Step 5 when the access_token expires. When the assertion itself expires or `/oauth/token` returns `invalid_grant`, restart at Step 3. There is no OAuth `refresh_token`.
 
 ## Errors
 
-| Code                       | Endpoint                | Action                                                      |
-| -------------------------- | ----------------------- | ----------------------------------------------------------- |
+| Code                       | Endpoint                   | Action                                                      |
+| -------------------------- | -------------------------- | ----------------------------------------------------------- |
 | `service_auth_not_enabled` | `/agent/identity/register` | Service doesn't accept this method.                         |
 | `invalid_request`          | `/agent/identity/register` | Missing or malformed body. Fix the input.                   |
-| `invalid_claim_token`      | `/agent/identity/claim` | Token wrong or expired. Restart at Step 3.                  |
-| `claim_expired`            | `/agent/identity/claim` | Registration expired. Restart at Step 3.                    |
-| `invalid_grant`            | `/oauth/token`          | Assertion expired or revoked. Restart at Step 3.            |
-| `unsupported_grant_type`   | `/oauth/token`          | Use `jwt-bearer` or `claim` grant only.                     |
-| `authorization_pending`    | `/oauth/token` (claim)  | User hasn't completed ceremony. Honor `interval`.           |
-| `expired_token`            | `/oauth/token` (claim)  | `user_code` window closed. Re-call `/agent/identity/claim`. |
-| `slow_down`                | `/oauth/token` (claim)  | Add ≥5s to `interval` and retry.                            |
+| `invalid_claim_token`      | `/agent/identity/claim`    | Token wrong or expired. Restart at Step 3.                  |
+| `claim_expired`            | `/agent/identity/claim`    | Registration expired. Restart at Step 3.                    |
+| `invalid_grant`            | `/oauth/token`             | Assertion expired or revoked. Restart at Step 3.            |
+| `unsupported_grant_type`   | `/oauth/token`             | Use `jwt-bearer` or `claim` grant only.                     |
+| `authorization_pending`    | `/oauth/token` (claim)     | User hasn't completed ceremony. Honor `interval`.           |
+| `expired_token`            | `/oauth/token` (claim)     | `user_code` window closed. Re-call `/agent/identity/claim`. |
+| `slow_down`                | `/oauth/token` (claim)     | Add ≥5s to `interval` and retry.                            |
 
 ## Revocation
 
