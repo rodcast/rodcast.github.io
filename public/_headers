@@ -45,6 +45,9 @@
   Content-Type: text/markdown; charset=utf-8
   x-markdown-tokens: 640
 
+/llms.txt
+  Content-Type: text/markdown; charset=utf-8
+
 # Cache static assets for 1 year (long-lived immutable assets)
 /*.js
   Cache-Control: public, max-age=31536000, immutable
