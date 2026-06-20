@@ -30,7 +30,7 @@ Supported scopes:
 
 Use the `register_uri` from Authorization Server metadata:
 
-- `https://rodrigocastilho.com/agent/identity`
+- `https://rodrigocastilho.com/agent/identity/claim`
 
 Registration type:
 

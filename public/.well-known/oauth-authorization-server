@@ -1,12 +1,5 @@
 {
   "issuer": "https://rodrigocastilho.com",
-  "resource": "https://rodrigocastilho.com/",
-  "authorization_servers": [
-    "https://rodrigocastilho.com"
-  ],
-  "bearer_methods_supported": [
-    "header"
-  ],
   "token_endpoint": "https://rodrigocastilho.com/oauth/token",
   "revocation_endpoint": "https://rodrigocastilho.com/oauth/revoke",
   "jwks_uri": "https://rodrigocastilho.com/.well-known/jwks.json",
@@ -20,8 +13,7 @@
   ],
   "agent_auth": {
     "skill": "https://rodrigocastilho.com/auth.md",
-    "register_uri": "https://rodrigocastilho.com/agent/identity",
-    "identity_endpoint": "https://rodrigocastilho.com/agent/identity",
+    "register_uri": "https://rodrigocastilho.com/agent/identity/claim",
     "claim_uri": "https://rodrigocastilho.com/agent/identity/claim",
     "claim_endpoint": "https://rodrigocastilho.com/agent/identity/claim",
     "events_endpoint": "https://rodrigocastilho.com/agent/event/notify",

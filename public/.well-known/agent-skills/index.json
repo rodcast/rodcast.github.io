@@ -13,7 +13,7 @@
       "type": "representation",
       "description": "Publishes a markdown representation of the homepage for agents.",
       "url": "https://rodrigocastilho.com/.well-known/agent-skills/markdown-negotiation.md",
-      "sha256": "b2f11b785b74900adb1ef2c55780b80d7f5548110ccd23c8b6951d0ae4d3e3b7"
+      "sha256": "609c8470dfbee9123931cda41eda3e744c947d14f34560e53c079652b3d17ca5"
     },
     {
       "name": "auth-discovery",
@@ -28,6 +28,13 @@
       "description": "Exposes WebMCP tools for profile and content retrieval.",
       "url": "https://rodrigocastilho.com/.well-known/agent-skills/webmcp-tools.md",
       "sha256": "f9da294420d172c96b3e128ca15e28f794fdf63e7762bfa41b44dc1438268ce4"
+    },
+    {
+      "name": "web-bot-auth",
+      "type": "identity",
+      "description": "Publishes a Web Bot Auth key directory for signed agent request verification.",
+      "url": "https://rodrigocastilho.com/.well-known/agent-skills/web-bot-auth.md",
+      "sha256": "cce1daee5cbdd43ae9c42e65c8aaea7647bc79cb2bce5c282281d8d87f55e31a"
     }
   ]
 }

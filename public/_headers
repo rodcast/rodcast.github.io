@@ -1,5 +1,5 @@
 /
-  Link: </.well-known/api-catalog>; rel="api-catalog", </docs/api/openapi.json>; rel="service-desc"; type="application/openapi+json", </docs/api/>; rel="service-doc", </index.md>; rel="alternate"; type="text/markdown", </auth.md>; rel="alternate"; type="text/markdown", </.well-known/agent-skills/index.json>; rel="describedby", </.well-known/mcp/server-card.json>; rel="mcp-server-card"
+  Link: </.well-known/api-catalog>; rel="api-catalog", </docs/api/openapi.json>; rel="service-desc"; type="application/openapi+json", </docs/api/>; rel="service-doc", </index.md>; rel="alternate"; type="text/markdown", </auth.md>; rel="alternate"; type="text/markdown", </.well-known/agent-skills/index.json>; rel="describedby", </.well-known/agent-card.json>; rel="describedby", </.well-known/mcp/server-card.json>; rel="mcp-server-card"
   Vary: Accept
 
 /auth.md
@@ -17,9 +17,6 @@
 /.well-known/oauth-protected-resource
   Content-Type: application/json; charset=utf-8
 
-/agent/identity
-  Content-Type: text/markdown; charset=utf-8
-
 /agent/identity/claim
   Content-Type: text/markdown; charset=utf-8
 
@@ -31,6 +28,9 @@
 
 /oauth/revoke
   Content-Type: text/markdown; charset=utf-8
+
+/.well-known/http-message-signatures-directory
+  Content-Type: application/http-message-signatures-directory+json; charset=utf-8
 
 /.well-known/mcp/server-card.json
   Content-Type: application/json; charset=utf-8

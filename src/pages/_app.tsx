@@ -8,6 +8,7 @@ import '@/styles/globals.css';
 
 const title = 'Rodrigo Castilho (RODCAST)';
 
+/** Returns the normalised text content of a DOM node, collapsing whitespace. */
 const getText = (element: Node | null | undefined) =>
   (element?.textContent ?? '').trim().replace(/\s+/g, ' ');
 
