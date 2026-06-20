@@ -6,7 +6,7 @@ Architecture decisions and rationale for rodcast.github.io.
 
 **Decision:** Next.js with `output: 'export'` deployed to GitHub Pages.
 
-**Rationale:** The site is a personal portfolio that displays GitHub repositories and Medium articles. All data is public and does not change between deploys. Static export eliminates server infrastructure, reduces cost to zero, and makes the site resilient — there is no runtime to fail.
+**Rationale:** The site is a personal portfolio that displays GitHub repositories and Medium articles. All data is public and is refreshed on each deploy. Static export eliminates server infrastructure, reduces cost to zero, and makes the site resilient — there is no runtime to fail.
 
 ## Data Fetching: Build-Time Only
 
