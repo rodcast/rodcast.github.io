@@ -1,6 +1,5 @@
 import { IMedium } from '@/interfaces/index';
 import styles from '@/styles/article.module.css';
-import { Fragment } from 'react';
 
 interface MediumProps {
   data?: IMedium[];
@@ -39,31 +38,29 @@ export default function Medium({ data }: MediumProps) {
               : 'Date unavailable';
 
             return (
-              <Fragment key={guid}>
-                <li className={styles.item}>
-                  <span className={styles.subtitle}>
-                    <a
-                      href={link}
-                      title={title}
-                      className={styles.url}
-                      rel="external"
-                    >
-                      {title}
-                    </a>
-                  </span>
-                  {isValidPublishedDate ? (
-                    <time
-                      className={styles.time}
-                      dateTime={publishedDate.toISOString()}
-                    >
-                      {dateLabel}
-                    </time>
-                  ) : (
-                    <span className={styles.time}>{dateLabel}</span>
-                  )}
-                  <span className={styles.description}>{content}</span>
-                </li>
-              </Fragment>
+              <li key={guid} className={styles.item}>
+                <span className={styles.subtitle}>
+                  <a
+                    href={link}
+                    title={title}
+                    className={styles.url}
+                    rel="external"
+                  >
+                    {title}
+                  </a>
+                </span>
+                {isValidPublishedDate ? (
+                  <time
+                    className={styles.time}
+                    dateTime={publishedDate.toISOString()}
+                  >
+                    {dateLabel}
+                  </time>
+                ) : (
+                  <span className={styles.time}>{dateLabel}</span>
+                )}
+                <span className={styles.description}>{content}</span>
+              </li>
             );
           })}
         </ol>
