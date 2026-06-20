@@ -30,7 +30,7 @@
   "eslint.format.enable": true,
   "eslint.validate": [
     "javascript",
-    "javascriptreact", 
+    "javascriptreact",
     "typescript",
     "typescriptreact"
   ],
