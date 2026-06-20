@@ -319,9 +319,6 @@ class MyDocument extends Document {
           <link rel="dns-prefetch" href="//www.google-analytics.com" />
           <link rel="dns-prefetch" href="//www.googletagmanager.com" />
 
-          {/* Resource Hints */}
-          <link rel="prefetch" href="/rodrigo-castilho-rodcast_card.jpg" />
-
           {/* Additional SEO Links */}
           <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
           <link

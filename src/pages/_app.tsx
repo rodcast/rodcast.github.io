@@ -249,7 +249,7 @@ function App({ Component, pageProps }: AppProps) {
       return didRegister;
     };
 
-    const maxAttempts = 20;
+    const maxAttempts = 5;
     let attempts = 0;
 
     /** Tries tool registration repeatedly for a short window while APIs initialize. */
@@ -262,7 +262,7 @@ function App({ Component, pageProps }: AppProps) {
       const success = await registerTools().catch(() => false);
 
       if (!success && attempts < maxAttempts) {
-        window.setTimeout(tryRegister, 250);
+        window.setTimeout(tryRegister, 500);
       }
     };
 
