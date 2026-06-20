@@ -9,6 +9,10 @@
         { "type": "header", "key": "accept", "value": ".*text/markdown.*" }
       ],
       "destination": "/index.md"
+    },
+    {
+      "source": "/agent/identity",
+      "destination": "/agent/identity/register"
     }
   ],
   "headers": [
@@ -98,6 +102,24 @@
       ]
     },
     {
+      "source": "/agent/identity",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/agent/identity/register",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        }
+      ]
+    },
+    {
       "source": "/agent/identity/claim",
       "headers": [
         {
@@ -142,7 +164,7 @@
         },
         {
           "key": "x-markdown-tokens",
-          "value": "enabled"
+          "value": "640"
         }
       ]
     }

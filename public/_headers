@@ -17,6 +17,9 @@
 /.well-known/oauth-protected-resource
   Content-Type: application/json; charset=utf-8
 
+/agent/identity/register
+  Content-Type: text/markdown; charset=utf-8
+
 /agent/identity/claim
   Content-Type: text/markdown; charset=utf-8
 
@@ -40,4 +43,4 @@
 
 /index.md
   Content-Type: text/markdown; charset=utf-8
-  x-markdown-tokens: enabled
+  x-markdown-tokens: 640

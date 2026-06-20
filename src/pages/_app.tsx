@@ -194,19 +194,33 @@ function App({ Component, pageProps }: AppProps) {
     const tools = buildWebMCPTools();
     const abortController = new AbortController();
 
-    /** Registers the WebMCP tools with the available model context APIs. */
+    /** Registers the WebMCP tools with the available model context APIs.
+     *
+     * Priority order (mutually exclusive to avoid duplicate-name errors):
+     *  1. navigator.modelContext.registerTool  — Chrome EPP / SKILL requirement
+     *  2. navigator.modelContext.provideContext — older pre-spec API
+     *  3. document.modelContext.registerTool   — W3C spec canonical location
+     */
     const registerTools = async () => {
-      if (navigator.modelContext?.provideContext) {
-        await navigator.modelContext.provideContext({ tools });
+      const signal = abortController.signal;
+      const navCtx = navigator.modelContext;
+      const docCtx = document.modelContext;
+
+      if (navCtx?.registerTool) {
+        await Promise.all(
+          tools.map((tool) => navCtx.registerTool?.(tool, { signal }))
+        );
+        return;
       }
 
-      if (document.modelContext?.registerTool) {
+      if (navCtx?.provideContext) {
+        await navCtx.provideContext({ tools });
+        return;
+      }
+
+      if (docCtx?.registerTool) {
         await Promise.all(
-          tools.map((tool) =>
-            document.modelContext?.registerTool?.(tool, {
-              signal: abortController.signal,
-            })
-          )
+          tools.map((tool) => docCtx.registerTool?.(tool, { signal }))
         );
       }
     };
