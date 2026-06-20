@@ -1,6 +1,5 @@
 import { IGitHub } from '@/interfaces/index';
 import styles from '@/styles/article.module.css';
-import { Fragment } from 'react';
 
 interface GitHubProps {
   data?: IGitHub[];
@@ -29,21 +28,19 @@ export default function GitHub({ data }: GitHubProps) {
       {Array.isArray(repos) && (
         <ol className={styles.list}>
           {repos.map(({ node_id, name, html_url, description }) => (
-            <Fragment key={node_id}>
-              <li className={styles.item}>
-                <span className={styles.subtitle}>
-                  <a
-                    href={html_url}
-                    title={name}
-                    className={styles.url}
-                    rel="external"
-                  >
-                    {name}
-                  </a>
-                </span>
-                <span className={styles.description}>{description}</span>
-              </li>
-            </Fragment>
+            <li key={node_id} className={styles.item}>
+              <span className={styles.subtitle}>
+                <a
+                  href={html_url}
+                  title={name}
+                  className={styles.url}
+                  rel="external"
+                >
+                  {name}
+                </a>
+              </span>
+              <span className={styles.description}>{description}</span>
+            </li>
           ))}
         </ol>
       )}
