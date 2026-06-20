@@ -188,7 +188,7 @@ const buildWebMCPTools = (): WebMCPTool[] => [
 function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     if (typeof window === 'undefined') {
-      return () => {};
+      return () => undefined;
     }
 
     const tools = buildWebMCPTools();
