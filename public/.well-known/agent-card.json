@@ -26,8 +26,8 @@
       "id": "get-profile-summary",
       "name": "Get Profile Summary",
       "description": "Retrieve the profile summary and about information for Rodrigo Castilho, read from the live page DOM.",
-      "tags": ["profile", "about", "bio", "summary"],
       "outputModes": ["application/json", "text/plain"]
+    },
     {
       "id": "navigate-to-section",
       "name": "Navigate to Section",
