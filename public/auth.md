@@ -20,7 +20,7 @@ Response shape:
 ```json
 {
   "resource": "https://rodrigocastilho.com/",
-  "resource_name": "RODCAST Public Site",
+  "resource_name": "Rodrigo Castilho Public Site",
   "resource_logo_uri": "https://rodrigocastilho.com/favicon.ico",
   "authorization_servers": ["https://rodrigocastilho.com"],
   "scopes_supported": ["profile:read", "content:read"],
@@ -78,7 +78,7 @@ This service accepts these registration methods:
 
 ## Step 3 — Register
 
-Surface the service's `resource_name` ("RODCAST Public Site") and the scopes you'll act under, and confirm with the user before sending the request.
+Surface the service's `resource_name` ("Rodrigo Castilho Public Site") and the scopes you'll act under, and confirm with the user before sending the request.
 
 ```http
 POST /agent/identity/register

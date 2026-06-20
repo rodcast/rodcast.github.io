@@ -38,7 +38,7 @@ public/          # Static assets served at the root
 
 | File                                  | Role                                                           |
 | ------------------------------------- | -------------------------------------------------------------- |
-| `src/pages/_app.tsx`                  | Global styles, Google Analytics, Vercel Speed Insights         |
+| `src/pages/_app.tsx`                  | Global styles, Google Analytics, WebMCP tool registration      |
 | `src/pages/_document.tsx`             | SEO metadata, Open Graph/Twitter tags, JSON-LD, PWA links      |
 | `src/pages/index.tsx`                 | Main page — fetches data at build time via `getStaticProps`    |
 | `src/shared/types/webmcp.d.ts`        | Ambient WebMCP navigator and tool type declarations            |
@@ -64,7 +64,6 @@ public/          # Static assets served at the root
 | `next@16`                  | Framework                    |
 | `react@19`, `react-dom@19` | UI library                   |
 | `@next/third-parties`      | Google Analytics integration |
-| `@vercel/speed-insights`   | Performance monitoring       |
 
 ### External APIs
 
@@ -129,7 +128,7 @@ public/          # Static assets served at the root
 
 ### Discovery Metadata
 
-- Keep `.well-known` discovery documents internally consistent (`api-catalog`, OAuth/OIDC metadata, MCP server card, and agent-skills index).
+- Keep `.well-known` discovery documents internally consistent (`api-catalog`, `agent-card.json`, `mcp.json`, `mcp/server-card.json`, OAuth/OIDC metadata, and agent-skills index).
 - When updating any `public/.well-known/agent-skills/*.md` file, refresh the matching `sha256` entry in `public/.well-known/agent-skills/index.json`.
 - Preserve API discovery links exposed in both `src/pages/_document.tsx` and `public/_headers`.
 

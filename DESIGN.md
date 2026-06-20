@@ -12,7 +12,7 @@ Architecture decisions and rationale for rodcast.github.io.
 
 **Decision:** All external API calls happen in `getStaticProps`, not in the browser.
 
-**Rationale:** GitHub API and the `rss2json` Medium proxy do not require authentication or personalization. Fetching at build time means the deployed HTML already contains the data — no loading spinners for primary content, no client-side API keys, and no exposure of rate-limited endpoints to end users.
+**Rationale:** GitHub API and the `rss2json` Medium proxy do not require authentication or personalization. Fetching at build time means the deployed HTML already contains the data, avoids client-side API keys, and reduces exposure of rate-limited endpoints to end users.
 
 A 5-second timeout in `fetchData` prevents build hangs. If either API call fails, the page renders with empty arrays rather than crashing.
 
@@ -27,6 +27,9 @@ Page (index.tsx)
 │   ├── GitHub     — repo cards (with GitHubSkeleton fallback)
 │   └── Medium     — article cards (with MediumSkeleton fallback)
 └── Footer
+
+App (_app.tsx)
+└── Registers WebMCP tools on compatible runtimes
 ```
 
 `Article` is loaded with `next/dynamic` to defer its JS bundle — it is the heaviest component and not needed for the initial paint.
@@ -41,15 +44,20 @@ Page (index.tsx)
 
 The site exposes a set of machine-readable discovery documents:
 
-| File                         | Purpose                                 |
-| ---------------------------- | --------------------------------------- |
-| `api-catalog`                | API catalog for agent/client discovery  |
-| `agent-card.json`            | Agent identity card                     |
-| `agent-skills/`              | Agent capability index and skill docs   |
-| `mcp/`                       | Model Context Protocol server metadata  |
-| `oauth-authorization-server` | OAuth 2.0 authorization server metadata |
-| `openid-configuration`       | OpenID Connect configuration            |
-| `jwks.json`                  | JSON Web Key Set                        |
+| File                                | Purpose                                     |
+| ----------------------------------- | ------------------------------------------- |
+| `api-catalog`                       | API catalog for agent/client discovery      |
+| `ai-plugin.json`                    | AI plugin metadata and compatibility        |
+| `agent-card.json`                   | Agent identity card                         |
+| `agent-skills/`                     | Agent capability index and skill docs       |
+| `http-message-signatures-directory` | HTTP Message Signatures discovery directory |
+| `mcp.json`                          | MCP endpoint discovery entry point          |
+| `mcp/`                              | Model Context Protocol server metadata      |
+| `oauth-protected-resource`          | OAuth protected resource metadata           |
+| `oauth-authorization-server`        | OAuth 2.0 authorization server metadata     |
+| `openid-configuration`              | OpenID Connect configuration                |
+| `jwks.json`                         | JSON Web Key Set                            |
+| `security.txt`                      | Security disclosure and contact policy      |
 
 These are static JSON/text files committed to `public/`. They require no server. When updating any `agent-skills/*.md`, regenerate the `sha256` in `agent-skills/index.json`.
 

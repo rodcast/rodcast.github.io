@@ -7,8 +7,9 @@ Quick reference for Claude AI when working on this codebase. See `AGENTS.md` for
 ```bash
 nvm use          # Must run first — loads Node 24.x from .nvmrc
 yarn install     # Install dependencies
-yarn dev         # Development server (TLS validation disabled)
+yarn dev         # Development server (sets NODE_TLS_REJECT_UNAUTHORIZED=0)
 yarn build       # Static export to out/
+yarn start       # Serve the production build locally
 yarn lint        # ESLint check (run before completing any task)
 yarn lint:fix    # ESLint auto-fix
 ```
@@ -46,5 +47,6 @@ getStaticProps (build time)
 - Normalize all external API data before passing to components.
 - When changing an API contract, update both the interface in `src/shared/interfaces/` and its normalizer.
 - When editing `public/.well-known/agent-skills/*.md`, update the matching `sha256` in `public/.well-known/agent-skills/index.json`.
+- Keep discovery metadata internally consistent across `api-catalog`, OAuth/OIDC metadata, MCP metadata, and agent capability files.
 - CSS Modules for all component styles; globals only in `src/styles/globals.css`.
 - Pre-commit hook runs lint automatically (Husky).
