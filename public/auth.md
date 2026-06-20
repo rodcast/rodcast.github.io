@@ -3,7 +3,7 @@
 This service publishes agent registration discovery metadata for `https://rodrigocastilho.com/`.
 
 - Resource server: `https://rodrigocastilho.com/`
-- Authorization server: `https://rodrigocastilho.com/`
+- Authorization server: `https://rodrigocastilho.com`
 - Protected Resource Metadata: `https://rodrigocastilho.com/.well-known/oauth-protected-resource`
 - Authorization Server Metadata: `https://rodrigocastilho.com/.well-known/oauth-authorization-server`
 
