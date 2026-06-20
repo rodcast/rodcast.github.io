@@ -5,7 +5,7 @@ Registration endpoint for auth.md agent onboarding at `https://rodrigocastilho.c
 - **URI:** `https://rodrigocastilho.com/agent/identity/register`
 - **Method:** `POST`
 - **Content-Type:** `application/json`
-- **Applies to:** `service_auth`
+- **Applies to:** `service_auth`, `anonymous`
 
 This site is statically hosted. This endpoint documents the request and response contract for `service_auth` registration. Passive discovery clients must not issue side-effecting `POST` requests during passive discovery.
 

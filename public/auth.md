@@ -51,7 +51,11 @@ Response shape (read the `agent_auth` block in full):
     "identity_endpoint": "https://rodrigocastilho.com/agent/identity/register",
     "register_uri": "https://rodrigocastilho.com/agent/identity/register",
     "claim_endpoint": "https://rodrigocastilho.com/agent/identity/claim",
-    "identity_types_supported": ["service_auth"],
+    "identity_types_supported": ["anonymous", "service_auth"],
+    "anonymous": {
+      "credential_types_supported": ["access_token"],
+      "claim_uri": "https://rodrigocastilho.com/agent/identity/claim"
+    },
     "service_auth": {
       "credential_types_supported": ["access_token"],
       "claim_uri": "https://rodrigocastilho.com/agent/identity/claim",

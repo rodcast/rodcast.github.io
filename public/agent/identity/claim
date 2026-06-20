@@ -3,7 +3,7 @@
 Canonical claim URI for auth.md discovery.
 
 - URI: `https://rodrigocastilho.com/agent/identity/claim`
-- Applies to: `service_auth`
+- Applies to: `service_auth`, `anonymous`
 
 The claim ceremony binds an agent registration to a signed-in user on a service-owned flow before scoped credentials are used.
 

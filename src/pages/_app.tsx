@@ -228,7 +228,7 @@ function App({ Component, pageProps }: AppProps) {
 
       if (navCtx?.provideContext) {
         try {
-          await navCtx.provideContext({ tools });
+          await navCtx.provideContext({ tools: canonicalTools });
           didRegister = true;
         } catch {
           // Ignore unsupported provideContext implementations.
