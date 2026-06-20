@@ -22,7 +22,7 @@ export default function Medium({ data }: MediumProps) {
 
   return (
     <article className={styles.content}>
-      <header className={styles.title}>My articles on Medium</header>
+      <h2 className={styles.title}>My articles on Medium</h2>
 
       {message && <span className={styles.description}>{message}</span>}
 
@@ -46,7 +46,12 @@ export default function Medium({ data }: MediumProps) {
                       {title}
                     </a>
                   </span>
-                  <time className={styles.time}>{dateTime}</time>
+                  <time
+                    className={styles.time}
+                    dateTime={new Date(pubDate).toISOString()}
+                  >
+                    {dateTime}
+                  </time>
                   <span className={styles.description}>{content}</span>
                 </li>
               </Fragment>

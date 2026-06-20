@@ -22,7 +22,7 @@ export default function GitHub({ data }: GitHubProps) {
 
   return (
     <article className={styles.content}>
-      <header className={styles.title}>My repositories on GitHub</header>
+      <h2 className={styles.title}>My repositories on GitHub</h2>
 
       {message && <span className={styles.description}>{message}</span>}
 

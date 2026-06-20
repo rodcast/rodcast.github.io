@@ -36,7 +36,7 @@ export default [
       globals: {
         React: 'readonly',
         JSX: 'readonly',
-        
+
         window: 'readonly',
         document: 'readonly',
         localStorage: 'readonly',
@@ -55,7 +55,7 @@ export default [
         clearTimeout: 'readonly',
         setInterval: 'readonly',
         clearInterval: 'readonly',
-        
+
         HTMLElement: 'readonly',
         HTMLInputElement: 'readonly',
         Event: 'readonly',
@@ -66,7 +66,7 @@ export default [
         Document: 'readonly',
         Window: 'readonly',
         RequestInit: 'readonly',
-        
+
         console: 'readonly',
         process: 'readonly',
         Buffer: 'readonly',
@@ -90,23 +90,23 @@ export default [
       'no-console': 'warn',
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': 'error',
-      
+
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
       'react/no-unescaped-entities': 'error',
       'react/jsx-max-depth': ['warn', { max: 10 }],
       'react/no-danger': 'warn',
-      
+
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
-      
+
       '@next/next/no-html-link-for-pages': 'error',
       '@next/next/no-img-element': 'warn',
       '@next/next/no-unwanted-polyfillio': 'error',
       '@next/next/no-page-custom-font': 'error',
       '@next/next/no-sync-scripts': 'error',
       '@next/next/inline-script-id': 'error',
-      
+
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',

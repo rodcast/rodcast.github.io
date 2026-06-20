@@ -29,19 +29,19 @@
 }
 
 .github:before {
-  content: "\f09b";
+  content: '\f09b';
 }
 
 .linkedin:before {
-  content: "\f30c";
+  content: '\f30c';
 }
 
 .twitter:before {
-  content: "\f099";
+  content: '\f099';
 }
 
 .medium:before {
-  content: "\f23a";
+  content: '\f23a';
 }
 
 .sun:before {

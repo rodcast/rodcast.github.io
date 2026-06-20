@@ -2,19 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /csstablegallery/
 Disallow: /stylemaster/
-Disallow: /_next/
 Disallow: /api/
-
-User-agent: Googlebot
-Allow: /
-Disallow: /_next/
-
-User-agent: Googlebot-Image
-Allow: /
-Disallow: /_next/
-
-User-agent: Mediapartners-Google
-Allow: /
 
 # AI Crawlers Welcome
 User-agent: GPTBot
@@ -34,8 +22,3 @@ Allow: /
 
 # Sitemaps
 Sitemap: https://rodrigocastilho.com/sitemap.xml
-
-# Crawl-delay for respectful crawling
-Crawl-delay: 1
-
-Content-Signal: ai-train=no, search=yes, ai-input=no

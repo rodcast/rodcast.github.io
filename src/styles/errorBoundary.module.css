@@ -47,13 +47,13 @@
   word-wrap: break-word;
 }
 
-html[data-theme="dark"] .error_boundary {
+html[data-theme='dark'] .error_boundary {
   background-color: #2d1b1b;
   border-color: #dc2626;
   color: #fca5a5;
 }
 
-html[data-theme="dark"] .error_code {
+html[data-theme='dark'] .error_code {
   background-color: #374151;
   color: #d1d5db;
 }

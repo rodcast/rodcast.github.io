@@ -8,7 +8,7 @@
 .main {
   display: grid;
   grid-gap: var(--space-x-2);
-  grid-template: "sidebar article" / 280px auto;
+  grid-template: 'sidebar article' / 280px auto;
   margin: var(--space-x-2) var(--space-x-0) 0;
 }
 
@@ -20,7 +20,7 @@
   .main {
     grid-gap: var(--space-x-4);
     grid-template:
-      "sidebar"
-      "article";
+      'sidebar'
+      'article';
   }
 }
