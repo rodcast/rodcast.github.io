@@ -88,6 +88,7 @@ function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>{title}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       {process.env.NEXT_PUBLIC_GA_TRACKING_ID && (
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_TRACKING_ID} />

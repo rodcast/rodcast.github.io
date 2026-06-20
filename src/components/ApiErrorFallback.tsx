@@ -15,7 +15,7 @@ export default function ApiErrorFallback({
 }: ApiErrorFallbackProps) {
   return (
     <article className={articleStyles.content}>
-      <header className={articleStyles.title}>{title}</header>
+      <h2 className={articleStyles.title}>{title}</h2>
       <div className={styles.error_container}>
         <p className={articleStyles.description}>{message}</p>
         {onRetry && (
