@@ -1,0 +1,70 @@
+{
+  "protocol_version": "2024-05-15",
+  "name": "rodcast-public-site",
+  "version": "0.2.1",
+  "description": "Static metadata server for RODCAST personal website. Exposes public profile, GitHub repositories, and Medium articles via MCP-compatible endpoints.",
+  "author": "Rodrigo Castilho",
+  "license": "MIT",
+  "schemas": {
+    "github": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "description": "GitHub repository metadata",
+      "type": "object",
+      "required": ["id", "name", "url"],
+      "properties": {
+        "id": { "type": "integer" },
+        "name": { "type": "string" },
+        "url": { "type": "string" },
+        "description": { "type": ["string", "null"] },
+        "language": { "type": ["string", "null"] },
+        "stars": { "type": "integer" },
+        "forks": { "type": "integer" }
+      }
+    },
+    "medium": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "description": "Medium article metadata",
+      "type": "object",
+      "required": ["id", "title", "link"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "link": { "type": "string" },
+        "description": { "type": "string" },
+        "pubDate": { "type": "string" },
+        "categories": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+  "capabilities": [
+    {
+      "id": "discover-profile",
+      "name": "Discover Profile Metadata",
+      "description": "Access public profile information and links",
+      "endpoint": "https://rodrigocastilho.com/"
+    },
+    {
+      "id": "list-repositories",
+      "name": "List GitHub Repositories",
+      "description": "Retrieve list of public GitHub repositories",
+      "schema_ref": "#/schemas/github"
+    },
+    {
+      "id": "list-articles",
+      "name": "List Medium Articles",
+      "description": "Retrieve list of published Medium articles",
+      "schema_ref": "#/schemas/medium"
+    },
+    {
+      "id": "health-check",
+      "name": "Health Status",
+      "description": "Check service availability",
+      "endpoint": "https://rodrigocastilho.com/api/health"
+    }
+  ],
+  "discovery": {
+    "api_catalog": "https://rodrigocastilho.com/.well-known/api-catalog",
+    "openapi": "https://rodrigocastilho.com/docs/api/openapi.json",
+    "agent_skills": "https://rodrigocastilho.com/.well-known/agent-skills/index.json"
+  }
+}

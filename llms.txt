@@ -1,0 +1,76 @@
+# Rodrigo Castilho Personal Website - Agent Context
+
+## Purpose
+- Personal website for Rodrigo Castilho.
+- Main content: profile information plus latest public GitHub repositories and Medium articles.
+- Production deployment: static export hosted on GitHub Pages.
+
+## Tech Stack
+- Next.js 16 (Pages Router) + React 19 + TypeScript (strict mode).
+- Styling: CSS Modules and global styles in `src/styles/globals.css`.
+- Monitoring/integrations: Google Analytics (`@next/third-parties`).
+- App runtime behavior: Registers WebMCP tools in `_app.tsx` when browser APIs are available.
+- Package manager: Yarn.
+- Node.js: 24.x (from `.nvmrc`).
+
+## Critical Build Constraints
+- Site must remain statically exportable.
+- Keep these required Next.js settings in `next.config.mjs`:
+	- `output: 'export'`
+	- `images.unoptimized: true`
+	- `trailingSlash: true`
+- Do not add SSR-only/runtime server dependencies.
+
+## Key URLs (Production)
+- Home: https://rodrigocastilho.com/
+- API docs: https://rodrigocastilho.com/docs/api/
+- OpenAPI: https://rodrigocastilho.com/docs/api/openapi.json
+- Health endpoint: https://rodrigocastilho.com/api/health
+- API catalog: https://rodrigocastilho.com/.well-known/api-catalog
+- Agent card: https://rodrigocastilho.com/.well-known/agent-card.json
+- MCP discovery: https://rodrigocastilho.com/.well-known/mcp.json
+- MCP server card: https://rodrigocastilho.com/.well-known/mcp/server-card.json
+- OIDC config: https://rodrigocastilho.com/.well-known/openid-configuration
+- OAuth auth server metadata: https://rodrigocastilho.com/.well-known/oauth-authorization-server
+- OAuth protected resource metadata: https://rodrigocastilho.com/.well-known/oauth-protected-resource
+- Agent skills index: https://rodrigocastilho.com/.well-known/agent-skills/index.json
+
+## Repository Structure (High Value)
+- `src/pages/`: Next.js pages (`index.tsx`, `_app.tsx`, `_document.tsx`).
+- `src/components/`: UI components and fallbacks.
+- `src/shared/constants/paths.ts`: external endpoint constants.
+- `src/shared/interfaces/`: API/UI TypeScript contracts.
+- `src/shared/utils/fetch.ts`: typed fetch helper with timeout and explicit errors.
+- `src/shared/utils/normalizeGitHub.ts`: GitHub payload normalization/filtering.
+- `src/shared/utils/normalizeMedium.ts`: Medium payload normalization/filtering.
+- `public/.well-known/`: API/OAuth/agent discovery metadata.
+- `public/docs/api/openapi.json`: public OpenAPI contract.
+
+## Data Flow
+- Build-time `getStaticProps` fetches external data.
+- Data is normalized in shared utils before rendering.
+- UI components receive normalized, typed props only.
+
+## Core Commands
+- `nvm use` (required first)
+- `yarn install`
+- `yarn dev`
+- `yarn build`
+- `yarn start`
+- `yarn lint`
+- `yarn lint:fix`
+
+## Coding Conventions
+- Use TypeScript path aliases (`@/*`, `@/components/*`, `@/utils/*`, etc.), not deep relative imports.
+- Keep changes focused and minimal; avoid broad refactors.
+- Preserve accessibility semantics and readable fallback states.
+- If an external API contract changes, update both interface definitions and corresponding normalizer(s).
+- Keep discovery metadata internally consistent.
+- Keep discovery links and headers aligned across `src/pages/_document.tsx` and `public/_headers`.
+
+## Agent Guidance
+- Read `AGENTS.md` first for full project rules and constraints.
+- Use `CLAUDE.md` as a quick operational reference.
+- Run `yarn lint` before finishing code changes.
+- If editing `public/.well-known/agent-skills/*.md`, also update matching `sha256` in `public/.well-known/agent-skills/index.json`.
+- Preserve discovery links exposed by `_document.tsx` and `public/_headers`.

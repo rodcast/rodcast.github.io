@@ -28,7 +28,7 @@ yarn dev
 
 ## Scripts
 
-- `yarn dev`: Start the development server.
+- `yarn dev`: Start the development server (sets `NODE_TLS_REJECT_UNAUTHORIZED=0`).
 - `yarn build`: Build the statically exported site.
 - `yarn start`: Serve the production build locally.
 - `yarn lint`: Run ESLint checks.
@@ -64,4 +64,11 @@ yarn dev
 
 - API overview: `public/docs/api.md`
 - OpenAPI contract: `public/docs/api/openapi.json`
+- API catalog: `public/.well-known/api-catalog`
+- Agent card: `public/.well-known/agent-card.json`
+- MCP discovery: `public/.well-known/mcp.json`
+- MCP server card: `public/.well-known/mcp/server-card.json`
+- OpenID configuration: `public/.well-known/openid-configuration`
+- OAuth authorization server metadata: `public/.well-known/oauth-authorization-server`
+- OAuth protected resource metadata: `public/.well-known/oauth-protected-resource`
 - Agent skills index: `public/.well-known/agent-skills/index.json`
