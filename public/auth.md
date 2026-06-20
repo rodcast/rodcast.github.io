@@ -48,10 +48,9 @@ Response shape (read the `agent_auth` block in full):
   "scopes_supported": ["profile:read", "content:read"],
   "agent_auth": {
     "skill": "https://rodrigocastilho.com/auth.md",
-    "identity_endpoint": "https://rodrigocastilho.com/agent/identity",
-    "register_uri": "https://rodrigocastilho.com/agent/identity",
+    "identity_endpoint": "https://rodrigocastilho.com/agent/identity/register",
+    "register_uri": "https://rodrigocastilho.com/agent/identity/register",
     "claim_endpoint": "https://rodrigocastilho.com/agent/identity/claim",
-    "events_endpoint": "https://rodrigocastilho.com/agent/event/notify",
     "identity_types_supported": ["service_auth"],
     "service_auth": {
       "credential_types_supported": ["access_token"],
