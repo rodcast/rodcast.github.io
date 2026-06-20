@@ -1,0 +1,31 @@
+# Rodrigo Castilho
+
+> Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym. Personal site exposing public profile, projects, and articles as agent-friendly content.
+
+The site is a statically exported Next.js application. Project and article data are fetched at build time from the GitHub REST API and the Medium RSS feed. A markdown representation of the homepage is available via content negotiation (`Accept: text/markdown` on `/`) or directly at `/index.md`.
+
+## Content
+
+- [Homepage (Markdown)](https://rodrigocastilho.com/index.md): Profile summary, projects, and articles with embedded schema.org JSON-LD.
+- [RSS Feed](https://rodrigocastilho.com/feed.xml): Site feed.
+- [Sitemap](https://rodrigocastilho.com/sitemap.xml): List of indexable URLs.
+
+## API
+
+- [OpenAPI Specification](https://rodrigocastilho.com/docs/api/openapi.json): OpenAPI 3.1 description of the public endpoints.
+- [API Documentation](https://rodrigocastilho.com/docs/api/): Human-readable API docs.
+- [API Documentation (Markdown)](https://rodrigocastilho.com/docs/api.md): Agent-friendly API docs.
+- [API Catalog](https://rodrigocastilho.com/.well-known/api-catalog): RFC 9727 linkset advertising API discovery endpoints.
+
+## Agents
+
+- [Agent Card](https://rodrigocastilho.com/.well-known/agent-card.json): Agent metadata for this site.
+- [Agent Skills Index](https://rodrigocastilho.com/.well-known/agent-skills/index.json): Catalog of agent skills (markdown negotiation, API discovery, WebMCP tools, auth).
+- [MCP Server Card](https://rodrigocastilho.com/.well-known/mcp/server-card.json): Model Context Protocol server descriptor.
+
+## Social
+
+- [GitHub](https://github.com/rodcast)
+- [Twitter](https://twitter.com/rodcast)
+- [LinkedIn](https://www.linkedin.com/in/rodrigocastilho)
+- [Medium](https://medium.com/@rodcast)
