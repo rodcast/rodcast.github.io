@@ -64,6 +64,7 @@
   "discovery": {
     "api_catalog": "https://rodrigocastilho.com/.well-known/api-catalog",
     "openapi": "https://rodrigocastilho.com/docs/api/openapi.json",
-    "agent_skills": "https://rodrigocastilho.com/.well-known/agent-skills/index.json"
+    "agent_skills": "https://rodrigocastilho.com/.well-known/agent-skills/index.json",
+    "mcp_server_card": "https://rodrigocastilho.com/.well-known/mcp/server-card.json"
   }
 }
