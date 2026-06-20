@@ -75,9 +75,8 @@ This service accepts one registration method:
 Surface the service's `resource_name` ("RODCAST Public Site") and the scopes you'll act under, and confirm with the user before sending the request.
 
 ```http
-POST /agent/identity
+POST /agent/identity/register
 Content-Type: application/json
-
 {
   "type": "service_auth",
   "login_hint": "user@example.com"
