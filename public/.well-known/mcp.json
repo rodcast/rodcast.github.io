@@ -7,18 +7,18 @@
   "license": "MIT",
   "schemas": {
     "github": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "description": "GitHub repository metadata",
+      "$schema": "https://json-schema.org/draft-07/schema#",
+      "description": "Normalized GitHub repository metadata (IGitHub)",
       "type": "object",
-      "required": ["id", "name", "url"],
+      "required": ["node_id", "name", "html_url", "description", "updated_at"],
       "properties": {
-        "id": { "type": "integer" },
+        "node_id": { "type": "string" },
         "name": { "type": "string" },
-        "url": { "type": "string" },
-        "description": { "type": ["string", "null"] },
-        "language": { "type": ["string", "null"] },
-        "stars": { "type": "integer" },
-        "forks": { "type": "integer" }
+        "html_url": { "type": "string" },
+        "description": { "type": "string" },
+        "updated_at": { "type": "string" },
+        "is_private": { "type": "boolean" },
+        "fork": { "type": "boolean" }
       }
     },
     "medium": {
