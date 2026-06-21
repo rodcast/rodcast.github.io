@@ -5,7 +5,6 @@ export interface IGitHub {
   description: string;
   updated_at: string;
   is_private?: boolean;
-  private?: boolean;
   fork?: boolean;
 }
 

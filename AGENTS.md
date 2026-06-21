@@ -173,8 +173,10 @@ Follow these rules when making any change to this codebase.
 
 Before considering any task done, run the full check and resolve all errors — don't rely on "looks done":
 
-    nvm use                                  # required: project uses Node 24.x (see .nvmrc)
-    yarn lint && yarn prettier --check . && yarn typecheck && yarn build
+```bash
+nvm use                                  # required: project uses Node 24.x (see .nvmrc)
+yarn lint && yarn prettier --check . && yarn typecheck && yarn build
+```
 
 - `yarn lint` — ESLint (also enforced by the Husky pre-commit hook).
 - `yarn prettier --check .` — Prettier formatting check (also enforced by the Husky pre-commit hook and CI).

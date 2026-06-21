@@ -38,9 +38,9 @@ App (_app.tsx)
 
 ## Styling: CSS Modules
 
-**Decision:** One `.module.css` file per component; global styles only for resets and CSS variables.
+**Decision:** One `.module.css` file per component; global styles only for resets, CSS variables, and a minimal set of accessibility utilities (e.g. `.sr-only`).
 
-**Rationale:** Scoped class names prevent collisions without a runtime CSS-in-JS library. No build-time overhead beyond what Next.js already does.
+**Rationale:** Scoped class names prevent collisions without a runtime CSS-in-JS library. No build-time overhead beyond what Next.js already does. A small number of accessibility utilities like `.sr-only` are intentionally global so they can be reused across components without duplication.
 
 ## Discovery and Agent Metadata (`public/.well-known/`)
 
