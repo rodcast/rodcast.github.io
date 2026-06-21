@@ -5,7 +5,7 @@
 If you discover a security vulnerability in this project or on
 <https://rodrigocastilho.com/>, please report it privately.
 
-- **Email:** rodcast@gmail.com
+- **Report privately:** [open a GitHub security advisory](https://github.com/rodcast/rodcast.github.io/security/advisories/new)
 - **Languages:** English, Portuguese
 
 Please include enough detail to reproduce the issue (affected URL or file,
