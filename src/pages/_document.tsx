@@ -23,11 +23,14 @@ function RobotsMeta({ robots }: RobotsMetaProps) {
     <>
       <meta
         name="robots"
-        content={`${robots.index ? 'index' : 'noindex'}, ${
-          robots.follow ? 'follow' : 'nofollow'
-        }, ${robots.nocache ? 'nocache' : ''}, ${
-          robots.noarchive ? 'noarchive' : ''
-        }`}
+        content={[
+          robots.index ? 'index' : 'noindex',
+          robots.follow ? 'follow' : 'nofollow',
+          robots.nocache ? 'nocache' : '',
+          robots.noarchive ? 'noarchive' : '',
+        ]
+          .filter(Boolean)
+          .join(', ')}
       />
       {robots.googleBot && (
         <>
@@ -103,8 +106,8 @@ const metadata = {
   robots: {
     index: true,
     follow: true,
-    nocache: true,
-    noarchive: true,
+    nocache: false,
+    noarchive: false,
     googleBot: {
       index: true,
       follow: true,
@@ -157,6 +160,9 @@ function OpenGraphMeta({ openGraph, twitter }: OpenGraphMetaProps) {
     </>
   );
 }
+
+// Generated at build time so it reflects the latest deploy, not a stale literal.
+const buildDate = new Date().toISOString().slice(0, 10);
 
 // JSON-LD structured data for SEO
 const structuredData = {
@@ -216,11 +222,6 @@ const structuredData = {
       description: metadata.description,
       publisher: { '@id': 'https://rodrigocastilho.com/#person' },
       inLanguage: 'en-US',
-      potentialAction: {
-        '@type': 'SearchAction',
-        target: 'https://rodrigocastilho.com/?s={search_term_string}',
-        'query-input': 'required name=search_term_string',
-      },
     },
     {
       '@type': 'WebPage',
@@ -232,7 +233,7 @@ const structuredData = {
       about: { '@id': 'https://rodrigocastilho.com/#person' },
       primaryImageOfPage: { '@id': 'https://rodrigocastilho.com/#image' },
       datePublished: '2023-01-01',
-      dateModified: '2025-10-23',
+      dateModified: buildDate,
       inLanguage: 'en-US',
     },
     {
@@ -262,6 +263,17 @@ class MyDocument extends Document {
       >
         <Head>
           <meta charSet="utf-8" />
+
+          {/* Apply the stored or system theme before paint to avoid a flash of
+              the wrong theme. Runs first so the toggle can sync to it later. */}
+          <script
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html:
+                "try{var t=localStorage.getItem('data-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t;}catch(e){}",
+            }}
+          />
+
           <meta name="theme-color" content="#1c1c1c" />
           <meta
             name="theme-color"

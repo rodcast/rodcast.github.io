@@ -13,15 +13,14 @@ export default function Toggle() {
   const [checked, setChecked] = useState<boolean>(false);
 
   const checkTheme = useCallback((): void => {
-    const theme = localStorage.getItem('data-theme');
+    // Source of truth: the stored preference, else whatever the pre-paint
+    // script in _document already applied (which honors prefers-color-scheme).
+    const stored = localStorage.getItem('data-theme');
+    const theme = stored ?? document.documentElement.dataset.theme ?? 'light';
 
-    if (theme === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      setChecked(true);
-    } else if (theme === 'light') {
-      document.documentElement.setAttribute('data-theme', 'light');
-      setChecked(false);
-    }
+    document.documentElement.setAttribute('data-theme', theme);
+    const isDark = theme === 'dark';
+    setChecked(isDark);
   }, []);
 
   const toggleTheme = useCallback(
