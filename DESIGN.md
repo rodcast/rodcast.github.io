@@ -26,8 +26,8 @@ Page (index.tsx)
 ├── Toggle         — light/dark mode
 ├── Sidebar        — avatar, bio, social links
 ├── Article        — GitHub repos + Medium articles
-│   ├── GitHub     — repo cards (with GitHubSkeleton fallback)
-│   └── Medium     — article cards (with MediumSkeleton fallback)
+│   ├── GitHub     — repo cards (wrapped in ErrorBoundary → ApiErrorFallback)
+│   └── Medium     — article cards (wrapped in ErrorBoundary → ApiErrorFallback)
 └── Footer
 
 App (_app.tsx)
