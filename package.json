@@ -12,8 +12,8 @@
     "postcss": "8.5.10"
   },
   "scripts": {
-    "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 next dev",
-    "build": "next build",
+    "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 next dev --webpack",
+    "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
