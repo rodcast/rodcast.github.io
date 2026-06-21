@@ -61,37 +61,33 @@ export default function CookieConsent() {
     setVisible(false);
   }, []);
 
-  return (
-    <>
-      {visible && (
-        <div
-          className={styles.banner}
-          role="dialog"
-          aria-live="polite"
-          aria-label="Cookie consent"
+  return visible ? (
+    <div
+      className={styles.banner}
+      role="dialog"
+      aria-live="polite"
+      aria-label="Cookie consent"
+    >
+      <p className={styles.text}>
+        This site uses Google Analytics to measure traffic. Analytics cookies
+        stay off until you accept.
+      </p>
+      <div className={styles.actions}>
+        <button
+          type="button"
+          className={`${styles.button} ${styles.reject}`}
+          onClick={() => choose('denied')}
         >
-          <p className={styles.text}>
-            This site uses Google Analytics to measure traffic. Analytics
-            cookies stay off until you accept.
-          </p>
-          <div className={styles.actions}>
-            <button
-              type="button"
-              className={`${styles.button} ${styles.reject}`}
-              onClick={() => choose('denied')}
-            >
-              Reject
-            </button>
-            <button
-              type="button"
-              className={`${styles.button} ${styles.accept}`}
-              onClick={() => choose('granted')}
-            >
-              Accept
-            </button>
-          </div>
-        </div>
-      )}
-    </>
-  );
+          Reject
+        </button>
+        <button
+          type="button"
+          className={`${styles.button} ${styles.accept}`}
+          onClick={() => choose('granted')}
+        >
+          Accept
+        </button>
+      </div>
+    </div>
+  ) : null;
 }
