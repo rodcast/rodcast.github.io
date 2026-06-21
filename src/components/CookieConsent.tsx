@@ -1,5 +1,4 @@
 import styles from '@/styles/cookieConsent.module.css';
-import { GoogleAnalytics } from '@next/third-parties/google';
 import { useCallback, useEffect, useState } from 'react';
 
 const STORAGE_KEY = 'cookie-consent';
@@ -8,10 +7,10 @@ type ConsentChoice = 'granted' | 'denied';
 
 const CONSENT_STATE: Record<ConsentChoice, Record<string, ConsentChoice>> = {
   granted: {
-    ad_storage: 'granted',
+    ad_storage: 'denied',
     analytics_storage: 'granted',
-    ad_user_data: 'granted',
-    ad_personalization: 'granted',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
   },
   denied: {
     ad_storage: 'denied',
@@ -29,18 +28,13 @@ const updateConsent = (choice: ConsentChoice) => {
   globalScope.gtag?.('consent', 'update', CONSENT_STATE[choice]);
 };
 
-interface CookieConsentProps {
-  gaId: string;
-}
-
 /**
- * Cookie consent banner using basic Google Consent Mode v2: consent defaults
- * are denied (set in `_document`) and the Google tag is not loaded until the
- * user grants consent. On accept, consent is updated and the tag is loaded.
+ * Cookie consent banner using basic Google Consent Mode v2. Consent defaults
+ * are denied before Google Analytics loads; this banner only updates
+ * analytics consent when the visitor makes a choice.
  */
-export default function CookieConsent({ gaId }: CookieConsentProps) {
+export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
-  const [analyticsEnabled, setAnalyticsEnabled] = useState(false);
 
   useEffect(() => {
     try {
@@ -48,9 +42,8 @@ export default function CookieConsent({ gaId }: CookieConsentProps) {
       if (!stored) {
         setVisible(true);
       } else if (stored === 'granted') {
-        // Returning visitor who already consented: update and load the tag.
+        // Returning visitor who already consented: restore analytics consent.
         updateConsent('granted');
-        setAnalyticsEnabled(true);
       }
     } catch {
       // localStorage unavailable (e.g. privacy mode); show the banner anyway.
@@ -65,44 +58,36 @@ export default function CookieConsent({ gaId }: CookieConsentProps) {
       // Ignore storage failures; consent still applies for this session.
     }
     updateConsent(choice);
-    if (choice === 'granted') {
-      setAnalyticsEnabled(true);
-    }
     setVisible(false);
   }, []);
 
-  return (
-    <>
-      {analyticsEnabled && <GoogleAnalytics gaId={gaId} />}
-      {visible && (
-        <div
-          className={styles.banner}
-          role="dialog"
-          aria-live="polite"
-          aria-label="Cookie consent"
+  return visible ? (
+    <div
+      className={styles.banner}
+      role="dialog"
+      aria-live="polite"
+      aria-label="Cookie consent"
+    >
+      <p className={styles.text}>
+        This site uses Google Analytics to measure traffic. Analytics cookies
+        stay off until you accept.
+      </p>
+      <div className={styles.actions}>
+        <button
+          type="button"
+          className={`${styles.button} ${styles.reject}`}
+          onClick={() => choose('denied')}
         >
-          <p className={styles.text}>
-            This site uses Google Analytics to measure traffic. Analytics
-            cookies stay off until you accept.
-          </p>
-          <div className={styles.actions}>
-            <button
-              type="button"
-              className={`${styles.button} ${styles.reject}`}
-              onClick={() => choose('denied')}
-            >
-              Reject
-            </button>
-            <button
-              type="button"
-              className={`${styles.button} ${styles.accept}`}
-              onClick={() => choose('granted')}
-            >
-              Accept
-            </button>
-          </div>
-        </div>
-      )}
-    </>
-  );
+          Reject
+        </button>
+        <button
+          type="button"
+          className={`${styles.button} ${styles.accept}`}
+          onClick={() => choose('granted')}
+        >
+          Accept
+        </button>
+      </div>
+    </div>
+  ) : null;
 }
