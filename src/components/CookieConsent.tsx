@@ -38,8 +38,12 @@ export default function CookieConsent() {
 
   useEffect(() => {
     try {
-      if (!localStorage.getItem(STORAGE_KEY)) {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (!stored) {
         setVisible(true);
+      } else if (stored === 'granted') {
+        // Re-apply a returning visitor's prior consent (defaults stay denied).
+        updateConsent('granted');
       }
     } catch {
       // localStorage unavailable (e.g. privacy mode); show the banner anyway.
