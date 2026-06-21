@@ -264,13 +264,13 @@ class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
 
-          {/* Apply the stored or system theme before paint to avoid a flash of
-              the wrong theme. Runs first so the toggle can sync to it later. */}
+          {/* Apply the stored theme before paint; default to light when missing
+              so the first render is deterministic and toggle can sync later. */}
           <script
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
               __html:
-                "try{var t=localStorage.getItem('data-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t;}catch(e){}",
+                "try{var t=localStorage.getItem('data-theme');if(t!=='dark'&&t!=='light'){t='light';}document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t;}catch(e){}",
             }}
           />
 
