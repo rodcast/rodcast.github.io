@@ -159,7 +159,7 @@ Follow these rules when making any change to this codebase.
 - Extend existing shared utilities and components rather than duplicating logic.
 - Keep accessibility intact: use semantic HTML, labels, and readable fallback messages.
 - Keep SEO metadata and JSON-LD structured data coherent when editing profile content.
-- Run `yarn lint` and resolve all errors before completing a task.
+- Verify every change before completing a task (see Verification below).
 - Always work on a separate branch and open a pull request for review (see Git Workflow below).
 
 ### Do Not
@@ -169,11 +169,27 @@ Follow these rules when making any change to this codebase.
 - Break the `next.config.mjs` static export settings (see Critical Constraints below).
 - Commit or push directly to `master`.
 
+### Verification
+
+Before considering any task done, run the full check and resolve all errors — don't rely on "looks done":
+
+```bash
+nvm use                                  # required: husky/build enforce Node 24.x (see .nvmrc)
+yarn lint && yarn typecheck && yarn build
+```
+
+- `yarn lint` — ESLint (also enforced by the Husky pre-commit hook).
+- `yarn typecheck` — `tsc --noEmit`; must pass with no errors (strict mode).
+- `yarn build` — must produce a successful static export to `out/`; a build failure means the change is not shippable.
+
+Show the command output as evidence rather than asserting success.
+
 ### Git Workflow
 
 - **Never commit or push directly to `master`.**
 - Always create a separate branch for your changes and open a pull request.
 - `master` is the deployment branch — a push to it triggers the GitHub Pages build (`.github/workflows/nextjs.yml`). All changes must land via reviewed PRs.
+- Delegate simple, mechanical Git tasks — creating branches, commits, pushes, and pull requests — to a low-cost agent/model (e.g. Haiku) to save cost. These steps don't require deep reasoning, but the rule above still holds: the low-cost agent must branch + open a PR and **never** commit or push directly to `master`.
 
 ---
 
