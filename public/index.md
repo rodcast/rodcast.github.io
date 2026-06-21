@@ -14,7 +14,7 @@ Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming
 - **Website:** https://rodrigocastilho.com/
 - **GitHub:** https://github.com/rodcast
 - **Twitter:** https://twitter.com/rodcast
-- **LinkedIn:** https://www.linkedin.com/in/rodrigocastilho
+- **LinkedIn:** https://www.linkedin.com/in/rodcast
 - **Medium:** https://medium.com/@rodcast
 
 ## Projects
@@ -50,7 +50,7 @@ Read all articles at [medium.com/@rodcast](https://medium.com/@rodcast).
         "https://github.com/rodcast",
         "https://twitter.com/rodcast",
         "https://medium.com/@rodcast",
-        "https://www.linkedin.com/in/rodrigocastilho"
+        "https://www.linkedin.com/in/rodcast"
       ]
     },
     {

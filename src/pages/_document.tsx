@@ -211,7 +211,7 @@ const structuredData = {
         'https://twitter.com/rodcast',
         'https://github.com/rodcast',
         'https://medium.com/@rodcast',
-        'https://www.linkedin.com/in/rodrigocastilho',
+        'https://www.linkedin.com/in/rodcast',
       ],
     },
     {
