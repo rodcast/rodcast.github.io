@@ -91,7 +91,7 @@ public/          # Static assets served at the root
 | `yarn install`  | Install dependencies                      |
 | `yarn dev`      | Start local development server            |
 | `yarn build`    | Generate static production build (`out/`) |
-| `yarn start`    | Serve the production build locally        |
+| `yarn start`    | Run the production Next.js server locally |
 | `yarn lint`     | Run ESLint                                |
 | `yarn lint:fix` | Run ESLint and auto-fix issues            |
 
@@ -115,6 +115,8 @@ public/          # Static assets served at the root
 > agent/discovery surface is the static files under `public/` plus the `<link>`
 > tags in `src/pages/_document.tsx`; `Accept: text/markdown` negotiation is not
 > active, so fetch `/index.md` directly.
+>
+> The canonical deployment artifact is the generated `out/` directory.
 
 ---
 
