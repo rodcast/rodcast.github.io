@@ -85,15 +85,16 @@ public/          # Static assets served at the root
 
 ## Common Commands
 
-| Command         | Purpose                                   |
-| --------------- | ----------------------------------------- |
-| `nvm use`       | Load Node version defined in `.nvmrc`     |
-| `yarn install`  | Install dependencies                      |
-| `yarn dev`      | Start local development server            |
-| `yarn build`    | Generate static production build (`out/`) |
-| `yarn start`    | Run the production Next.js server locally |
-| `yarn lint`     | Run ESLint                                |
-| `yarn lint:fix` | Run ESLint and auto-fix issues            |
+| Command          | Purpose                                   |
+| ---------------- | ----------------------------------------- |
+| `nvm use`        | Load Node version defined in `.nvmrc`     |
+| `yarn install`   | Install dependencies                      |
+| `yarn dev`       | Start local development server            |
+| `yarn build`     | Generate static production build (`out/`) |
+| `yarn start`     | Run the production Next.js server locally |
+| `yarn lint`      | Run ESLint                                |
+| `yarn lint:fix`  | Run ESLint and auto-fix issues            |
+| `yarn typecheck` | Type-check with `tsc --noEmit` (strict)   |
 
 > Run `nvm use` before Yarn commands to ensure the exact Node version from `.nvmrc` is active.
 > **Node version:** 24.x (see `.nvmrc`). **Package manager:** Yarn.

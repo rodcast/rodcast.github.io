@@ -33,6 +33,7 @@ yarn dev
 - `yarn start`: Run the production Next.js server locally.
 - `yarn lint`: Run ESLint checks.
 - `yarn lint:fix`: Run ESLint and auto-fix issues.
+- `yarn typecheck`: Type-check the project with `tsc --noEmit` (strict mode).
 
 ## Environment
 
@@ -43,8 +44,7 @@ yarn dev
 1. Run `nvm use`.
 2. Install dependencies with `yarn install`.
 3. Start local development with `yarn dev`.
-4. Run `yarn lint` before opening a PR.
-5. Validate production output with `yarn build`.
+4. Before opening a PR, run the full verification suite: `yarn lint && yarn prettier --check . && yarn typecheck && yarn build`.
 
 ## Build and Deployment
 
