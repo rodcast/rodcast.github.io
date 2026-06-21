@@ -1,10 +1,12 @@
 import CookieConsent from '@/components/CookieConsent';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useEffect } from 'react';
 
 import '@/styles/globals.css';
 
+const NEXT_PUBLIC_GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID;
 const title = 'Rodrigo Castilho';
 
 /** Main app component */
@@ -93,8 +95,11 @@ function App({ Component, pageProps }: AppProps) {
       <main>
         <Component {...pageProps} />
       </main>
-      {process.env.NEXT_PUBLIC_GA_TRACKING_ID && (
-        <CookieConsent gaId={process.env.NEXT_PUBLIC_GA_TRACKING_ID} />
+      {NEXT_PUBLIC_GA_TRACKING_ID && (
+        <>
+          <CookieConsent />
+          <GoogleAnalytics gaId={NEXT_PUBLIC_GA_TRACKING_ID} />
+        </>
       )}
     </>
   );
