@@ -27,5 +27,5 @@ The site is a statically exported Next.js application. Project and article data 
 
 - [GitHub](https://github.com/rodcast)
 - [Twitter](https://twitter.com/rodcast)
-- [LinkedIn](https://www.linkedin.com/in/rodrigocastilho)
+- [LinkedIn](https://www.linkedin.com/in/rodcast)
 - [Medium](https://medium.com/@rodcast)
