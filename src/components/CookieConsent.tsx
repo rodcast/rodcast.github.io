@@ -1,4 +1,5 @@
 import styles from '@/styles/cookieConsent.module.css';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { useCallback, useEffect, useState } from 'react';
 
 const STORAGE_KEY = 'cookie-consent';
@@ -28,13 +29,18 @@ const updateConsent = (choice: ConsentChoice) => {
   globalScope.gtag?.('consent', 'update', CONSENT_STATE[choice]);
 };
 
+interface CookieConsentProps {
+  gaId: string;
+}
+
 /**
- * Minimal cookie consent banner backed by Google Consent Mode v2.
- * Defaults are denied (set in `_document`); this banner records the user's
- * choice in localStorage and updates consent accordingly.
+ * Cookie consent banner using basic Google Consent Mode v2: consent defaults
+ * are denied (set in `_document`) and the Google tag is not loaded until the
+ * user grants consent. On accept, consent is updated and the tag is loaded.
  */
-export default function CookieConsent() {
+export default function CookieConsent({ gaId }: CookieConsentProps) {
   const [visible, setVisible] = useState(false);
+  const [analyticsEnabled, setAnalyticsEnabled] = useState(false);
 
   useEffect(() => {
     try {
@@ -42,8 +48,9 @@ export default function CookieConsent() {
       if (!stored) {
         setVisible(true);
       } else if (stored === 'granted') {
-        // Re-apply a returning visitor's prior consent (defaults stay denied).
+        // Returning visitor who already consented: update and load the tag.
         updateConsent('granted');
+        setAnalyticsEnabled(true);
       }
     } catch {
       // localStorage unavailable (e.g. privacy mode); show the banner anyway.
@@ -58,40 +65,44 @@ export default function CookieConsent() {
       // Ignore storage failures; consent still applies for this session.
     }
     updateConsent(choice);
+    if (choice === 'granted') {
+      setAnalyticsEnabled(true);
+    }
     setVisible(false);
   }, []);
 
-  if (!visible) {
-    return null;
-  }
-
   return (
-    <div
-      className={styles.banner}
-      role="dialog"
-      aria-live="polite"
-      aria-label="Cookie consent"
-    >
-      <p className={styles.text}>
-        This site uses Google Analytics to measure traffic. Analytics cookies
-        stay off until you accept.
-      </p>
-      <div className={styles.actions}>
-        <button
-          type="button"
-          className={`${styles.button} ${styles.reject}`}
-          onClick={() => choose('denied')}
+    <>
+      {analyticsEnabled && <GoogleAnalytics gaId={gaId} />}
+      {visible && (
+        <div
+          className={styles.banner}
+          role="dialog"
+          aria-live="polite"
+          aria-label="Cookie consent"
         >
-          Reject
-        </button>
-        <button
-          type="button"
-          className={`${styles.button} ${styles.accept}`}
-          onClick={() => choose('granted')}
-        >
-          Accept
-        </button>
-      </div>
-    </div>
+          <p className={styles.text}>
+            This site uses Google Analytics to measure traffic. Analytics
+            cookies stay off until you accept.
+          </p>
+          <div className={styles.actions}>
+            <button
+              type="button"
+              className={`${styles.button} ${styles.reject}`}
+              onClick={() => choose('denied')}
+            >
+              Reject
+            </button>
+            <button
+              type="button"
+              className={`${styles.button} ${styles.accept}`}
+              onClick={() => choose('granted')}
+            >
+              Accept
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

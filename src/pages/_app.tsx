@@ -1,5 +1,4 @@
 import CookieConsent from '@/components/CookieConsent';
-import { GoogleAnalytics } from '@next/third-parties/google';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useEffect } from 'react';
@@ -91,13 +90,12 @@ function App({ Component, pageProps }: AppProps) {
         <title>{title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      {process.env.NEXT_PUBLIC_GA_TRACKING_ID && (
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_TRACKING_ID} />
-      )}
       <main>
         <Component {...pageProps} />
       </main>
-      {process.env.NEXT_PUBLIC_GA_TRACKING_ID && <CookieConsent />}
+      {process.env.NEXT_PUBLIC_GA_TRACKING_ID && (
+        <CookieConsent gaId={process.env.NEXT_PUBLIC_GA_TRACKING_ID} />
+      )}
     </>
   );
 }
