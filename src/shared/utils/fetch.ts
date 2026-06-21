@@ -1,12 +1,10 @@
 /** Fetch data from URL */
 export const fetchData = async (url: string, options?: RequestInit) => {
   const controller = new AbortController();
-  const signal = controller.signal;
-
-  setTimeout(() => controller.abort(), 5000);
+  const timeout = setTimeout(() => controller.abort(), 5000);
 
   const defaultOptions: RequestInit = {
-    signal,
+    signal: controller.signal,
     headers: {
       Accept: 'application/json',
       'User-Agent': 'rodcast.github.io/1.0',
@@ -33,5 +31,7 @@ export const fetchData = async (url: string, options?: RequestInit) => {
     throw new Error('Unknown error occurred while fetching data', {
       cause: error,
     });
+  } finally {
+    clearTimeout(timeout);
   }
 };

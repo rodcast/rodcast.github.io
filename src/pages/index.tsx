@@ -16,25 +16,39 @@ const Article = dynamic(() => import('@/components/Article'));
 
 /** Fetch data at build time */
 export async function getStaticProps() {
-  try {
-    const [dataGitHub, dataMedium] = await Promise.all([
-      fetchData(GITHUB_API),
-      fetchData(MEDIUM_API),
-    ]);
+  // Fetch sources independently so one failure cannot blank the other.
+  const [githubResult, mediumResult] = await Promise.allSettled([
+    fetchData(GITHUB_API),
+    fetchData(MEDIUM_API),
+  ]);
 
-    return {
-      props: {
-        dataGitHub: normalizeGitHub(dataGitHub),
-        dataMedium: normalizeMedium(dataMedium?.items),
-      },
-    };
-  } catch (error) {
+  if (githubResult.status === 'rejected') {
     // eslint-disable-next-line no-console
-    console.error('Error fetching data at build time:', error);
-    return {
-      props: { dataGitHub: [], dataMedium: [] },
-    };
+    console.error(
+      'Error fetching GitHub data at build time:',
+      githubResult.reason
+    );
   }
+  if (mediumResult.status === 'rejected') {
+    // eslint-disable-next-line no-console
+    console.error(
+      'Error fetching Medium data at build time:',
+      mediumResult.reason
+    );
+  }
+
+  return {
+    props: {
+      dataGitHub:
+        githubResult.status === 'fulfilled'
+          ? normalizeGitHub(githubResult.value)
+          : [],
+      dataMedium:
+        mediumResult.status === 'fulfilled'
+          ? normalizeMedium(mediumResult.value?.items)
+          : [],
+    },
+  };
 }
 
 interface PageProps {

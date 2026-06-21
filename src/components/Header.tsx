@@ -3,7 +3,7 @@ import styles from '@/styles/header.module.css';
 /** Navigation component */
 function Navigation() {
   return (
-    <nav className={styles.nav} role="navigation" aria-label="Main navigation">
+    <nav className={styles.nav} aria-label="Main navigation">
       <ul className={styles.navList}>
         <li>
           <a href="#about" className={styles.navLink}>
@@ -28,7 +28,7 @@ function Navigation() {
 /** Site header */
 export default function Header() {
   return (
-    <header className={styles.content} role="banner">
+    <header className={styles.content}>
       <h1 className={styles.logo}>
         <span>Rodrigo Castilho</span>
         RODCAST

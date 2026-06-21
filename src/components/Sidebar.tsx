@@ -5,7 +5,7 @@ import SocialLinks from './SocialLinks';
 /** Profile sidebar */
 export default function Sidebar() {
   return (
-    <aside className={styles.content} role="complementary" id="about">
+    <aside className={styles.content} id="about">
       <Image
         src="/rodrigo-castilho-rodcast_photo.jpg"
         width={125}
@@ -20,10 +20,10 @@ export default function Sidebar() {
       <h2 className={styles.name} itemProp="name">
         Rodrigo Castilho
       </h2>
-      <h3 className={styles.description} itemProp="description">
+      <p className={styles.description} itemProp="description">
         Staff Frontend Engineer and ex-@Yahoo in a serious relationship with
         programming languages and the gym.
-      </h3>
+      </p>
       <SocialLinks />
     </aside>
   );

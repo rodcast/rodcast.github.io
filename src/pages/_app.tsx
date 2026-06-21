@@ -92,9 +92,7 @@ function App({ Component, pageProps }: AppProps) {
         <title>{title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <main>
-        <Component {...pageProps} />
-      </main>
+      <Component {...pageProps} />
       {NEXT_PUBLIC_GA_TRACKING_ID && (
         <>
           <CookieConsent />
