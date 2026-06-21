@@ -82,9 +82,7 @@ jobs:
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: next
       - name: Build with Next.js
-        # Use the package.json "build" script so the --webpack flag (required
-        # for the CSS Modules class-name override in next.config.mjs) is applied.
-        run: ${{ steps.detect-package-manager.outputs.manager }} build
+        run: ${{ steps.detect-package-manager.outputs.runner }} next build
         env:
           # Set this as an Actions *variable* (Settings -> Secrets and
           # variables -> Actions -> Variables). It is a public GA measurement
