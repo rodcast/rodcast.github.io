@@ -1,4 +1,4 @@
-Contact: mailto:rodcast@gmail.com
+Contact: https://github.com/rodcast/rodcast.github.io/security/advisories/new
 Expires: 2026-10-08T00:00:00.000Z
 Preferred-Languages: en, pt
 Canonical: https://rodrigocastilho.com/.well-known/security.txt

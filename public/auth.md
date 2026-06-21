@@ -210,4 +210,4 @@ Two independent layers:
 
 ## Contact
 
-Integration questions: <mailto:rodcast@gmail.com>
+Integration questions: open an issue at <https://github.com/rodcast/rodcast.github.io/issues>
