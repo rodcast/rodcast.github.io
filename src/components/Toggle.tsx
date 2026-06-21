@@ -3,6 +3,10 @@ import styles from '@/styles/toggle.module.css';
 import localFont from 'next/font/local';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 
+type Theme = 'light' | 'dark';
+
+const THEME_STORAGE_KEY = 'data-theme';
+
 const fontello = localFont({
   src: '../fonts/fontello.woff2',
   variable: '--font-fontello',
@@ -12,28 +16,33 @@ const fontello = localFont({
 export default function Toggle() {
   const [checked, setChecked] = useState<boolean>(false);
 
+  const applyTheme = useCallback((theme: Theme): void => {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.style.colorScheme = theme;
+    setChecked(theme === 'dark');
+  }, []);
+
   const checkTheme = useCallback((): void => {
     // Source of truth: the stored preference, else whatever the pre-paint
     // script in _document already applied (which honors prefers-color-scheme).
-    const stored = localStorage.getItem('data-theme');
-    const theme = stored ?? document.documentElement.dataset.theme ?? 'light';
+    const stored = localStorage.getItem(THEME_STORAGE_KEY);
+    const theme =
+      stored === 'dark' || stored === 'light'
+        ? stored
+        : ((document.documentElement.dataset.theme as Theme | undefined) ??
+          'light');
 
-    document.documentElement.setAttribute('data-theme', theme);
-    const isDark = theme === 'dark';
-    setChecked(isDark);
-  }, []);
+    applyTheme(theme);
+  }, [applyTheme]);
 
   const toggleTheme = useCallback(
     (event: ChangeEvent<HTMLInputElement>): void => {
-      if (event.target.checked) {
-        localStorage.setItem('data-theme', 'dark');
-      } else {
-        localStorage.setItem('data-theme', 'light');
-      }
+      const nextTheme: Theme = event.target.checked ? 'dark' : 'light';
 
-      checkTheme();
+      localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+      applyTheme(nextTheme);
     },
-    [checkTheme]
+    [applyTheme]
   );
 
   useEffect(() => {
