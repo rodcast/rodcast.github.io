@@ -160,12 +160,20 @@ Follow these rules when making any change to this codebase.
 - Keep accessibility intact: use semantic HTML, labels, and readable fallback messages.
 - Keep SEO metadata and JSON-LD structured data coherent when editing profile content.
 - Run `yarn lint` and resolve all errors before completing a task.
+- Always work on a separate branch and open a pull request for review (see Git Workflow below).
 
 ### Do Not
 
 - Introduce broad refactors or unsolicited "improvements" beyond the task scope.
 - Add SSR-only or runtime server dependencies — the site must remain statically exportable.
 - Break the `next.config.mjs` static export settings (see Critical Constraints below).
+- Commit or push directly to `master`.
+
+### Git Workflow
+
+- **Never commit or push directly to `master`.**
+- Always create a separate branch for your changes and open a pull request.
+- `master` is the deployment branch — a push to it triggers the GitHub Pages build (`.github/workflows/nextjs.yml`). All changes must land via reviewed PRs.
 
 ---
 
