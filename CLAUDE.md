@@ -1,25 +1,22 @@
 # CLAUDE.md
 
-Quick reference for Claude AI when working on this codebase. See `AGENTS.md` for the full project guide.
+Quick reference for Claude AI. The full project guide (commands, constraints, conventions, Git workflow) is imported below — this file only adds Claude-specific quick-reference details not already covered there.
 
-## Essential Commands
+@AGENTS.md
 
-```bash
-nvm use          # Must run first — loads Node 24.x from .nvmrc
-yarn install     # Install dependencies
-yarn dev         # Development server (sets NODE_TLS_REJECT_UNAUTHORIZED=0)
-yarn build       # Static export to out/
-yarn start       # Run the production Next.js server locally
-yarn lint        # ESLint check (run before completing any task)
-yarn lint:fix    # ESLint auto-fix
-```
+## Delegation & Model Policy
 
-## Critical Constraints
+- **Before delegating, verify whether an agent is necessary.** Handle simple and focused tasks directly.
+- Use agents only when they provide clear value — multi-file investigation, isolated research, or parallel work.
+- **Always use the lowest-cost model below Opus that can complete the task reliably.** Do not default to Opus or escalate to it without clear justification.
+- Use Opus only when the task genuinely requires advanced reasoning, complex implementation, debugging, architecture decisions, or high-risk review.
+- Use a low-cost model for simple Git workflow tasks (branches, commits, pushes, pull requests — see `AGENTS.md` → Git Workflow).
+- Keep delegated tasks narrowly scoped, and review the agent's output before applying it.
 
-- `output: 'export'` in `next.config.mjs` must stay — site is statically exported to GitHub Pages.
-- No SSR-only or runtime server dependencies allowed.
-- `trailingSlash: true` and `images.unoptimized: true` must not be removed.
-- The canonical deployment artifact is the generated `out/` directory.
+## Claude-Specific Notes
+
+- `yarn dev` sets `NODE_TLS_REJECT_UNAUTHORIZED=0` (local-only TLS bypass for development).
+- CSS Modules for all component styles; globals only in `src/styles/globals.css`.
 
 ## Path Aliases (tsconfig.json)
 
@@ -42,12 +39,3 @@ getStaticProps (build time)
   → normalizeGitHub / normalizeMedium (src/shared/utils/)
   → Page props → Article component
 ```
-
-## Key Conventions
-
-- Normalize all external API data before passing to components.
-- When changing an API contract, update both the interface in `src/shared/interfaces/` and its normalizer.
-- When editing `public/.well-known/agent-skills/*.md`, update the matching `sha256` in `public/.well-known/agent-skills/index.json`.
-- Keep discovery metadata internally consistent across `api-catalog`, OAuth/OIDC metadata, MCP metadata, and agent capability files.
-- CSS Modules for all component styles; globals only in `src/styles/globals.css`.
-- Pre-commit hook runs lint automatically (Husky).
