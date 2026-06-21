@@ -6,12 +6,12 @@ Quick reference for Claude AI. The full project guide (commands, constraints, co
 
 ## Delegation & Model Policy
 
-- **Before delegating, verify whether an agent is necessary.** Handle simple and focused tasks directly.
-- Use agents only when they provide clear value — multi-file investigation, isolated research, or parallel work.
-- **Always use the lowest-cost model below Opus that can complete the task reliably.** Do not default to Opus or escalate to it without clear justification.
-- Use Opus only when the task genuinely requires advanced reasoning, complex implementation, debugging, architecture decisions, or high-risk review.
-- Use a low-cost model for simple Git workflow tasks (branches, commits, pushes, pull requests — see `AGENTS.md` → Git Workflow).
-- Keep delegated tasks narrowly scoped, and review the agent's output before applying it.
+- **Before delegating, verify that an agent is necessary.** Handle simple, focused tasks directly.
+- Use agents only when they provide clear value, such as multi-file investigation, isolated research, or parallelizable work.
+- **Always use the lowest-cost model below Opus that can complete the task reliably.** Do not default or escalate to Opus without clear justification.
+- Use Opus only when the task genuinely requires advanced reasoning, complex implementation, difficult debugging, architecture decisions, or high-risk review.
+- Use a low-cost model for simple, mechanical tasks, including Git workflow operations such as creating branches, commits, pushes, and pull requests. See `AGENTS.md` → **Git Workflow**.
+- Keep delegated tasks narrowly scoped and review the agent’s output before applying any changes.
 
 ## Claude-Specific Notes
 
