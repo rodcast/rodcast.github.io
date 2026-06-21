@@ -22,8 +22,10 @@ const CONSENT_STATE: Record<ConsentChoice, Record<string, ConsentChoice>> = {
 
 /** Pushes a Google Consent Mode v2 update for the user's choice. */
 const updateConsent = (choice: ConsentChoice) => {
-  const w = window as unknown as { gtag?: (...args: unknown[]) => void };
-  w.gtag?.('consent', 'update', CONSENT_STATE[choice]);
+  const globalScope = window as unknown as {
+    gtag?: (...args: unknown[]) => void;
+  };
+  globalScope.gtag?.('consent', 'update', CONSENT_STATE[choice]);
 };
 
 /**
