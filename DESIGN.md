@@ -38,7 +38,7 @@ App (_app.tsx)
 
 **Decision:** One `.module.css` file per component; global styles only for resets and CSS variables.
 
-**Rationale:** Scoped class names prevent collisions without a runtime CSS-in-JS library. No build-time overhead beyond what Next.js already does. The `experimental.inlineCss` flag in `next.config.mjs` inlines critical CSS into the HTML document for faster first paint.
+**Rationale:** Scoped class names prevent collisions without a runtime CSS-in-JS library. No build-time overhead beyond what Next.js already does.
 
 ## Discovery and Agent Metadata (`public/.well-known/`)
 
