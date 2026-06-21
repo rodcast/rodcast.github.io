@@ -1,3 +1,4 @@
+import CookieConsent from '@/components/CookieConsent';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -96,6 +97,7 @@ function App({ Component, pageProps }: AppProps) {
       <main>
         <Component {...pageProps} />
       </main>
+      {process.env.NEXT_PUBLIC_GA_TRACKING_ID && <CookieConsent />}
     </>
   );
 }

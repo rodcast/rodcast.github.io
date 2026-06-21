@@ -319,6 +319,17 @@ class MyDocument extends Document {
           <link rel="dns-prefetch" href="//www.google-analytics.com" />
           <link rel="dns-prefetch" href="//www.googletagmanager.com" />
 
+          {/* Google Consent Mode v2 defaults (denied until the user accepts).
+              Runs before Google Analytics so consent state is queued first. */}
+          {process.env.NEXT_PUBLIC_GA_TRACKING_ID && (
+            <script
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});try{if(localStorage.getItem('cookie-consent')==='granted'){gtag('consent','update',{ad_storage:'granted',analytics_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});}}catch(e){}`,
+              }}
+            />
+          )}
+
           {/* Additional SEO Links */}
           <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
           <link
