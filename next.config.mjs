@@ -17,8 +17,10 @@ const cssModuleLocalIdent = (context, _localIdentName, localName) => {
     .replace(/[^a-zA-Z0-9]/g, '');
 
   const firstLetterIndex = hash.search(/[a-zA-Z]/);
+  const start = firstLetterIndex === -1 ? 0 : firstLetterIndex;
+  const ident = hash.slice(start, start + 6).padEnd(6, 'a');
 
-  return hash.slice(firstLetterIndex, firstLetterIndex + 6);
+  return /^[a-zA-Z]/.test(ident) ? ident : `a${ident.slice(1)}`;
 };
 
 /** @type {import('next').NextConfig} */
