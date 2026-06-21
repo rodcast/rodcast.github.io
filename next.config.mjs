@@ -5,7 +5,7 @@ const isDev = process.env.NODE_ENV === 'development';
 
 // Generate short, stable CSS Module class names using only a hash.
 // The hash includes the source file path and original local class name,
-// which keeps names deterministic and avoids collisions across files.
+// which keeps names deterministic and reduces collision risk across files.
 const cssModuleLocalIdent = (context, _localIdentName, localName) => {
   const resourcePath = relative(context.rootContext, context.resourcePath)
     .split(sep)
