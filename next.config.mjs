@@ -63,7 +63,6 @@ const nextConfig = {
         if (
           typeof loader.loader === 'string' &&
           loader.loader.includes('css-loader') &&
-          !loader.loader.includes('postcss-loader') &&
           loader.options?.modules
         ) {
           loader.options.modules.getLocalIdent = cssModuleLocalIdent;
