@@ -3,6 +3,7 @@
 Quick reference for Claude AI. The full project guide (commands, constraints, conventions, Git workflow) is imported below — this file only adds Claude-specific quick-reference details not already covered there.
 
 @AGENTS.md
+@.claude/rules/git-workflow.md
 
 ## Delegation & Model Policy
 
