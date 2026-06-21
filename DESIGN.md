@@ -8,6 +8,8 @@ Architecture decisions and rationale for rodcast.github.io.
 
 **Rationale:** The site is a personal portfolio that displays GitHub repositories and Medium articles. All data is public and is refreshed on each deploy. Static export eliminates server infrastructure, reduces cost to zero, and makes the site resilient — there is no runtime to fail.
 
+The deployable artifact is the generated `out/` directory. Any local verification of the exported site should serve that directory as static files.
+
 ## Data Fetching: Build-Time Only
 
 **Decision:** All external API calls happen in `getStaticProps`, not in the browser.
@@ -18,7 +20,7 @@ A 5-second timeout in `fetchData` prevents build hangs. If either API call fails
 
 ## Component Structure
 
-```
+```text
 Page (index.tsx)
 ├── Header         — name, title
 ├── Toggle         — light/dark mode
@@ -29,7 +31,7 @@ Page (index.tsx)
 └── Footer
 
 App (_app.tsx)
-└── Registers WebMCP tools on compatible runtimes
+└── Registers WebMCP tools through `navigator.modelContext` and `document.modelContext`, retrying briefly while those APIs initialize
 ```
 
 `Article` is loaded with `next/dynamic` to defer its JS bundle — it is the heaviest component and not needed for the initial paint.
@@ -42,24 +44,9 @@ App (_app.tsx)
 
 ## Discovery and Agent Metadata (`public/.well-known/`)
 
-The site exposes a set of machine-readable discovery documents:
+The site exposes static discovery metadata under `public/.well-known/`. The main entry points are the API catalog, MCP metadata, agent card, and agent skills index; related OAuth/OIDC, JWKS, AI plugin, HTTP Message Signatures, and security documents live alongside them.
 
-| File                                | Purpose                                     |
-| ----------------------------------- | ------------------------------------------- |
-| `api-catalog`                       | API catalog for agent/client discovery      |
-| `ai-plugin.json`                    | AI plugin metadata and compatibility        |
-| `agent-card.json`                   | Agent identity card                         |
-| `agent-skills/`                     | Agent capability index and skill docs       |
-| `http-message-signatures-directory` | HTTP Message Signatures discovery directory |
-| `mcp.json`                          | MCP endpoint discovery entry point          |
-| `mcp/`                              | Model Context Protocol server metadata      |
-| `oauth-protected-resource`          | OAuth protected resource metadata           |
-| `oauth-authorization-server`        | OAuth 2.0 authorization server metadata     |
-| `openid-configuration`              | OpenID Connect configuration                |
-| `jwks.json`                         | JSON Web Key Set                            |
-| `security.txt`                      | Security disclosure and contact policy      |
-
-These are static JSON/text files committed to `public/`. They require no server. When updating any `agent-skills/*.md`, regenerate the `sha256` in `agent-skills/index.json`.
+These are committed static JSON/text files under `public/`. They require no server. When updating any `agent-skills/*.md`, regenerate the `sha256` in `agent-skills/index.json`.
 
 **Host limitation:** discovery here relies on static files and the `<link>` tags in `_document.tsx`. The HTTP-header layer (`Link`, `Vary`, `Cache-Control`, and `Accept: text/markdown` negotiation defined in `vercel.json` and `public/_headers`) is **not honored by GitHub Pages** — it applies only if the site is served from Vercel/Cloudflare Pages/Netlify. On GitHub Pages, fetch markdown directly at `/index.md`.
 

@@ -30,7 +30,7 @@ yarn dev
 
 - `yarn dev`: Start the development server (sets `NODE_TLS_REJECT_UNAUTHORIZED=0`).
 - `yarn build`: Build the statically exported site.
-- `yarn start`: Serve the production build locally.
+- `yarn start`: Run the production Next.js server locally.
 - `yarn lint`: Run ESLint checks.
 - `yarn lint:fix`: Run ESLint and auto-fix issues.
 
@@ -49,9 +49,10 @@ yarn dev
 ## Build and Deployment
 
 - Static export via Next.js (`output: 'export'`).
-- Build artifacts are generated in `out/`.
+- The canonical deployment artifact is the static `out/` directory.
 - Deployment runs through GitHub Actions workflow `.github/workflows/nextjs.yml`.
 - Production deploys are triggered by pushes to `master` (and manual workflow dispatch).
+- When validating the exported site locally, serve `out/` with a static file server.
 
 ## Project Conventions
 
@@ -64,11 +65,4 @@ yarn dev
 
 - API overview: `public/docs/api.md`
 - OpenAPI contract: `public/docs/api/openapi.json`
-- API catalog: `public/.well-known/api-catalog`
-- Agent card: `public/.well-known/agent-card.json`
-- MCP discovery: `public/.well-known/mcp.json`
-- MCP server card: `public/.well-known/mcp/server-card.json`
-- OpenID configuration: `public/.well-known/openid-configuration`
-- OAuth authorization server metadata: `public/.well-known/oauth-authorization-server`
-- OAuth protected resource metadata: `public/.well-known/oauth-protected-resource`
-- Agent skills index: `public/.well-known/agent-skills/index.json`
+- Static discovery metadata lives under `public/.well-known/`, including the API catalog, MCP metadata, OAuth/OIDC metadata, agent card, and agent skills index.

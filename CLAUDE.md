@@ -9,7 +9,7 @@ nvm use          # Must run first — loads Node 24.x from .nvmrc
 yarn install     # Install dependencies
 yarn dev         # Development server (sets NODE_TLS_REJECT_UNAUTHORIZED=0)
 yarn build       # Static export to out/
-yarn start       # Serve the production build locally
+yarn start       # Run the production Next.js server locally
 yarn lint        # ESLint check (run before completing any task)
 yarn lint:fix    # ESLint auto-fix
 ```
@@ -19,6 +19,7 @@ yarn lint:fix    # ESLint auto-fix
 - `output: 'export'` in `next.config.mjs` must stay — site is statically exported to GitHub Pages.
 - No SSR-only or runtime server dependencies allowed.
 - `trailingSlash: true` and `images.unoptimized: true` must not be removed.
+- The canonical deployment artifact is the generated `out/` directory.
 
 ## Path Aliases (tsconfig.json)
 
@@ -35,7 +36,7 @@ Always use aliases — never relative paths.
 
 ## Data Flow
 
-```
+```text
 getStaticProps (build time)
   → fetchData (src/shared/utils/fetch.ts)
   → normalizeGitHub / normalizeMedium (src/shared/utils/)
