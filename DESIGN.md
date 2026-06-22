@@ -36,11 +36,11 @@ App (_app.tsx)
 
 `Article` is loaded with `next/dynamic` to defer its JS bundle — it is the heaviest component and not needed for the initial paint.
 
-## Styling: CSS Modules
+## Styling: Tailwind CSS v4
 
-**Decision:** One `.module.css` file per component; global styles only for resets, CSS variables, and a minimal set of accessibility utilities (e.g. `.sr-only`).
+**Decision:** Utility classes inline on components. `src/styles/globals.css` holds the single `@import "tailwindcss"`, the runtime theme tokens (`:root` + `html[data-theme='dark']`), a `dark` custom variant mapped to that attribute, the logo keyframe animation (`@theme --animate-fade-bg`), the reusable fontello `icon-*` utilities, and the accessibility utilities/resets (e.g. `.sr-only`). No `*.module.css` files remain.
 
-**Rationale:** Scoped class names prevent collisions without a runtime CSS-in-JS library. No build-time overhead beyond what Next.js already does. A small number of accessibility utilities like `.sr-only` are intentionally global so they can be reused across components without duplication.
+**Rationale:** Tailwind v4 is CSS-first (no `tailwind.config.js`, no `content` globs) and compiles to a plain static CSS file at build time — fully compatible with `output: 'export'` and adds no runtime. Color tokens that the theme toggle swaps at runtime stay as live CSS custom properties referenced via arbitrary values (`bg-[var(--secondary-color)]`) rather than frozen into `@theme`, so theme switching keeps working. The font-icon glyph set and the keyframe animation are the two patterns that can't be pure inline utilities, so they live as named `@utility`/`@theme` entries in the global stylesheet.
 
 ## Discovery and Agent Metadata (`public/.well-known/`)
 

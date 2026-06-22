@@ -1,3 +1,152 @@
+@import 'tailwindcss';
+
+/* The theme toggle swaps CSS variable values under html[data-theme='dark'];
+   map Tailwind's dark: variant to that attribute so utilities like
+   dark:bg-[#2d1b1b] respond to the same trigger the runtime theme uses. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+@theme {
+  /* Header logo hover animation — keyframes can't be inlined as a utility. */
+  --animate-fade-bg: fadeInOutBackground 0.4s ease-in-out;
+
+  @keyframes fadeInOutBackground {
+    0%,
+    100% {
+      background-color: transparent;
+    }
+
+    50% {
+      color: var(--primary-color);
+      background: var(--secondary-color);
+    }
+  }
+}
+
+/* Fontello icon glyphs. A reused font-icon set shared by SocialLinks and the
+   theme Toggle — kept as named utilities (markup stays clean) while still
+   removing icon.module.css. The glyph + sizing live on the ::before. */
+@utility icon-github {
+  &::before {
+    font-family: var(--font-fontello);
+    font-style: normal;
+    font-weight: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 2rem;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: '\f09b';
+  }
+}
+
+@utility icon-linkedin {
+  &::before {
+    font-family: var(--font-fontello);
+    font-style: normal;
+    font-weight: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 2rem;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: '\f30c';
+  }
+}
+
+@utility icon-twitter {
+  &::before {
+    font-family: var(--font-fontello);
+    font-style: normal;
+    font-weight: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 2rem;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: '\f099';
+  }
+}
+
+@utility icon-medium {
+  &::before {
+    font-family: var(--font-fontello);
+    font-style: normal;
+    font-weight: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 2rem;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: '\f23a';
+  }
+}
+
+@utility icon-sun {
+  &::before {
+    font-family: var(--font-fontello);
+    font-style: normal;
+    font-weight: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-size: 1.4rem;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: var(--primary-color);
+    content: '\e801';
+  }
+}
+
+@utility icon-moon {
+  &::before {
+    font-family: var(--font-fontello);
+    font-style: normal;
+    font-weight: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-size: 1.4rem;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: var(--secondary-color);
+    content: '\e800';
+  }
+}
+
 :root {
   color-scheme: light dark;
   --primary-color: #fff;
@@ -27,40 +176,46 @@ html[data-theme='dark'] {
   --contrast-color: #777;
 }
 
-::selection {
-  color: var(--primary-color);
-  background: var(--secondary-color);
-}
+/* Project base styles live in @layer base so Tailwind utilities (which live in
+   @layer utilities) can override them. Unlayered rules beat layered ones
+   regardless of specificity, so leaving these unlayered would override every
+   margin/padding/text-decoration utility on the page. */
+@layer base {
+  ::selection {
+    color: var(--primary-color);
+    background: var(--secondary-color);
+  }
 
-* {
-  box-sizing: border-box;
-  padding: var(--space-x-0);
-  margin: var(--space-x-0);
-}
+  * {
+    box-sizing: border-box;
+    padding: var(--space-x-0);
+    margin: var(--space-x-0);
+  }
 
-html,
-body {
-  max-width: 100vw;
-  font-family: -apple-system, system-ui, sans-serif;
-  overflow-x: hidden;
-}
+  html,
+  body {
+    max-width: 100vw;
+    font-family: -apple-system, system-ui, sans-serif;
+    overflow-x: hidden;
+  }
 
-body {
-  color: var(--secondary-color);
-  text-rendering: optimizeLegibility;
-  background-color: var(--primary-color);
-  border-top: 5px solid var(--secondary-color);
-  -webkit-font-smoothing: antialiased;
-}
+  body {
+    color: var(--secondary-color);
+    text-rendering: optimizeLegibility;
+    background-color: var(--primary-color);
+    border-top: 5px solid var(--secondary-color);
+    -webkit-font-smoothing: antialiased;
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-ol,
-ul {
-  list-style: none;
+  ol,
+  ul {
+    list-style: none;
+  }
 }
 
 .sr-only {

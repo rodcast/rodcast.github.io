@@ -1,6 +1,5 @@
 import { IGitHub } from '@/interfaces/github';
 import { IMedium } from '@/interfaces/medium';
-import styles from '@/styles/article.module.css';
 
 import ApiErrorFallback from './ApiErrorFallback';
 import ErrorBoundary from './ErrorBoundary';
@@ -15,7 +14,7 @@ interface ArticleProps {
 /** Main article component */
 export default function Article({ dataGitHub, dataMedium }: ArticleProps) {
   return (
-    <main className={styles.content}>
+    <main className="relative mb-16 [grid-area:article] last:mb-0">
       <section id="github-projects">
         <ErrorBoundary
           fallback={<ApiErrorFallback title="My repositories on GitHub" />}
@@ -23,7 +22,7 @@ export default function Article({ dataGitHub, dataMedium }: ArticleProps) {
           <GitHub data={dataGitHub} />
         </ErrorBoundary>
       </section>
-      <section id="medium-articles" className={styles.medium_articles}>
+      <section id="medium-articles" className="mt-16">
         <ErrorBoundary
           fallback={<ApiErrorFallback title="My articles on Medium" />}
         >

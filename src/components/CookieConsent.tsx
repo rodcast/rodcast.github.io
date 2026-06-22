@@ -1,7 +1,9 @@
-import styles from '@/styles/cookieConsent.module.css';
 import { useCallback, useEffect, useState } from 'react';
 
 const STORAGE_KEY = 'cookie-consent';
+
+const buttonClass =
+  'cursor-pointer rounded-md border border-[var(--secondary-color)] px-4 py-2 text-sm font-semibold [transition:all_0.2s] hover:opacity-[0.85]';
 
 type ConsentChoice = 'granted' | 'denied';
 
@@ -63,26 +65,26 @@ export default function CookieConsent() {
 
   return visible ? (
     <div
-      className={styles.banner}
+      className="fixed bottom-4 left-1/2 z-[1000] flex w-[calc(100%-var(--space-x-2))] max-w-[640px] -translate-x-1/2 items-center justify-between gap-4 rounded-md border border-[var(--secondary-color)] bg-[var(--tertiary-color)] p-4 text-[var(--secondary-color)] shadow-[0_4px_16px_rgb(0_0_0_/_15%)] max-sm:flex-col max-sm:items-stretch"
       role="dialog"
       aria-live="polite"
       aria-label="Cookie consent"
     >
-      <p className={styles.text}>
+      <p className="m-0 text-sm leading-[1.4]">
         This site uses Google Analytics to measure traffic. Analytics cookies
         stay off until you accept.
       </p>
-      <div className={styles.actions}>
+      <div className="flex shrink-0 gap-2 max-sm:justify-end">
         <button
           type="button"
-          className={`${styles.button} ${styles.reject}`}
+          className={`${buttonClass} bg-transparent text-[var(--secondary-color)]`}
           onClick={() => choose('denied')}
         >
           Reject
         </button>
         <button
           type="button"
-          className={`${styles.button} ${styles.accept}`}
+          className={`${buttonClass} bg-[var(--secondary-color)] text-[var(--primary-color)]`}
           onClick={() => choose('granted')}
         >
           Accept

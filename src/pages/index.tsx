@@ -5,8 +5,6 @@ import { fetchData } from '@/utils/fetch';
 import { normalizeGitHub, normalizeMedium } from '@/utils/index';
 import dynamic from 'next/dynamic';
 
-import styles from '@/styles/page.module.css';
-
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
@@ -59,11 +57,11 @@ interface PageProps {
 /** Main page */
 export default function Page({ dataGitHub, dataMedium }: PageProps) {
   return (
-    <div className={styles.container}>
+    <div className="relative mx-auto max-w-[var(--max-width)] p-8 max-md:p-4">
       <Header />
       <Toggle />
 
-      <div className={styles.main}>
+      <div className="mt-8 grid grid-cols-[280px_auto] gap-8 [grid-template-areas:'sidebar_article'] max-md:grid-cols-1 max-md:gap-16 max-md:[grid-template-areas:'sidebar'_'article']">
         <Sidebar />
         <Article dataGitHub={dataGitHub} dataMedium={dataMedium} />
       </div>
