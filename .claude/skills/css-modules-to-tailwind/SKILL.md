@@ -186,6 +186,16 @@ For each CSS module, smallest first, do this full loop before moving on:
    ```bash
    npx tsc --noEmit && <lint> && <build>
    ```
+   **Delegate a static-export/deploy review before opening the PR.** This
+   migration adds dependencies (`tailwindcss`, `@tailwindcss/postcss`), a
+   `postcss.config.mjs`, and changes the build pipeline — the kind of change that
+   can silently break a static export (`output: 'export'` → `out/`) or the host
+   deploy. If the project ships a build/deploy-guard subagent, hand it the diff.
+   In this repo that's the **`static-export-guardian`** agent (read-only,
+   `sonnet`) — its remit is precisely "after implementing a change and before
+   opening a PR, or whenever a change touches `next.config.mjs`, data fetching,
+   dependencies, or the discovery metadata surface." Run it, resolve anything it
+   flags, then proceed.
 2. **Confirm the migration is complete** — no module files or imports left
    behind:
    ```bash
