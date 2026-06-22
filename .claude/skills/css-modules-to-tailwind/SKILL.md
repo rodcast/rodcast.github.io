@@ -36,6 +36,35 @@ files left) is safe only when paired with that discipline.
 
 Work in this order. Each phase exists to shrink the blast radius of a mistake.
 
+## Who runs this (recommended agent)
+
+Run this skill **end-to-end with the `general-purpose` agent on a capable model
+(Opus)** — do not fan it out across subagents and do not drop the driver to a
+low-cost model. Two reasons:
+
+- **Tooling.** The migration must read and _edit_ source, run the discovery
+  script, `tsc`/build, a git worktree, and headless-Chrome screenshots — it needs
+  the full `Read`/`Write`/`Edit`/`Bash`/`Grep`/`Glob` set. That rules out every
+  read-only agent (`Explore`, `Plan`, and the `static-export-guardian` review
+  agent). `general-purpose` is the purpose-built multi-step executor with all
+  tools; the generic `claude` catch-all works too but isn't the specialized fit.
+- **Risk.** This skill exists to prevent regressions that _compile clean_ —
+  inverted media queries, a runtime theme variable frozen static, an unlayered
+  reset beating every utility, pixels that moved under a green build. Those are
+  judgment calls (Phase 1 cascade-layer/theme-token decisions, Phase 3
+  visual-diff adjudication), held across many files with tight cross-phase state
+  (the baseline ref, the running per-component mapping). Per this repo's
+  delegation policy (`CLAUDE.md`), that is exactly the "complex implementation +
+  high-risk review" tier where Opus is justified; a cheaper driver would trade
+  away the very safety this skill is built to provide.
+
+**Keep cost down where it's free to:** the bounded, read-only pieces stay
+low-cost — the deterministic `discover.mjs` + verify gate need no model judgment,
+and the Phase 3 static-export/deploy check is already delegated to the
+**`static-export-guardian`** agent (read-only, `sonnet`). That is where "prefer a
+low-cost agent" applies without compromising quality; the reasoning-heavy driver
+is not.
+
 ## Phase 0 — Discover and plan
 
 Run the discovery script to map the work before touching anything:
