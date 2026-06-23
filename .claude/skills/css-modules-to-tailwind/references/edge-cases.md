@@ -13,9 +13,11 @@ produces wrong output. Examples use realistic React/CSS-Module code.
 6. `@keyframes` and animations
 7. Theming / dark mode / runtime CSS variables
 8. The `@apply` / `@utility` escape hatch
-9. SCSS modules (`composes`, nesting, `&`, variables)
+9. CSS `composes` and SCSS modules
 10. `:global`, multiple classes, and gotchas
 11. Cascade layers — kept resets must live in `@layer base`
+12. Focus and `:has()` pseudo-classes
+13. `@supports` feature queries
 
 ---
 
@@ -37,6 +39,25 @@ className={clsx(styles.btn, isActive && styles.active)}
 // Conditional ternary:
 className={open ? styles.open : styles.closed}
 // → className={open ? 'block' : 'hidden'}
+
+// Dynamic bracket access — cannot be translated mechanically:
+className={styles[variant]}  // variant: 'primary' | 'danger'
+// → expand into a lookup map:
+const cls: Record<string, string> = {
+  primary: 'bg-blue-600 text-white',
+  danger:  'bg-red-600 text-white',
+};
+className={cls[variant]}
+
+// className prop forwarding (component accepts an external className):
+className={`${styles.base} ${props.className ?? ''}`}
+// → className={`flex gap-4 ${props.className ?? ''}`}
+
+// cn() / twMerge (common in shadcn/ui-style components):
+className={cn(styles.btn, props.className)}
+// → className={cn('px-4 py-2 rounded-md', props.className)}
+// twMerge deduplicates conflicting utilities; if the project doesn't have it,
+// this migration is a good time to add it wherever className props are forwarded.
 ```
 
 When a long utility string is used conditionally, a readable pattern is to hoist
@@ -203,9 +224,34 @@ Migration:
   @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
   ```
 
+**`@theme inline` — the best of both worlds.** If you want a named utility
+(`bg-primary`, `text-primary`) that stays theme-aware at runtime, use
+`@theme inline`. It emits `var(--primary-color)` into the utility instead of
+freezing the resolved value at build time:
+
+```css
+:root {
+  --primary-color: #fff;
+}
+html[data-theme='dark'] {
+  --primary-color: #1c1c1c;
+}
+
+@theme inline {
+  --color-primary: var(--primary-color);
+}
+/* → bg-primary compiles to: background-color: var(--primary-color) */
+/* → theme toggle still works at runtime */
+```
+
+Without `inline`, Tailwind would snapshot the value at build time and the theme
+toggle would break. Use `@theme inline` whenever you want a named utility wrapping
+a runtime CSS variable. See `tailwind-v4-setup.md` → "`@theme`" for the full
+namespace list.
+
 Decision rule: **does any selector override this variable's value?** If yes, it's
-a runtime variable — keep it as a CSS custom property. If no, it's a static
-token and may go in `@theme`.
+a runtime variable — keep it as a CSS custom property (with or without
+`@theme inline`). If no, it's a static token and may go directly in `@theme`.
 
 ## 8. The `@apply` / `@utility` escape hatch
 
@@ -227,10 +273,34 @@ v4 syntax in the global stylesheet:
 Use sparingly. If you find yourself `@apply`-ing everything, the migration isn't
 really moving to utilities — prefer inlining.
 
-## 9. SCSS modules (`.module.scss`)
+## 9. CSS `composes` and SCSS modules
 
-- **`composes: base from './x.module.scss'`** → there's no Tailwind equivalent;
-  inline the composed class's utilities at every use site, or make an `@utility`.
+**Standard CSS Modules `composes`** works in plain `.module.css` files too, not
+just SCSS. It creates a cross-file dependency that the discover script cannot see:
+
+```css
+/* button.module.css */
+.btn-primary {
+  composes: btn from './base.module.css';
+  color: green;
+}
+```
+
+When `base.module.css` is deleted during its own migration, `btn-primary` silently
+loses the composed styles. **Always migrate the composed-from file last**, or
+migrate it together with every file that composes from it. Before finalizing the
+migration order, run:
+
+```bash
+grep -r 'composes:' src/ --include='*.module.css'
+```
+
+Translate `composes` by inlining the composed class's utilities at every use site,
+or create an `@utility` if the pattern recurs. There is no Tailwind equivalent.
+
+For SCSS-specific patterns:
+
+- **`composes: base from './x.module.scss'`** → same as above.
 - **Nesting / `&`** → flatten. `&:hover` → `hover:`; nested `.child` → move class
   to the child or use `[&_.child]:`.
 - **SCSS variables / mixins / functions** (`$color`, `@mixin`, `lighten()`) →
@@ -299,3 +369,61 @@ Keep unlayered on purpose: `:root` / `[data-theme]` **custom-property** blocks
 Full recipe and rationale in `tailwind-v4-setup.md` → "Cascade layers". This is
 exactly what the Phase 3 visual diff is built to catch — if spacing looks
 collapsed in the `new` screenshot but the build was green, suspect this first.
+
+---
+
+## 12. Focus and `:has()` pseudo-classes
+
+Commonly overlooked during migration:
+
+- `:focus-visible` → `focus-visible:` — **accessibility critical**. A CSS Module
+  that hides the default ring and restores it only on `:focus-visible` must keep
+  this distinction. Collapsing it to plain `focus:` shows the ring on mouse clicks
+  too, which is a visible regression for sighted mouse users.
+- `:focus-within` → `focus-within:` — styles the parent when any child has focus.
+- `:has()` → `has-[selector]:` — full browser support; Tailwind v4 supports it.
+
+```css
+/* CSS Modules */
+.field:focus-within label {
+  color: var(--primary-color);
+}
+.card:has(input:checked) {
+  border-color: green;
+}
+.btn:focus:not(:focus-visible) {
+  outline: none;
+}
+.btn:focus-visible {
+  outline: 2px solid var(--primary-color);
+}
+```
+
+```tsx
+<div className="focus-within:[&>label]:text-[var(--primary-color)]">
+<div className="has-[input:checked]:border-green-500">
+<button className="focus:outline-none focus-visible:outline-2 focus-visible:outline-[var(--primary-color)]">
+```
+
+## 13. `@supports` feature queries
+
+Some modules use `@supports` for progressive enhancement. Tailwind has no
+dedicated variant — use an arbitrary variant:
+
+```css
+@supports (display: grid) {
+  .layout {
+    display: grid;
+    gap: 1rem;
+  }
+}
+```
+
+```tsx
+className = '[@supports(display:grid)]:grid [@supports(display:grid)]:gap-4';
+```
+
+For a block with many properties inside a single `@supports` query, the arbitrary
+variant approach becomes verbose. In that case, move the `@supports` block to the
+global stylesheet as a kept CSS rule (outside any module file) and leave a comment
+explaining why — don't force every declaration into an arbitrary variant.

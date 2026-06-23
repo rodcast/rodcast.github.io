@@ -47,6 +47,22 @@
         "next.config.mjs static export settings (output:'export', images.unoptimized, trailingSlash) are unchanged",
         "Lint, typecheck, and the static export build all pass"
       ]
+    },
+    {
+      "id": 3,
+      "name": "tailwind-v4-setup-only",
+      "prompt": "This project uses CSS Modules and has no Tailwind at all. Set up Tailwind CSS v4 without migrating any component yet — install the packages, wire up the PostCSS plugin, add the @import to globals.css, and make sure the build still passes and nothing looks broken.",
+      "expected_output": "tailwindcss and @tailwindcss/postcss added to devDependencies; a postcss.config.mjs (or equivalent) created with the @tailwindcss/postcss plugin; @import 'tailwindcss' added at the top of globals.css; existing global rules wrapped in @layer base where needed so they don't override utilities; build and typecheck pass; no CSS Module files or imports are touched.",
+      "files": [],
+      "expectations": [
+        "tailwindcss and @tailwindcss/postcss are in package.json devDependencies",
+        "A PostCSS config file exists with @tailwindcss/postcss as a plugin (no duplicate config files)",
+        "@import 'tailwindcss' is the first declaration in the global stylesheet",
+        "Any unlayered global reset rules (*, a, body, ol, ul) below the @import are moved into @layer base",
+        ":root and [data-theme='dark'] custom-property blocks remain unlayered",
+        "No *.module.css files are modified or deleted",
+        "Typecheck and the static export build pass with no errors"
+      ]
     }
   ]
 }

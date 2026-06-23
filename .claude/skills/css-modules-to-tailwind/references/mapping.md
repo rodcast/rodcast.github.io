@@ -90,6 +90,13 @@ Arbitrary value syntax: `property-[value]` → `w-[68px]`, `top-[var(--x)]`,
 | `-webkit-font-smoothing: antialiased`                     | `antialiased`                                                     |
 | `width: 0; height: 0`                                     | `w-0 h-0`                                                         |
 | `calc(100% - 2rem)`                                       | `w-[calc(100%-2rem)]` (no spaces inside calc, or use underscores) |
+| `will-change: transform`                                  | `will-change-transform`                                           |
+| `will-change: contents`                                   | `will-change-contents`                                            |
+| `pointer-events: none`                                    | `pointer-events-none`                                             |
+| `pointer-events: auto`                                    | `pointer-events-auto`                                             |
+| `user-select: none`                                       | `select-none`                                                     |
+| `resize: none`                                            | `resize-none`                                                     |
+| `scroll-behavior: smooth`                                 | `scroll-smooth`                                                   |
 
 ## Properties with no clean utility
 

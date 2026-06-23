@@ -73,6 +73,12 @@ Run the discovery script to map the work before touching anything:
 node <skill-dir>/scripts/discover.mjs
 ```
 
+> **Limitation:** the discovery script detects only static ES `import` statements.
+> Dynamic imports (`await import('./foo.module.css')`) and `require()` calls are
+> invisible to it. After running the script, also run:
+> `grep -r 'module\.css' src/ --include='*.ts' --include='*.tsx'`
+> to catch any the script missed.
+
 It lists every `*.module.css` / `*.module.scss` file, the components that import
 each, how the import is aliased (`styles`, `icon`, …), and flags files that
 share a module across multiple components (migrate those together). Read its
@@ -105,6 +111,12 @@ Present the plan to the user (files, order, anything that can't become a pure
 utility) and confirm before bulk edits — especially before touching global
 styles or theme tokens.
 
+Also flag any component that **accepts a `className` prop** (forwarding it to the
+root element alongside module classes). Those merges must survive the migration:
+``className={`${styles.base} ${props.className}`}`` becomes
+``className={`flex gap-4 ${props.className ?? ''}`}``. If `clsx` was used only for
+that merging and you remove it, verify the forwarding still works.
+
 ## Phase 1 — Set up Tailwind v4 (only if not already present)
 
 Check first: look for `@import "tailwindcss"` and `tailwindcss` in
@@ -116,9 +128,26 @@ Otherwise install and configure v4 following `references/tailwind-v4-setup.md`.
 The short version for Next.js:
 
 1. `npm i -D tailwindcss @tailwindcss/postcss` (or the project's package manager).
-2. Add the PostCSS plugin (`postcss.config.mjs` → `'@tailwindcss/postcss': {}`).
+2. Add the PostCSS plugin. Check for an **existing** PostCSS config in any of
+   `postcss.config.js`, `postcss.config.mjs`, or `postcss.config.cjs` — add the
+   plugin there rather than creating a new file, because a duplicate config will
+   silently shadow the original. If none exists, create `postcss.config.mjs` with
+   `{ plugins: { '@tailwindcss/postcss': {} } }`.
 3. Put `@import "tailwindcss";` at the top of the global stylesheet (e.g.
    `src/styles/globals.css`) — the one already imported in `_app`.
+
+**Optional but recommended — Prettier Tailwind plugin.** If the project uses
+Prettier (check for `.prettierrc` or `prettier` in `package.json`), install
+`prettier-plugin-tailwindcss` now — before converting any component — so every
+class string lands sorted in canonical order from the start:
+
+```bash
+npm i -D prettier-plugin-tailwindcss
+# then add "plugins": ["prettier-plugin-tailwindcss"] to .prettierrc
+```
+
+Sorted strings are dramatically easier to review and eliminate an entire class of
+"wrong order" mistakes.
 
 **Cascade layers — the regression that compiles clean and still breaks the whole
 page.** Tailwind v4 puts every utility inside `@layer utilities`. Per the CSS
@@ -183,11 +212,24 @@ For each CSS module, smallest first, do this full loop before moving on:
      ``className={`${styles.a} ${icon.b}`}`` → merge both classes' utilities.
    - `clsx` / `classnames` / conditional expressions → keep the conditional
      structure, swap module references for utility strings.
+   - **Dynamic bracket access** (`styles[variantKey]`) — cannot be translated
+     mechanically; expand into a lookup map:
+     `const cls = { primary: 'bg-blue-600', danger: 'bg-red-600' };`
+     then `className={cls[variantKey]}`.
+   - **`className` prop forwarding** — if the component merges a module class
+     with an incoming prop, preserve the merge:
+     ``className={`${styles.base} ${props.className ?? ''}`}``
+     → ``className={`flex gap-4 ${props.className ?? ''}`}``
    - A class used by several elements → expand it at each site (or, if it's
      genuinely repeated and complex, see the `@apply`/`@utility` escape hatch in
      `references/edge-cases.md` — use sparingly; inline utilities are the goal).
 4. **Translate the hard selectors** — don't drop them:
    - `:hover` `:focus` `:active` `:disabled` → `hover:` `focus:` etc.
+   - `:focus-visible` → `focus-visible:`; `:focus-within` → `focus-within:`.
+     **Don't collapse `:focus-visible` into plain `focus:` —** the distinction
+     matters for accessibility: `:focus-visible` shows the ring only for keyboard
+     navigation, not mouse clicks.
+   - `:has(input:checked)` → `has-[input:checked]:` (full browser support in v4).
    - `:before` / `:after` → `before:` / `after:` (content via `content-['…']`).
    - Sibling/checked patterns (`input:checked + .slider`) → the `peer` pattern
      (`peer` on the input, `peer-checked:` on the sibling).
@@ -201,12 +243,22 @@ For each CSS module, smallest first, do this full loop before moving on:
      `references/edge-cases.md`.
 5. **Verify incrementally:** run typecheck (and a build if quick) after each
    component. Catching a break here localizes it to the file you just touched.
-6. **Record** the mapping in the audit report (Phase 3) as you go — old class →
-   new utilities, plus any rule that couldn't become a pure utility and where it
-   lives now.
+   If a browser tab is available, load the component's page/state before moving
+   on — an eyeball catches obvious regressions early and avoids hunting through
+   10 components at Phase 3 for a Phase 2 mistake.
+6. **Record** the mapping immediately — open `tailwind-migration-report.md` and
+   append that component's table right after deleting its module file, before
+   moving to the next component. Building the report incrementally is safer than
+   reconstructing from memory at Phase 3 and less likely to leave gaps.
 7. **Delete** the now-orphaned `.module.css` file and remove its import — but
    only once the importing component(s) compile with no remaining references to
    it. Confirm with a quick grep that no `styles.` (or the alias) usage remains.
+
+   **Mid-migration rollback:** if the tree is in a broken intermediate state,
+   the module file is the source of truth until deleted — restore it from git
+   (`git checkout HEAD -- path/to/foo.module.css`) and revert the component.
+   For a full reset: `git reset --hard <pre-migration-ref>`. This is why Phase 0
+   requires a dedicated branch and a recorded baseline SHA.
 
 ## Phase 3 — Validate and report
 
@@ -232,6 +284,11 @@ For each CSS module, smallest first, do this full loop before moving on:
    ```
    It exits non-zero and lists offenders if any `*.module.{css,scss}` file or
    import remains. A clean exit is your proof the conversion is total.
+   Also locate the TypeScript CSS module declaration file (commonly
+   `src/shared/types/css.d.ts` or any `*.d.ts` containing
+   `declare module '*.module.css'`): now that all modules are deleted it is dead
+   code and may be removed — but confirm no `.module.scss` or other module variant
+   is still in use before doing so.
 3. **Prove it visually — diff the rendered output against the original, then fix
    every difference.** A clean build says nothing about whether pixels moved.
    Render both versions and compare them image-by-image:
@@ -247,15 +304,29 @@ For each CSS module, smallest first, do this full loop before moving on:
    ( cd /tmp/vrt-old && <install> && <build> )
    (python3 -m http.server 8732 --directory /tmp/vrt-old/out &)
 
-   # c) Screenshot both at each width with headless Chrome (or Playwright/
-   #    Puppeteer if the project has one). A tall window captures the full page.
-   CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" # adjust per OS
+   # c) Screenshot both at each width. Prefer Playwright if available
+   #    (cross-platform and handles interaction states natively):
+   mkdir -p /tmp/vrt
+   npx playwright screenshot --full-page http://localhost:8731/ /tmp/vrt/new-1280.png
+   npx playwright screenshot --full-page http://localhost:8732/ /tmp/vrt/old-1280.png
+   # Repeat at mobile width (390) by adding --viewport-size=390,900
+
+   # Headless-Chrome fallback (resolve binary per platform):
+   CHROME=$(\
+     command -v \
+       "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+       google-chrome chromium-browser chromium 2>/dev/null | head -1)
    for w in 1280 390; do
      "$CHROME" --headless=new --hide-scrollbars --window-size=$w,2600 \
        --screenshot=/tmp/vrt/new-$w.png "http://localhost:8731/"
      "$CHROME" --headless=new --hide-scrollbars --window-size=$w,2600 \
        --screenshot=/tmp/vrt/old-$w.png "http://localhost:8732/"
    done
+
+   # d) Cleanup — always kill the servers (they bind ports 8731/8732 and will
+   #    conflict with any future run if left alive) and remove the worktree:
+   kill $(lsof -t -i:8731 -i:8732) 2>/dev/null || true
+   git worktree remove --force /tmp/vrt-old
    ```
 
    Open each `old`/`new` pair and compare carefully — desktop **and** mobile, plus
@@ -279,8 +350,7 @@ For each CSS module, smallest first, do this full loop before moving on:
    from an **intentional/environment-driven difference** (e.g. a cookie banner that
    only renders when an analytics env var is set at build time) — note the latter
    so it isn't chased, but don't use "probably fine" to wave off a real shift.
-   Clean up afterward: `git worktree remove --force /tmp/vrt-old` and stop the
-   servers.
+   Cleanup is in step d above.
 
 4. **Produce the class-audit report** (`tailwind-migration-report.md` at repo
    root) so the human can review the mapping without diffing every file. Use

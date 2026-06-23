@@ -12,7 +12,9 @@
 // `icon`) so you know what to grep for when rewriting JSX.
 
 import { readdirSync, readFileSync, statSync } from 'node:fs';
-import { join, relative, extname } from 'node:path';
+import { extname, join, relative } from 'node:path';
+
+/* eslint-disable no-console */
 
 const ROOT = process.cwd();
 const CHECK = process.argv.includes('--check');
@@ -60,22 +62,23 @@ const importRe =
 let strayImports = 0;
 for (const sf of sourceFiles) {
   const text = readFileSync(sf, 'utf8');
-  let m;
-  while ((m = importRe.exec(text)) !== null) {
-    const alias = m[1] || m[2];
-    const spec = m[3];
+  let match;
+  while ((match = importRe.exec(text)) !== null) {
+    const alias = match[1] || match[2];
+    const spec = match[3];
     strayImports++;
     // Resolve the specifier to an actual module file by suffix match (handles
     // path aliases like @/styles/x.module.css without reading tsconfig).
     const tail = spec.replace(/^.*[/\\]/, '');
     const target =
       moduleFiles.find((mf) => mf.endsWith(spec.replace(/^@?\/?/, ''))) ||
-      moduleFiles.find((mf) => mf.endsWith('/' + tail)) ||
+      moduleFiles.find((mf) => mf.endsWith(`/${tail}`)) ||
       null;
     if (target) importsByModule.get(target).push({ component: sf, alias });
   }
 }
 
+/** Returns the path of `p` relative to the project root. */
 const rel = (p) => relative(ROOT, p);
 
 if (CHECK) {
