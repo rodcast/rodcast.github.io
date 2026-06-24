@@ -17,7 +17,7 @@ Quick reference for Claude AI. The full project guide (commands, constraints, co
 ## Claude-Specific Notes
 
 - `yarn dev` sets `NODE_TLS_REJECT_UNAUTHORIZED=0` (local-only TLS bypass for development).
-- CSS Modules for all component styles; globals only in `src/styles/globals.css`.
+- Tailwind CSS v4 utility classes for all component styles; globals, theme tokens, the `dark` custom variant, the logo keyframe animation, and the fontello `icon-*` utilities live in `src/styles/globals.css`. No `*.module.css` files.
 
 ## Path Aliases (tsconfig.json)
 

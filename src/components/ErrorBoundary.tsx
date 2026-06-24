@@ -1,7 +1,5 @@
 import { Component, ErrorInfo, ReactNode } from 'react';
 
-import styles from '@/styles/errorBoundary.module.css';
-
 interface Props {
   children: ReactNode;
   fallback?: ReactNode;
@@ -41,16 +39,21 @@ class ErrorBoundary extends Component<Props, State> {
       }
 
       return (
-        <div role="alert" className={styles.error_boundary}>
-          <h2 className={styles.error_title}>Something went wrong</h2>
-          <p className={styles.error_message}>
+        <div
+          role="alert"
+          className="my-4 rounded-[4px] border border-[#f87171] bg-[#fef2f2] p-4 text-[#991b1b] dark:border-[#dc2626] dark:bg-[#2d1b1b] dark:text-[#fca5a5]"
+        >
+          <h2 className="mb-2 text-lg font-semibold">Something went wrong</h2>
+          <p className="m-0 text-sm leading-[1.5]">
             We&apos;re sorry, but there was an error loading this content.
             Please try refreshing the page.
           </p>
           {process.env.NODE_ENV === 'development' && this.state.error && (
-            <details className={styles.error_details}>
-              <summary>Error details</summary>
-              <pre className={styles.error_code}>
+            <details className="mt-2 text-sm">
+              <summary className="mb-2 cursor-pointer font-semibold hover:underline">
+                Error details
+              </summary>
+              <pre className="mt-2 overflow-auto rounded-[4px] bg-[#f3f4f6] p-2 text-[12px] leading-[1.4] whitespace-pre-wrap break-words [font-family:'Courier_New',monospace] dark:bg-[#374151] dark:text-[#d1d5db]">
                 {this.state.error.message}
                 {this.state.error.stack}
               </pre>

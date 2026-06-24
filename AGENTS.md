@@ -25,7 +25,7 @@ src/
     interfaces/  # TypeScript contracts for API and UI data
     types/       # Ambient type declarations
     utils/       # Fetch helper, data normalizers
-  styles/        # CSS Modules + global CSS
+  styles/        # globals.css — Tailwind v4 import, theme tokens, utilities
 public/          # Static assets served at the root
   .well-known/   # API/OAuth/MCP/Agent discovery metadata
   agent/         # Static agent endpoint payloads
@@ -74,12 +74,13 @@ public/          # Static assets served at the root
 
 ### Tooling
 
-| Tool                | Purpose                                      |
-| ------------------- | -------------------------------------------- |
-| TypeScript (strict) | Type safety (`tsconfig.json`)                |
-| ESLint 9            | Linting (Next.js + React + TypeScript rules) |
-| Prettier            | Code formatting                              |
-| Husky               | Pre-commit hook that runs lint               |
+| Tool                | Purpose                                                                     |
+| ------------------- | --------------------------------------------------------------------------- |
+| Tailwind CSS v4     | Utility-first styling (`@tailwindcss/postcss`, configured in `globals.css`) |
+| TypeScript (strict) | Type safety (`tsconfig.json`)                                               |
+| ESLint 9            | Linting (Next.js + React + TypeScript rules)                                |
+| Prettier            | Code formatting                                                             |
+| Husky               | Pre-commit hook that runs lint                                              |
 
 ---
 
