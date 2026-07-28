@@ -9,7 +9,8 @@
   },
   "homepage": "https://rodrigocastilho.com/",
   "resolutions": {
-    "postcss": "8.5.10"
+    "postcss": "8.5.18",
+    "sharp": "0.35.0"
   },
   "scripts": {
     "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 next dev",
