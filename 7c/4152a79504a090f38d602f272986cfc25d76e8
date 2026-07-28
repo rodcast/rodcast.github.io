@@ -1,0 +1,21 @@
+package.json
+  s_dd0e6d590cb1cb::t_2132c302cfd866 12-13
+yarn.lock
+  s_dd0e6d590cb1cb::t_1ff214cd404f83 144,255,260-263,265,267-270,272-334,336,338-341,343,345-348,350,352-355,357,359-362,364,366-369,371,373-376,378,380-383,385,387-390,392,394-404,406-409,411-414,1888,2070-2073,2075,2218,2254-2257,2259,2261,2263-2287
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "7c4152a79504a090f38d602f272986cfc25d76e8",
+  "prompts": {},
+  "sessions": {
+    "s_dd0e6d590cb1cb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9b9c46af-5d1f-45a0-8e1d-586a7aa8b084",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  }
+}
