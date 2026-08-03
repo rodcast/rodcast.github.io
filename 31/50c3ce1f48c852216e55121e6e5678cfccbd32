@@ -1,0 +1,19 @@
+yarn.lock
+  s_50bc96a15ecbb0::t_71a72508bd00a1 800-802,808-810
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "3150c3ce1f48c852216e55121e6e5678cfccbd32",
+  "prompts": {},
+  "sessions": {
+    "s_50bc96a15ecbb0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c4f87eb1-e0ed-48e7-8938-1139e2147867",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  }
+}
