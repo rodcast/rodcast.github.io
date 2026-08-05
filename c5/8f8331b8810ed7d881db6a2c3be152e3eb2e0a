@@ -1,0 +1,21 @@
+package.json
+  s_6b162e82d2fd76::t_a1525252bd2ace 12
+yarn.lock
+  s_6b162e82d2fd76::t_e5355fe0d40836 1888-1891,2070-2073,2075
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "c58f8331b8810ed7d881db6a2c3be152e3eb2e0a",
+  "prompts": {},
+  "sessions": {
+    "s_6b162e82d2fd76": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "897080ac-c631-4a9e-bf68-37a7ee5ee0db",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  }
+}
