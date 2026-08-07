@@ -41,6 +41,7 @@ Response shape (read the `agent_auth` block in full):
   "issuer": "https://rodrigocastilho.com",
   "token_endpoint": "https://rodrigocastilho.com/oauth/token",
   "revocation_endpoint": "https://rodrigocastilho.com/oauth/revoke",
+  "jwks_uri": "https://rodrigocastilho.com/.well-known/jwks.json",
   "grant_types_supported": [
     "urn:ietf:params:oauth:grant-type:jwt-bearer",
     "urn:workos:agent-auth:grant-type:claim"
@@ -51,6 +52,7 @@ Response shape (read the `agent_auth` block in full):
     "identity_endpoint": "https://rodrigocastilho.com/agent/identity/register",
     "register_uri": "https://rodrigocastilho.com/agent/identity/register",
     "claim_endpoint": "https://rodrigocastilho.com/agent/identity/claim",
+    "events_endpoint": "https://rodrigocastilho.com/agent/event/notify",
     "identity_types_supported": ["anonymous", "service_auth"],
     "anonymous": {
       "credential_types_supported": ["access_token"],

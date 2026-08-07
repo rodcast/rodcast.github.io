@@ -17,7 +17,9 @@ Quick reference for Claude AI. The full project guide (commands, constraints, co
 ## Claude-Specific Notes
 
 - `yarn dev` sets `NODE_TLS_REJECT_UNAUTHORIZED=0` (local-only TLS bypass for development).
-- CSS Modules for all component styles; globals only in `src/styles/globals.css`.
+- CSS Modules for all component styles; globals only in `src/styles/globals.css` (resets, CSS custom properties, and a few a11y utilities such as `.sr-only`).
+- `.mcp.json` registers the `next-devtools` MCP server for this project.
+- Project skills live in `.claude/skills/` (`verify-project`, `check-discovery-consistency`, `new-component`); `.claude/agents/static-export-guardian.md` reviews diffs for static-export breakage.
 
 ## Path Aliases (tsconfig.json)
 
@@ -30,13 +32,14 @@ Quick reference for Claude AI. The full project guide (commands, constraints, co
 | `@/types/*`      | `src/shared/types/*`      |
 | `@/utils/*`      | `src/shared/utils/*`      |
 
-Always use aliases — never relative paths.
+Use aliases for anything outside the current directory — never `../` traversal. Same-directory siblings are imported relatively (`./SocialLinks`), and `next/font/local` asset paths must stay relative.
 
 ## Data Flow
 
 ```text
 getStaticProps (build time)
-  → fetchData (src/shared/utils/fetch.ts)
+  → Promise.allSettled([fetchData(GITHUB_API), fetchData(MEDIUM_API)])
+      (src/shared/utils/fetch.ts — 5s timeout; rejected source → [])
   → normalizeGitHub / normalizeMedium (src/shared/utils/)
-  → Page props → Article component
+  → Page props → Article (next/dynamic) → GitHub + Medium
 ```
