@@ -1,0 +1,55 @@
+public/.well-known/agent-skills/index.json
+  s_8a7f6c455dc74c::t_046c30c64fb440 30
+README.md
+  s_8a7f6c455dc74c::t_ea217962910080 73,75-82
+  s_8a7f6c455dc74c::t_a684f0568191ca 55,58
+  s_8a7f6c455dc74c::t_13de13caa679c9 65-67
+  s_8a7f6c455dc74c::t_eb0dfb01cffbe2 40-42
+.claude/skills/new-component/SKILL.md
+  s_8a7f6c455dc74c::t_4b20a2f6740a5c 14
+  s_8a7f6c455dc74c::t_4fe7714dcb80d7 39
+CLAUDE.md
+  s_8a7f6c455dc74c::t_b1ad41f473e141 35,41-42,44
+  s_8a7f6c455dc74c::t_071be9de816843 20-22
+DESIGN.md
+  s_8a7f6c455dc74c::t_e48b0dc4329dbe 57-58
+  s_8a7f6c455dc74c::t_0c98b42e9b6681 19
+  s_8a7f6c455dc74c::t_4cbc8b9fc6151b 25-32,35-37,40-41
+  s_8a7f6c455dc74c::t_ccde9d4b3d3ccf 42
+public/auth.md
+  s_8a7f6c455dc74c::t_f690988fa3352b 44,55
+public/.well-known/agent-skills/webmcp-tools.md
+  s_8a7f6c455dc74c::t_97a6f411918117 3-6,10-23
+AGENTS.md
+  s_8a7f6c455dc74c::t_e827e1afc16b2f 90-96
+  s_8a7f6c455dc74c::t_7e671784e9ec19 228-235,240-242,246-248
+  s_8a7f6c455dc74c::t_0199039b90689e 151,153
+  s_8a7f6c455dc74c::t_dd38e647d88232 147,152
+  s_8a7f6c455dc74c::t_5fdff52b42c538 122-124,126-127
+  s_8a7f6c455dc74c::t_6face8035d5958 23,28,34-35,37-45
+  s_8a7f6c455dc74c::t_fa34c861d4e948 158,163-165,167
+  s_8a7f6c455dc74c::t_13fb3526d6325f 52,60,67
+.claude/skills/verify-project/SKILL.md
+  s_8a7f6c455dc74c::t_a9fb720ed2fe89 12
+  s_8a7f6c455dc74c::t_4419ad205702cd 26,28,31
+  s_8a7f6c455dc74c::t_45292ce6b2b12a 32
+public/docs/api.md
+  s_8a7f6c455dc74c::t_8a83e06b63b9c6 23,41
+  s_8a7f6c455dc74c::t_81860239bde2a1 3-5,9-17,21-22,24-27,31-40,42-44
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "f274072c8095f64b36dcd508d0dbe312b88b984e",
+  "prompts": {},
+  "sessions": {
+    "s_8a7f6c455dc74c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1901b126-b29a-4a30-bd82-9efe89c55731",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  }
+}
