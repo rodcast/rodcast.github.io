@@ -9,7 +9,7 @@ Run the full quality gate defined in `AGENTS.md` → **Verification** and resolv
 
 ## Steps
 
-1. **Activate the correct Node version.** The project requires Node 24.x (see `.nvmrc`). The pre-commit hook fails on the wrong version, so always start here:
+1. **Activate the correct Node version.** The project requires Node 24.x (`.nvmrc` pins `v24.17.0`, and `package.json` declares `engines.node: 24.x`). CI resolves the version from `.nvmrc`, so match it locally before anything else:
 
    ```bash
    nvm use
@@ -23,10 +23,12 @@ Run the full quality gate defined in `AGENTS.md` → **Verification** and resolv
 
    | Command                   | Checks                                                        |
    | ------------------------- | ------------------------------------------------------------- |
-   | `yarn lint`               | ESLint (also enforced by the Husky pre-commit hook)           |
+   | `yarn lint`               | ESLint (also enforced by the Husky pre-commit hook + CI)      |
    | `yarn prettier --check .` | Prettier formatting (pre-commit hook + CI)                    |
-   | `yarn typecheck`          | `tsc --noEmit`, strict mode — must report zero errors         |
+   | `yarn typecheck`          | `tsc --noEmit`, strict mode — must report zero errors (CI)    |
    | `yarn build`              | Static export to `out/` — a build failure means not shippable |
+
+   `.husky/pre-commit` runs the first two (`yarn lint && yarn prettier --check .`); CI runs all four.
 
 3. **Report honestly.** If any step fails, show the failing output, fix the cause, and re-run the whole suite. Do not skip a step or call the task done on a partial pass.
 

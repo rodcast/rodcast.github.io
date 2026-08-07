@@ -11,7 +11,7 @@ Create a component in `src/components/` paired with a CSS Module in `src/styles/
 ## Conventions (non-negotiable)
 
 - **CSS Modules for all component styles** — never inline styles or `globals.css` for component-scoped rules.
-- **Path aliases only** — `@/styles/*`, `@/components/*`, `@/utils/*`, `@/interfaces/*`. Never relative paths.
+- **Path aliases for cross-directory imports** — `@/styles/*`, `@/components/*`, `@/utils/*`, `@/interfaces/*`. Never `../` traversal. Sibling components in `src/components/` are imported relatively (`./SocialLinks`), matching `Article.tsx` and `Sidebar.tsx`.
 - **Strict TypeScript** — type all props via an explicit `interface`; no `any`.
 - **Design tokens** — use the CSS custom properties already in the modules (`var(--space-x-*)`, `var(--text-*)`, `var(--secondary-color)`, …) rather than hardcoded values.
 - **Accessibility** — semantic HTML, `aria-*`/labels where needed, readable fallback text.
@@ -36,5 +36,5 @@ Create a component in `src/components/` paired with a CSS Module in `src/styles/
    }
    ```
 
-4. Wire it into its parent page/component using the path alias import.
+4. Wire it into its parent: `@/components/<PascalCase>` from a page, or `./<PascalCase>` from a sibling component.
 5. Verify with the `verify-project` skill (lint, Prettier, typecheck, build) before declaring done.

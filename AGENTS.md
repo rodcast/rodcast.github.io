@@ -20,25 +20,36 @@ Personal website for Rodrigo Castilho.
 src/
   pages/         # Next.js pages (Pages Router)
   components/    # UI components
+  fonts/         # Local Fontello icon font (loaded via next/font/local)
   shared/
     constants/   # External API endpoint URLs
     interfaces/  # TypeScript contracts for API and UI data
     types/       # Ambient type declarations
-    utils/       # Fetch helper, data normalizers
+    utils/       # Fetch helper, data normalizers, WebMCP tool definitions
   styles/        # CSS Modules + global CSS
 public/          # Static assets served at the root
   .well-known/   # API/OAuth/MCP/Agent discovery metadata
   agent/         # Static agent endpoint payloads
   oauth/         # Static OAuth endpoint payloads
-  docs/api/      # Static API docs and OpenAPI contract
+  docs/api/      # Static API docs (HTML) and OpenAPI contract
+  docs/api.md    # Markdown API docs for agents
   api/health     # Static health endpoint payload
+  index.md       # Markdown representation of the homepage
+  auth.md        # Agent registration / auth flow contract
+  llms.txt       # Agent-oriented site index
+  feed.xml       # RSS feed
+  sitemap.xml    # Sitemap
+  robots.txt     # Crawler directives
+  manifest.json  # PWA manifest
+  _headers       # Header rules (non-Pages hosts only — see below)
+  CNAME          # Custom domain for GitHub Pages
 ```
 
 ### Key Files
 
 | File                                  | Role                                                           |
 | ------------------------------------- | -------------------------------------------------------------- |
-| `src/pages/_app.tsx`                  | Global styles, Google Analytics, WebMCP tool registration      |
+| `src/pages/_app.tsx`                  | Global styles, cookie consent, Google Analytics, WebMCP setup  |
 | `src/pages/_document.tsx`             | SEO metadata, Open Graph/Twitter tags, JSON-LD, PWA links      |
 | `src/pages/index.tsx`                 | Main page — fetches data at build time via `getStaticProps`    |
 | `src/shared/types/webmcp.d.ts`        | Ambient WebMCP navigator and tool type declarations            |
@@ -46,12 +57,14 @@ public/          # Static assets served at the root
 | `src/shared/utils/fetch.ts`           | Typed fetch helper with timeout and error handling             |
 | `src/shared/utils/normalizeGitHub.ts` | Normalizes and filters GitHub API responses                    |
 | `src/shared/utils/normalizeMedium.ts` | Normalizes and filters Medium RSS feed responses               |
+| `src/shared/utils/webmcpTools.ts`     | WebMCP tool definitions read from the rendered DOM             |
 | `public/.well-known/api-catalog`      | API catalog for client and agent service discovery             |
 | `public/.well-known/agent-skills/`    | Agent Skills index and capability docs                         |
 | `public/docs/api/openapi.json`        | Public OpenAPI contract for static metadata endpoints          |
 | `next.config.mjs`                     | Next.js config — must preserve static export settings          |
 | `CLAUDE.md`                           | Quick reference for Claude AI (commands, aliases, constraints) |
 | `DESIGN.md`                           | Architecture decisions and rationale                           |
+| `SECURITY.md`                         | Vulnerability reporting policy (mirrors `security.txt`)        |
 
 ---
 
@@ -74,12 +87,13 @@ public/          # Static assets served at the root
 
 ### Tooling
 
-| Tool                | Purpose                                      |
-| ------------------- | -------------------------------------------- |
-| TypeScript (strict) | Type safety (`tsconfig.json`)                |
-| ESLint 9            | Linting (Next.js + React + TypeScript rules) |
-| Prettier            | Code formatting                              |
-| Husky               | Pre-commit hook that runs lint               |
+| Tool                | Purpose                                                   |
+| ------------------- | --------------------------------------------------------- |
+| TypeScript (strict) | Type safety (`tsconfig.json`)                             |
+| ESLint 9            | Linting (Next.js + React + TypeScript rules)              |
+| Prettier            | Code formatting                                           |
+| Husky               | Pre-commit hook that runs lint + Prettier check           |
+| DeepSource          | Static analysis (`.deepsource.toml`, JavaScript analyzer) |
 
 ---
 
@@ -105,8 +119,12 @@ public/          # Static assets served at the root
 
 - **Workflow file:** `.github/workflows/nextjs.yml`
 - **Trigger:** Push to `master` branch, or manual dispatch.
-- **Build output:** Static files in `out/`.
+- **Node version:** taken from `.nvmrc` (`node-version-file`), so CI and local stay in sync.
+- **Pipeline:** install (`yarn install --frozen-lockfile`) → `yarn lint` + `prettier --check .` → `yarn typecheck` → `actions/configure-pages` → `next build` → upload `out/` → deploy.
+- **Build output:** Static files in `out/` (uploaded with `include-hidden-files: true` so `.well-known/` ships).
 - **Deploy target:** GitHub Pages via `actions/deploy-pages`.
+- `actions/configure-pages` runs with `static_site_generator: next`, which injects `basePath` into `next.config.mjs` at build time. It runs **after** the Prettier check because that injection is not Prettier-formatted.
+- `NEXT_PUBLIC_GA_TRACKING_ID` is injected into the build step from an Actions **variable** (Settings → Secrets and variables → Actions → Variables). It is a public GA measurement ID, not a secret.
 - A `vercel.json` file exists but the canonical production deployment is GitHub Pages.
 
 > **Hosting caveat:** GitHub Pages serves static files only — it does **not**
@@ -126,22 +144,27 @@ public/          # Static assets served at the root
 ### Formatting
 
 - 2-space indentation, UTF-8 encoding, trailing newline.
-- Prettier config: single quotes, semicolons, print width 80.
+- Prettier config (`.prettierrc`): single quotes, semicolons, print width 80, `trailingComma: es5`, always-parenthesized arrow params.
 
 ### Imports
 
-- Use TypeScript path aliases (`@/*`, `@/components/*`, `@/utils/*`, etc.) instead of relative paths.
+- Use TypeScript path aliases (`@/*`, `@/components/*`, `@/utils/*`, etc.) for modules outside the current directory — never `../` traversal.
+- Sibling files within the same directory are imported relatively, matching the existing code (e.g. `./SocialLinks` inside `src/components/`, `./fetch` inside `src/shared/utils/`).
+- Exception: `next/font/local` requires a real relative asset path, so `SocialLinks.tsx` loads the icon font as `../fonts/fontello.woff2`.
 
 ### Data Flow
 
 - All external API data must be normalized through the appropriate utility before being passed to components.
+- `getStaticProps` fetches both sources with `Promise.allSettled` so one failing API cannot blank the other; a rejected source becomes an empty array.
 - If an API contract changes, update both the interface in `src/shared/interfaces/` and its corresponding normalizer together.
 
 ### Discovery Metadata
 
-- Keep `.well-known` discovery documents internally consistent (`api-catalog`, `agent-card.json`, `mcp.json`, `mcp/server-card.json`, OAuth/OIDC metadata, and agent-skills index).
-- When updating any `public/.well-known/agent-skills/*.md` file, refresh the matching `sha256` entry in `public/.well-known/agent-skills/index.json`.
+- Keep `.well-known` discovery documents internally consistent (`api-catalog`, `agent-card.json`, `mcp.json`, `mcp/server-card.json`, `ai-plugin.json`, OAuth/OIDC metadata, and agent-skills index).
+- When updating any `public/.well-known/agent-skills/*.md` file, refresh the matching `sha256` entry in `public/.well-known/agent-skills/index.json` (`shasum -a 256 <file>`).
+- Keep the WebMCP tool names in `src/shared/utils/webmcpTools.ts` in sync with the skill IDs in `agent-card.json` and the tool list in `agent-skills/webmcp-tools.md`.
 - Preserve API discovery links exposed in `src/pages/_document.tsx` (the discovery surface honored on GitHub Pages) and keep them consistent with the `Link` header in `public/_headers`/`vercel.json` (used only on non-Pages hosts).
+- The `check-discovery-consistency` skill (`.claude/skills/`) audits all of the above.
 
 ### Error Handling
 
@@ -202,18 +225,24 @@ These settings must not be changed. Violating them will break the production bui
 ### `next.config.mjs` — required options
 
 ```js
-output: 'export'; // Enables static HTML export
-images: {
-  unoptimized: true;
-} // Required for static export (no image optimization server)
-trailingSlash: true; // Required for correct GitHub Pages routing
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export', // Enables static HTML export
+  trailingSlash: true, // Required for correct GitHub Pages routing
+  images: {
+    unoptimized: true, // Required for static export (no image optimization server)
+  },
+};
 ```
 
 ### Quality Gate
 
-- The pre-commit hook (`.husky/pre-commit`) runs lint automatically.
-- There is no automated test suite; lint is the enforced baseline quality check.
+- The pre-commit hook (`.husky/pre-commit`) runs `yarn lint && yarn prettier --check .` and fails the commit on any error.
+- CI additionally runs `yarn typecheck` and the static build.
+- There is no automated test suite; lint, formatting, typecheck, and a clean static export are the enforced baseline quality checks.
 
 ### Environment Variables
 
-- `NEXT_PUBLIC_GA_TRACKING_ID` — Google Analytics tracking ID (injected at build time).
+- `NEXT_PUBLIC_GA_TRACKING_ID` — Google Analytics measurement ID, read at build time (see `.env.example` for the local template).
+  - Optional. When it is unset, `_app.tsx` renders neither the `CookieConsent` banner nor `GoogleAnalytics`, and `_document.tsx` skips the Google Consent Mode defaults script.
+  - In CI it comes from the `NEXT_PUBLIC_GA_TRACKING_ID` Actions variable.

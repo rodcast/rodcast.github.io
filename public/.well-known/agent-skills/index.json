@@ -27,7 +27,7 @@
       "type": "tools",
       "description": "Exposes WebMCP tools for profile and content retrieval.",
       "url": "https://rodrigocastilho.com/.well-known/agent-skills/webmcp-tools.md",
-      "sha256": "bbd14e6597016291385af6c5e22d4fcfc7f0fe9f6bb12928e3e5082360ee869d"
+      "sha256": "682b0cb043d5518741cb20f94591f3d9849d44eca259fe9df92c5568e3075276"
     },
     {
       "name": "web-bot-auth",
