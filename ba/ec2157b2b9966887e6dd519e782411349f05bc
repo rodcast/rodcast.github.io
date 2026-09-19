@@ -1,0 +1,23 @@
+src/shared/font.ts
+  h_fa492faa375953 1-6
+src/components/SocialLinks.tsx
+  h_fa492faa375953 1
+src/components/Toggle.tsx
+  h_fa492faa375953 1
+src/pages/index.tsx
+  h_fa492faa375953 1
+  h_fa492faa375953 2-5
+src/pages/_app.tsx
+  h_fa492faa375953 19,21,23-26,32,38,41,58,66,69,72
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "baec2157b2b9966887e6dd519e782411349f05bc",
+  "prompts": {},
+  "humans": {
+    "h_fa492faa375953": {
+      "author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  }
+}
