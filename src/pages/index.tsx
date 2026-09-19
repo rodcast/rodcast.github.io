@@ -1,18 +1,15 @@
+import Article from '@/components/Article';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import Sidebar from '@/components/Sidebar';
+import Toggle from '@/components/Toggle';
 import { GITHUB_API, MEDIUM_API } from '@/constants/paths';
 import { IGitHub } from '@/interfaces/github';
 import { IMedium } from '@/interfaces/medium';
 import { fetchData } from '@/utils/fetch';
 import { normalizeGitHub, normalizeMedium } from '@/utils/index';
-import dynamic from 'next/dynamic';
 
 import styles from '@/styles/page.module.css';
-
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
-import Sidebar from '@/components/Sidebar';
-import Toggle from '@/components/Toggle';
-
-const Article = dynamic(() => import('@/components/Article'));
 
 /** Fetch data at build time */
 export async function getStaticProps() {
