@@ -1,16 +1,11 @@
+import { fontello } from '@/shared/font';
 import icon from '@/styles/icon.module.css';
 import styles from '@/styles/toggle.module.css';
-import localFont from 'next/font/local';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 
 type Theme = 'light' | 'dark';
 
 const THEME_STORAGE_KEY = 'data-theme';
-
-const fontello = localFont({
-  src: '../fonts/fontello.woff2',
-  variable: '--font-fontello',
-});
 
 /** Theme toggle */
 export default function Toggle() {

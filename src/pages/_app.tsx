@@ -16,25 +16,29 @@ function App({ Component, pageProps }: AppProps) {
       return () => undefined;
     }
 
-    const abortController = new AbortController();
+    let isSettled = false;
 
-    /** Registers WebMCP tools with all available APIs; returns true when any path succeeds. */
+    /** Registers WebMCP tools with all available APIs once, without retry loops. */
     const registerTools = async () => {
+      if (isSettled) {
+        return;
+      }
+
       const { buildWebMCPTools, toRegisterToolPayload } =
         await import('@/utils/webmcpTools');
-      const signal = abortController.signal;
       const navCtx = navigator.modelContext;
       const docCtx = document.modelContext;
       const canonicalTools = buildWebMCPTools().map(toRegisterToolPayload);
+
       let didRegister = false;
 
       if (navCtx?.registerTool) {
         for (const tool of canonicalTools) {
           try {
-            await navCtx.registerTool(tool, { signal });
+            await navCtx.registerTool(tool);
             didRegister = true;
           } catch {
-            // Some implementations reject individual tools; keep trying others.
+            // Some implementations reject individual tools; keep going.
           }
         }
       }
@@ -51,7 +55,7 @@ function App({ Component, pageProps }: AppProps) {
       if (docCtx?.registerTool) {
         for (const tool of canonicalTools) {
           try {
-            await docCtx.registerTool(tool, { signal });
+            await docCtx.registerTool(tool);
             didRegister = true;
           } catch {
             // Ignore individual failures and continue with the remaining tools.
@@ -59,30 +63,13 @@ function App({ Component, pageProps }: AppProps) {
         }
       }
 
-      return didRegister;
+      isSettled = didRegister;
     };
 
-    const maxAttempts = 5;
-    let attempts = 0;
-
-    /** Tries tool registration repeatedly for a short window while APIs initialize. */
-    const tryRegister = async () => {
-      if (abortController.signal.aborted) {
-        return;
-      }
-
-      attempts += 1;
-      const success = await registerTools().catch(() => false);
-
-      if (!success && attempts < maxAttempts) {
-        window.setTimeout(tryRegister, 500);
-      }
-    };
-
-    tryRegister().catch(() => undefined);
+    registerTools().catch(() => undefined);
 
     return () => {
-      abortController.abort();
+      isSettled = true;
     };
   }, []);
 
