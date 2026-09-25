@@ -1,0 +1,68 @@
+{
+  "skill_name": "css-modules-to-tailwind",
+  "evals": [
+    {
+      "id": 0,
+      "name": "single-component-toggle",
+      "prompt": "Migrate the theme Toggle component (src/components/Toggle.tsx, styled by src/styles/toggle.module.css and src/styles/icon.module.css) off CSS Modules onto Tailwind. Keep the switch looking and behaving exactly the same — the sliding knob, the checked state, the sun/moon icons, and the mobile position. Remove the toggle CSS module when you're done.",
+      "expected_output": "Toggle.tsx uses Tailwind utilities instead of styles.* references; the sibling/checked behavior is preserved via the peer pattern; the max-width:768px media query becomes max-md:*; the :before content for the slider knob is preserved; toggle.module.css is deleted and its import removed; build + typecheck pass.",
+      "files": [],
+      "expectations": [
+        "Toggle.tsx no longer imports toggle.module.css and contains no styles.* references to it",
+        "src/styles/toggle.module.css is deleted",
+        "The checked-state sibling styling uses the Tailwind peer pattern (peer + peer-checked:)",
+        "The max-width:768px media query is expressed with a max-* variant (e.g. max-md:), not a plain min-width variant",
+        "Exact pixel values are preserved via arbitrary values (e.g. w-[68px], top-[50px]) rather than rounded to the default scale",
+        "Typecheck (tsc --noEmit) passes with no errors",
+        "The static export build succeeds"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "multi-component-keyframes-responsive",
+      "prompt": "Move the Header and CookieConsent components to Tailwind, dropping their CSS modules (src/styles/header.module.css, src/styles/cookieConsent.module.css). The look must stay identical — including the logo's hover animation, the gradient text clip, and the layouts collapsing to a column on small screens. Set up Tailwind v4 if the project doesn't have it yet.",
+      "expected_output": "Tailwind v4 is installed and imported in globals.css; Header.tsx and CookieConsent.tsx use utilities; the @keyframes fadeInOutBackground animation is preserved (defined in @theme, triggered via an animate-* utility on hover); the gradient + background-clip:text is preserved; max-width media queries become max-* variants; both module files are deleted; build + typecheck pass.",
+      "files": [],
+      "expectations": [
+        "Tailwind v4 is set up: @import \"tailwindcss\" is present in the global stylesheet and tailwindcss is a dependency",
+        "header.module.css and cookieConsent.module.css are both deleted and their imports removed",
+        "The @keyframes animation is preserved (kept in CSS/@theme) and triggered via a hover utility, not dropped",
+        "The responsive column-collapse uses max-* variants matching the original max-width breakpoints",
+        "The gradient text effect (background-clip:text) is preserved via an arbitrary property or utility",
+        "Typecheck passes and the static export build succeeds"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "full-project-migration",
+      "prompt": "Convert this whole project from CSS Modules to Tailwind CSS v4. Set up Tailwind, port every component's styles to utility classes, preserve the light/dark theme (it's driven by the html[data-theme='dark'] attribute swapping CSS variables), remove all the *.module.css files, and give me a report of what changed. The site must look and behave identically and still build as a static export.",
+      "expected_output": "Tailwind v4 set up; all 10 CSS module files migrated to utilities and deleted; no remaining .module.css imports; the [data-theme='dark'] theming mechanism is preserved (runtime CSS variables NOT frozen into static @theme tokens); a migration report is produced; lint + typecheck + static build all pass.",
+      "files": [],
+      "expectations": [
+        "No *.module.css files remain anywhere in src/ and no component imports one",
+        "Tailwind v4 is configured (@import \"tailwindcss\" in globals, PostCSS plugin, dependency added)",
+        "The html[data-theme='dark'] block and its CSS variables are preserved as runtime custom properties (theme switching still works), not baked into static @theme color tokens",
+        "Color/spacing values are referenced via the existing CSS variables or arbitrary values, preserving exact appearance",
+        "A migration report (markdown) is produced summarizing per-component class mappings",
+        "next.config.mjs static export settings (output:'export', images.unoptimized, trailingSlash) are unchanged",
+        "Lint, typecheck, and the static export build all pass"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "tailwind-v4-setup-only",
+      "prompt": "This project uses CSS Modules and has no Tailwind at all. Set up Tailwind CSS v4 without migrating any component yet — install the packages, wire up the PostCSS plugin, add the @import to globals.css, and make sure the build still passes and nothing looks broken.",
+      "expected_output": "tailwindcss and @tailwindcss/postcss added to devDependencies; a postcss.config.mjs (or equivalent) created with the @tailwindcss/postcss plugin; @import 'tailwindcss' added at the top of globals.css; existing global rules wrapped in @layer base where needed so they don't override utilities; build and typecheck pass; no CSS Module files or imports are touched.",
+      "files": [],
+      "expectations": [
+        "tailwindcss and @tailwindcss/postcss are in package.json devDependencies",
+        "A PostCSS config file exists with @tailwindcss/postcss as a plugin (no duplicate config files)",
+        "@import 'tailwindcss' is the first declaration in the global stylesheet",
+        "Any unlayered global reset rules (*, a, body, ol, ul) below the @import are moved into @layer base",
+        ":root and [data-theme='dark'] custom-property blocks remain unlayered",
+        "No *.module.css files are modified or deleted",
+        "Typecheck and the static export build pass with no errors"
+      ]
+    }
+  ]
+}
