@@ -67,7 +67,7 @@ function RobotsMeta({ robots }: RobotsMetaProps) {
 const metadata = {
   title: 'Rodrigo Castilho',
   description:
-    'Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.',
+    'Staff Frontend Software Engineer at @gympass | In a committed relationship with code and the gym.',
   keywords: [
     'Next.js',
     'React',
@@ -90,7 +90,7 @@ const metadata = {
     type: 'profile',
     title: 'Rodrigo Castilho',
     description:
-      'Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.',
+      'Staff Frontend Software Engineer at @gympass | In a committed relationship with code and the gym.',
     image: 'https://rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg',
     url: 'https://rodrigocastilho.com/',
   },
@@ -98,7 +98,7 @@ const metadata = {
     card: 'summary_large_image',
     title: 'Rodrigo Castilho',
     description:
-      'Staff Frontend Engineer and ex-@Yahoo in a serious relationship with programming languages and the gym.',
+      'Staff Frontend Software Engineer at @gympass | In a committed relationship with code and the gym.',
     image: 'https://rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg',
     site: '@rodcast',
     creator: '@rodcast',
@@ -183,9 +183,9 @@ const structuredData = {
           'https://rodrigocastilho.com/rodrigo-castilho-rodcast_photo.jpg',
         width: 400,
         height: 400,
-        caption: 'Rodrigo Castilho - Staff Frontend Engineer',
+        caption: 'Rodrigo Castilho - Staff Frontend Software Engineer',
       },
-      jobTitle: 'Staff Frontend Engineer',
+      jobTitle: 'Staff Frontend Software Engineer',
       worksFor: {
         '@type': 'Organization',
         '@id': 'https://www.wellhub.com/#organization',

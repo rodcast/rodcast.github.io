@@ -34,7 +34,7 @@ export default function GitHub({ data }: GitHubProps) {
                   href={html_url}
                   title={name}
                   className={styles.url}
-                  rel="external"
+                  rel="external noopener"
                 >
                   {name}
                 </a>
@@ -49,7 +49,7 @@ export default function GitHub({ data }: GitHubProps) {
         <a
           href="https://github.com/rodcast"
           className={styles.viewAllLink}
-          rel="external"
+          rel="external noopener"
           title="View all repositories on GitHub"
         >
           View all repositories →

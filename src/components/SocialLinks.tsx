@@ -22,7 +22,7 @@ function SocialLink({
     <li className={styles.item}>
       <a
         href={href}
-        rel="me"
+        rel="me noopener"
         title={title}
         className={styles.url}
         aria-label={ariaLabel}

@@ -27,6 +27,17 @@
   transition: var(--transition-200);
 }
 
+.link {
+  color: var(--secondary-color);
+  text-decoration: underline;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  text-decoration: none;
+}
+
 .list {
   display: flex;
   align-items: center;

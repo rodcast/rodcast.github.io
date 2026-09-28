@@ -1,16 +1,16 @@
 ---
 title: Rodrigo Castilho
-description: Staff Frontend Engineer at @gympass | In a committed relationship with code and the gym.
+description: Staff Frontend Software Engineer at @gympass | In a committed relationship with code and the gym.
 image: https://rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg
 ---
 
 # Rodrigo Castilho
 
-Staff Frontend Engineer at @gympass | In a committed relationship with code and the gym.
+Staff Frontend Software Engineer at @gympass | In a committed relationship with code and the gym.
 
 ## About
 
-- **Job Title:** Staff Frontend Engineer at [Wellhub](https://www.wellhub.com/)
+- **Job Title:** Staff Frontend Software Engineer at [Wellhub](https://www.wellhub.com/)
 - **Website:** https://rodrigocastilho.com/
 - **GitHub:** https://github.com/rodcast
 - **Twitter:** https://twitter.com/rodcast
@@ -38,9 +38,9 @@ Read all articles at [medium.com/@rodcast](https://medium.com/@rodcast).
       "@id": "https://rodrigocastilho.com/#person",
       "name": "Rodrigo Castilho",
       "alternateName": "RODCAST",
-      "description": "Staff Frontend Engineer at @gympass | In a committed relationship with code and the gym.",
+      "description": "Staff Frontend Software Engineer at @gympass | In a committed relationship with code and the gym.",
       "url": "https://rodrigocastilho.com/",
-      "jobTitle": "Staff Frontend Engineer",
+      "jobTitle": "Staff Frontend Software Engineer",
       "worksFor": {
         "@type": "Organization",
         "name": "Wellhub",
@@ -58,7 +58,7 @@ Read all articles at [medium.com/@rodcast](https://medium.com/@rodcast).
       "@id": "https://rodrigocastilho.com/#website",
       "url": "https://rodrigocastilho.com/",
       "name": "Rodrigo Castilho",
-      "description": "Staff Frontend Engineer at @gympass | In a committed relationship with code and the gym.",
+      "description": "Staff Frontend Software Engineer at @gympass | In a committed relationship with code and the gym.",
       "inLanguage": "en-US"
     },
     {
@@ -66,7 +66,7 @@ Read all articles at [medium.com/@rodcast](https://medium.com/@rodcast).
       "@id": "https://rodrigocastilho.com/#webpage",
       "url": "https://rodrigocastilho.com/",
       "name": "Rodrigo Castilho",
-      "description": "Staff Frontend Engineer at @gympass | In a committed relationship with code and the gym.",
+      "description": "Staff Frontend Software Engineer at @gympass | In a committed relationship with code and the gym.",
       "inLanguage": "en-US",
       "datePublished": "2023-01-01",
       "dateModified": "2026-09-28"

@@ -14,7 +14,7 @@ export default function Footer() {
         <a
           href="https://github.com/rodcast/rodcast.github.io"
           className={styles.link}
-          rel="external"
+          rel="external noopener"
           title="My GitHub"
         >
           Source Code
