@@ -18,23 +18,23 @@
     {
       "name": "auth-discovery",
       "type": "authentication",
-      "description": "Publishes OAuth and OIDC metadata endpoints for token discovery.",
+      "description": "Publishes static OAuth and OIDC metadata; registration and token operations are not implemented on GitHub Pages.",
       "url": "https://rodrigocastilho.com/.well-known/agent-skills/auth-discovery.md",
-      "sha256": "6fc225ed23d1c2cfe150263341122bfc6838ce836571d1538c3b3b51d315451e"
+      "sha256": "ed7d5db0fa7d62cf432e8bba527d2b33268f84e0581ea57039ce8eb2385fd8d3"
     },
     {
       "name": "webmcp-tools",
       "type": "tools",
       "description": "Exposes WebMCP tools for profile and content retrieval.",
       "url": "https://rodrigocastilho.com/.well-known/agent-skills/webmcp-tools.md",
-      "sha256": "682b0cb043d5518741cb20f94591f3d9849d44eca259fe9df92c5568e3075276"
+      "sha256": "349fb90bf4e7a096c40024c190e98715be4e552fd533e1e1385c4d06608d39b8"
     },
     {
       "name": "web-bot-auth",
       "type": "identity",
-      "description": "Publishes a Web Bot Auth key directory for signed agent request verification.",
+      "description": "Publishes a static Web Bot Auth public-key directory; request signing and verification are not implemented by this site.",
       "url": "https://rodrigocastilho.com/.well-known/agent-skills/web-bot-auth.md",
-      "sha256": "f74c65d0a85d0b215f795393630d7eac954010d12eedc8da25956a6d98caf2f6"
+      "sha256": "f541eabae386fd1d8d57705c48680e331c6c732d4dae8b8ff3c6224fd871bc95"
     }
   ]
 }

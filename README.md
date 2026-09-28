@@ -30,14 +30,15 @@ yarn dev
 
 - `yarn dev`: Start the development server (sets `NODE_TLS_REJECT_UNAUTHORIZED=0`).
 - `yarn build`: Build the statically exported site.
-- `yarn start`: Run the production Next.js server locally.
+- `yarn start`: Not compatible with static export; serve `out/` with a static file server instead.
 - `yarn lint`: Run ESLint checks.
 - `yarn lint:fix`: Run ESLint and auto-fix issues.
 - `yarn typecheck`: Type-check the project with `tsc --noEmit` (strict mode).
 
 ## Environment
 
-Copy `.env.example` to `.env.local` and fill in what you need.
+The environment file is optional for local development. Create `.env.local` only
+if you want to enable Google Analytics locally.
 
 - `NEXT_PUBLIC_GA_TRACKING_ID` (optional): Google Analytics measurement ID, read at build time. When it is unset, neither the cookie consent banner nor Google Analytics is rendered. In CI it comes from a GitHub Actions variable of the same name.
 
