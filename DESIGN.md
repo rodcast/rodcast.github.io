@@ -33,14 +33,14 @@ Page (index.tsx)
 
 App (_app.tsx)
 ├── Registers WebMCP tools through `navigator.modelContext` and `document.modelContext`,
-│   retrying up to 5 times at 500ms while those APIs initialize
+│   attempting registration once on mount with whichever APIs are available
 └── CookieConsent + GoogleAnalytics — rendered only when NEXT_PUBLIC_GA_TRACKING_ID is set
 ```
 
 The section `id`s above are load-bearing: `Header` links to them, and the WebMCP tools in
 `src/shared/utils/webmcpTools.ts` read the DOM through those same selectors.
 
-`Article` is loaded with `next/dynamic` to defer its JS bundle — it is the heaviest component and not needed for the initial paint.
+`Article` is imported directly by the page, so it is part of the initial page bundle.
 
 ## Styling: CSS Modules
 

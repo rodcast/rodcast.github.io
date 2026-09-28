@@ -9,7 +9,7 @@ Run the full quality gate defined in `AGENTS.md` → **Verification** and resolv
 
 ## Steps
 
-1. **Activate the correct Node version.** The project requires Node 24.x (`.nvmrc` pins `v24.17.0`, and `package.json` declares `engines.node: 24.x`). CI resolves the version from `.nvmrc`, so match it locally before anything else:
+1. **Activate the correct Node version.** The project requires Node 24.x (`.nvmrc` contains the project’s exact version, and `package.json` declares `engines.node: 24.x`). CI resolves the version from `.nvmrc`, so match it locally before anything else:
 
    ```bash
    nvm use

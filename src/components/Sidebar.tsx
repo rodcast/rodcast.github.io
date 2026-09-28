@@ -21,8 +21,11 @@ export default function Sidebar() {
         Rodrigo Castilho
       </h2>
       <p className={styles.description} itemProp="description">
-        Staff Frontend Engineer and ex-@Yahoo in a serious relationship with
-        programming languages and the gym.
+        Staff Frontend Engineer at{' '}
+        <a href="https://github.com/gympass" rel="external">
+          @gympass
+        </a>{' '}
+        | In a committed relationship with code and the gym.
       </p>
       <SocialLinks />
     </aside>

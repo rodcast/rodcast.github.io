@@ -1,7 +1,6 @@
 # Web Bot Auth
 
-Publishes a key directory for Web Bot Auth so this site can identify itself
-when it sends signed bot or agent requests per the
+Publishes a static public-key directory for Web Bot Auth, following the
 [IETF WebBotAuth WG](https://datatracker.ietf.org/wg/webbotauth/about/).
 
 ## Key Directory
@@ -12,6 +11,8 @@ when it sends signed bot or agent requests per the
 
 ## Notes
 
-- Receiving sites can verify signed requests from this agent using the public key
-  published in the directory.
+- A receiving site can use this directory to look up the public key for a
+  request signed with the matching private key.
+- Publishing this directory does not itself mean this site signs outgoing
+  requests or verifies incoming signatures.
 - The key ID (`kid`) is the base64url-encoded JWK thumbprint (RFC 7638).

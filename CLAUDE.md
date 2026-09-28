@@ -41,5 +41,5 @@ getStaticProps (build time)
   → Promise.allSettled([fetchData(GITHUB_API), fetchData(MEDIUM_API)])
       (src/shared/utils/fetch.ts — 5s timeout; rejected source → [])
   → normalizeGitHub / normalizeMedium (src/shared/utils/)
-  → Page props → Article (next/dynamic) → GitHub + Medium
+  → Page props → Article → GitHub + Medium
 ```

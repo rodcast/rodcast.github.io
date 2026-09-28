@@ -1,11 +1,13 @@
 # Agent Registration (auth.md)
 
-You are an agent. This service supports **agentic registration** at `https://rodrigocastilho.com`.
+You are an agent. This service documents **agentic registration** at `https://rodrigocastilho.com`.
 
 - Resource server: `https://rodrigocastilho.com/`
 - Authorization server: `https://rodrigocastilho.com`
 
-Read the Protected Resource Metadata and Authorization Server metadata first. Do not issue side-effecting `POST` requests during passive discovery — this site is statically hosted and documents a contract surface.
+Read the Protected Resource Metadata and Authorization Server metadata first. Do not issue side-effecting `POST` requests during passive discovery — this site is statically hosted and documents a contract surface. The repository currently does not ship a user-facing login or claim UI, so the `service_auth` flow below is a protocol example for a deployment that provides that UI.
+
+The current GitHub Pages deployment serves static files and does not process registration, token, revocation, or event `POST` requests. The flows below are protocol examples for a deployment that implements the required backend and user-facing claim UI; do not run them against this site.
 
 ## Step 1 — Discover
 
@@ -72,7 +74,7 @@ Response shape (read the `agent_auth` block in full):
 
 ## Step 2 — Pick a method
 
-This service accepts these registration methods:
+The documented protocol defines these registration methods for a deployment that implements it:
 
 - **`anonymous`** — low-friction registration for read-only flows that returns an `access_token` for allowed scopes.
 
@@ -80,7 +82,7 @@ This service accepts these registration methods:
 
 ## Step 3 — Register
 
-Surface the service's `resource_name` ("Rodrigo Castilho Public Site") and the scopes you'll act under, and confirm with the user before sending the request.
+In a deployment that implements this protocol, surface the service's `resource_name` ("Rodrigo Castilho Public Site") and the scopes you'll act under, and confirm with the user before sending the request.
 
 ```http
 POST /agent/identity/register
@@ -110,7 +112,7 @@ Response (200):
 }
 ```
 
-No `identity_assertion` yet. Surface `claim.verification_uri` and `claim.user_code` to the user (Step 4b), then poll for completion (Step 4c).
+No `identity_assertion` yet. In a deployment with the required user-facing UI, surface `claim.verification_uri` and `claim.user_code` to the user (Step 4b), then poll for completion (Step 4c). This repository's static site does not currently implement that `/login` route.
 
 ## Step 4 — Claim ceremony
 
@@ -122,10 +124,9 @@ For `service_auth`, the `claim` block is already in the Step 3 response. Skip to
 
 Surface `verification_uri` and `user_code` in a single message. Suggested copy:
 
-> Open this link, sign in (or sign up), and enter this 6-digit code: **123456**
-> [https://rodrigocastilho.com/login?return_to=...](https://rodrigocastilho.com/login?return_to=...)
+> Open the deployment-provided verification link, sign in (or sign up), and enter this 6-digit code: **123456**
 
-The user signs in to the service and types the `user_code` on the claim page.
+In a deployment implementing the protocol, the user signs in through its verification UI and enters the `user_code` on the claim page.
 
 ### 4c. Poll for completion
 
