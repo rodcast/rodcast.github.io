@@ -1,0 +1,57 @@
+public/.well-known/agent-skills/webmcp-tools.md
+  h_fa492faa375953 10
+  s_62810e9c540940::t_2b0dfa614eabb5 11
+src/components/Sidebar.tsx
+  h_fa492faa375953 24-28
+public/.well-known/agent-skills/web-bot-auth.md
+  h_fa492faa375953 3,14-17
+public/index.md
+  h_fa492faa375953 3,9,41,61,69,72
+DESIGN.md
+  h_fa492faa375953 36,43
+.nvmrc
+  h_fa492faa375953 1
+AGENTS.md
+  h_fa492faa375953 103,108,246
+  s_62810e9c540940::t_15e677e862ed1c 102,104-107,109-111
+public/feed.xml
+  h_fa492faa375953 5
+README.md
+  h_fa492faa375953 33,40-41
+public/manifest.json
+  h_fa492faa375953 8
+CLAUDE.md
+  h_fa492faa375953 44
+.claude/skills/verify-project/SKILL.md
+  h_fa492faa375953 12
+public/llms.txt
+  h_fa492faa375953 3,5
+public/auth.md
+  h_fa492faa375953 3,8,10,77,85,115,127,129
+  s_62810e9c540940::t_18d1dd3692432e 9
+public/.well-known/agent-skills/auth-discovery.md
+  h_fa492faa375953 3-7
+public/.well-known/agent-skills/index.json
+  h_fa492faa375953 21,23,30,35,37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "d87709769c2748ee9bf0de1ec481ce04f3907e6a",
+  "prompts": {},
+  "humans": {
+    "h_fa492faa375953": {
+      "author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  },
+  "sessions": {
+    "s_62810e9c540940": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "63aeec22-1ef6-4433-ac09-be446c5f8b59",
+        "model": "unknown"
+      },
+      "human_author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  }
+}
