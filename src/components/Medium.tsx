@@ -44,7 +44,8 @@ export default function Medium({ data }: MediumProps) {
                     href={link}
                     title={title}
                     className={styles.url}
-                    rel="external"
+                    rel="external noopener"
+                    target="_blank"
                   >
                     {title}
                   </a>
@@ -70,7 +71,8 @@ export default function Medium({ data }: MediumProps) {
         <a
           href="https://medium.com/@rodcast"
           className={styles.viewAllLink}
-          rel="external"
+          rel="external noopener"
+          target="_blank"
           title="Read all articles on Medium"
         >
           Read all articles →

@@ -182,6 +182,7 @@ Follow these rules when making any change to this codebase.
 - Make focused, minimal changes scoped to the task.
 - Extend existing shared utilities and components rather than duplicating logic.
 - Keep accessibility intact: use semantic HTML, labels, and readable fallback messages.
+- Open external links in a new tab with `target="_blank"` and include `noopener` in `rel`, preserving any existing relation values.
 - Keep SEO metadata and JSON-LD structured data coherent when editing profile content.
 - Verify every change before completing a task (see Verification below).
 - Always work on a separate branch and open a pull request for review (see Git Workflow below).

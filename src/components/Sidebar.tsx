@@ -10,7 +10,7 @@ export default function Sidebar() {
         src="/rodrigo-castilho-rodcast_photo.jpg"
         width={125}
         height={125}
-        alt="Professional headshot of Rodrigo Castilho, Staff Frontend Engineer"
+        alt="Professional headshot of Rodrigo Castilho, Staff Frontend Software Engineer"
         className={styles.photo}
         itemProp="image"
         sizes="(max-width: 768px) 95px, (max-width: 1200px) 105px, 125px"
@@ -21,8 +21,13 @@ export default function Sidebar() {
         Rodrigo Castilho
       </h2>
       <p className={styles.description} itemProp="description">
-        Staff Frontend Engineer at{' '}
-        <a href="https://github.com/gympass" rel="external">
+        Staff Frontend Software Engineer at{' '}
+        <a
+          href="https://github.com/gympass"
+          className={styles.link}
+          rel="external noopener"
+          target="_blank"
+        >
           @gympass
         </a>{' '}
         | In a committed relationship with code and the gym.
