@@ -26,7 +26,6 @@ export default function Sidebar() {
           href="https://github.com/gympass"
           className={styles.link}
           rel="external noopener"
-          target="_blank"
         >
           @gympass
         </a>{' '}

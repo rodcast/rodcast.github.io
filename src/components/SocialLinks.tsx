@@ -26,7 +26,6 @@ function SocialLink({
         title={title}
         className={styles.url}
         aria-label={ariaLabel}
-        target="_blank"
       >
         <i className={`${fontello.variable} ${iconClass}`} aria-hidden="true" />
         <span className="sr-only">{platform}</span>

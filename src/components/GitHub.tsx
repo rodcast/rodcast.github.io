@@ -35,7 +35,6 @@ export default function GitHub({ data }: GitHubProps) {
                   title={name}
                   className={styles.url}
                   rel="external noopener"
-                  target="_blank"
                 >
                   {name}
                 </a>
@@ -51,7 +50,6 @@ export default function GitHub({ data }: GitHubProps) {
           href="https://github.com/rodcast"
           className={styles.viewAllLink}
           rel="external noopener"
-          target="_blank"
           title="View all repositories on GitHub"
         >
           View all repositories →
