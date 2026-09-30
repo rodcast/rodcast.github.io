@@ -1,0 +1,40 @@
+public/index.md
+  h_fa492faa375953 2-3,5,10,14-16,25,27-29,35-46,50-51,61,63-70,77-79,81-95,108,115-116,119-129
+  s_040e5abdb4cda1::t_7141cdaf9105e2 26,80
+public/sitemap.xml
+  h_fa492faa375953 12
+public/manifest.json
+  h_fa492faa375953 8
+public/feed.xml
+  h_fa492faa375953 4-5,9,19-105
+src/components/Sidebar.tsx
+  h_fa492faa375953 30,32-36
+public/llms.txt
+  h_fa492faa375953 3
+src/pages/_document.tsx
+  h_fa492faa375953 44,48,52,60-62,64,73-76,90,97,160,204-207,235
+  h_fa492faa375953 65,91,98
+src/pages/_app.tsx
+  h_fa492faa375953 10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "689c46d4e49528b99e5eae767f198204c4e9bf5a",
+  "prompts": {},
+  "humans": {
+    "h_fa492faa375953": {
+      "author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  },
+  "sessions": {
+    "s_040e5abdb4cda1": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "5add4b1d-b0ff-4255-b45f-9a24c0cc4fde",
+        "model": "unknown"
+      },
+      "human_author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  }
+}
