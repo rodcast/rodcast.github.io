@@ -9,7 +9,6 @@ interface RobotsMetaProps {
     googleBot?: {
       index: boolean;
       follow: boolean;
-      noimageindex: boolean;
       'max-video-preview': number;
       'max-image-preview': string;
       'max-snippet': number;
@@ -42,21 +41,15 @@ function RobotsMeta({ robots }: RobotsMetaProps) {
           />
           <meta
             name="googlebot"
-            content={`noimageindex=${
-              robots.googleBot.noimageindex ? 'on' : 'off'
-            }`}
+            content={`max-video-preview:${robots.googleBot['max-video-preview']}`}
           />
           <meta
             name="googlebot"
-            content={`max-video-preview=${robots.googleBot['max-video-preview']}`}
+            content={`max-image-preview:${robots.googleBot['max-image-preview']}`}
           />
           <meta
             name="googlebot"
-            content={`max-image-preview=${robots.googleBot['max-image-preview']}`}
-          />
-          <meta
-            name="googlebot"
-            content={`max-snippet=${robots.googleBot['max-snippet']}`}
+            content={`max-snippet:${robots.googleBot['max-snippet']}`}
           />
         </>
       )}
@@ -64,10 +57,12 @@ function RobotsMeta({ robots }: RobotsMetaProps) {
   );
 }
 
+const description =
+  'Staff Frontend Software Engineer at Wellhub specializing in React, Next.js, JavaScript, TypeScript, AWS, design systems, web performance, and SEO.';
+
 const metadata = {
-  title: 'Rodrigo Castilho',
-  description:
-    'Staff Frontend Software Engineer at @gympass | In a committed relationship with code and the gym.',
+  title: 'Rodrigo Castilho - Staff Frontend Software Engineer',
+  description,
   keywords: [
     'Next.js',
     'React',
@@ -75,6 +70,10 @@ const metadata = {
     'TypeScript',
     'CSS',
     'HTML',
+    'AWS',
+    'Design Systems',
+    'Web Performance',
+    'SEO',
     'GitHub',
     'Medium',
   ],
@@ -88,17 +87,15 @@ const metadata = {
   },
   openGraph: {
     type: 'profile',
-    title: 'Rodrigo Castilho',
-    description:
-      'Staff Frontend Software Engineer at @gympass | In a committed relationship with code and the gym.',
+    title: 'Rodrigo Castilho - Staff Frontend Software Engineer',
+    description,
     image: 'https://rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg',
     url: 'https://rodrigocastilho.com/',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Rodrigo Castilho',
-    description:
-      'Staff Frontend Software Engineer at @gympass | In a committed relationship with code and the gym.',
+    title: 'Rodrigo Castilho - Staff Frontend Software Engineer',
+    description,
     image: 'https://rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg',
     site: '@rodcast',
     creator: '@rodcast',
@@ -111,7 +108,6 @@ const metadata = {
     googleBot: {
       index: true,
       follow: true,
-      noimageindex: false,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
@@ -161,8 +157,7 @@ function OpenGraphMeta({ openGraph, twitter }: OpenGraphMetaProps) {
   );
 }
 
-// Generated at build time so it reflects the latest deploy, not a stale literal.
-const buildDate = new Date().toISOString().slice(0, 10);
+const contentModified = '2026-09-29';
 
 // JSON-LD structured data for SEO
 const structuredData = {
@@ -206,6 +201,10 @@ const structuredData = {
         'Web Development',
         'CSS',
         'HTML',
+        'AWS',
+        'Design Systems',
+        'Web Performance',
+        'SEO',
       ],
       sameAs: [
         'https://twitter.com/rodcast',
@@ -233,7 +232,7 @@ const structuredData = {
       about: { '@id': 'https://rodrigocastilho.com/#person' },
       primaryImageOfPage: { '@id': 'https://rodrigocastilho.com/#image' },
       datePublished: '2023-01-01',
-      dateModified: buildDate,
+      dateModified: contentModified,
       inLanguage: 'en-US',
     },
     {

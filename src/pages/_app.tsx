@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import '@/styles/globals.css';
 
 const NEXT_PUBLIC_GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID;
-const title = 'Rodrigo Castilho';
+const title = 'Rodrigo Castilho - Staff Frontend Software Engineer';
 
 /** Main app component */
 function App({ Component, pageProps }: AppProps) {

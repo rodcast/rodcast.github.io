@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rodrigo Castilho</title>
-    <description>Staff Frontend Software Engineer at @gympass | In a committed relationship with code and the gym.</description>
+    <title>Rodrigo Castilho - Staff Frontend Software Engineer</title>
+    <description>Staff Frontend Software Engineer at Wellhub specializing in React, Next.js, JavaScript, TypeScript, AWS, design systems, web performance, and SEO.</description>
     <link>https://rodrigocastilho.com/</link>
     <atom:link href="https://rodrigocastilho.com/feed.xml" rel="self" type="application/rss+xml"/>
     <language>en-US</language>
-    <lastBuildDate>Tue, 08 Oct 2025 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2026 00:00:00 GMT</lastBuildDate>
     <managingEditor>rodrigo@rodrigocastilho.com (Rodrigo Castilho)</managingEditor>
     <webMaster>rodrigo@rodrigocastilho.com (Rodrigo Castilho)</webMaster>
     <category>Technology</category>
@@ -16,13 +16,93 @@
     <ttl>1440</ttl>
 
     <item>
-      <title>Welcome to My Professional Portfolio</title>
-      <description>Explore my journey as a Staff Frontend Software Engineer with expertise in JavaScript, TypeScript, React, and Next.js.</description>
-      <link>https://rodrigocastilho.com/</link>
-      <guid isPermaLink="true">https://rodrigocastilho.com/</guid>
-      <pubDate>Tue, 08 Oct 2025 00:00:00 GMT</pubDate>
-      <category>Portfolio</category>
-      <category>Career</category>
+      <title>Fetch API - Understanding JavaScript API Requests and Responses in the Data Fetching lifecycle</title>
+      <description>An overview of making HTTP requests in the browser with the Fetch API.</description>
+      <link>https://medium.com/@rodcast/fetch-api-understanding-javascript-api-requests-and-responses-in-the-data-fetching-lifecycle-96ae79f9a0d4</link>
+      <guid isPermaLink="true">https://medium.com/@rodcast/fetch-api-understanding-javascript-api-requests-and-responses-in-the-data-fetching-lifecycle-96ae79f9a0d4</guid>
+      <pubDate>Mon, 15 May 2023 00:00:00 GMT</pubDate>
+      <category>JavaScript</category>
+      <category>Web Development</category>
+    </item>
+    <item>
+      <title>Async/Await - Understanding JavaScript API Requests and Responses in the Data Fetching lifecycle</title>
+      <description>Making asynchronous JavaScript easier to read and work with.</description>
+      <link>https://medium.com/@rodcast/async-await-understanding-javascript-api-requests-and-responses-in-the-data-fetching-lifecycle-7e42af034f5</link>
+      <guid isPermaLink="true">https://medium.com/@rodcast/async-await-understanding-javascript-api-requests-and-responses-in-the-data-fetching-lifecycle-7e42af034f5</guid>
+      <pubDate>Mon, 08 May 2023 00:00:00 GMT</pubDate>
+      <category>JavaScript</category>
+      <category>Web Development</category>
+    </item>
+    <item>
+      <title>Promises - Understanding JavaScript API Requests and Responses in the Data Fetching lifecycle</title>
+      <description>Using promises to work with asynchronous operations.</description>
+      <link>https://medium.com/@rodcast/promises-understanding-javascript-api-requests-and-responses-in-the-data-fetching-lifecycle-178f1277cb88</link>
+      <guid isPermaLink="true">https://medium.com/@rodcast/promises-understanding-javascript-api-requests-and-responses-in-the-data-fetching-lifecycle-178f1277cb88</guid>
+      <pubDate>Mon, 01 May 2023 00:00:00 GMT</pubDate>
+      <category>JavaScript</category>
+      <category>Web Development</category>
+    </item>
+    <item>
+      <title>Synchronous and Asynchronous - Understanding JavaScript API Requests and Responses in the Data Fetching lifecycle</title>
+      <description>An introduction to synchronous and asynchronous programming.</description>
+      <link>https://medium.com/@rodcast/synchronous-and-asynchronous-understanding-javascript-api-requests-and-responses-in-the-data-64fa9e8cd319</link>
+      <guid isPermaLink="true">https://medium.com/@rodcast/synchronous-and-asynchronous-understanding-javascript-api-requests-and-responses-in-the-data-64fa9e8cd319</guid>
+      <pubDate>Mon, 24 Apr 2023 00:00:00 GMT</pubDate>
+      <category>JavaScript</category>
+      <category>Web Development</category>
+    </item>
+    <item>
+      <title>AJAX and XMLHttpRequest - Understanding JavaScript API Requests and Responses in the Data Fetching lifecycle</title>
+      <description>Using AJAX and XMLHttpRequest to build more responsive web applications.</description>
+      <link>https://medium.com/@rodcast/ajax-and-xmlhttprequest-understanding-javascript-api-requests-and-responses-in-the-data-fetching-507a7959330e</link>
+      <guid isPermaLink="true">https://medium.com/@rodcast/ajax-and-xmlhttprequest-understanding-javascript-api-requests-and-responses-in-the-data-fetching-507a7959330e</guid>
+      <pubDate>Mon, 17 Apr 2023 00:00:00 GMT</pubDate>
+      <category>JavaScript</category>
+      <category>Web Development</category>
+    </item>
+    <item>
+      <title>Callbacks - Understanding JavaScript API Requests and Responses in the Data Fetching lifecycle</title>
+      <description>How callback functions are passed to and executed by other functions.</description>
+      <link>https://medium.com/@rodcast/callbacks-understanding-javascript-api-requests-and-responses-in-the-data-fetching-lifecycle-499cdeb026ee</link>
+      <guid isPermaLink="true">https://medium.com/@rodcast/callbacks-understanding-javascript-api-requests-and-responses-in-the-data-fetching-lifecycle-499cdeb026ee</guid>
+      <pubDate>Mon, 10 Apr 2023 00:00:00 GMT</pubDate>
+      <category>JavaScript</category>
+      <category>Web Development</category>
+    </item>
+    <item>
+      <title>V8 JavaScript engine - Understanding JavaScript API Requests and Responses in the Data Fetching lifecycle</title>
+      <description>An introduction to Google's V8 JavaScript engine.</description>
+      <link>https://medium.com/@rodcast/v8-javascript-engine-understanding-javascript-api-requests-and-responses-in-the-data-fetching-311481bdae6a</link>
+      <guid isPermaLink="true">https://medium.com/@rodcast/v8-javascript-engine-understanding-javascript-api-requests-and-responses-in-the-data-fetching-311481bdae6a</guid>
+      <pubDate>Mon, 03 Apr 2023 00:00:00 GMT</pubDate>
+      <category>JavaScript</category>
+      <category>Web Development</category>
+    </item>
+    <item>
+      <title>Introduction - Understanding JavaScript API Requests and Responses in the Data Fetching lifecycle</title>
+      <description>How client-side data fetching can affect web application performance.</description>
+      <link>https://medium.com/@rodcast/introduction-understanding-javascript-api-requests-and-responses-in-the-data-fetching-lifecycle-9eae22fd3d16</link>
+      <guid isPermaLink="true">https://medium.com/@rodcast/introduction-understanding-javascript-api-requests-and-responses-in-the-data-fetching-lifecycle-9eae22fd3d16</guid>
+      <pubDate>Mon, 27 Mar 2023 00:00:00 GMT</pubDate>
+      <category>JavaScript</category>
+      <category>Web Development</category>
+    </item>
+    <item>
+      <title>Understanding JavaScript API Requests and Responses in the Data Fetching lifecycle</title>
+      <description>An overview of a series on JavaScript data-fetching techniques.</description>
+      <link>https://medium.com/@rodcast/understanding-javascript-api-requests-and-responses-in-thedata-fetching-lifecycle-539bf96b2293</link>
+      <guid isPermaLink="true">https://medium.com/@rodcast/understanding-javascript-api-requests-and-responses-in-thedata-fetching-lifecycle-539bf96b2293</guid>
+      <pubDate>Mon, 20 Mar 2023 00:00:00 GMT</pubDate>
+      <category>JavaScript</category>
+      <category>Web Development</category>
+    </item>
+    <item>
+      <title>Just Let Me Say - Be Yourself</title>
+      <description>A personal reflection on being yourself.</description>
+      <link>https://medium.com/@rodcast/just-let-me-say-be-yourself-b2f5cedeb5a1</link>
+      <guid isPermaLink="true">https://medium.com/@rodcast/just-let-me-say-be-yourself-b2f5cedeb5a1</guid>
+      <pubDate>Wed, 12 Feb 2020 00:00:00 GMT</pubDate>
+      <category>Personal</category>
     </item>
   </channel>
 </rss>
