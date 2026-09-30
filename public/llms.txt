@@ -1,6 +1,6 @@
 # Rodrigo Castilho
 
-> Staff Frontend Software Engineer at @gympass | In a committed relationship with code and the gym. Personal site exposing public profile, projects, and articles as agent-friendly content.
+> Staff Frontend Software Engineer at Wellhub specializing in React, Next.js, JavaScript, TypeScript, AWS, design systems, web performance, and SEO. Personal site exposing public profile, projects, and articles as agent-friendly content.
 
 The site is a statically exported Next.js application. Project and article data are fetched at build time from the GitHub REST API and the Medium RSS feed. The Markdown homepage is available directly at `/index.md`. Accept-based content negotiation on `/` works only on hosts that honor the repository's rewrite and header configuration; GitHub Pages does not.
 

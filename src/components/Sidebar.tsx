@@ -27,9 +27,13 @@ export default function Sidebar() {
           className={styles.link}
           rel="external noopener"
         >
-          @gympass
+          Wellhub
         </a>{' '}
-        | In a committed relationship with code and the gym.
+        specializing in React, Next.js, JavaScript, TypeScript, AWS, design
+        systems, web performance, and SEO.
+        <br />
+        <br />
+        In a committed relationship with code and the gym.
       </p>
       <SocialLinks />
     </aside>
