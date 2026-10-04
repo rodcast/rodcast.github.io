@@ -1,24 +1,12 @@
 # Rodrigo Castilho
 
-Personal website built with Next.js (Pages Router) and TypeScript.
-It renders profile content and fetches the latest public GitHub repositories and Medium articles at build time.
+Personal website built with Next.js (Pages Router) and TypeScript. It renders profile content plus the latest public GitHub repositories and Medium articles, fetched at build time and deployed as a static export on GitHub Pages.
 
 Live site: <https://rodrigocastilho.com/>
 
-## Tech Stack
+## Quick Start
 
-- Next.js 16
-- React 19
-- TypeScript (strict)
-- ESLint + Prettier + Husky
-- GitHub Pages (static export)
-
-## Requirements
-
-- Node.js 24.x (see `.nvmrc`)
-- Yarn
-
-## Setup
+Requires Node.js 24.x (`.nvmrc`) and Yarn.
 
 ```bash
 nvm use
@@ -26,59 +14,34 @@ yarn install
 yarn dev
 ```
 
-## Scripts
+Before opening a PR, run the full verification suite:
 
-- `yarn dev`: Start the development server (sets `NODE_TLS_REJECT_UNAUTHORIZED=0`).
-- `yarn build`: Build the statically exported site.
-- `yarn start`: Not compatible with static export; serve `out/` with a static file server instead.
-- `yarn lint`: Run ESLint checks.
-- `yarn lint:fix`: Run ESLint and auto-fix issues.
-- `yarn prettier --check .`: Check formatting with Prettier.
-- `yarn typecheck`: Type-check the project with `tsc --noEmit` (strict mode).
+```bash
+yarn lint && yarn prettier --check . && yarn typecheck && yarn build
+```
+
+`yarn start` is not supported with static export; serve `out/` with a static file server to check the build.
 
 ## Environment
 
-The environment file is optional for local development. Create `.env.local` only
-if you want to enable Google Analytics locally.
+`.env.local` is optional. `NEXT_PUBLIC_GA_TRACKING_ID` (Google Analytics measurement ID, read at build time) enables analytics and the cookie consent banner; when unset, neither renders. CI reads it from an Actions variable of the same name.
 
-- `NEXT_PUBLIC_GA_TRACKING_ID` (optional): Google Analytics measurement ID, read at build time. When it is unset, neither the cookie consent banner nor Google Analytics is rendered. In CI it comes from a GitHub Actions variable of the same name.
+## Deployment
 
-## Development Workflow
+Pushes to `master` (or a manual dispatch) run `.github/workflows/nextjs.yml`: lint, Prettier check, typecheck, static build, then deploy `out/` to GitHub Pages. Custom domain: `public/CNAME`.
 
-1. Run `nvm use`.
-2. Install dependencies with `yarn install`.
-3. Start local development with `yarn dev`.
-4. Before opening a PR, run the full verification suite: `yarn lint && yarn prettier --check . && yarn typecheck && yarn build`.
-
-## Build and Deployment
-
-- Static export via Next.js (`output: 'export'`).
-- The canonical deployment artifact is the static `out/` directory.
-- Deployment runs through GitHub Actions workflow `.github/workflows/nextjs.yml`, which runs lint, the Prettier check, and typecheck before building.
-- Production deploys are triggered by pushes to `master` (and manual workflow dispatch).
-- When validating the exported site locally, serve `out/` with a static file server.
-- Custom domain: `public/CNAME` (`rodrigocastilho.com`).
-
-## Project Conventions
-
-- Keep these static export constraints in `next.config.mjs`: `output: 'export'`, `trailingSlash: true`, and `images.unoptimized: true`.
-- Data is fetched at build time from GitHub and Medium.
-- Normalize external API responses before passing data to components (`src/shared/utils/normalizeGitHub.ts` and `src/shared/utils/normalizeMedium.ts`).
-- Use TypeScript path aliases from `tsconfig.json` (for example `@/components/*`, `@/utils/*`) for cross-directory imports; same-directory siblings are imported relatively.
-- Component styles use CSS Modules in `src/styles/`; only resets, CSS custom properties, and a few accessibility utilities live in `globals.css`.
-- Branch and open a pull request for every change — never commit to `master` (see `AGENTS.md` → Git Workflow).
+Never commit to `master`; branch and open a pull request.
 
 ## API and Discovery
 
-- API overview: `public/docs/api.md`
-- OpenAPI contract: `public/docs/api/openapi.json`
+- API overview: `public/docs/api.md`; OpenAPI contract: `public/docs/api/openapi.json`
 - Agent registration contract: `public/auth.md`
-- Static discovery metadata lives under `public/.well-known/`, including the API catalog, MCP metadata, OAuth/OIDC metadata, agent card, and agent skills index.
-- GitHub Pages serves static files only, so the `Link`/`Vary` header rules in `public/_headers` and the `vercel.json` rewrites are inactive in production. Fetch `/index.md` directly instead of relying on `Accept: text/markdown`.
+- Discovery metadata: `public/.well-known/`
+- GitHub Pages ignores the `Link`/`Vary` rules in `public/_headers` and the `vercel.json` rewrites. Fetch `/index.md` directly instead of using `Accept: text/markdown`.
 
-## Further Documentation
+## Documentation
 
-- `AGENTS.md` — full project guide: structure, commands, conventions, verification, Git workflow.
-- `DESIGN.md` — architecture decisions and rationale.
-- `CLAUDE.md` — Claude-specific quick reference.
-- `SECURITY.md` — vulnerability reporting policy.
+- [`AGENTS.md`](AGENTS.md): project guide (structure, commands, conventions, CI/CD, constraints)
+- [`DESIGN.md`](DESIGN.md): architecture decisions and rationale
+- [`CLAUDE.md`](CLAUDE.md): Claude-specific setup
+- [`SECURITY.md`](SECURITY.md): vulnerability reporting

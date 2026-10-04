@@ -6,21 +6,21 @@ disable-model-invocation: true
 
 # New Component
 
-Create a component in `src/components/` paired with a CSS Module in `src/styles/`, matching the conventions already used across the codebase. Read an existing component (e.g. `src/components/Footer.tsx`) and its module before writing, so the new one matches local idiom.
+Create a component in `src/components/` with a paired CSS Module in `src/styles/`. Read an existing one (e.g. `src/components/Footer.tsx`) first to match local idiom.
 
-## Conventions (non-negotiable)
+## Conventions
 
-- **CSS Modules for all component styles** — never inline styles or `globals.css` for component-scoped rules.
-- **Path aliases for cross-directory imports** — `@/styles/*`, `@/components/*`, `@/utils/*`, `@/interfaces/*`. Never `../` traversal. Sibling components in `src/components/` are imported relatively (`./SocialLinks`), matching `Article.tsx` and `Sidebar.tsx`.
-- **Strict TypeScript** — type all props via an explicit `interface`; no `any`.
-- **Design tokens** — use the CSS custom properties already in the modules (`var(--space-x-*)`, `var(--text-*)`, `var(--secondary-color)`, …) rather than hardcoded values.
-- **Accessibility** — semantic HTML, `aria-*`/labels where needed, readable fallback text.
-- **Formatting** — 2-space indent, single quotes, semicolons, trailing newline (Prettier enforces this on save).
+- **CSS Modules only** for component styles; no inline styles or `globals.css` rules.
+- **Imports:** `@/styles/*`, `@/components/*`, `@/utils/*`, `@/interfaces/*` across directories, never `../`. Sibling components import relatively (`./SocialLinks`).
+- **Strict TypeScript:** explicit props `interface`, no `any`.
+- **Design tokens:** use existing CSS custom properties (`var(--space-x-*)`, `var(--text-*)`, `var(--secondary-color)`, ...) instead of hardcoded values.
+- **Accessibility:** semantic HTML, `aria-*`/labels where needed, readable fallback text.
+- **Formatting:** Prettier rules (see `AGENTS.md`).
 
 ## Steps
 
-1. Ask for (or infer) the component name in PascalCase, e.g. `ProfileCard`.
-2. Create `src/styles/<camelCase>.module.css` with a `.content` (or appropriate root) class using design tokens.
+1. Get the PascalCase component name (e.g. `ProfileCard`).
+2. Create `src/styles/<camelCase>.module.css` with a `.content` (or suitable root) class using design tokens.
 3. Create `src/components/<PascalCase>.tsx`:
 
    ```tsx
@@ -37,4 +37,4 @@ Create a component in `src/components/` paired with a CSS Module in `src/styles/
    ```
 
 4. Wire it into its parent: `@/components/<PascalCase>` from a page, or `./<PascalCase>` from a sibling component.
-5. Verify with the `verify-project` skill (lint, Prettier, typecheck, build) before declaring done.
+5. Run the `verify-project` skill before declaring done.

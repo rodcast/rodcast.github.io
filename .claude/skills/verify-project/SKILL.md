@@ -5,34 +5,29 @@ description: Run the project's full verification suite (lint, Prettier check, ty
 
 # Verify Project
 
-Run the full quality gate defined in `AGENTS.md` → **Verification** and resolve every error before declaring success. Show the command output as evidence — never assert success without it.
+Run the quality gate from `AGENTS.md` → **Verification** and fix every error before declaring success. Show the command output as evidence.
 
 ## Steps
 
-1. **Activate the correct Node version.** The project requires Node 24.x (`.nvmrc` contains the project’s exact version, and `package.json` declares `engines.node: 24.x`). CI resolves the version from `.nvmrc`, so match it locally before anything else:
+1. Match the Node version (24.x, from `.nvmrc`):
 
    ```bash
    nvm use
    ```
 
-2. **Run the full suite.** Each step must pass with no errors:
+2. Run the suite as one chained command so a failure short-circuits the rest:
 
    ```bash
    yarn lint && yarn prettier --check . && yarn typecheck && yarn build
    ```
 
-   | Command                   | Checks                                                        |
-   | ------------------------- | ------------------------------------------------------------- |
-   | `yarn lint`               | ESLint (also enforced by the Husky pre-commit hook + CI)      |
-   | `yarn prettier --check .` | Prettier formatting (pre-commit hook + CI)                    |
-   | `yarn typecheck`          | `tsc --noEmit`, strict mode — must report zero errors (CI)    |
-   | `yarn build`              | Static export to `out/` — a build failure means not shippable |
+   | Command                   | Checks                                           |
+   | ------------------------- | ------------------------------------------------ |
+   | `yarn lint`               | ESLint (Husky pre-commit + CI)                   |
+   | `yarn prettier --check .` | Formatting (Husky pre-commit + CI)               |
+   | `yarn typecheck`          | `tsc --noEmit`, strict, zero errors (CI)         |
+   | `yarn build`              | Static export to `out/`; failure = not shippable |
 
-   `.husky/pre-commit` runs the first two (`yarn lint && yarn prettier --check .`); CI runs all four.
+3. If a step fails, show the output, fix the cause, and re-run the whole suite. Never skip a step or report success on a partial pass.
 
-3. **Report honestly.** If any step fails, show the failing output, fix the cause, and re-run the whole suite. Do not skip a step or call the task done on a partial pass.
-
-## Notes
-
-- Run the steps as a single chained command so a failure short-circuits the rest.
-- This project has no automated test suite; this suite is the enforced baseline quality check.
+There is no automated test suite; this gate is the enforced baseline.
