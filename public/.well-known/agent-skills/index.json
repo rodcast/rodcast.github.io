@@ -20,7 +20,7 @@
       "type": "authentication",
       "description": "Publishes static OAuth and OIDC metadata; registration and token operations are not implemented on GitHub Pages.",
       "url": "https://rodrigocastilho.com/.well-known/agent-skills/auth-discovery.md",
-      "sha256": "ed7d5db0fa7d62cf432e8bba527d2b33268f84e0581ea57039ce8eb2385fd8d3"
+      "sha256": "f7b8c605e55e3bb6b62cd497a0ea687e7b67afe9917db1f7ae971eb0d31081c8"
     },
     {
       "name": "webmcp-tools",

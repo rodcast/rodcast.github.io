@@ -2,69 +2,61 @@
 
 Architecture decisions and rationale for rodcast.github.io.
 
-## Architecture: Static Site on GitHub Pages
+## Static Site on GitHub Pages
 
-**Decision:** Next.js with `output: 'export'` deployed to GitHub Pages.
+**Decision:** Next.js with `output: 'export'`, deployed to GitHub Pages.
 
-**Rationale:** The site is a personal portfolio that displays GitHub repositories and Medium articles. All data is public and is refreshed on each deploy. Static export eliminates server infrastructure, reduces cost to zero, and makes the site resilient — there is no runtime to fail.
+**Rationale:** The site shows public GitHub repositories and Medium articles, refreshed on each deploy. Static export removes server infrastructure and cost, and leaves no runtime to fail. The deployable artifact is `out/`; verify it locally by serving that directory statically.
 
-The deployable artifact is the generated `out/` directory. Any local verification of the exported site should serve that directory as static files.
+## Build-Time Data Fetching
 
-## Data Fetching: Build-Time Only
+**Decision:** All external API calls happen in `getStaticProps`, never in the browser.
 
-**Decision:** All external API calls happen in `getStaticProps`, not in the browser.
+**Rationale:** The GitHub API and the `rss2json` Medium proxy need no authentication or personalization. The deployed HTML already contains the data, no client-side keys are needed, and rate-limited endpoints are not exposed to visitors.
 
-**Rationale:** GitHub API and the `rss2json` Medium proxy do not require authentication or personalization. Fetching at build time means the deployed HTML already contains the data, avoids client-side API keys, and reduces exposure of rate-limited endpoints to end users.
-
-A 5-second timeout in `fetchData` prevents build hangs. The two sources are fetched with `Promise.allSettled`, so a failure is isolated per source: the rejection is logged and that source becomes an empty array while the other still renders.
-
-## Component Structure
-
-```text
-Page (index.tsx)
-├── Header             — h1 logo + in-page nav (#about, #github-projects, #medium-articles)
-├── Toggle             — light/dark mode
-├── Sidebar            — id="about"; photo, bio
-│   └── SocialLinks    — GitHub, Twitter, LinkedIn, Medium (Fontello icon font)
-├── Article            — GitHub repos + Medium articles
-│   ├── GitHub         — id="github-projects" (wrapped in ErrorBoundary → ApiErrorFallback)
-│   └── Medium         — id="medium-articles" (wrapped in ErrorBoundary → ApiErrorFallback)
-└── Footer             — RSS, sitemap, source links
-
-App (_app.tsx)
-├── Registers WebMCP tools through `navigator.modelContext` and `document.modelContext`,
-│   attempting registration once on mount with whichever APIs are available
-└── CookieConsent + GoogleAnalytics — rendered only when NEXT_PUBLIC_GA_TRACKING_ID is set
-```
-
-The section `id`s above are load-bearing: `Header` links to them, and the WebMCP tools in
-`src/shared/utils/webmcpTools.ts` read the DOM through those same selectors.
-
-`Article` is imported directly by the page, so it is part of the initial page bundle.
-
-## Styling: CSS Modules
-
-**Decision:** One `.module.css` file per component; global styles only for resets, CSS variables, and a minimal set of accessibility utilities (e.g. `.sr-only`).
-
-**Rationale:** Scoped class names prevent collisions without a runtime CSS-in-JS library. No build-time overhead beyond what Next.js already does. A small number of accessibility utilities like `.sr-only` are intentionally global so they can be reused across components without duplication.
-
-## Discovery and Agent Metadata (`public/.well-known/`)
-
-The site exposes static discovery metadata under `public/.well-known/`. The main entry points are the API catalog, MCP metadata, agent card, and agent skills index; related OAuth/OIDC, JWKS, AI plugin, HTTP Message Signatures, and security documents live alongside them.
-
-These are committed static JSON/text files under `public/`. They require no server. When updating any `agent-skills/*.md`, regenerate the `sha256` in `agent-skills/index.json`.
-
-**WebMCP tools** are the one dynamic part of this surface: `src/shared/utils/webmcpTools.ts` is the single source of truth, and it reads the rendered DOM rather than re-fetching the APIs. It currently defines `get-profile-summary`, `navigate-to-section`, `list-github-projects`, and `list-medium-articles`. Those names must stay aligned with the skill IDs in `agent-card.json` and the tool list in `agent-skills/webmcp-tools.md`.
-
-**Host limitation:** discovery here relies on static files and the `<link>` tags in `_document.tsx`. The HTTP-header layer (`Link`, `Vary`, `Cache-Control`, and `Accept: text/markdown` negotiation defined in `vercel.json` and `public/_headers`) is **not honored by GitHub Pages** — it applies only if the site is served from Vercel/Cloudflare Pages/Netlify. On GitHub Pages, fetch markdown directly at `/index.md`.
+`fetchData` has a 5-second timeout to prevent build hangs. Sources are fetched with `Promise.allSettled`: a failure is logged and that source becomes `[]`, while the other still renders.
 
 ## Data Normalizers
 
-Raw API responses are never passed directly to components. Each external source has a dedicated normalizer:
+Raw API responses never reach components.
 
 | Normalizer        | Input                    | Output      |
 | ----------------- | ------------------------ | ----------- |
 | `normalizeGitHub` | GitHub REST API response | `IGitHub[]` |
 | `normalizeMedium` | rss2json items array     | `IMedium[]` |
 
-If an API response shape changes, update the interface in `src/shared/interfaces/` and the normalizer together.
+If a response shape changes, update the interface in `src/shared/interfaces/` and the normalizer together.
+
+## Component Structure
+
+```text
+Page (index.tsx)
+├── Header           — h1 logo + in-page nav (#about, #github-projects, #medium-articles)
+├── Toggle           — light/dark mode
+├── Sidebar          — id="about"; photo, bio
+│   └── SocialLinks  — GitHub, Twitter, LinkedIn, Medium (Fontello icon font)
+├── Article          — GitHub repos + Medium articles
+│   ├── GitHub       — id="github-projects" (ErrorBoundary → ApiErrorFallback)
+│   └── Medium       — id="medium-articles" (ErrorBoundary → ApiErrorFallback)
+└── Footer           — RSS, sitemap, source links
+
+App (_app.tsx)
+├── WebMCP tools registered once on mount via navigator.modelContext / document.modelContext
+└── CookieConsent + GoogleAnalytics — only when NEXT_PUBLIC_GA_TRACKING_ID is set
+```
+
+The section `id`s are load-bearing: `Header` links to them and the WebMCP tools in `src/shared/utils/webmcpTools.ts` read the DOM through the same selectors. `Article` is imported directly by the page, so it is part of the initial bundle.
+
+## Styling: CSS Modules
+
+**Decision:** One `.module.css` per component; `globals.css` only for resets, CSS variables, and shared accessibility utilities (e.g. `.sr-only`).
+
+**Rationale:** Scoped class names avoid collisions without a runtime CSS-in-JS library or extra build overhead.
+
+## Discovery and Agent Metadata
+
+Static JSON/text files under `public/.well-known/` need no server. Entry points: API catalog, MCP metadata, agent card, and agent-skills index; OAuth/OIDC, JWKS, AI plugin, HTTP Message Signatures, and security documents sit alongside them. After editing any `agent-skills/*.md`, regenerate its `sha256` in `agent-skills/index.json`.
+
+**WebMCP tools** are the only dynamic part. `src/shared/utils/webmcpTools.ts` is the single source of truth and reads the rendered DOM instead of re-fetching APIs. Tools: `get-profile-summary`, `navigate-to-section`, `list-github-projects`, `list-medium-articles`. Their names must match the skill IDs in `agent-card.json` and the list in `agent-skills/webmcp-tools.md`.
+
+**Host limitation:** on GitHub Pages, discovery relies on static files and the `<link>` tags in `_document.tsx`. The HTTP-header layer (`Link`, `Vary`, `Cache-Control`, `Accept: text/markdown` negotiation in `vercel.json` and `public/_headers`) applies only on Vercel, Cloudflare Pages, or Netlify. Fetch `/index.md` directly.

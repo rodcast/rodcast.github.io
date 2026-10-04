@@ -5,9 +5,7 @@ You are an agent. This service documents **agentic registration** at `https://ro
 - Resource server: `https://rodrigocastilho.com/`
 - Authorization server: `https://rodrigocastilho.com`
 
-Read the Protected Resource Metadata and Authorization Server metadata first. Do not issue side-effecting `POST` requests during passive discovery — this site is statically hosted and documents a contract surface. The repository currently does not ship a user-facing login or claim UI, so the `service_auth` flow below is a protocol example for a deployment that provides that UI.
-
-The current GitHub Pages deployment serves static files and does not process registration, token, revocation, or event `POST` requests. The flows below are protocol examples for a deployment that implements the required backend and user-facing claim UI; do not run them against this site.
+Read the Protected Resource Metadata and Authorization Server metadata first. This GitHub Pages deployment serves static files only: it does not process registration, token, revocation, or event `POST` requests, and ships no user-facing login or claim UI. The flows below — including `service_auth` — are protocol examples for a deployment that implements the required backend; do not run them against this site during passive discovery.
 
 ## Step 1 — Discover
 

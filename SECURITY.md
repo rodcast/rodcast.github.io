@@ -2,22 +2,14 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in this project or on
-<https://rodrigocastilho.com/>, please report it privately.
+Report vulnerabilities in this project or on <https://rodrigocastilho.com/> privately. Do not open a public issue.
 
-- **Report privately:** [open a GitHub security advisory](https://github.com/rodcast/rodcast.github.io/security/advisories/new)
+- **Report:** [open a GitHub security advisory](https://github.com/rodcast/rodcast.github.io/security/advisories/new)
 - **Languages:** English, Portuguese
+- **Include:** affected URL or file, reproduction steps, and impact.
 
-Please include enough detail to reproduce the issue (affected URL or file,
-steps, and impact). Do not open a public GitHub issue for security reports.
-
-A machine-readable version of this contact information is published at
-[`/.well-known/security.txt`](https://rodrigocastilho.com/.well-known/security.txt)
-(RFC 9116).
+A machine-readable version is published at [`/.well-known/security.txt`](https://rodrigocastilho.com/.well-known/security.txt) (RFC 9116).
 
 ## Scope
 
-This is a statically exported personal website hosted on GitHub Pages. The
-`public/.well-known/` directory exposes public discovery metadata (OAuth/OIDC,
-MCP, agent, and API descriptors) for crawlers and agents; reports about those
-endpoints are welcome.
+A statically exported personal website on GitHub Pages. The public discovery metadata under `public/.well-known/` (OAuth/OIDC, MCP, agent, API) is in scope.
