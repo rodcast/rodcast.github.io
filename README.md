@@ -33,6 +33,7 @@ yarn dev
 - `yarn start`: Not compatible with static export; serve `out/` with a static file server instead.
 - `yarn lint`: Run ESLint checks.
 - `yarn lint:fix`: Run ESLint and auto-fix issues.
+- `yarn prettier --check .`: Check formatting with Prettier.
 - `yarn typecheck`: Type-check the project with `tsc --noEmit` (strict mode).
 
 ## Environment
