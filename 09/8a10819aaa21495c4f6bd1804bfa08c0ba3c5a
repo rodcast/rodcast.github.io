@@ -1,0 +1,56 @@
+public/.well-known/agent-skills/auth-discovery.md
+  h_fa492faa375953 6-7
+AGENTS.md
+  h_fa492faa375953 3,5,7,9-13,15,21,23,25,27-36,39-52,54,56-67,71,75,77-84,86,88-90,94-100,102-104,108-112,114,116,118-122,124,126-127,129,131,133,140,142,144-146,148,150-154,156,158,160,163,165-167,171
+  h_fa492faa375953 53,55,92,105-106,136
+.claude/skills/check-discovery-consistency/SKILL.md
+  h_fa492faa375953 8,12-14,19
+  s_359e0c69fa460e::t_7cfb47af80856d 10,15,17,20-21
+README.md
+  h_fa492faa375953 3,7,17,20-21,29,31,33
+  s_359e0c69fa460e::t_7ea609b1fbc37e 9,19,23,25,27,37,39-40,42,44-47
+DESIGN.md
+  h_fa492faa375953 19,52
+  s_359e0c69fa460e::t_e11b1f38db1ff1 5,7,9,11,13,15,17,20-28,34-41,44-45,48,54,56,58,60,62
+.claude/skills/new-component/SKILL.md
+  h_fa492faa375953 9,14-17
+  s_359e0c69fa460e::t_1acf29c39a5dde 11,13,18,22-23,40
+public/.well-known/agent-skills/index.json
+  h_fa492faa375953 23
+CLAUDE.md
+  h_fa492faa375953 3,10,12-13,15,17
+  s_359e0c69fa460e::t_1caf755c782d86 11,18-20
+.claude/agents/static-export-guardian.md
+  h_fa492faa375953 10,14-15,17-19,21
+  s_359e0c69fa460e::t_06e9d7f99dbcbf 12,16,23-25
+public/auth.md
+  h_fa492faa375953 8
+.claude/skills/verify-project/SKILL.md
+  h_fa492faa375953 8
+  s_359e0c69fa460e::t_5dd517c70a1195 12,18,24-29,31,33
+.claude/rules/git-workflow.md
+  s_359e0c69fa460e::t_204623ff02ab4e 3,5
+SECURITY.md
+  s_359e0c69fa460e::t_56d05b7d9fd3bd 5,7,9,11,15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "098a10819aaa21495c4f6bd1804bfa08c0ba3c5a",
+  "prompts": {},
+  "humans": {
+    "h_fa492faa375953": {
+      "author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  },
+  "sessions": {
+    "s_359e0c69fa460e": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "b66f3c18-c580-4b50-9309-6d6b29ba2f3e",
+        "model": "unknown"
+      },
+      "human_author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  }
+}
