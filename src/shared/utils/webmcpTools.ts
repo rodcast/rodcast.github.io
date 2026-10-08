@@ -16,7 +16,7 @@ const getProfileSummary = () => {
 
   return {
     name: getText(about?.querySelector('h2')),
-    description: getText(about?.querySelector('h3')),
+    description: getText(about?.querySelector('p')),
     section: 'about',
     links,
   };

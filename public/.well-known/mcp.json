@@ -32,32 +32,54 @@
         "pubDate": { "type": "integer" },
         "content": { "type": "string" }
       }
+    },
+    "webmcp_github_project": {
+      "$schema": "https://json-schema.org/draft-07/schema#",
+      "description": "Project summary returned by the WebMCP list-github-projects tool",
+      "type": "object",
+      "required": ["name", "url", "description"],
+      "properties": {
+        "name": { "type": "string" },
+        "url": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
+    "webmcp_medium_article": {
+      "$schema": "https://json-schema.org/draft-07/schema#",
+      "description": "Article summary returned by the WebMCP list-medium-articles tool",
+      "type": "object",
+      "required": ["title", "url", "publishedAt", "summary"],
+      "properties": {
+        "title": { "type": "string" },
+        "url": { "type": "string" },
+        "publishedAt": { "type": "string" },
+        "summary": { "type": "string" }
+      }
     }
   },
   "capabilities": [
     {
-      "id": "discover-profile",
-      "name": "Discover Profile Metadata",
-      "description": "Access public profile information and links",
+      "id": "get-profile-summary",
+      "name": "Get Profile Summary",
+      "description": "Return the rendered profile name, description, and social links.",
       "endpoint": "https://rodrigocastilho.com/"
     },
     {
-      "id": "list-repositories",
-      "name": "List GitHub Repositories",
-      "description": "Retrieve list of public GitHub repositories",
-      "schema_ref": "#/schemas/github"
+      "id": "navigate-to-section",
+      "name": "Navigate to Section",
+      "description": "Navigate to the about, projects, or articles section."
     },
     {
-      "id": "list-articles",
+      "id": "list-github-projects",
+      "name": "List GitHub Projects",
+      "description": "List public GitHub repositories rendered on the page.",
+      "schema_ref": "#/schemas/webmcp_github_project"
+    },
+    {
+      "id": "list-medium-articles",
       "name": "List Medium Articles",
-      "description": "Retrieve list of published Medium articles",
-      "schema_ref": "#/schemas/medium"
-    },
-    {
-      "id": "health-check",
-      "name": "Health Status",
-      "description": "Check service availability",
-      "endpoint": "https://rodrigocastilho.com/api/health"
+      "description": "List Medium articles rendered on the page.",
+      "schema_ref": "#/schemas/webmcp_medium_article"
     }
   ],
   "discovery": {

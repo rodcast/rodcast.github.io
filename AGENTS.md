@@ -29,7 +29,7 @@ src/
   styles/        # CSS Modules + globals.css
 public/          # Served at the site root
   .well-known/   # API/OAuth/MCP/agent discovery metadata
-  agent/, oauth/, api/health   # Static endpoint payloads
+  api/health                   # Static health response
   docs/          # api.md and api/ (HTML docs + openapi.json)
   index.md, auth.md, llms.txt, feed.xml, sitemap.xml, robots.txt, manifest.json
   _headers       # Header rules (non-Pages hosts only, see Hosting)
@@ -105,7 +105,7 @@ getStaticProps (build time)
 
 ### Discovery Metadata
 
-- Keep `.well-known` documents consistent: `api-catalog`, `agent-card.json`, `mcp.json`, `mcp/server-card.json`, `ai-plugin.json`, OAuth/OIDC metadata, and the agent-skills index.
+- Keep `.well-known` documents consistent: `api-catalog`, `agent-card.json`, `mcp.json`, `mcp/server-card.json`, `ai-plugin.json`, and the agent-skills index. Do not publish OAuth/OIDC metadata until the site has working authentication endpoints.
 - After editing any `public/.well-known/agent-skills/*.md`, refresh its `sha256` in `agent-skills/index.json` (`shasum -a 256 <file>`).
 - Keep WebMCP tool names in `webmcpTools.ts` aligned with the skill IDs in `agent-card.json` and the list in `agent-skills/webmcp-tools.md`.
 - Keep the discovery `<link>`s in `_document.tsx` consistent with the `Link` header in `public/_headers` and `vercel.json`.

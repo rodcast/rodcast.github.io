@@ -20,7 +20,7 @@ The site is a statically exported Next.js application. Project and article data 
 ## Agents
 
 - [Agent Card](https://rodrigocastilho.com/.well-known/agent-card.json): Agent metadata for this site.
-- [Agent Skills Index](https://rodrigocastilho.com/.well-known/agent-skills/index.json): Catalog of agent skills (markdown negotiation, API discovery, WebMCP tools, auth).
+- [Agent Skills Index](https://rodrigocastilho.com/.well-known/agent-skills/index.json): Catalog of agent skills (markdown negotiation, API discovery, WebMCP tools, and authentication status).
 - [MCP Server Card](https://rodrigocastilho.com/.well-known/mcp/server-card.json): Model Context Protocol server descriptor.
 
 ## Social

@@ -5,6 +5,21 @@
   padding: var(--space-x-2);
 }
 
+.skipLink {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 2;
+  padding: 0.5rem 1rem;
+  color: var(--primary-color);
+  background: var(--secondary-color);
+  transform: translateY(-200%);
+}
+
+.skipLink:focus {
+  transform: translateY(0);
+}
+
 .main {
   display: grid;
   grid-gap: var(--space-x-2);

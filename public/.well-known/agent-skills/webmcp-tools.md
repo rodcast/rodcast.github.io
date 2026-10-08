@@ -7,8 +7,8 @@ currently on screen.
 
 ## Tools
 
-- `get-profile-summary`: Returns the visible profile name and social links from
-  the about section. No input.
+- `get-profile-summary`: Returns the visible profile name, description, and
+  social links from the about section. No input.
 - `navigate-to-section`: Scrolls the page to a known section. Required input
   `section`, one of `about`, `github-projects`, `medium-articles`.
 - `list-github-projects`: Returns the GitHub repositories rendered in the

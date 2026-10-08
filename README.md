@@ -35,7 +35,7 @@ Never commit to `master`; branch and open a pull request.
 ## API and Discovery
 
 - API overview: `public/docs/api.md`; OpenAPI contract: `public/docs/api/openapi.json`
-- Agent registration contract: `public/auth.md`
+- Authentication status: `public/auth.md` (OAuth/OIDC flows are not implemented)
 - Discovery metadata: `public/.well-known/`
 - GitHub Pages ignores the `Link`/`Vary` rules in `public/_headers` and the `vercel.json` rewrites. Fetch `/index.md` directly instead of using `Accept: text/markdown`.
 

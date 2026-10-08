@@ -13,13 +13,10 @@ is a static file served with `GET`; there is no request-time server.
 - `/.well-known/mcp/server-card.json` - MCP server discovery metadata.
 - `/.well-known/ai-plugin.json` - AI plugin manifest pointing at the OpenAPI contract.
 
-## Authentication Endpoints
+## Authentication
 
-- `/.well-known/openid-configuration` - OpenID Connect metadata.
-- `/.well-known/oauth-authorization-server` - OAuth authorization server metadata.
-- `/.well-known/oauth-protected-resource` - OAuth protected resource metadata.
-- `/.well-known/jwks.json` - JWKS URI advertised by the authorization server metadata.
-- `/auth.md` - Agent registration and token-exchange contract.
+This static site does not provide OAuth, OpenID Connect, token exchange, or
+agent registration. The `/auth.md` document describes this limitation.
 
 ## Identity and Security
 
@@ -37,7 +34,7 @@ is a static file served with `GET`; there is no request-time server.
 - `/llms.txt` - Site index for LLM clients.
 - `/index.md` - Markdown representation of the homepage.
 - `/feed.xml` - RSS feed.
-- `/sitemap.xml` - Indexable URLs.
+- `/sitemap.xml` - Indexable HTML and documentation URLs.
 
 > On GitHub Pages, `Accept: text/markdown` content negotiation on `/` is not
 > active — the `vercel.json` rewrite and `public/_headers` rules only apply on
