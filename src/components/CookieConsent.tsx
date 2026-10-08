@@ -64,7 +64,7 @@ export default function CookieConsent() {
   return visible ? (
     <div
       className={styles.banner}
-      role="dialog"
+      role="region"
       aria-live="polite"
       aria-label="Cookie consent"
     >

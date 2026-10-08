@@ -15,7 +15,7 @@ interface ArticleProps {
 /** Main article component */
 export default function Article({ dataGitHub, dataMedium }: ArticleProps) {
   return (
-    <main className={styles.content}>
+    <main id="main-content" className={styles.content}>
       <section id="github-projects">
         <ErrorBoundary
           fallback={<ApiErrorFallback title="My repositories on GitHub" />}

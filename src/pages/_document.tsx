@@ -351,9 +351,20 @@ class MyDocument extends Document {
             href="/feed.xml"
           />
           <link rel="api-catalog" href="/.well-known/api-catalog" />
+          <link
+            rel="service-desc"
+            type="application/openapi+json"
+            href="/docs/api/openapi.json"
+          />
           <link rel="service-doc" href="/docs/api/" />
           <link rel="alternate" type="text/markdown" href="/index.md" />
+          <link rel="alternate" type="text/markdown" href="/auth.md" />
           <link rel="describedby" href="/.well-known/agent-skills/index.json" />
+          <link rel="describedby" href="/.well-known/agent-card.json" />
+          <link
+            rel="mcp-server-card"
+            href="/.well-known/mcp/server-card.json"
+          />
 
           {/* JSON-LD Structured Data */}
           <script
