@@ -1,0 +1,26 @@
+package.json
+  h_fa492faa375953 40-42
+yarn.lock
+  s_0e8626a48d975c::t_da5ecb9c89868a 267-270,272,274-277,279,281-284,286,288-291,293-296,298-301,303-306,308-311,313-316,318-321,323-326,328-331,333-336,338-341,343,345-348,350,352-355,357,359-362,364,366-369,371,373-376,378,380-383,385,387-390,392,394-397,401-404,406,408-411,413-416,418-421,2312-2315,2321-2345
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d2bcd23e1039ad8792453e68a437bd492a70d085",
+  "prompts": {},
+  "humans": {
+    "h_fa492faa375953": {
+      "author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  },
+  "sessions": {
+    "s_0e8626a48d975c": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "321bf6a2-445f-48ad-8e50-bc27c8af3cc7",
+        "model": "unknown"
+      },
+      "human_author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  }
+}
