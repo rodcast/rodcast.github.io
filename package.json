@@ -37,5 +37,8 @@
     "husky": "^9.1.7",
     "prettier": "^3.9.9",
     "typescript": "^6.0.3"
+  },
+  "resolutions": {
+    "sharp": "0.35.5"
   }
 }
