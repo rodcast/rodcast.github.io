@@ -10,7 +10,7 @@
   "homepage": "https://rodrigocastilho.com/",
   "scripts": {
     "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 next dev",
-    "build": "next build",
+    "build": "NODE_USE_SYSTEM_CA=1 next build",
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
