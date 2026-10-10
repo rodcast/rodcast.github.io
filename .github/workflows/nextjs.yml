@@ -84,6 +84,7 @@ jobs:
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
         env:
+          NODE_USE_SYSTEM_CA: '1'
           # Set this as an Actions *variable* (Settings -> Secrets and
           # variables -> Actions -> Variables). It is a public GA measurement
           # ID, not a secret, but it must be injected here now that .env is
