@@ -17,7 +17,7 @@
       "headers": [
         {
           "key": "Link",
-          "value": "</sitemap.xml>; rel=\"sitemap\"; type=\"application/xml\", </feed.xml>; rel=\"alternate\"; type=\"application/rss+xml\", </.well-known/api-catalog>; rel=\"api-catalog\", </docs/api/openapi.json>; rel=\"service-desc\"; type=\"application/openapi+json\", </docs/api/>; rel=\"service-doc\", </index.md>; rel=\"alternate\"; type=\"text/markdown\", </auth.md>; rel=\"alternate\"; type=\"text/markdown\", </.well-known/agent-skills/index.json>; rel=\"describedby\", </.well-known/agent-card.json>; rel=\"describedby\", </.well-known/mcp/server-card.json>; rel=\"mcp-server-card\""
+          "value": "</sitemap.xml>; rel=\"sitemap\"; type=\"application/xml\", </feed.xml>; rel=\"alternate\"; type=\"application/rss+xml\", </.well-known/api-catalog.json>; rel=\"api-catalog\", </docs/api/openapi.json>; rel=\"service-desc\"; type=\"application/openapi+json\", </docs/api/>; rel=\"service-doc\", </index.md>; rel=\"alternate\"; type=\"text/markdown\", </auth.md>; rel=\"alternate\"; type=\"text/markdown\", </.well-known/agent-skills/index.json>; rel=\"describedby\", </.well-known/agent-card.json>; rel=\"describedby\", </.well-known/mcp/server-card.json>; rel=\"mcp-server-card\""
         },
         {
           "key": "Vary",
@@ -27,6 +27,15 @@
     },
     {
       "source": "/.well-known/api-catalog",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/linkset+json; profile=\"https://www.rfc-editor.org/info/rfc9727\"; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/.well-known/api-catalog.json",
       "headers": [
         {
           "key": "Content-Type",
@@ -67,6 +76,15 @@
         {
           "key": "Content-Type",
           "value": "text/markdown; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/api/health.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
         }
       ]
     },

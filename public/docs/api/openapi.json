@@ -3,7 +3,7 @@
   "info": {
     "title": "Rodrigo Castilho Public Site API",
     "version": "1.0.0",
-    "description": "Public metadata exposed for agent and crawler discovery."
+    "description": "Profile and content are published as static HTML, Markdown, and RSS. This OpenAPI contract describes the static health probe."
   },
   "servers": [
     {
@@ -11,12 +11,37 @@
     }
   ],
   "paths": {
-    "/api/health": {
+    "/api/health.json": {
       "get": {
         "summary": "Health probe",
         "responses": {
           "200": {
-            "description": "Service is reachable"
+            "description": "Static health status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["status"],
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "const": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/health": {
+      "get": {
+        "deprecated": true,
+        "summary": "Legacy extensionless health probe",
+        "responses": {
+          "200": {
+            "description": "Legacy static health status; use /api/health.json for a JSON media type"
           }
         }
       }

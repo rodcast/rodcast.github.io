@@ -6,14 +6,14 @@
       "type": "discovery",
       "description": "Publishes API catalog and API documentation links for automated clients.",
       "url": "https://rodrigocastilho.com/.well-known/agent-skills/api-discovery.md",
-      "sha256": "f69354b269f8b096b8efca8eae0984e85b4cd7c3e589b5b7af69b39c0e68a9c7"
+      "sha256": "5f6908e1cd7d21913be1b33df05b7ec5397dbd586a3cfdd7f2098531621331fe"
     },
     {
       "name": "markdown-negotiation",
       "type": "representation",
       "description": "Publishes a markdown representation of the homepage for agents.",
       "url": "https://rodrigocastilho.com/.well-known/agent-skills/markdown-negotiation.md",
-      "sha256": "781023e1d165d50962423c27fa07be1be9eb2d2ae13c150a946f569f48b1f8c0"
+      "sha256": "ab9a0b2a693fbaabe7ef4dfd2fd1f1789699da125a7cc80d8d4fd0d2038f4771"
     },
     {
       "name": "auth-discovery",

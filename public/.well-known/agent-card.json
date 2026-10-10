@@ -1,6 +1,6 @@
 {
   "name": "Rodrigo Castilho Personal Website Agent",
-  "description": "A read-only agent that provides information about Rodrigo Castilho's profile, public GitHub repositories, and Medium articles via WebMCP browser tools.",
+  "description": "A read-only website exposing profile and content through static files. WebMCP browser tools are registered only in compatible browsers that implement the WebMCP modelContext API.",
   "version": "1.0.0",
   "supportedInterfaces": [
     {

@@ -8,17 +8,21 @@
   <body>
     <h1>Rodrigo Castilho API Documentation</h1>
     <p>
-      This site publishes profile, repository, and article data for automated
-      clients.
+      Profile and content are available as static HTML, Markdown, and RSS. The
+      OpenAPI contract describes the health probe only; this site has no
+      request-time API server.
     </p>
     <ul>
       <li>
         OpenAPI: <a href="/docs/api/openapi.json">/docs/api/openapi.json</a>
       </li>
       <li>
-        Catalog: <a href="/.well-known/api-catalog">/.well-known/api-catalog</a>
+        Catalog:
+        <a href="/.well-known/api-catalog.json"
+          >/.well-known/api-catalog.json</a
+        >
       </li>
-      <li>Status: <code>/api/health</code></li>
+      <li>Status: <a href="/api/health.json">/api/health.json</a></li>
     </ul>
   </body>
 </html>
