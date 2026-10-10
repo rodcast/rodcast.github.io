@@ -3,7 +3,7 @@
   "name_for_human": "Rodrigo Castilho Personal Site",
   "name_for_model": "rodrigo_castilho_public_site",
   "description_for_human": "Personal website for Rodrigo Castilho. Provides access to profile content, GitHub repositories, and Medium articles.",
-  "description_for_model": "This is the personal website of Rodrigo Castilho. It exposes public profile metadata, GitHub repository index, and Medium article feed via static JSON and markdown endpoints.",
+  "description_for_model": "This is the personal website of Rodrigo Castilho. Profile, projects, and article summaries are available in the rendered homepage, /index.md, and /feed.xml. The OpenAPI contract describes only a static health probe; there is no request-time content API.",
   "auth": {
     "type": "none"
   },

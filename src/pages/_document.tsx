@@ -350,7 +350,7 @@ class MyDocument extends Document {
             title="Rodrigo Castilho RSS Feed"
             href="/feed.xml"
           />
-          <link rel="api-catalog" href="/.well-known/api-catalog" />
+          <link rel="api-catalog" href="/.well-known/api-catalog.json" />
           <link
             rel="service-desc"
             type="application/openapi+json"

@@ -4,6 +4,10 @@
 
 The site is a statically exported Next.js application. Project and article data are fetched at build time from the GitHub REST API and the Medium RSS feed. The Markdown homepage is available directly at `/index.md`. Accept-based content negotiation on `/` works only on hosts that honor the repository's rewrite and header configuration; GitHub Pages does not.
 
+## Content Use
+
+The site owner allows public site content to be used for AI training, search indexing, and AI inputs. The published signals are `ai-train=yes`, `search=yes`, and `ai-input=yes` in [robots.txt](https://rodrigocastilho.com/robots.txt).
+
 ## Content
 
 - [Homepage (Markdown)](https://rodrigocastilho.com/index.md): Profile summary, projects, and articles with embedded schema.org JSON-LD.
@@ -15,12 +19,15 @@ The site is a statically exported Next.js application. Project and article data 
 - [OpenAPI Specification](https://rodrigocastilho.com/docs/api/openapi.json): OpenAPI 3.1 description of the public endpoints.
 - [API Documentation](https://rodrigocastilho.com/docs/api/): Human-readable API docs.
 - [API Documentation (Markdown)](https://rodrigocastilho.com/docs/api.md): Agent-friendly API docs.
-- [API Catalog](https://rodrigocastilho.com/.well-known/api-catalog): RFC 9727 linkset advertising API discovery endpoints.
+- [API Catalog](https://rodrigocastilho.com/.well-known/api-catalog.json): RFC 9727 linkset advertising API discovery endpoints. The extensionless `/.well-known/api-catalog` path is also available.
+- [Health Status](https://rodrigocastilho.com/api/health.json): Static JSON health probe; the OpenAPI contract does not expose profile or content APIs.
 
 ## Agents
 
 - [Agent Card](https://rodrigocastilho.com/.well-known/agent-card.json): Agent metadata for this site.
 - [Agent Skills Index](https://rodrigocastilho.com/.well-known/agent-skills/index.json): Catalog of agent skills (markdown negotiation, API discovery, WebMCP tools, and authentication status).
+- [WebMCP Tool Details](https://rodrigocastilho.com/.well-known/agent-skills/webmcp-tools.md): Browser tools available only when the browser supports the WebMCP modelContext API.
+- [Authentication Status](https://rodrigocastilho.com/auth.md): Confirms this static site does not provide OAuth or authenticated API access.
 - [MCP Server Card](https://rodrigocastilho.com/.well-known/mcp/server-card.json): Model Context Protocol server descriptor.
 
 ## Social

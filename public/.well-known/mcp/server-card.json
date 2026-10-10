@@ -12,7 +12,7 @@
   },
   "capabilities": {
     "tools": true,
-    "resources": true,
+    "resources": false,
     "prompts": false
   }
 }

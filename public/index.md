@@ -2,12 +2,16 @@
 title: Rodrigo Castilho - Staff Frontend Software Engineer
 description: Staff Frontend Software Engineer at Wellhub specializing in React, Next.js, JavaScript, TypeScript, AWS, design systems, web performance, and SEO.
 image: https://rodrigocastilho.com/rodrigo-castilho-rodcast_card.jpg
-dateModified: 2026-09-29
+dateModified: 2026-10-10
 ---
 
 # Rodrigo Castilho
 
 Staff Frontend Software Engineer at Wellhub specializing in React, Next.js, JavaScript, TypeScript, AWS, design systems, web performance, and SEO.
+
+## Content Use
+
+The site owner allows public site content to be used for AI training, search indexing, and AI inputs. These preferences are published as `Content-Signal: ai-train=yes, search=yes, ai-input=yes` in [robots.txt](https://rodrigocastilho.com/robots.txt).
 
 ## About
 
@@ -47,7 +51,7 @@ Recent articles shown on the [homepage](https://rodrigocastilho.com/#medium-arti
 
 Read all articles at [medium.com/@rodcast](https://medium.com/@rodcast).
 
-Last editorial update: 2026-09-29.
+Last editorial update: 2026-10-10.
 
 ```json
 {
@@ -116,7 +120,7 @@ Last editorial update: 2026-09-29.
       "description": "Staff Frontend Software Engineer at Wellhub specializing in React, Next.js, JavaScript, TypeScript, AWS, design systems, web performance, and SEO.",
       "inLanguage": "en-US",
       "datePublished": "2023-01-01",
-      "dateModified": "2026-09-29"
+      "dateModified": "2026-10-10"
     },
     {
       "@type": "ProfilePage",
