@@ -1,0 +1,68 @@
+public/llms.txt
+  h_fa492faa375953 7-10,22-23,29-30
+src/pages/_document.tsx
+  h_fa492faa375953 353
+public/.well-known/agent-skills/api-discovery.md
+  h_fa492faa375953 8,11-17
+public/.well-known/agent-skills/index.json
+  h_fa492faa375953 9,16
+public/.well-known/ai-plugin.json
+  h_fa492faa375953 6
+public/index.md
+  h_fa492faa375953 5,12-15,54,123
+public/.well-known/api-catalog.json
+  h_fa492faa375953 1-29
+public/_headers
+  h_fa492faa375953 2,11-13,19-20
+  h_fa492faa375953 21
+public/.well-known/api-catalog
+  h_fa492faa375953 23
+public/docs/api.md
+  h_fa492faa375953 3-5,7-9,14-15,36-38
+  s_aea8d08b3ef721::t_d0e3ad929bb3d5 6
+public/docs/api/index.html
+  h_fa492faa375953 11-13,21-22,25
+  h_fa492faa375953 20,23
+public/.well-known/mcp.json
+  h_fa492faa375953 86
+public/api/health.json
+  h_fa492faa375953 1
+public/.well-known/agent-skills/markdown-negotiation.md
+  h_fa492faa375953 27-30
+public/.well-known/agent-card.json
+  h_fa492faa375953 3
+public/docs/api/openapi.json
+  h_fa492faa375953 6,14,19-41,44
+  h_fa492faa375953 42-43
+public/.well-known/security.txt
+  h_fa492faa375953 2
+  h_fa492faa375953 4
+public/robots.txt
+  h_fa492faa375953 2,7-8
+vercel.json
+  h_fa492faa375953 20,38-45,82-87
+  h_fa492faa375953 37,88-90
+public/.well-known/mcp/server-card.json
+  h_fa492faa375953 15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "cb6a4485fe286688879daf97be4bca7a1abd398d",
+  "prompts": {},
+  "humans": {
+    "h_fa492faa375953": {
+      "author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  },
+  "sessions": {
+    "s_aea8d08b3ef721": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "e5f04dc8-3b3d-43ac-9b39-e62e725b9ae7",
+        "model": "unknown"
+      },
+      "human_author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  }
+}
