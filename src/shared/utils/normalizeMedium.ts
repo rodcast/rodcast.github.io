@@ -3,6 +3,7 @@ import { IMedium, Item } from '@/interfaces/index';
 type MediumSourceItem = Pick<Item, 'guid' | 'title' | 'link' | 'pubDate'> &
   Partial<Pick<Item, 'content' | 'description'>>;
 
+/** Decode named and numeric XML entities in RSS text. */
 const decodeXmlEntities = (value: string): string =>
   value.replace(/&(#x[\da-f]+|#\d+|amp|lt|gt|quot|apos);/gi, (entity) => {
     if (entity[1] === '#') {
@@ -28,6 +29,7 @@ const decodeXmlEntities = (value: string): string =>
     return namedEntities[entity.slice(1, -1).toLowerCase()] ?? entity;
   });
 
+/** Read and decode a text element from a bundled RSS item. */
 const readXmlTag = (item: string, tag: string): string => {
   const match = item.match(
     new RegExp(`<${tag}(?:\\s[^>]*)?>([\\s\\S]*?)<\\/${tag}>`, 'i')
