@@ -1,0 +1,24 @@
+src/shared/utils/normalizeMedium.ts
+  s_4fe0575f0d256e::t_892fbeea417c72 6,32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ab9663c3490ad942310c1c5e6acb1be9822a23c6",
+  "prompts": {},
+  "humans": {
+    "h_fa492faa375953": {
+      "author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  },
+  "sessions": {
+    "s_4fe0575f0d256e": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "a8729947-1c7c-4c49-ab34-c1e6d7016d68",
+        "model": "unknown"
+      },
+      "human_author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  }
+}
