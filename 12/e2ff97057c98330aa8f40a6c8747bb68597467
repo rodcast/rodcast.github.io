@@ -1,0 +1,37 @@
+AGENTS.md
+  s_4fe0575f0d256e::t_1c927c80a3ed2e 11,97
+  s_4fe0575f0d256e::t_7c17b86af3c12c 48
+DESIGN.md
+  s_4fe0575f0d256e::t_7c17b86af3c12c 23-26
+  s_4fe0575f0d256e::t_19ccc89fdb9e59 17
+  s_4fe0575f0d256e::t_1c927c80a3ed2e 15
+  s_4fe0575f0d256e::t_049bf7f6e225d5 27
+src/shared/utils/normalizeMedium.ts
+  s_4fe0575f0d256e::t_19ccc89fdb9e59 52-53,68-71,73-82
+  s_4fe0575f0d256e::t_436d9d9c6b1068 10-13
+  s_4fe0575f0d256e::t_1c927c80a3ed2e 3-9,14-38,40,65-67,72,83-85
+src/pages/index.tsx
+  s_4fe0575f0d256e::t_19ccc89fdb9e59 50-53
+  s_4fe0575f0d256e::t_1c927c80a3ed2e 1-3,13-17,44-49,54-66,73
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "12e2ff97057c98330aa8f40a6c8747bb68597467",
+  "prompts": {},
+  "humans": {
+    "h_fa492faa375953": {
+      "author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  },
+  "sessions": {
+    "s_4fe0575f0d256e": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "a8729947-1c7c-4c49-ab34-c1e6d7016d68",
+        "model": "unknown"
+      },
+      "human_author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  }
+}
