@@ -1,3 +1,6 @@
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
+
 import Article from '@/components/Article';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
@@ -7,7 +10,11 @@ import { GITHUB_API, MEDIUM_API } from '@/constants/paths';
 import { IGitHub } from '@/interfaces/github';
 import { IMedium } from '@/interfaces/medium';
 import { fetchData } from '@/utils/fetch';
-import { normalizeGitHub, normalizeMedium } from '@/utils/index';
+import {
+  normalizeGitHub,
+  normalizeMedium,
+  normalizeMediumFeed,
+} from '@/utils/index';
 
 import styles from '@/styles/page.module.css';
 
@@ -34,16 +41,36 @@ export async function getStaticProps() {
     );
   }
 
+  let dataMedium =
+    mediumResult.status === 'fulfilled'
+      ? normalizeMedium(mediumResult.value?.items)
+      : [];
+
+  if (dataMedium.length === 0) {
+    const feed = await readFile(
+      join(process.cwd(), 'public', 'feed.xml'),
+      'utf8'
+    );
+    dataMedium = normalizeMediumFeed(feed);
+
+    if (dataMedium.length === 0) {
+      // eslint-disable-next-line no-console
+      console.error('No Medium articles found in the bundled RSS feed.');
+    } else if (mediumResult.status === 'fulfilled') {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'Medium API returned no articles; using the bundled RSS feed.'
+      );
+    }
+  }
+
   return {
     props: {
       dataGitHub:
         githubResult.status === 'fulfilled'
           ? normalizeGitHub(githubResult.value)
           : [],
-      dataMedium:
-        mediumResult.status === 'fulfilled'
-          ? normalizeMedium(mediumResult.value?.items)
-          : [],
+      dataMedium,
     },
   };
 }

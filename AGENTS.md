@@ -8,7 +8,7 @@ Personal website for Rodrigo Castilho: profile content plus the owner's latest p
 
 - **Stack:** Next.js 16 (Pages Router), React 19, TypeScript (strict), `@next/third-parties` (Google Analytics).
 - **Deployment:** static export (`next build` → `out/`) hosted on GitHub Pages.
-- **External data:** GitHub REST API (repos) and `rss2json` (Medium RSS), fetched at build time.
+- **External data:** GitHub REST API (repos) and `rss2json` (Medium RSS), fetched at build time; Medium falls back to the bundled `public/feed.xml`.
 - **Tooling:** ESLint 9, Prettier, Husky (pre-commit), DeepSource (`.deepsource.toml`).
 - **Runtime:** Node 24.x (`.nvmrc`), Yarn.
 
@@ -45,7 +45,7 @@ Key files:
 | `src/pages/index.tsx`                 | Main page; fetches data in `getStaticProps`                   |
 | `src/shared/utils/fetch.ts`           | Typed fetch helper (timeout, explicit errors)                 |
 | `src/shared/utils/normalizeGitHub.ts` | Normalizes and filters GitHub responses                       |
-| `src/shared/utils/normalizeMedium.ts` | Normalizes and filters Medium RSS responses                   |
+| `src/shared/utils/normalizeMedium.ts` | Normalizes Medium API responses and the bundled RSS fallback  |
 | `src/shared/utils/webmcpTools.ts`     | WebMCP tool definitions (read from the rendered DOM)          |
 | `next.config.mjs`                     | Static export config (see Critical Constraints)               |
 
@@ -94,7 +94,7 @@ CSS Modules for all component styles. `src/styles/globals.css` is only for reset
 ```text
 getStaticProps (build time)
   → Promise.allSettled([fetchData(GITHUB_API), fetchData(MEDIUM_API)])
-      (5s timeout; a rejected source becomes [])
+      (5s timeout; Medium falls back to public/feed.xml when empty or unavailable)
   → normalizeGitHub / normalizeMedium
   → page props → Article → GitHub + Medium
 ```
