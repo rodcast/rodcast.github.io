@@ -1,0 +1,24 @@
+yarn.lock
+  s_d5c698415cd35b::t_1983b25dc787fb 2166-2169
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "45a01f9ad79fca2ac9e039557394571fc52513d9",
+  "prompts": {},
+  "humans": {
+    "h_fa492faa375953": {
+      "author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  },
+  "sessions": {
+    "s_d5c698415cd35b": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "656d3141-1709-48e0-9b86-ed5d26ae3073",
+        "model": "unknown"
+      },
+      "human_author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  }
+}
