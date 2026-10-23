@@ -1,0 +1,14 @@
+.nvmrc
+  h_fa492faa375953 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b5d5cd1253634989b4a24ccddaee1425569ca115",
+  "prompts": {},
+  "humans": {
+    "h_fa492faa375953": {
+      "author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  }
+}
