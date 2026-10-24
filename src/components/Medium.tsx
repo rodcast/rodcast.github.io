@@ -34,6 +34,7 @@ export default function Medium({ mediumData }: MediumProps) {
             const dateLabel = isValidPublishedDate
               ? new Intl.DateTimeFormat('en-US', {
                   dateStyle: 'long',
+                  timeZone: 'UTC',
                 }).format(publishedDate)
               : 'Date unavailable';
 
