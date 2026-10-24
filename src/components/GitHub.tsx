@@ -2,14 +2,14 @@ import { IGitHub } from '@/interfaces/index';
 import styles from '@/styles/article.module.css';
 
 interface GitHubProps {
-  data?: IGitHub[];
+  githubData?: IGitHub[];
 }
 
 /** GitHub repositories */
-export default function GitHub({ data }: GitHubProps) {
-  const repos: IGitHub[] = data ?? [];
+export default function GitHub({ githubData }: GitHubProps) {
+  const repos: IGitHub[] = githubData ?? [];
 
-  const isError = !data;
+  const isError = !githubData;
   const isEmpty = repos?.length === 0;
 
   let message: string | null = null;

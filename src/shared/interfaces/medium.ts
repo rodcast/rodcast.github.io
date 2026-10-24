@@ -6,22 +6,6 @@ export interface IMedium {
   content: string;
 }
 
-export interface IMediumApi {
-  status?: string;
-  feed?: Feed;
-  items?: Item[];
-  [x: string]: unknown;
-}
-
-interface Feed {
-  url: string;
-  title: string;
-  link: string;
-  author: string;
-  description: string;
-  image: string;
-}
-
 export interface Item {
   title: string;
   pubDate: string;

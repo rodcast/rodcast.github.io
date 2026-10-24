@@ -1,7 +1,18 @@
-import { IGitHub, IGitHubApi } from '@/interfaces/index';
+import { IGitHub, IGitHubRepo } from '@/interfaces/index';
+
+type GitHubSourceRepo = Pick<
+  IGitHubRepo,
+  | 'node_id'
+  | 'name'
+  | 'html_url'
+  | 'description'
+  | 'private'
+  | 'fork'
+  | 'updated_at'
+>;
 
 /** Normalize GitHub API data */
-export const normalizeGitHub = (repos?: IGitHubApi): IGitHub[] => {
+export const normalizeGitHub = (repos?: GitHubSourceRepo[]): IGitHub[] => {
   if (!repos || !Array.isArray(repos)) {
     return [];
   }

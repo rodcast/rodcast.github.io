@@ -49,8 +49,6 @@ export interface IGitHubRepo {
   default_branch: string;
 }
 
-export type IGitHubApi = IGitHubRepo[];
-
 interface Owner {
   login: string;
   id: number;

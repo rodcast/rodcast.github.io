@@ -12,18 +12,19 @@ Architecture decisions and rationale for rodcast.github.io.
 
 **Decision:** All external API calls happen in `getStaticProps`, never in the browser.
 
-**Rationale:** The GitHub API and the `rss2json` Medium proxy need no authentication or personalization. The deployed HTML already contains the data, no client-side keys are needed, and rate-limited endpoints are not exposed to visitors.
+**Rationale:** The GitHub API and the `rss2json` Medium proxy need no authentication or personalization. The deployed HTML already contains the data, no client-side keys are needed, and rate-limited endpoints are not exposed to visitors. If the Medium proxy fails or returns no articles, the build uses the articles in the bundled `public/feed.xml`.
 
-`fetchData` has a 5-second timeout to prevent build hangs. Sources are fetched with `Promise.allSettled`: a failure is logged and that source becomes `[]`, while the other still renders.
+`fetchData` has a 5-second timeout to prevent build hangs. Sources are fetched with `Promise.allSettled` so one failure cannot blank the other. GitHub repositories come from the live API; private and forked repositories are filtered out. If the Medium proxy fails or returns no articles, the build uses the articles in the bundled `public/feed.xml`. API failures and empty responses are logged.
 
 ## Data Normalizers
 
 Raw API responses never reach components.
 
-| Normalizer        | Input                    | Output      |
-| ----------------- | ------------------------ | ----------- |
-| `normalizeGitHub` | GitHub REST API response | `IGitHub[]` |
-| `normalizeMedium` | rss2json items array     | `IMedium[]` |
+| Normalizer            | Input                | Output      |
+| --------------------- | -------------------- | ----------- |
+| `normalizeGitHub`     | GitHub API response  | `IGitHub[]` |
+| `normalizeMedium`     | rss2json items array | `IMedium[]` |
+| `normalizeMediumFeed` | Bundled RSS feed XML | `IMedium[]` |
 
 If a response shape changes, update the interface in `src/shared/interfaces/` and the normalizer together.
 
