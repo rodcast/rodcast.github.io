@@ -1,0 +1,60 @@
+src/components/Medium.tsx
+  s_4fe0575f0d256e::t_68018219289ea0 5,9-10,12
+AGENTS.md
+  s_4fe0575f0d256e::t_5682c148b3afdd 97
+  s_28a24802cd2cd7::t_623c081b78e0da 11,98
+public/github-repos.json
+  s_28a24802cd2cd7::t_c659056e287f2e 1-29
+src/pages/index.tsx
+  s_28a24802cd2cd7::t_c659056e287f2e 51-55
+  s_4fe0575f0d256e::t_68018219289ea0 72,77-78,82,84,97-98,104-105,109,120
+  s_28a24802cd2cd7::t_623c081b78e0da 48-50,56
+  s_4fe0575f0d256e::t_5682c148b3afdd 45-47,57,59,64-65,69-71
+  s_28a24802cd2cd7::t_6ab8460e32a8dd 44,58,60-63,66-68
+src/components/Article.tsx
+  s_4fe0575f0d256e::t_68018219289ea0 11-12,16,23,30
+src/shared/utils/normalizeGitHub.ts
+  s_4fe0575f0d256e::t_5682c148b3afdd 1-12,15
+DESIGN.md
+  s_28a24802cd2cd7::t_623c081b78e0da 17
+  s_a16dc1f52c06f8::t_ca3bb1a491700b 23-27
+src/components/GitHub.tsx
+  s_4fe0575f0d256e::t_68018219289ea0 5,9-10,12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "3e1500483180f6a17e40d51e96b08f12682faee8",
+  "prompts": {},
+  "humans": {
+    "h_fa492faa375953": {
+      "author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  },
+  "sessions": {
+    "s_28a24802cd2cd7": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "985f1f44-08a9-446a-a1f0-09f11a5e635f",
+        "model": "unknown"
+      },
+      "human_author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    },
+    "s_4fe0575f0d256e": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "a8729947-1c7c-4c49-ab34-c1e6d7016d68",
+        "model": "unknown"
+      },
+      "human_author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    },
+    "s_a16dc1f52c06f8": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "call_Szmy7MSHaSGXca0ZQvdPFQVV",
+        "model": "unknown"
+      },
+      "human_author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  }
+}
