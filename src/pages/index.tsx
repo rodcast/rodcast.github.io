@@ -41,32 +41,14 @@ export async function getStaticProps() {
     );
   }
 
-  const githubApiData =
+  const githubData =
     githubResult.status === 'fulfilled'
       ? normalizeGitHub(githubResult.value)
       : [];
-  let githubData = githubApiData;
 
-  if (githubData.length === 0) {
-    const githubFallback = await readFile(
-      join(process.cwd(), 'public', 'github-repos.json'),
-      'utf8'
-    );
-    githubData = normalizeGitHub(JSON.parse(githubFallback));
-  }
-
-  if (githubApiData.length === 0 && githubData.length === 0) {
+  if (githubData.length === 0 && githubResult.status === 'fulfilled') {
     // eslint-disable-next-line no-console
-    console.error(
-      'No GitHub repositories found in the API response or bundled snapshot.'
-    );
-  } else if (githubApiData.length === 0) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      githubResult.status === 'fulfilled'
-        ? 'GitHub API returned no repositories; using the bundled snapshot.'
-        : 'GitHub API unavailable; using the bundled snapshot.'
-    );
+    console.warn('GitHub API returned no repositories.');
   }
 
   let mediumData =

@@ -14,17 +14,17 @@ Architecture decisions and rationale for rodcast.github.io.
 
 **Rationale:** The GitHub API and the `rss2json` Medium proxy need no authentication or personalization. The deployed HTML already contains the data, no client-side keys are needed, and rate-limited endpoints are not exposed to visitors. If the Medium proxy fails or returns no articles, the build uses the articles in the bundled `public/feed.xml`.
 
-`fetchData` has a 5-second timeout to prevent build hangs. Sources are fetched with `Promise.allSettled`: a failed or empty GitHub response falls back to `public/github-repos.json`, while a failed or empty Medium response falls back to the bundled RSS feed. API failures and empty responses are logged. Both fallbacks are checked-in snapshots, not live data; refresh the GitHub snapshot when the featured public repositories change, keeping its entries aligned with `public/index.md`. Live responses remain the primary source, and private or forked repositories are filtered from both live and bundled GitHub data.
+`fetchData` has a 5-second timeout to prevent build hangs. Sources are fetched with `Promise.allSettled` so one failure cannot blank the other. GitHub repositories come from the live API; private and forked repositories are filtered out. If the Medium proxy fails or returns no articles, the build uses the articles in the bundled `public/feed.xml`. API failures and empty responses are logged.
 
 ## Data Normalizers
 
 Raw API responses never reach components.
 
-| Normalizer            | Input                  | Output      |
-| --------------------- | ---------------------- | ----------- |
-| `normalizeGitHub`     | GitHub API or snapshot | `IGitHub[]` |
-| `normalizeMedium`     | rss2json items array   | `IMedium[]` |
-| `normalizeMediumFeed` | Bundled RSS feed XML   | `IMedium[]` |
+| Normalizer            | Input                | Output      |
+| --------------------- | -------------------- | ----------- |
+| `normalizeGitHub`     | GitHub API response  | `IGitHub[]` |
+| `normalizeMedium`     | rss2json items array | `IMedium[]` |
+| `normalizeMediumFeed` | Bundled RSS feed XML | `IMedium[]` |
 
 If a response shape changes, update the interface in `src/shared/interfaces/` and the normalizer together.
 
