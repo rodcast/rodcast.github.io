@@ -1,0 +1,24 @@
+src/components/Medium.tsx
+  s_8992361ba8c248::t_c9e237fea37e79 37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "442ac6b2dbbe720051ae740a2d1070ab5fe53b51",
+  "prompts": {},
+  "humans": {
+    "h_fa492faa375953": {
+      "author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  },
+  "sessions": {
+    "s_8992361ba8c248": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "1e8234ff-0003-4bba-a077-ffbe62b8cf32",
+        "model": "unknown"
+      },
+      "human_author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  }
+}
