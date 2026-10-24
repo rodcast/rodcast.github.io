@@ -2,14 +2,14 @@ import { IMedium } from '@/interfaces/index';
 import styles from '@/styles/article.module.css';
 
 interface MediumProps {
-  data?: IMedium[];
+  mediumData?: IMedium[];
 }
 
 /** Medium articles */
-export default function Medium({ data }: MediumProps) {
-  const articles: IMedium[] = data ?? [];
+export default function Medium({ mediumData }: MediumProps) {
+  const articles: IMedium[] = mediumData ?? [];
 
-  const isError = !data;
+  const isError = !mediumData;
   const isEmpty = articles.length === 0;
 
   let message: string | null = null;

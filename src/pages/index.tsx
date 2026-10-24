@@ -41,19 +41,47 @@ export async function getStaticProps() {
     );
   }
 
-  let dataMedium =
+  const githubApiData =
+    githubResult.status === 'fulfilled'
+      ? normalizeGitHub(githubResult.value)
+      : [];
+  let githubData = githubApiData;
+
+  if (githubData.length === 0) {
+    const githubFallback = await readFile(
+      join(process.cwd(), 'public', 'github-repos.json'),
+      'utf8'
+    );
+    githubData = normalizeGitHub(JSON.parse(githubFallback));
+  }
+
+  if (githubApiData.length === 0 && githubData.length === 0) {
+    // eslint-disable-next-line no-console
+    console.error(
+      'No GitHub repositories found in the API response or bundled snapshot.'
+    );
+  } else if (githubApiData.length === 0) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      githubResult.status === 'fulfilled'
+        ? 'GitHub API returned no repositories; using the bundled snapshot.'
+        : 'GitHub API unavailable; using the bundled snapshot.'
+    );
+  }
+
+  let mediumData =
     mediumResult.status === 'fulfilled'
       ? normalizeMedium(mediumResult.value?.items)
       : [];
 
-  if (dataMedium.length === 0) {
-    const feed = await readFile(
+  if (mediumData.length === 0) {
+    const mediumFallback = await readFile(
       join(process.cwd(), 'public', 'feed.xml'),
       'utf8'
     );
-    dataMedium = normalizeMediumFeed(feed);
+    mediumData = normalizeMediumFeed(mediumFallback);
 
-    if (dataMedium.length === 0) {
+    if (mediumData.length === 0) {
       // eslint-disable-next-line no-console
       console.error('No Medium articles found in the bundled RSS feed.');
     } else if (mediumResult.status === 'fulfilled') {
@@ -66,22 +94,19 @@ export async function getStaticProps() {
 
   return {
     props: {
-      dataGitHub:
-        githubResult.status === 'fulfilled'
-          ? normalizeGitHub(githubResult.value)
-          : [],
-      dataMedium,
+      githubData,
+      mediumData,
     },
   };
 }
 
 interface PageProps {
-  dataGitHub: IGitHub[];
-  dataMedium: IMedium[];
+  githubData: IGitHub[];
+  mediumData: IMedium[];
 }
 
 /** Main page */
-export default function Page({ dataGitHub, dataMedium }: PageProps) {
+export default function Page({ githubData, mediumData }: PageProps) {
   return (
     <div className={styles.container}>
       <a href="#main-content" className={styles.skipLink}>
@@ -92,7 +117,7 @@ export default function Page({ dataGitHub, dataMedium }: PageProps) {
 
       <div className={styles.main}>
         <Sidebar />
-        <Article dataGitHub={dataGitHub} dataMedium={dataMedium} />
+        <Article githubData={githubData} mediumData={mediumData} />
       </div>
 
       <Footer />

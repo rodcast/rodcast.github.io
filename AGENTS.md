@@ -8,7 +8,7 @@ Personal website for Rodrigo Castilho: profile content plus the owner's latest p
 
 - **Stack:** Next.js 16 (Pages Router), React 19, TypeScript (strict), `@next/third-parties` (Google Analytics).
 - **Deployment:** static export (`next build` → `out/`) hosted on GitHub Pages.
-- **External data:** GitHub REST API (repos) and `rss2json` (Medium RSS), fetched at build time; Medium falls back to the bundled `public/feed.xml`.
+- **External data:** GitHub REST API (repos) and `rss2json` (Medium RSS), fetched at build time; GitHub falls back to `public/github-repos.json` and Medium to `public/feed.xml`.
 - **Tooling:** ESLint 9, Prettier, Husky (pre-commit), DeepSource (`.deepsource.toml`).
 - **Runtime:** Node 24.x (`.nvmrc`), Yarn.
 
@@ -94,7 +94,8 @@ CSS Modules for all component styles. `src/styles/globals.css` is only for reset
 ```text
 getStaticProps (build time)
   → Promise.allSettled([fetchData(GITHUB_API), fetchData(MEDIUM_API)])
-      (5s timeout; Medium falls back to public/feed.xml when empty or unavailable)
+      (5s timeout; empty or unavailable sources use bundled snapshots)
+      GitHub: public/github-repos.json; Medium: public/feed.xml
   → normalizeGitHub / normalizeMedium
   → page props → Article → GitHub + Medium
 ```

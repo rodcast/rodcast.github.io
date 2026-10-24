@@ -8,26 +8,26 @@ import GitHub from './GitHub';
 import Medium from './Medium';
 
 interface ArticleProps {
-  dataGitHub: IGitHub[];
-  dataMedium: IMedium[];
+  githubData: IGitHub[];
+  mediumData: IMedium[];
 }
 
 /** Main article component */
-export default function Article({ dataGitHub, dataMedium }: ArticleProps) {
+export default function Article({ githubData, mediumData }: ArticleProps) {
   return (
     <main id="main-content" className={styles.content}>
       <section id="github-projects">
         <ErrorBoundary
           fallback={<ApiErrorFallback title="My repositories on GitHub" />}
         >
-          <GitHub data={dataGitHub} />
+          <GitHub githubData={githubData} />
         </ErrorBoundary>
       </section>
       <section id="medium-articles" className={styles.medium_articles}>
         <ErrorBoundary
           fallback={<ApiErrorFallback title="My articles on Medium" />}
         >
-          <Medium data={dataMedium} />
+          <Medium mediumData={mediumData} />
         </ErrorBoundary>
       </section>
     </main>
