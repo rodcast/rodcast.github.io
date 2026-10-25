@@ -1,0 +1,42 @@
+README.md
+  s_e5f743e402fac1::t_5603fd35c19d34 18,68-69
+  s_e5f743e402fac1::t_15c7ce39335dad 1,3-4,24-26,28,30-35,39-41,43-44,48-51,53-54,58-64
+CLAUDE.md
+  s_e5f743e402fac1::t_6864fb8efcaefe 1,3,7,10-18
+.claude/rules/git-workflow.md
+  s_e5f743e402fac1::t_b7e22f6de98b63 1,3-5,7,9-11
+.claude/skills/verify-project/SKILL.md
+  s_e5f743e402fac1::t_b11f7e92d25c1e 11-12,16-17,19-20,23,27-28,30-31
+  s_e5f743e402fac1::t_f596c9c7a5f1a7 3-6
+.claude/agents/static-export-guardian.md
+  s_e5f743e402fac1::t_6713e7720c6681 10-12,16-25,29-32
+AGENTS.md
+  s_e5f743e402fac1::t_f0c18e2ded5a2b 53,55,57-61,68-69,78-79,90-91,95-96,109-111,118-120
+  s_e5f743e402fac1::t_c6770c028f646f 71,73-74,138-140,142-145,170,172-175
+  s_e5f743e402fac1::t_9ab8f19695e554 1,3,5,7-8,10-14,16
+  s_e5f743e402fac1::t_8e14afd988b5aa 98-105,116-117,124-136
+  s_e5f743e402fac1::t_b60663eb6d3e8d 141,149,158,160,162-168,179,190-191
+  s_e5f743e402fac1::t_cf75c1d275f4a4 63-66
+  s_e5f743e402fac1::t_149cd84ffbb0bf 137
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b7462468e168053ad2cb4178634249f0592b42f5",
+  "prompts": {},
+  "humans": {
+    "h_fa492faa375953": {
+      "author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  },
+  "sessions": {
+    "s_e5f743e402fac1": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "cddd072c-cb71-47d4-ae0e-51daddca432f",
+        "model": "unknown"
+      },
+      "human_author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  }
+}
