@@ -1,33 +1,31 @@
 ---
 name: verify-project
-description: Run the project's full verification suite (lint, Prettier check, typecheck, static build) and report results. Use before opening a PR, after finishing a change, or whenever the user asks to verify, validate, or check that the project is shippable.
+description: >-
+  Run project verification before a PR or when asked to verify or validate
+  changes. Markdown-only changes need format and link checks; application
+  changes need lint, Prettier, typecheck, and a static build.
 ---
 
 # Verify Project
 
-Run the quality gate from `AGENTS.md` → **Verification** and fix every error before declaring success. Show the command output as evidence.
+Run the verification required by `AGENTS.md`. Report the commands and results;
+never claim checks passed when they were blocked or skipped.
 
 ## Steps
 
-1. Match the Node version (24.x, from `.nvmrc`):
+1. For Markdown-only changes, check formatting on the edited files and verify
+   local links. An application build is unnecessary.
+
+2. For application, configuration, or dependency changes, use Node 24.x from
+   `.nvmrc` and run the full suite as one chained command:
 
    ```bash
    nvm use
-   ```
-
-2. Run the suite as one chained command so a failure short-circuits the rest:
-
-   ```bash
    yarn lint && yarn prettier --check . && yarn typecheck && yarn build
    ```
 
-   | Command                   | Checks                                           |
-   | ------------------------- | ------------------------------------------------ |
-   | `yarn lint`               | ESLint (Husky pre-commit + CI)                   |
-   | `yarn prettier --check .` | Formatting (Husky pre-commit + CI)               |
-   | `yarn typecheck`          | `tsc --noEmit`, strict, zero errors (CI)         |
-   | `yarn build`              | Static export to `out/`; failure = not shippable |
+3. If a check fails, show the relevant output, fix the cause, and rerun the
+   applicable verification.
 
-3. If a step fails, show the output, fix the cause, and re-run the whole suite. Never skip a step or report success on a partial pass.
-
-There is no automated test suite; this gate is the enforced baseline.
+The suite runs ESLint, Prettier, strict TypeScript checks, and the static
+export. There is no automated test suite.

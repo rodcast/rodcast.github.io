@@ -1,27 +1,18 @@
-# CLAUDE.md
+# Claude Code
 
-Claude-specific additions. The full project guide (structure, commands, conventions, verification, Git workflow) is imported below.
+Project-wide rules are in [`AGENTS.md`](AGENTS.md).
 
 @AGENTS.md
-@.claude/rules/git-workflow.md
 
-## Delegation & Model Policy
-
-- Handle simple, focused tasks directly; delegate only for clear value (multi-file investigation, isolated research, parallel work).
-- Use the lowest-cost model below Opus that can do the task reliably. Reserve Opus for advanced reasoning, complex implementation, hard debugging, architecture decisions, or high-risk review.
-- Use a low-cost model for mechanical work such as Git branches, commits, pushes, and PRs (see `AGENTS.md` → **Git Workflow**).
-- Keep delegated tasks narrowly scoped and review the output before applying it.
-
-## Claude Code Setup
+## Repository Configuration
 
 - `.mcp.json` registers the `next-devtools` MCP server.
-- Skills in `.claude/skills/`: `verify-project`, `check-discovery-consistency`, `new-component`.
-- Agent `.claude/agents/static-export-guardian.md` reviews diffs for static-export breakage.
-- `.claude/settings.json` defines post-edit formatting and TypeScript lint-fix hooks, plus `PreToolUse` guards intended to deny commits and pushes on `master`.
-- Hook behavior depends on the host's support for its configuration. If a guard also blocks inspection, validation, or branch creation, report the denial; Markdown authorization does not override executable hooks. Do not bypass or disable the guard.
-
-## Documentation Maintenance
-
-- Keep `README.md` focused on setup and usage, `DESIGN.md` on implemented architecture, and `AGENTS.md` on contributor rules.
-- Document current behavior, not planned improvements. Keep static-image optimization, theme defaults, build-time data fallbacks, and optional analytics behavior accurate.
-- Follow `AGENTS.md` for verification; report blocked commands without claiming a successful build.
+- Project workflows are in `.claude/skills/`: `verify-project`,
+  `check-discovery-consistency`, and `new-component`.
+- `.claude/agents/static-export-guardian.md` reviews static-export and
+  deployment risks.
+- `.claude/settings.json` configures editing hooks and Git guards. If a hook
+  blocks an operation, report the denial; do not bypass or disable it.
+- Keep `README.md` focused on setup and use, `DESIGN.md` on implemented
+  architecture, and `AGENTS.md` on contributor rules. Document current
+  behavior, not planned changes.
