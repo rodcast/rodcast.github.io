@@ -1,6 +1,7 @@
-# Rodrigo Castilho
+# Rodrigo Castilho's Website
 
-Personal website built with Next.js (Pages Router) and TypeScript. It renders profile content plus the latest public GitHub repositories and Medium articles, fetched at build time and deployed as a static export on GitHub Pages.
+Personal website built with Next.js and TypeScript. It displays profile
+information, public GitHub repositories, and Medium articles.
 
 Live site: <https://rodrigocastilho.com/>
 
@@ -14,48 +15,58 @@ yarn install
 yarn dev
 ```
 
-Before opening a PR, run the full verification suite:
+Before opening a pull request for application changes, run:
 
 ```bash
 yarn lint && yarn prettier --check . && yarn typecheck && yarn build
 ```
 
-`yarn start` is not supported with static export; serve `out/` with a static file server to check the build.
+`yarn start` is unsupported with static export. Serve `out/` with a static file
+server to inspect a production build. For Markdown-only changes, check
+formatting and local links; no application build is needed.
 
-For Markdown-only changes, check formatting and local documentation links; an application build is not required.
+## Behavior
 
-## Rendering and Assets
-
-- GitHub repositories and Medium articles are fetched in `getStaticProps`; visitors receive pre-rendered content with no browser-side requests to those APIs.
-- A failed GitHub request produces an empty repository list. Unavailable or empty Medium data falls back to the bundled [`public/feed.xml`](public/feed.xml).
-- External data refreshes only on a new build and deployment; this export has no ISR.
-- Profile images use `next/image` with optimization disabled for GitHub Pages. Width and height reserve layout space; compress image files before deployment to reduce transfer size.
-- The theme defaults to light and restores a saved preference. Global CSS minimizes animation and transitions for reduced-motion preferences.
+- GitHub and Medium content is fetched at build time and included in the static
+  export; it refreshes on a new build, not at request time.
+- A failed GitHub request yields an empty project list. If Medium data is
+  unavailable or empty, the build uses [`public/feed.xml`](public/feed.xml).
+- Images are static assets and are not optimized by a server at runtime.
+- The theme defaults to light and restores a saved preference.
 
 ## Environment
 
-`.env.local` is optional. `NEXT_PUBLIC_GA_TRACKING_ID` (Google Analytics measurement ID, read at build time) enables analytics and the cookie consent banner; when unset, neither renders. CI reads it from an Actions variable of the same name.
+`.env.local` is optional. Set `NEXT_PUBLIC_GA_TRACKING_ID` to enable Google
+Analytics and the cookie-consent banner. When unset, neither is rendered. CI
+reads the value from a GitHub Actions variable.
 
-When enabled, Analytics loads with denied consent defaults. Accepting grants analytics storage; advertising consent remains denied. Denied consent does not mean the Analytics script is withheld.
+When enabled, Analytics loads with consent denied by default. Accepting grants
+analytics storage only; advertising consent remains denied.
 
 ## Deployment
 
-Pushes to `master` (or a manual dispatch) run `.github/workflows/nextjs.yml`: lint, Prettier check, typecheck, static build, then deploy `out/` to GitHub Pages. Custom domain: `public/CNAME`.
+Pushes to `master` or a manual dispatch run
+[`.github/workflows/nextjs.yml`](.github/workflows/nextjs.yml), which checks,
+builds, and deploys `out/` to GitHub Pages. The custom domain is configured in
+[`public/CNAME`](public/CNAME).
 
-Never commit to `master`; branch and open a pull request.
-
-Agents may create a feature branch, commit, push that branch, and open a PR when requested. See [`AGENTS.md`](AGENTS.md#git-workflow) for the full Git workflow.
+Never commit directly to `master`. Follow [`AGENTS.md`](AGENTS.md#git-workflow)
+for the Git workflow.
 
 ## API and Discovery
 
-- API overview: `public/docs/api.md`; OpenAPI contract: `public/docs/api/openapi.json`
-- Authentication status: `public/auth.md` (OAuth/OIDC flows are not implemented)
-- Discovery metadata: `public/.well-known/`
-- GitHub Pages ignores the `Link`/`Vary` rules in `public/_headers` and the `vercel.json` rewrites. Fetch `/index.md` directly instead of using `Accept: text/markdown`.
+- API overview: [`public/docs/api.md`](public/docs/api.md); contract:
+  [`public/docs/api/openapi.json`](public/docs/api/openapi.json)
+- Authentication status: [`public/auth.md`](public/auth.md); OAuth/OIDC is not
+  implemented.
+- Discovery metadata: [`public/.well-known/`](public/.well-known/)
+- GitHub Pages ignores custom headers and rewrites. Fetch `/index.md` directly
+  instead of relying on `Accept: text/markdown` negotiation.
 
 ## Documentation
 
-- [`AGENTS.md`](AGENTS.md): project guide (structure, commands, conventions, CI/CD, constraints)
+- [`AGENTS.md`](AGENTS.md): project guide (structure, commands, conventions,
+  verification, and constraints)
 - [`DESIGN.md`](DESIGN.md): architecture decisions and rationale
 - [`CLAUDE.md`](CLAUDE.md): Claude-specific setup
 - [`SECURITY.md`](SECURITY.md): vulnerability reporting

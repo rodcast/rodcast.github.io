@@ -1,18 +1,19 @@
-# AGENTS.md
+# Project Guide
 
-Project guide for human contributors and AI agents. Read it fully before making changes.
+Applies to human contributors and AI agents. Read before making changes.
 
-## Overview
+## Project
 
-Personal website for Rodrigo Castilho: profile content plus the owner's latest public GitHub repositories and Medium articles.
+Personal website for Rodrigo Castilho. The homepage combines profile content
+with public GitHub repositories and Medium articles.
 
-- **Stack:** Next.js 16 (Pages Router), React 19, TypeScript (strict), `@next/third-parties` (Google Analytics).
-- **Deployment:** static export (`next build` → `out/`) hosted on GitHub Pages.
-- **External data:** GitHub REST API (repos) and `rss2json` (Medium RSS), fetched at build time; Medium falls back to `public/feed.xml`.
-- **Tooling:** ESLint 9, Prettier, Husky (pre-commit), DeepSource (`.deepsource.toml`).
-- **Runtime:** Node 24.x (`.nvmrc`), Yarn.
+- **Stack:** Next.js 16 Pages Router, React 19, strict TypeScript.
+- **Hosting:** static export to `out/`, deployed to GitHub Pages.
+- **Data:** GitHub REST API and `rss2json` are queried at build time; Medium
+  falls back to `public/feed.xml`.
+- **Tools:** Node 24 (`.nvmrc`), Yarn, ESLint, Prettier, and Husky.
 
-Architecture decisions live in [`DESIGN.md`](DESIGN.md).
+See [`DESIGN.md`](DESIGN.md) for architecture and data-flow details.
 
 ## Project Structure
 
@@ -49,30 +50,33 @@ Key files:
 | `src/shared/utils/webmcpTools.ts`     | WebMCP tool definitions (read from the rendered DOM)                     |
 | `next.config.mjs`                     | Static export config (see Critical Constraints)                          |
 
-## Commands
+## Setup and Commands
 
-Run `nvm use` first so the Node version matches `.nvmrc`.
+Use the Node version in `.nvmrc`, then install dependencies:
 
-| Command                   | Purpose                                                        |
-| ------------------------- | -------------------------------------------------------------- |
-| `yarn install`            | Install dependencies                                           |
-| `yarn dev`                | Dev server (sets `NODE_TLS_REJECT_UNAUTHORIZED=0`, local only) |
-| `yarn build`              | Static production build to `out/`                              |
-| `yarn lint` / `lint:fix`  | ESLint / ESLint with auto-fix                                  |
-| `yarn prettier --check .` | Formatting check                                               |
-| `yarn typecheck`          | `tsc --noEmit` (strict)                                        |
+```bash
+nvm use
+yarn install
+yarn dev
+```
 
-`yarn start` is unsupported with static export; serve `out/` with a static file server instead.
+- `yarn lint` — run ESLint.
+- `yarn prettier --check .` — check formatting.
+- `yarn typecheck` — run strict TypeScript checks.
+- `yarn build` — export the production site to `out/`.
 
-## Conventions
+`yarn start` is unsupported with static export. To inspect a production build,
+serve `out/` with a static file server.
 
-### Formatting
+## Code and Content
 
-2-space indent, UTF-8, trailing newline. Prettier (`.prettierrc`): single quotes, semicolons, width 80, `trailingComma: es5`, parenthesized arrow params.
+Follow the existing Prettier configuration; do not restate formatting rules
+enforced by tooling.
 
 ### Imports
 
-Use `tsconfig.json` path aliases for anything outside the current directory; never `../` traversal.
+Use `tsconfig.json` path aliases across directories; do not use parent-directory
+traversal.
 
 | Alias            | Resolves to               |
 | ---------------- | ------------------------- |
@@ -83,97 +87,96 @@ Use `tsconfig.json` path aliases for anything outside the current directory; nev
 | `@/types/*`      | `src/shared/types/*`      |
 | `@/utils/*`      | `src/shared/utils/*`      |
 
-Same-directory siblings are imported relatively (`./SocialLinks`). `next/font/local` needs a real relative path (`../fonts/fontello.woff2` in `src/shared/font.ts`); `SocialLinks` and `Toggle` import that shared font definition.
+Import same-directory siblings relatively. `next/font/local` requires a real
+relative path; see `src/shared/font.ts`.
 
 ### Styling
 
-CSS Modules for all component styles. `src/styles/globals.css` is only for resets, CSS custom properties, and a few a11y utilities (e.g. `.sr-only`).
+Use CSS Modules for component styles. Reserve `src/styles/globals.css` for
+resets, CSS variables, and shared accessibility utilities.
 
-- Preserve visible keyboard focus, the skip link, and readable text contrast in both themes.
-- The global `prefers-reduced-motion: reduce` rule minimizes CSS animation and transition durations. Explicit JavaScript animation or smooth scrolling must respect that preference separately.
-- Theme state is stored under `data-theme` in local storage. The pre-paint script in `_document.tsx` restores it, defaulting to light; `Toggle` synchronizes after hydration.
+- Preserve visible keyboard focus, the skip link, and readable text contrast in
+  both themes.
+- The global `prefers-reduced-motion: reduce` rule minimizes CSS animation and
+  transition durations. Explicit JavaScript animation or smooth scrolling must
+  respect that preference separately.
+- Theme state is stored under `data-theme` in local storage. The pre-paint
+  script in `_document.tsx` restores it, defaulting to light; `Toggle`
+  synchronizes after hydration.
 
 ### Static Images
 
-- `images.unoptimized: true` is required for the current `next/image` default-loader setup on GitHub Pages.
-- `Sidebar` renders the profile JPEG at 120 × 120 CSS pixels. Width and height props reserve space; they do not resize or compress the source file.
-- Optimize image assets before deployment. Do not add `quality`, optimizer `qualities`, or `sizes` expecting Next.js to generate responsive variants while optimization is disabled.
+- `images.unoptimized: true` is required for `next/image` on GitHub Pages.
+- Optimize image assets before deployment; the static export does not resize or
+  compress them.
 
 ### Data Flow
 
-```text
-getStaticProps (build time)
-  → Promise.allSettled([fetchData(GITHUB_API), fetchData(MEDIUM_API)])
-      (5s timeout; empty or unavailable Medium data uses the bundled feed)
-      Medium: public/feed.xml
-  → normalizeGitHub / normalizeMedium (normalizeMediumFeed for the RSS fallback)
-  → page props → Article → GitHub + Medium
-```
-
 - Normalize all external API data before it reaches components.
-- If an API contract changes, update the interface in `src/shared/interfaces/` and its normalizer together.
-- Keep the error boundaries, API fallback components, and the fetch helper's timeout and explicit errors.
-- `GitHub` and `Medium` require array props and display empty-state messages for empty arrays. Fetch failures are logged at build time; error boundaries protect client rendering, not build-time fetching or server rendering.
+- If an API contract changes, update its interface in
+  `src/shared/interfaces/` and its normalizer together.
+- Preserve the fetch helper's timeout and explicit errors, the Medium RSS
+  fallback, and the existing empty/error states. Error boundaries do not catch
+  build-time fetching failures.
 
 ### Discovery Metadata
 
-- Keep `.well-known` documents consistent: `api-catalog`, `agent-card.json`, `mcp.json`, `mcp/server-card.json`, `ai-plugin.json`, and the agent-skills index. Do not publish OAuth/OIDC metadata until the site has working authentication endpoints.
-- After editing any `public/.well-known/agent-skills/*.md`, refresh its `sha256` in `agent-skills/index.json` (`shasum -a 256 <file>`).
-- Keep WebMCP tool names in `webmcpTools.ts` aligned with the skill IDs in `agent-card.json` and the list in `agent-skills/webmcp-tools.md`.
-- Keep the discovery `<link>`s in `_document.tsx` consistent with the `Link` header in `public/_headers` and `vercel.json`.
-- Use the `check-discovery-consistency` skill (`.claude/skills/`) to audit all of the above.
+- Keep `.well-known` documents consistent: `api-catalog`, `agent-card.json`,
+  `mcp.json`, `mcp/server-card.json`, `ai-plugin.json`, and the agent-skills
+  index. Do not publish OAuth/OIDC metadata until working authentication
+  endpoints exist.
+- After editing `public/.well-known/agent-skills/*.md`, update its `sha256` in
+  `agent-skills/index.json` (`shasum -a 256 <file>`).
+- Keep WebMCP tool names in `webmcpTools.ts` aligned with the skill IDs in
+  `agent-card.json` and `agent-skills/webmcp-tools.md`.
+- Keep discovery links in `_document.tsx` consistent with `Link` in
+  `public/_headers` and `vercel.json`.
+- After discovery changes, run the `check-discovery-consistency` skill.
 
-## Guidelines
+## General Rules
 
-**Do**
-
-- Make focused, minimal changes scoped to the task; extend existing utilities and components instead of duplicating logic.
-- Keep accessibility intact: semantic HTML, labels, readable fallback messages.
-- Open external links with `target="_blank"` and `rel` containing `noopener` (preserve existing values).
-- Keep SEO metadata and JSON-LD coherent when editing profile content.
-- Work on a branch and open a PR (see Git Workflow).
-
-**Do not**
-
-- Add broad refactors or unrequested improvements.
-- Add SSR-only or runtime server dependencies; the site must stay statically exportable.
-
-For hard rules, see **Critical Constraints** (export settings) and **Git Workflow** (never push to `master`).
+- Keep changes focused and reuse existing utilities and patterns.
+- Preserve accessibility: semantic HTML, visible focus, labels, and readable
+  fallback messages.
+- External links opened in a new tab must include `rel="noopener"`.
+- Keep SEO metadata and JSON-LD aligned with profile content.
+- Keep the site statically exportable; avoid server-only features and
+  dependencies.
+- Avoid broad refactors and unrelated improvements.
 
 ## Verification
 
-For application, configuration, or dependency changes, run the full check, resolve all errors, and show the output:
+For application, configuration, or dependency changes, run the full check:
 
 ```bash
 nvm use
 yarn lint && yarn prettier --check . && yarn typecheck && yarn build
 ```
 
-The Husky pre-commit hook runs lint and the Prettier check; CI runs all four. There is no automated test suite, so these are the enforced quality baseline.
-
 For Markdown-only changes, check formatting and local documentation links; no application build is required. If a hook blocks verification, report the command and denial explicitly rather than claiming the checks passed.
+
+There is no automated test suite; CI runs lint, Prettier, typecheck, and build.
 
 ## Git Workflow
 
-- **Never commit or push directly to `master`.** Branch and open a pull request for every change.
-- When the user requests it, the agent is authorized to create a branch, commit changes, push that branch, and open a pull request. Do not treat the `master` protection as a ban on these actions for a feature branch.
-- Read-only inspection, validation commands, and creating a feature branch are not prohibited by the `master` protection. If a hook blocks them, report the enforcement problem; do not bypass the hook or weaken branch protection.
-- `master` is the deployment branch: a push triggers the GitHub Pages build, so changes must land via reviewed PRs.
-- Delegate mechanical Git tasks (branches, commits, pushes, PRs) to a low-cost model (e.g. Haiku); the rule above still applies to it.
+- Never commit or push directly to `master`; it triggers deployment. Changes
+  should land through a reviewed pull request.
+- Create a branch, commit, push, or open a pull request only when the user asks.
+- Preserve existing user changes. Do not bypass or weaken repository hooks; if
+  one blocks an operation, report the denial.
+- See [`.claude/rules/git-workflow.md`](.claude/rules/git-workflow.md) for
+  details.
 
-## CI/CD and Hosting
+## Hosting
 
-- **Workflow:** `.github/workflows/nextjs.yml`, on push to `master` or manual dispatch. Node comes from `.nvmrc`.
-- **Pipeline:** `yarn install --frozen-lockfile` → lint + Prettier check → typecheck → `actions/configure-pages` → `next build` → upload `out/` (with `include-hidden-files: true` so `.well-known/` ships) → `actions/deploy-pages`.
-- `configure-pages` runs with `static_site_generator: next` and injects `basePath` into `next.config.mjs`. It runs after the Prettier check because that injection isn't Prettier-formatted.
-- `NEXT_PUBLIC_GA_TRACKING_ID` is a public GA measurement ID, injected from an Actions **variable** (not a secret).
-- GitHub Pages is the canonical host. `vercel.json` exists only for alternative hosts.
-
-**Hosting caveat:** GitHub Pages serves static files only. It ignores `vercel.json` rewrites and the `public/_headers` rules (`Link`, `Vary`, `Cache-Control`, content negotiation); they take effect only on Vercel, Cloudflare Pages, or Netlify. On Pages, the agent/discovery surface is the static files under `public/` plus the `<link>` tags in `_document.tsx`. `Accept: text/markdown` negotiation is inactive, so fetch `/index.md` directly.
+GitHub Pages serves static files and ignores `vercel.json` rewrites and
+`public/_headers`. Its discovery surface is the public static files and
+`_document.tsx` links. Fetch `/index.md` directly; `Accept: text/markdown`
+negotiation only works on hosts that honor custom rewrites and headers.
 
 ## Critical Constraints
 
-Do not change these; doing so breaks the build or deployment.
+Keep these export settings; changing them breaks the build or deployment.
 
 ```js
 // next.config.mjs
@@ -184,4 +187,5 @@ const nextConfig = {
 };
 ```
 
-**Environment:** `NEXT_PUBLIC_GA_TRACKING_ID` is optional and read at build time. Set it in `.env.local` only to test analytics locally. When unset, `_app.tsx` renders neither `CookieConsent` nor `GoogleAnalytics`, and `_document.tsx` skips the Google Consent Mode defaults script.
+`NEXT_PUBLIC_GA_TRACKING_ID` is optional and read at build time. When unset,
+analytics, the consent banner, and the consent-defaults script are omitted.

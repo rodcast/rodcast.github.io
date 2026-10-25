@@ -1,11 +1,13 @@
-# Git Workflow Rule
+# Git Workflow
 
-Never commit or push directly to `master`; create a feature branch and open a pull request for every change.
+Never commit or push directly to `master`; it triggers the GitHub Pages deploy.
+Changes intended for the repository should land on a feature branch through a
+reviewed pull request.
 
-When the user requests it, the agent is authorized to create a feature branch, commit changes, push that branch, and open a pull request. The `master` protection does not prohibit these actions on a feature branch.
+Only create branches, commits, pushes, or pull requests when the user asks.
 
-Read-only Git inspection, verification commands, and feature-branch creation are allowed by this policy, including when the current branch is `master`. Preserve existing user changes and run the applicable verification before committing.
-
-`master` triggers the GitHub Pages deploy. The `PreToolUse` guards in `.claude/settings.json` are intended to deny commits and pushes on it. If a host applies these guards to unrelated commands, report the denial rather than bypassing the hook. Updating Markdown alone does not change hook enforcement.
+Preserve existing user changes and run the applicable verification before
+committing. Do not bypass or disable repository hooks. If a hook blocks an
+operation, report the denial; this rule does not override executable hooks.
 
 Full details: [`AGENTS.md`](../../AGENTS.md#git-workflow).
