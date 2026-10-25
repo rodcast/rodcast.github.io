@@ -2,22 +2,13 @@ import { IMedium } from '@/interfaces/index';
 import styles from '@/styles/article.module.css';
 
 interface MediumProps {
-  mediumData?: IMedium[];
+  mediumData: IMedium[];
 }
 
 /** Medium articles */
 export default function Medium({ mediumData }: MediumProps) {
-  const articles: IMedium[] = mediumData ?? [];
-
-  const isError = !mediumData;
-  const isEmpty = articles.length === 0;
-
-  let message: string | null = null;
-  if (isError) {
-    message = 'There is an error in Medium API.';
-  } else if (isEmpty) {
-    message = 'No articles available at the moment.';
-  }
+  const message =
+    mediumData.length === 0 ? 'No articles available at the moment.' : null;
 
   return (
     <article className={styles.content}>
@@ -25,47 +16,45 @@ export default function Medium({ mediumData }: MediumProps) {
 
       {message && <span className={styles.description}>{message}</span>}
 
-      {Array.isArray(articles) && (
-        <ol className={styles.list}>
-          {articles.map(({ guid, title, link, pubDate, content }) => {
-            const publishedDate = new Date(pubDate);
-            const isValidPublishedDate = !Number.isNaN(publishedDate.getTime());
+      <ol className={styles.list}>
+        {mediumData.map(({ guid, title, link, pubDate, content }) => {
+          const publishedDate = new Date(pubDate);
+          const isValidPublishedDate = !Number.isNaN(publishedDate.getTime());
 
-            const dateLabel = isValidPublishedDate
-              ? new Intl.DateTimeFormat('en-US', {
-                  dateStyle: 'long',
-                  timeZone: 'UTC',
-                }).format(publishedDate)
-              : 'Date unavailable';
+          const dateLabel = isValidPublishedDate
+            ? new Intl.DateTimeFormat('en-US', {
+                dateStyle: 'long',
+                timeZone: 'UTC',
+              }).format(publishedDate)
+            : 'Date unavailable';
 
-            return (
-              <li key={guid} className={styles.item}>
-                <span className={styles.subtitle}>
-                  <a
-                    href={link}
-                    title={title}
-                    className={styles.url}
-                    rel="external noopener"
-                  >
-                    {title}
-                  </a>
-                </span>
-                {isValidPublishedDate ? (
-                  <time
-                    className={styles.time}
-                    dateTime={publishedDate.toISOString()}
-                  >
-                    {dateLabel}
-                  </time>
-                ) : (
-                  <span className={styles.time}>{dateLabel}</span>
-                )}
-                <span className={styles.description}>{content}</span>
-              </li>
-            );
-          })}
-        </ol>
-      )}
+          return (
+            <li key={guid} className={styles.item}>
+              <span className={styles.subtitle}>
+                <a
+                  href={link}
+                  title={title}
+                  className={styles.url}
+                  rel="external noopener"
+                >
+                  {title}
+                </a>
+              </span>
+              {isValidPublishedDate ? (
+                <time
+                  className={styles.time}
+                  dateTime={publishedDate.toISOString()}
+                >
+                  {dateLabel}
+                </time>
+              ) : (
+                <span className={styles.time}>{dateLabel}</span>
+              )}
+              <span className={styles.description}>{content}</span>
+            </li>
+          );
+        })}
+      </ol>
 
       <p className={styles.viewAll}>
         <a

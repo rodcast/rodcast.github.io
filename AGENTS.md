@@ -28,8 +28,8 @@ src/
     utils/       # fetch helper, normalizers, WebMCP tool definitions
   styles/        # CSS Modules + globals.css
 public/          # Served at the site root
-  .well-known/   # API/OAuth/MCP/agent discovery metadata
-  api/health                   # Static health response
+  .well-known/   # API/MCP/agent discovery metadata (no OAuth/OIDC endpoints)
+  api/           # Static health and health.json responses
   docs/          # api.md and api/ (HTML docs + openapi.json)
   index.md, auth.md, llms.txt, feed.xml, sitemap.xml, robots.txt, manifest.json
   _headers       # Header rules (non-Pages hosts only, see Hosting)
@@ -38,16 +38,16 @@ public/          # Served at the site root
 
 Key files:
 
-| File                                  | Role                                                          |
-| ------------------------------------- | ------------------------------------------------------------- |
-| `src/pages/_app.tsx`                  | Global styles, cookie consent, Google Analytics, WebMCP setup |
-| `src/pages/_document.tsx`             | SEO, Open Graph/Twitter tags, JSON-LD, discovery `<link>`s    |
-| `src/pages/index.tsx`                 | Main page; fetches data in `getStaticProps`                   |
-| `src/shared/utils/fetch.ts`           | Typed fetch helper (timeout, explicit errors)                 |
-| `src/shared/utils/normalizeGitHub.ts` | Normalizes and filters GitHub responses                       |
-| `src/shared/utils/normalizeMedium.ts` | Normalizes Medium API responses and the bundled RSS fallback  |
-| `src/shared/utils/webmcpTools.ts`     | WebMCP tool definitions (read from the rendered DOM)          |
-| `next.config.mjs`                     | Static export config (see Critical Constraints)               |
+| File                                  | Role                                                                     |
+| ------------------------------------- | ------------------------------------------------------------------------ |
+| `src/pages/_app.tsx`                  | Global styles, cookie consent, Google Analytics, WebMCP setup            |
+| `src/pages/_document.tsx`             | SEO, Open Graph/Twitter tags, JSON-LD, discovery `<link>`s               |
+| `src/pages/index.tsx`                 | Main page; fetches data in `getStaticProps`                              |
+| `src/shared/utils/fetch.ts`           | JSON fetch helper (timeout, explicit errors; normalizers shape the data) |
+| `src/shared/utils/normalizeGitHub.ts` | Normalizes and filters GitHub responses                                  |
+| `src/shared/utils/normalizeMedium.ts` | Normalizes Medium API responses and the bundled RSS fallback             |
+| `src/shared/utils/webmcpTools.ts`     | WebMCP tool definitions (read from the rendered DOM)                     |
+| `next.config.mjs`                     | Static export config (see Critical Constraints)                          |
 
 ## Commands
 
@@ -83,11 +83,21 @@ Use `tsconfig.json` path aliases for anything outside the current directory; nev
 | `@/types/*`      | `src/shared/types/*`      |
 | `@/utils/*`      | `src/shared/utils/*`      |
 
-Same-directory siblings are imported relatively (`./SocialLinks`). `next/font/local` needs a real relative path (`../fonts/fontello.woff2` in `SocialLinks.tsx`).
+Same-directory siblings are imported relatively (`./SocialLinks`). `next/font/local` needs a real relative path (`../fonts/fontello.woff2` in `src/shared/font.ts`); `SocialLinks` and `Toggle` import that shared font definition.
 
 ### Styling
 
 CSS Modules for all component styles. `src/styles/globals.css` is only for resets, CSS custom properties, and a few a11y utilities (e.g. `.sr-only`).
+
+- Preserve visible keyboard focus, the skip link, and readable text contrast in both themes.
+- The global `prefers-reduced-motion: reduce` rule minimizes CSS animation and transition durations. Explicit JavaScript animation or smooth scrolling must respect that preference separately.
+- Theme state is stored under `data-theme` in local storage. The pre-paint script in `_document.tsx` restores it, defaulting to light; `Toggle` synchronizes after hydration.
+
+### Static Images
+
+- `images.unoptimized: true` is required for the current `next/image` default-loader setup on GitHub Pages.
+- `Sidebar` renders the profile JPEG at 120 × 120 CSS pixels. Width and height props reserve space; they do not resize or compress the source file.
+- Optimize image assets before deployment. Do not add `quality`, optimizer `qualities`, or `sizes` expecting Next.js to generate responsive variants while optimization is disabled.
 
 ### Data Flow
 
@@ -96,13 +106,14 @@ getStaticProps (build time)
   → Promise.allSettled([fetchData(GITHUB_API), fetchData(MEDIUM_API)])
       (5s timeout; empty or unavailable Medium data uses the bundled feed)
       Medium: public/feed.xml
-  → normalizeGitHub / normalizeMedium
+  → normalizeGitHub / normalizeMedium (normalizeMediumFeed for the RSS fallback)
   → page props → Article → GitHub + Medium
 ```
 
 - Normalize all external API data before it reaches components.
 - If an API contract changes, update the interface in `src/shared/interfaces/` and its normalizer together.
 - Keep the error boundaries, API fallback components, and the fetch helper's timeout and explicit errors.
+- `GitHub` and `Medium` require array props and display empty-state messages for empty arrays. Fetch failures are logged at build time; error boundaries protect client rendering, not build-time fetching or server rendering.
 
 ### Discovery Metadata
 
@@ -131,7 +142,7 @@ For hard rules, see **Critical Constraints** (export settings) and **Git Workflo
 
 ## Verification
 
-Before considering a task done, run the full check, resolve all errors, and show the output:
+For application, configuration, or dependency changes, run the full check, resolve all errors, and show the output:
 
 ```bash
 nvm use
@@ -140,9 +151,13 @@ yarn lint && yarn prettier --check . && yarn typecheck && yarn build
 
 The Husky pre-commit hook runs lint and the Prettier check; CI runs all four. There is no automated test suite, so these are the enforced quality baseline.
 
+For Markdown-only changes, check formatting and local documentation links; no application build is required. If a hook blocks verification, report the command and denial explicitly rather than claiming the checks passed.
+
 ## Git Workflow
 
 - **Never commit or push directly to `master`.** Branch and open a pull request for every change.
+- When the user requests it, the agent is authorized to create a branch, commit changes, push that branch, and open a pull request. Do not treat the `master` protection as a ban on these actions for a feature branch.
+- Read-only inspection, validation commands, and creating a feature branch are not prohibited by the `master` protection. If a hook blocks them, report the enforcement problem; do not bypass the hook or weaken branch protection.
 - `master` is the deployment branch: a push triggers the GitHub Pages build, so changes must land via reviewed PRs.
 - Delegate mechanical Git tasks (branches, commits, pushes, PRs) to a low-cost model (e.g. Haiku); the rule above still applies to it.
 

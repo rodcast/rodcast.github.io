@@ -48,7 +48,7 @@ input[type='checkbox']:checked + .slider:before {
 }
 
 .switch input[type='checkbox']:focus-visible + .slider {
-  outline: 3px solid var(--psychedelic-color);
+  outline: 3px solid var(--highlight-color);
   outline-offset: 3px;
 }
 

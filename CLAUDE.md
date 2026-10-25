@@ -17,4 +17,11 @@ Claude-specific additions. The full project guide (structure, commands, conventi
 - `.mcp.json` registers the `next-devtools` MCP server.
 - Skills in `.claude/skills/`: `verify-project`, `check-discovery-consistency`, `new-component`.
 - Agent `.claude/agents/static-export-guardian.md` reviews diffs for static-export breakage.
-- `PreToolUse` guards in `.claude/settings.json` deny `git commit` and `git push` on `master`.
+- `.claude/settings.json` defines post-edit formatting and TypeScript lint-fix hooks, plus `PreToolUse` guards intended to deny commits and pushes on `master`.
+- Hook behavior depends on the host's support for its configuration. If a guard also blocks inspection, validation, or branch creation, report the denial; Markdown authorization does not override executable hooks. Do not bypass or disable the guard.
+
+## Documentation Maintenance
+
+- Keep `README.md` focused on setup and usage, `DESIGN.md` on implemented architecture, and `AGENTS.md` on contributor rules.
+- Document current behavior, not planned improvements. Keep static-image optimization, theme defaults, build-time data fallbacks, and optional analytics behavior accurate.
+- Follow `AGENTS.md` for verification; report blocked commands without claiming a successful build.

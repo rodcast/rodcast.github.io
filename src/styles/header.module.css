@@ -65,7 +65,7 @@
 
 .navLink:hover {
   color: var(--accent-foreground);
-  background-color: var(--psychedelic-color);
+  background-color: var(--highlight-color);
 }
 
 @media (max-width: 768px) {
