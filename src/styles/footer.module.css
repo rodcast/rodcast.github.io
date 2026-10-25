@@ -10,17 +10,18 @@
 
 .link {
   color: var(--secondary-color);
-  text-decoration: underline;
   margin: 0 var(--space-x-2);
   font-size: var(--text-sm);
-  transition: color 0.2s ease;
+  box-shadow: 0 2px var(--psychedelic-color);
+  transition: var(--transition-200);
 }
 
 .link:hover {
+  color: var(--accent-foreground);
+  background-color: var(--psychedelic-color);
   text-decoration: none;
 }
 
 .copyright {
-  margin: 0;
   font-size: var(--text-sm);
 }

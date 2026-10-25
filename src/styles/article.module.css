@@ -53,12 +53,14 @@
 
 .url {
   color: var(--secondary-color);
-  box-shadow: 0 1px var(--secondary-color);
+  box-shadow: 0 2px var(--psychedelic-color);
   transition: var(--transition-200);
 }
 
 .url:hover,
 .url:focus {
+  color: var(--accent-foreground);
+  background-color: var(--psychedelic-color);
   box-shadow: none;
 }
 
@@ -71,10 +73,10 @@
   display: inline-block;
   color: var(--secondary-color);
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: var(--transition-200);
 }
 
 .viewAllLink:hover {
-  color: var(--primary-color);
-  background-color: var(--secondary-color);
+  color: var(--accent-foreground);
+  background-color: var(--psychedelic-color);
 }

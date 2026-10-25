@@ -23,19 +23,20 @@
 .description {
   margin-bottom: var(--space-x-2);
   font-size: var(--text-sm);
-  font-weight: 400;
   transition: var(--transition-200);
 }
 
 .link {
   color: var(--secondary-color);
-  text-decoration: underline;
   font-weight: 700;
-  transition: color 0.2s ease;
+  box-shadow: 0 2px var(--psychedelic-color);
+  transition: var(--transition-200);
 }
 
 .link:hover {
-  text-decoration: none;
+  color: var(--accent-foreground);
+  background-color: var(--psychedelic-color);
+  box-shadow: none;
 }
 
 .list {
@@ -65,7 +66,7 @@
 
 .url:hover,
 .url:focus {
-  color: var(--primary-color);
-  background-color: var(--secondary-color);
+  color: var(--accent-foreground);
+  background-color: var(--psychedelic-color);
   transform: rotate(360deg);
 }

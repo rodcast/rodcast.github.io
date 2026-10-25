@@ -19,7 +19,6 @@
 }
 
 .text {
-  margin: var(--space-x-0);
   font-size: var(--text-sm);
   line-height: 1.4;
 }
@@ -41,8 +40,8 @@
 }
 
 .accept {
-  color: var(--primary-color);
-  background-color: var(--secondary-color);
+  color: var(--secondary-color);
+  background-color: var(--psychedelic-color);
 }
 
 .reject {

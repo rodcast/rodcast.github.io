@@ -47,6 +47,15 @@ input[type='checkbox']:checked + .slider:before {
   transform: translateX(34px);
 }
 
+.switch input[type='checkbox']:focus-visible + .slider {
+  outline: 3px solid var(--psychedelic-color);
+  outline-offset: 3px;
+}
+
+.switch input[type='checkbox']:checked ~ .icon__moon:before {
+  color: var(--secondary-color);
+}
+
 .icon__sun,
 .icon__moon {
   position: absolute;

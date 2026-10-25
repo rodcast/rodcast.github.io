@@ -8,13 +8,12 @@
 }
 
 .error_title {
-  margin: 0 0 8px 0;
+  margin-bottom: 8px;
   font-size: var(--text-lg);
   font-weight: var(--font-semibold);
 }
 
 .error_message {
-  margin: 0;
   font-size: var(--text-sm);
   line-height: 1.5;
 }
