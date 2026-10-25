@@ -29,13 +29,13 @@
 .link {
   color: var(--secondary-color);
   font-weight: 700;
-  box-shadow: 0 2px var(--psychedelic-color);
+  box-shadow: 0 2px var(--highlight-color);
   transition: var(--transition-200);
 }
 
 .link:hover {
   color: var(--accent-foreground);
-  background-color: var(--psychedelic-color);
+  background-color: var(--highlight-color);
   box-shadow: none;
 }
 
@@ -67,6 +67,6 @@
 .url:hover,
 .url:focus {
   color: var(--accent-foreground);
-  background-color: var(--psychedelic-color);
+  background-color: var(--highlight-color);
   transform: rotate(360deg);
 }

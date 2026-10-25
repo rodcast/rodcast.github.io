@@ -53,14 +53,14 @@
 
 .url {
   color: var(--secondary-color);
-  box-shadow: 0 2px var(--psychedelic-color);
+  box-shadow: 0 2px var(--highlight-color);
   transition: var(--transition-200);
 }
 
 .url:hover,
 .url:focus {
   color: var(--accent-foreground);
-  background-color: var(--psychedelic-color);
+  background-color: var(--highlight-color);
   box-shadow: none;
 }
 
@@ -78,5 +78,5 @@
 
 .viewAllLink:hover {
   color: var(--accent-foreground);
-  background-color: var(--psychedelic-color);
+  background-color: var(--highlight-color);
 }

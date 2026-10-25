@@ -157,7 +157,7 @@ function OpenGraphMeta({ openGraph, twitter }: OpenGraphMetaProps) {
   );
 }
 
-const contentModified = '2026-09-29';
+const contentModified = new Date().toISOString();
 
 // JSON-LD structured data for SEO
 const structuredData = {

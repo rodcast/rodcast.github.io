@@ -12,13 +12,13 @@
   color: var(--secondary-color);
   margin: 0 var(--space-x-2);
   font-size: var(--text-sm);
-  box-shadow: 0 2px var(--psychedelic-color);
+  box-shadow: 0 2px var(--highlight-color);
   transition: var(--transition-200);
 }
 
 .link:hover {
   color: var(--accent-foreground);
-  background-color: var(--psychedelic-color);
+  background-color: var(--highlight-color);
   text-decoration: none;
 }
 

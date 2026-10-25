@@ -8,13 +8,11 @@ export default function Sidebar() {
     <aside className={styles.content} id="about">
       <Image
         src="/rodrigo-castilho-rodcast_photo.jpg"
-        width={125}
-        height={125}
+        width={120}
+        height={120}
         alt="Professional headshot of Rodrigo Castilho, Staff Frontend Software Engineer"
         className={styles.photo}
         itemProp="image"
-        sizes="(max-width: 768px) 95px, (max-width: 1200px) 105px, 125px"
-        quality={75}
         priority
       />
       <h2 className={styles.name} itemProp="name">

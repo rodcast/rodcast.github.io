@@ -41,7 +41,7 @@
 
 .accept {
   color: var(--secondary-color);
-  background-color: var(--psychedelic-color);
+  background-color: var(--highlight-color);
 }
 
 .reject {

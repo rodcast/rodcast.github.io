@@ -4,7 +4,7 @@
   --secondary-color: #000;
   --tertiary-color: #eef0f2;
   --contrast-color: #333;
-  --psychedelic-color: #c7f000;
+  --highlight-color: #c7f000;
   --accent-foreground: #000;
   --max-width: 1024px;
   --text-sm: 0.875rem;
@@ -25,7 +25,7 @@ html[data-theme='dark'] {
   --primary-color: #000;
   --secondary-color: #fff;
   --tertiary-color: #2b2b2b;
-  --contrast-color: #555;
+  --contrast-color: #757575;
   --accent-foreground: #000;
 }
 
@@ -62,8 +62,19 @@ a {
 
 a:focus-visible,
 button:focus-visible {
-  outline: 3px solid var(--psychedelic-color);
+  outline: 3px solid var(--highlight-color);
   outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 ol,
