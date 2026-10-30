@@ -507,10 +507,10 @@
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-16.4.2.tgz#8c8945faa0e82b51d128563a008185d4d3d16693"
   integrity sha512-AA4edyWHDko3NCSo0x6GomsdgFb0oR1J3MXU1b5xt6FRFg4AucrMPW3S0hCe/9onU0O1BbpGQBsqo1r0Gneu1g==
 
-"@next/third-parties@^16.4.2":
-  version "16.4.2"
-  resolved "https://registry.yarnpkg.com/@next/third-parties/-/third-parties-16.4.2.tgz#a1c3543ac534b7d98c223f9109530fd25b7cd9a3"
-  integrity sha512-R6Nh33bi2vWJ+s3G1HV2dVpkYmgKIRuukFTPEE+c8JbZWglzfxST8gVjVQKR0t4TgpObsNi57mliQEuZrVFDuQ==
+"@next/third-parties@^16.4.3":
+  version "16.4.3"
+  resolved "https://registry.yarnpkg.com/@next/third-parties/-/third-parties-16.4.3.tgz#c3ebf833d27962ca6668940217410ebe4e42d558"
+  integrity sha512-sBjXxFRJtW1UAnQT24vcevIvlvce6bOGXroL6+NVqoTMrb8bQvUgXkxACjbEO2rGKfFOzbq5CYjYQTBNK3vFiA==
   dependencies:
     third-party-capital "1.0.20"
 
