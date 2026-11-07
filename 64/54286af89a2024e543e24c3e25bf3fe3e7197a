@@ -1,0 +1,28 @@
+package.json
+  h_fa492faa375953 30-32
+.nvmrc
+  h_fa492faa375953 1
+yarn.lock
+  s_a59af42f298bfd::t_85adb434f6eb17 20-22,25-29,31-32,40-43,45-46,51-54,75-78,82,84-87,99-102,105,107-110,112,123-126,129,131,133,136-139,141,423-427,462-465,468-470,475-513,516-518,551-553,567,572,579,807-810,820,835-837,839-843,876-879,1008-1011,1538-1540,1605-1607,1882-1889,1920-1922,1924,1931-1938,1951-1954,2216-2218,2235-2237,2240-2242,2485-2487,2560
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6454286af89a2024e543e24c3e25bf3fe3e7197a",
+  "prompts": {},
+  "humans": {
+    "h_fa492faa375953": {
+      "author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  },
+  "sessions": {
+    "s_a59af42f298bfd": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "b46b95a0-0ea5-469d-86ff-fbd6bec109f9",
+        "model": "unknown"
+      },
+      "human_author": "Rodrigo Castilho <rodrigo.castilho@gympass.com>"
+    }
+  }
+}
